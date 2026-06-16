@@ -208,3 +208,36 @@
   border-radius: 12px;
   padding: 10px 6px;
 }
+
+/* ---- Modal (bottom sheet) ---- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  z-index: 100;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.modal-panel {
+  background: var(--bg-elevated);
+  width: 100%;
+  max-width: 560px;
+  max-height: 92vh;
+  overflow-y: auto;
+  border-radius: 20px 20px 0 0;
+  border: 1px solid var(--glass-border);
+  padding: 20px 20px 34px;
+}
+.modal-close {
+  appearance: none;
+  background: var(--panel-2);
+  border: 1px solid var(--glass-border);
+  color: var(--muted);
+  border-radius: 10px;
+  width: 36px;
+  height: 36px;
+  font-size: 1rem;
+  cursor: pointer;
+  flex-shrink: 0;
+}

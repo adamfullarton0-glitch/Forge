@@ -23,7 +23,7 @@ test.describe('FORGE first run', () => {
     await expect(page.getByRole('navigation', { name: /primary/i })).toBeVisible();
 
     await page.getByRole('link', { name: /train/i }).click();
-    await expect(page.getByRole('heading', { name: /your training/i })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Train' })).toBeVisible();
   });
 });
 

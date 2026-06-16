@@ -65,7 +65,7 @@ describe('app shell', () => {
     seed({ profile });
     renderApp('/');
     await user.click(screen.getByRole('link', { name: /train/i }));
-    expect(screen.getByRole('heading', { name: /your training/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Train' })).toBeInTheDocument();
   });
 
   it('contains a thrown screen error and keeps the nav + other screens alive', async () => {
@@ -78,6 +78,6 @@ describe('app shell', () => {
     expect(trainLink).toBeInTheDocument();
 
     await user.click(trainLink);
-    expect(screen.getByRole('heading', { name: /your training/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Train' })).toBeInTheDocument();
   });
 });

@@ -46,6 +46,27 @@ export const en = {
   lose: 'Lose fat',
   maintain: 'Maintain',
   gain: 'Build muscle',
+  // Train + active workout
+  yourPlan: 'Your plan',
+  active: 'ACTIVE',
+  restStart: "It's a rest day — but you can start any session below.",
+  finish: 'Finish workout',
+  saveExit: '← Save & exit',
+  discard: 'Discard workout',
+  restTimer: 'Rest',
+  skip: 'Skip',
+  set: 'Set',
+  reps: 'Reps',
+  prev: 'Prev',
+  addSet: '+ Add set',
+  newPR: 'New PR!',
+  e1rmL: 'Est. 1RM',
+  plates: 'Plates per side',
+  emptyBar: 'Just the bar',
+  howto: 'How to do it',
+  tip: "Coach's tip",
+  watch: 'Watch video tutorial on YouTube',
+  logW: 'Log',
 } as const;
 
 export type TKey = keyof typeof en;
