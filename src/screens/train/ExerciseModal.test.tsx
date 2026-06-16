@@ -63,10 +63,19 @@ describe('ExerciseModal', () => {
     expect(container).toBeEmptyDOMElement();
   });
 
-  it('embeds the tutorial with a referrer policy that avoids YouTube error 153', async () => {
+  it('defaults to a poster that opens YouTube directly (no embed → no Error 153)', () => {
+    render(<ExerciseModal name="Barbell Bench Press" onClose={() => undefined} />);
+    const poster = screen.getByRole('link', { name: /watch barbell bench press form tutorial/i });
+    expect(poster).toHaveAttribute('href', 'https://www.youtube.com/watch?v=4Y2ZdHCOXok');
+    expect(poster).toHaveAttribute('target', '_blank');
+    // No iframe is mounted until the user opts into the in-app player.
+    expect(screen.queryByTitle(/tutorial/i)).not.toBeInTheDocument();
+  });
+
+  it('opt-in inline player embeds with a referrer policy that avoids Error 153', async () => {
     const user = userEvent.setup();
     render(<ExerciseModal name="Barbell Bench Press" onClose={() => undefined} />);
-    await user.click(screen.getByRole('button', { name: /play form tutorial/i }));
+    await user.click(screen.getByRole('button', { name: /in-app player/i }));
     const frame = screen.getByTitle(/barbell bench press tutorial/i);
     expect(frame.getAttribute('src')).toContain('youtube-nocookie.com/embed/');
     expect(frame.getAttribute('referrerpolicy')).toBe('strict-origin-when-cross-origin');

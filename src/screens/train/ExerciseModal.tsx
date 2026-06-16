@@ -24,6 +24,7 @@ export function ExerciseModal({ name, onClose, onOpen }: ExerciseModalProps): JS
 
   const [att, setAtt] = useState(0);
   const [play, setPlay] = useState(false);
+  const [posterFailed, setPosterFailed] = useState(false);
   const [w, setW] = useState('');
   const [hit, setHit] = useState(false);
 
@@ -80,8 +81,8 @@ export function ExerciseModal({ name, onClose, onOpen }: ExerciseModalProps): JS
       {/* Video */}
       <div style={{ margin: '14px 0 16px' }}>
         {ex.vid ? (
-          <>
-            {play ? (
+          play ? (
+            <>
               <div className="ex-video">
                 <iframe
                   src={`https://www.youtube-nocookie.com/embed/${ex.vid}?autoplay=1&playsinline=1&rel=0&modestbranding=1`}
@@ -94,26 +95,44 @@ export function ExerciseModal({ name, onClose, onOpen }: ExerciseModalProps): JS
                   allowFullScreen
                 />
               </div>
-            ) : (
-              <Button variant="ghost" onClick={() => setPlay(true)} style={{ width: '100%' }}>
-                ▶ Play form tutorial
-              </Button>
-            )}
-            <a
-              href={`https://www.youtube.com/watch?v=${ex.vid}`}
-              target="_blank"
-              rel="noreferrer"
-              style={{
-                display: 'block',
-                textAlign: 'center',
-                marginTop: 8,
-                fontSize: '0.78rem',
-                fontWeight: 700,
-              }}
-            >
-              Open this exact video ↗
-            </a>
-          </>
+              <a
+                className="ex-video__fallback"
+                href={`https://www.youtube.com/watch?v=${ex.vid}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Not playing? Watch on YouTube ↗
+              </a>
+            </>
+          ) : (
+            <>
+              {/* Default: a poster that opens YouTube directly. No embed means
+                  no "Error 153", which can be caused by referrer/origin policies,
+                  ad-blockers, localhost, or per-video embedding restrictions. */}
+              <a
+                className="ex-poster"
+                href={`https://www.youtube.com/watch?v=${ex.vid}`}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={`Watch ${name} form tutorial on YouTube`}
+              >
+                {posterFailed ? null : (
+                  <img
+                    className="ex-poster__img"
+                    src={`https://i.ytimg.com/vi/${ex.vid}/hqdefault.jpg`}
+                    alt=""
+                    loading="lazy"
+                    onError={() => setPosterFailed(true)}
+                  />
+                )}
+                <span className="ex-poster__play" aria-hidden="true" />
+                <span className="ex-poster__badge">Watch form tutorial on YouTube ↗</span>
+              </a>
+              <button type="button" className="ex-inline-toggle" onClick={() => setPlay(true)}>
+                Or try the in-app player
+              </button>
+            </>
+          )
         ) : (
           <div
             className="warn-box"
