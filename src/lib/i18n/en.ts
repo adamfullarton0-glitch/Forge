@@ -67,6 +67,28 @@ export const en = {
   tip: "Coach's tip",
   watch: 'Watch video tutorial on YouTube',
   logW: 'Log',
+  // Eat
+  nutrition: 'Nutrition',
+  track: 'Track today',
+  fiber: 'Fiber',
+  sugar: 'Sugar',
+  sodium: 'Sodium',
+  searchFood: 'Search foods & brands',
+  scanHint: 'Type a food, brand, or paste a barcode',
+  foodDbNote: 'Live results from the Open Food Facts database (millions of products).',
+  searching: 'Searching…',
+  noResults: 'No matches — try a different term or add it as a custom food.',
+  quick: 'Quick add',
+  custom: 'Add custom food',
+  foodName: 'Food name',
+  add: 'Add to log',
+  log: "Today's log",
+  empty: 'Nothing logged yet. Add your first meal above.',
+  logMeal: '+ Log this meal',
+  breakfast: 'Breakfast',
+  lunch: 'Lunch',
+  dinner: 'Dinner',
+  snacks: 'Snacks',
 } as const;
 
 export type TKey = keyof typeof en;

@@ -2,6 +2,7 @@ import { createBrowserRouter, type RouteObject } from 'react-router-dom';
 import { Layout } from './Layout';
 import { Home } from '@/screens/Home';
 import { Train } from '@/screens/Train';
+import { Eat } from '@/screens/Eat';
 import { Placeholder } from '@/screens/Placeholder';
 import { Boom } from '@/screens/Boom';
 
@@ -18,16 +19,7 @@ export const routes: RouteObject[] = [
           <Placeholder title="Plan" icon="plan" note="Weekly training schedule comes in Phase 5." />
         ),
       },
-      {
-        path: 'eat',
-        element: (
-          <Placeholder
-            title="Eat"
-            icon="eat"
-            note="Food search and macro tracking come in Phase 6."
-          />
-        ),
-      },
+      { path: 'eat', element: <Eat /> },
       {
         path: 'recipes',
         element: (
