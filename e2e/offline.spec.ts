@@ -5,9 +5,9 @@ test.describe('offline-first PWA', () => {
     page,
     context,
   }) => {
-    // First visit: let the service worker install and precache the shell.
+    // First visit: onboarding is the shell on a fresh device.
     await page.goto('/');
-    await expect(page.getByRole('heading', { name: /forge yourself/i })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'FORGE' })).toBeVisible();
     await page.waitForFunction(async () => {
       if (!('serviceWorker' in navigator)) return false;
       const reg = await navigator.serviceWorker.ready;
@@ -18,8 +18,8 @@ test.describe('offline-first PWA', () => {
     await context.setOffline(true);
     await page.reload();
 
-    await expect(page.getByRole('heading', { name: /forge yourself/i })).toBeVisible();
-    await expect(page.getByRole('navigation', { name: /primary/i })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'FORGE' })).toBeVisible();
+    await expect(page.getByText('WELCOME TO')).toBeVisible();
 
     await context.setOffline(false);
   });

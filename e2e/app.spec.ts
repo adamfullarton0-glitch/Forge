@@ -1,28 +1,67 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('FORGE shell', () => {
-  test('loads, shows the nav, and navigates between screens', async ({ page }) => {
+test.describe('FORGE first run', () => {
+  test('completes onboarding and lands on the dashboard', async ({ page }) => {
     await page.goto('/');
-    await expect(page.getByRole('heading', { name: /forge yourself/i })).toBeVisible();
+    await expect(page.getByText('WELCOME TO')).toBeVisible();
 
-    const nav = page.getByRole('navigation', { name: /primary/i });
-    await expect(nav).toBeVisible();
+    await page.getByRole('button', { name: /let's go/i }).click();
+
+    await page.getByLabel('Name').fill('Sam');
+    await page.getByLabel('Age').fill('30');
+    await page.getByLabel(/height in centimetres/i).fill('180');
+    await page.getByLabel(/current weight in kg/i).fill('80');
+    await page.getByLabel(/goal weight in kg/i).fill('75');
+
+    // Next through goal → equipment → allergies → dislikes, then finish.
+    for (let i = 0; i < 4; i++) {
+      await page.getByRole('button', { name: /^next/i }).click();
+    }
+    await page.getByRole('button', { name: /build my plan/i }).click();
+
+    await expect(page.getByRole('heading', { name: /sam/i })).toBeVisible();
+    await expect(page.getByRole('navigation', { name: /primary/i })).toBeVisible();
 
     await page.getByRole('link', { name: /train/i }).click();
     await expect(page.getByRole('heading', { name: /your training/i })).toBeVisible();
   });
+});
 
-  test('a deliberate screen crash is contained; the nav and other screens survive', async ({
-    page,
-  }) => {
-    await page.goto('/');
-    await page.getByRole('button', { name: /trigger screen error/i }).click();
+const SEED = {
+  schemaVersion: 1,
+  profile: {
+    name: 'Alex',
+    sex: 'm',
+    age: 30,
+    height: 180,
+    weight: 80,
+    targetWeight: 75,
+    weightUnit: 'kg',
+    heightUnit: 'cm',
+    goal: 'lose',
+    activity: 'moderate',
+    experience: 'beginner',
+    allergies: [],
+    dislikes: [],
+  },
+  settings: { dark: true, accent: 'pulse', lang: 'en' },
+};
 
-    await expect(page.getByText(/this home screen hit an error/i)).toBeVisible();
+test.describe('error isolation', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.addInitScript((data) => {
+      window.localStorage.setItem('forge-data', JSON.stringify(data));
+    }, SEED);
+  });
 
-    // The app is not blank — nav is still there and usable.
-    await expect(page.getByRole('navigation', { name: /primary/i })).toBeVisible();
-    await page.getByRole('link', { name: /train/i }).click();
-    await expect(page.getByRole('heading', { name: /your training/i })).toBeVisible();
+  test('a thrown screen is contained; the nav and other screens survive', async ({ page }) => {
+    await page.goto('/__diag/boom');
+    await expect(page.getByRole('alert')).toBeVisible();
+
+    const nav = page.getByRole('navigation', { name: /primary/i });
+    await expect(nav).toBeVisible();
+
+    await page.getByRole('link', { name: /home/i }).click();
+    await expect(page.getByRole('heading', { name: /alex/i })).toBeVisible();
   });
 });

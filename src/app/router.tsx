@@ -3,6 +3,7 @@ import { Layout } from './Layout';
 import { Home } from '@/screens/Home';
 import { Train } from '@/screens/Train';
 import { Placeholder } from '@/screens/Placeholder';
+import { Boom } from '@/screens/Boom';
 
 export const routes: RouteObject[] = [
   {
@@ -47,6 +48,8 @@ export const routes: RouteObject[] = [
           />
         ),
       },
+      // Hidden diagnostics route — proves the per-route error boundary works.
+      { path: '__diag/boom', element: <Boom /> },
       {
         path: '*',
         element: (

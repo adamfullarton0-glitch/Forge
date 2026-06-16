@@ -175,3 +175,36 @@
   flex-direction: column;
   gap: var(--gap);
 }
+
+.pro-badge {
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: #04111a;
+  background: var(--accent);
+  border-radius: 6px;
+  padding: 3px 7px;
+}
+
+.session-name {
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin: 6px 0 2px;
+}
+
+.stat-label {
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.mini-stat {
+  flex: 1;
+  text-align: center;
+  background: var(--panel-2);
+  border-radius: 12px;
+  padding: 10px 6px;
+}

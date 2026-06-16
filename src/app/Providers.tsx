@@ -1,15 +1,21 @@
 import { useEffect, type ReactNode } from 'react';
 import { applyTheme } from '@/theme/pulse';
+import { useData } from '@/features/store';
 
 /**
- * App-wide providers. For Phase 1 this just locks in the Pulse dark theme +
- * cyan accent; persisted theme preferences arrive with the storage core
- * (Phase 2) and Settings (Phase 9).
+ * Applies the persisted theme (dark/light + accent) and text direction
+ * reactively from the store, so changing them in Settings updates instantly.
  */
 export function Providers({ children }: { children: ReactNode }): JSX.Element {
+  const { dark, accent, lang } = useData().settings;
+
   useEffect(() => {
-    applyTheme('dark', 'cyan');
-  }, []);
+    applyTheme(dark ? 'dark' : 'light', accent);
+  }, [dark, accent]);
+
+  useEffect(() => {
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  }, [lang]);
 
   return <>{children}</>;
 }

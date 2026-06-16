@@ -1,0 +1,121 @@
+.onboarding {
+  min-height: 100vh;
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 28px 22px 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.ob-progress {
+  height: 4px;
+  background: var(--panel-2);
+  border-radius: 2px;
+  margin-bottom: 26px;
+  overflow: hidden;
+}
+.ob-progress__fill {
+  height: 100%;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+
+.ob-eyebrow {
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  color: var(--accent);
+}
+.ob-title {
+  font-size: 1.9rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 4px 0 0;
+}
+.ob-lede {
+  color: var(--muted);
+  margin: 10px 0 0;
+  line-height: 1.55;
+}
+.ob-label {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 22px 0 8px;
+  display: block;
+}
+
+.input,
+.select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1.5px solid var(--glass-border);
+  background: var(--bg-elevated);
+  color: var(--text);
+  font: inherit;
+  font-size: 1rem;
+  outline: none;
+  min-height: 44px;
+}
+.input:focus,
+.select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+.ob-row {
+  display: flex;
+  gap: 10px;
+}
+.ob-row > * {
+  flex: 1;
+}
+
+/* Big selectable option */
+.ob-opt {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 15px 14px;
+  border-radius: 14px;
+  border: 1.5px solid var(--glass-border);
+  background: var(--glass);
+  color: var(--text);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  min-height: 44px;
+}
+.ob-opt[aria-pressed='true'] {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+.ob-opt__title {
+  font-size: 1rem;
+  font-weight: 800;
+}
+.ob-opt__desc {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 3px;
+  font-weight: 600;
+}
+
+.ob-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.ob-chips {
+  display: flex;
+  gap: 9px;
+  flex-wrap: wrap;
+}
+
+.ob-next {
+  margin-top: 28px;
+}

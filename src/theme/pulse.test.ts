@@ -4,11 +4,12 @@ import { applyTheme, themes, accents, readinessBands, sleepStageColors } from '.
 describe('pulse theme tokens', () => {
   it('applyTheme writes the expected CSS custom properties', () => {
     const root = document.createElement('div');
-    applyTheme('dark', 'cyan', root);
+    applyTheme('dark', 'pulse', root);
     expect(root.dataset.theme).toBe('dark');
     expect(root.style.getPropertyValue('--bg')).toBe(themes.dark.bg);
     expect(root.style.getPropertyValue('--text')).toBe(themes.dark.text);
-    expect(root.style.getPropertyValue('--accent')).toBe(accents.cyan);
+    expect(root.style.getPropertyValue('--accent')).toBe(accents.pulse.c);
+    expect(root.style.getPropertyValue('--accent-soft')).toBe(accents.pulse.soft);
   });
 
   it('applyTheme switches theme and accent independently', () => {
@@ -16,7 +17,7 @@ describe('pulse theme tokens', () => {
     applyTheme('light', 'violet', root);
     expect(root.dataset.theme).toBe('light');
     expect(root.style.getPropertyValue('--bg')).toBe(themes.light.bg);
-    expect(root.style.getPropertyValue('--accent')).toBe(accents.violet);
+    expect(root.style.getPropertyValue('--accent')).toBe(accents.violet.c);
   });
 
   it('exposes the readiness bands in descending threshold order', () => {
