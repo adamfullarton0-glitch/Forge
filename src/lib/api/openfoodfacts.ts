@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { fetchJson } from './http';
 
 /**
  * Open Food Facts client. Every response is `unknown` until validated with
@@ -9,7 +10,6 @@ import { z } from 'zod';
 
 const BASE = 'https://world.openfoodfacts.org';
 const FIELDS = 'product_name,brands,nutriments,serving_size';
-const TIMEOUT_MS = 8000;
 
 /** A normalised food item ready to log. */
 export interface FoodItem {
@@ -72,19 +72,6 @@ function mapProduct(pr: Product): FoodItem {
     sodium: Math.round(read('sodium') * 1000),
     basis: basis === 'serving' ? (pr.serving_size ?? 'serving') : '100g',
   };
-}
-
-/** Fetches JSON with a hard timeout. Throws on network/HTTP/abort errors. */
-async function fetchJson(url: string): Promise<unknown> {
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
-  try {
-    const res = await fetch(url, { signal: controller.signal });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    return (await res.json()) as unknown;
-  } finally {
-    clearTimeout(timer);
-  }
 }
 
 const isBarcode = (q: string): boolean => /^[0-9]{6,14}$/.test(q);

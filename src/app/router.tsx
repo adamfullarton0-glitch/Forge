@@ -3,6 +3,7 @@ import { Layout } from './Layout';
 import { Home } from '@/screens/Home';
 import { Train } from '@/screens/Train';
 import { Eat } from '@/screens/Eat';
+import { Recipes } from '@/screens/Recipes';
 import { Placeholder } from '@/screens/Placeholder';
 import { Boom } from '@/screens/Boom';
 
@@ -20,12 +21,7 @@ export const routes: RouteObject[] = [
         ),
       },
       { path: 'eat', element: <Eat /> },
-      {
-        path: 'recipes',
-        element: (
-          <Placeholder title="Recipes" icon="recipes" note="The recipe library comes in Phase 7." />
-        ),
-      },
+      { path: 'recipes', element: <Recipes /> },
       {
         path: 'stats',
         element: <Placeholder title="Stats" icon="stats" note="Progress charts come in Phase 9." />,
