@@ -1,0 +1,60 @@
+import { createBrowserRouter, type RouteObject } from 'react-router-dom';
+import { Layout } from './Layout';
+import { Home } from '@/screens/Home';
+import { Train } from '@/screens/Train';
+import { Placeholder } from '@/screens/Placeholder';
+
+export const routes: RouteObject[] = [
+  {
+    path: '/',
+    element: <Layout />,
+    children: [
+      { index: true, element: <Home /> },
+      { path: 'train', element: <Train /> },
+      {
+        path: 'plan',
+        element: (
+          <Placeholder title="Plan" icon="plan" note="Weekly training schedule comes in Phase 5." />
+        ),
+      },
+      {
+        path: 'eat',
+        element: (
+          <Placeholder
+            title="Eat"
+            icon="eat"
+            note="Food search and macro tracking come in Phase 6."
+          />
+        ),
+      },
+      {
+        path: 'recipes',
+        element: (
+          <Placeholder title="Recipes" icon="recipes" note="The recipe library comes in Phase 7." />
+        ),
+      },
+      {
+        path: 'stats',
+        element: <Placeholder title="Stats" icon="stats" note="Progress charts come in Phase 9." />,
+      },
+      {
+        path: 'more',
+        element: (
+          <Placeholder
+            title="More"
+            icon="more"
+            note="Sleep, Settings and Upgrade live here from Phase 8 onward."
+          />
+        ),
+      },
+      {
+        path: '*',
+        element: (
+          <Placeholder title="Not found" icon="alert" note="That route does not exist yet." />
+        ),
+      },
+    ],
+  },
+];
+
+export const router = createBrowserRouter(routes);
