@@ -1,14 +1,62 @@
-import { defineConfig } from 'vite';
+import { defineConfig, type Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 import { fileURLToPath, URL } from 'node:url';
+
+/**
+ * Content Security Policy. Locks the app to its own bundle + the two food
+ * APIs + the YouTube tutorial frame, and blocks inline/eval scripts — the
+ * single biggest defence against XSS exfiltrating on-device user data.
+ * Injected only into the production build so the Vite dev server (which needs
+ * inline scripts + HMR websockets) keeps working.
+ */
+const CSP = [
+  "default-src 'self'",
+  "base-uri 'self'",
+  "object-src 'none'",
+  "script-src 'self'",
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' data: https://i.ytimg.com https://www.themealdb.com https://themealdb.com",
+  "font-src 'self'",
+  "connect-src 'self' https://world.openfoodfacts.org https://www.themealdb.com",
+  'frame-src https://www.youtube-nocookie.com',
+  "worker-src 'self'",
+  "manifest-src 'self'",
+  "media-src 'self'",
+  "form-action 'self'",
+  // frame-ancestors is header-only (ignored in <meta>); set via public/_headers
+  // and X-Frame-Options there instead.
+  'upgrade-insecure-requests',
+].join('; ');
+
+function cspPlugin(): Plugin {
+  return {
+    name: 'forge-csp',
+    apply: 'build',
+    transformIndexHtml(html) {
+      return {
+        html,
+        tags: [
+          {
+            tag: 'meta',
+            attrs: { 'http-equiv': 'Content-Security-Policy', content: CSP },
+            injectTo: 'head-prepend',
+          },
+        ],
+      };
+    },
+  };
+}
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     react(),
+    cspPlugin(),
     VitePWA({
       registerType: 'autoUpdate',
+      // We register the SW ourselves in main.tsx; don't inject an inline script.
+      injectRegister: false,
       includeAssets: ['favicon.svg', 'icon-192.png', 'icon-512.png'],
       manifest: {
         name: 'FORGE',
@@ -53,6 +101,11 @@ export default defineConfig({
       },
     }),
   ],
+  // Native modulepreload is supported by our target browsers; skipping the
+  // polyfill avoids an inline <script>, keeping script-src 'self' strict.
+  build: {
+    modulePreload: { polyfill: false },
+  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),

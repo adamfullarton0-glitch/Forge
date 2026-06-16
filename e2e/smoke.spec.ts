@@ -38,6 +38,15 @@ function seed() {
   );
 }
 
+/** Records any Content-Security-Policy violations into window.__csp. */
+function cspWatcher() {
+  const w = window as unknown as { __csp?: string[] };
+  w.__csp = [];
+  document.addEventListener('securitypolicyviolation', (e) => {
+    w.__csp?.push(`${e.violatedDirective} ${e.blockedURI}`);
+  });
+}
+
 test('every screen renders with a clean console and a working video embed', async ({ page }) => {
   const errors: string[] = [];
   page.on('console', (m) => {
@@ -45,8 +54,12 @@ test('every screen renders with a clean console and a working video embed', asyn
   });
   page.on('pageerror', (e) => errors.push(`pageerror: ${e.message}`));
 
+  await page.addInitScript(cspWatcher);
   await page.addInitScript(seed);
   await page.goto('/');
+
+  // A Content-Security-Policy must be present in the production build.
+  await expect(page.locator('meta[http-equiv="Content-Security-Policy"]')).toHaveCount(1);
   await expect(page.getByRole('heading', { name: /jordan/i })).toBeVisible();
 
   // Visit every nav destination.
@@ -83,4 +96,10 @@ test('every screen renders with a clean console and a working video embed', asyn
       ),
   );
   expect(realErrors).toEqual([]);
+
+  // The CSP must not have blocked any of our own resources.
+  const violations = await page.evaluate(
+    () => (window as unknown as { __csp?: string[] }).__csp ?? [],
+  );
+  expect(violations).toEqual([]);
 });
