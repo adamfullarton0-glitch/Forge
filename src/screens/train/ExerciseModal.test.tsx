@@ -62,4 +62,13 @@ describe('ExerciseModal', () => {
     const { container } = render(<ExerciseModal name="Nope" onClose={() => undefined} />);
     expect(container).toBeEmptyDOMElement();
   });
+
+  it('embeds the tutorial with a referrer policy that avoids YouTube error 153', async () => {
+    const user = userEvent.setup();
+    render(<ExerciseModal name="Barbell Bench Press" onClose={() => undefined} />);
+    await user.click(screen.getByRole('button', { name: /play form tutorial/i }));
+    const frame = screen.getByTitle(/barbell bench press tutorial/i);
+    expect(frame.getAttribute('src')).toContain('youtube-nocookie.com/embed/');
+    expect(frame.getAttribute('referrerpolicy')).toBe('strict-origin-when-cross-origin');
+  });
 });

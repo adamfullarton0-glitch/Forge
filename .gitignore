@@ -15,6 +15,7 @@ dev-dist
 coverage
 playwright-report
 test-results
+screenshots
 /blob-report
 /playwright/.cache
 

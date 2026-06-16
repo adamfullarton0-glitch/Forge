@@ -49,9 +49,12 @@ export default tseslint.config(
     },
   },
   {
-    // Config + Node-side tooling files.
+    // Config + Node-side tooling files (incl. Playwright e2e specs). These
+    // aren't in a tsconfig project, so parse with the TS parser but skip the
+    // type-aware rules.
     files: ['*.{js,ts}', 'e2e/**/*.ts'],
     languageOptions: {
+      parser: tseslint.parser,
       globals: globals.node,
     },
     extends: [tseslint.configs.disableTypeChecked],

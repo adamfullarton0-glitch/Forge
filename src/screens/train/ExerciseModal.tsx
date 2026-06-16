@@ -84,9 +84,13 @@ export function ExerciseModal({ name, onClose, onOpen }: ExerciseModalProps): JS
             {play ? (
               <div className="ex-video">
                 <iframe
-                  src={`https://www.youtube-nocookie.com/embed/${ex.vid}?autoplay=1&playsinline=1`}
+                  src={`https://www.youtube-nocookie.com/embed/${ex.vid}?autoplay=1&playsinline=1&rel=0&modestbranding=1`}
                   title={`${name} tutorial`}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  loading="lazy"
+                  // Without a referrer YouTube's player throws "Error 153"; this
+                  // guarantees a valid origin even under a strict page policy.
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
                 />
               </div>
