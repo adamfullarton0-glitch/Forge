@@ -5,6 +5,7 @@ import { Heatmap } from './progress/Heatmap';
 import { LiftCard } from './progress/LiftCard';
 import { Achievements } from './progress/Achievements';
 import { ExercisePicker } from './progress/ExercisePicker';
+import { ProgressPhotos } from './progress/ProgressPhotos';
 import { ExerciseModal } from './train/ExerciseModal';
 import { useData, useUpdate } from '@/features/store';
 import { getUnits, kg2lb, lb2kg, todayKey, weekStartKey } from '@/lib/calc';
@@ -219,6 +220,9 @@ export function Progress(): JSX.Element | null {
           {t('saveM')}
         </Button>
       </Card>
+
+      {/* Progress photos */}
+      <ProgressPhotos curWeightKg={curW} />
 
       {/* Lift progress */}
       <span className="pulse-header" style={{ display: 'block', marginTop: 22 }}>

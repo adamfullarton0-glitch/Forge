@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { useStore } from './store';
 import { defaultState } from '@/types/schemas';
 import { STORAGE_KEY, loadState } from '@/lib/storage';
@@ -33,5 +33,26 @@ describe('forge store', () => {
     useStore.getState().reset();
     expect(useStore.getState().data.pro).toBe(false);
     expect(localStorage.getItem(STORAGE_KEY)).toBeNull();
+  });
+
+  it('tryUpdate applies and persists when the save succeeds', () => {
+    const ok = useStore.getState().tryUpdate({ planId: 'ul' });
+    expect(ok).toBe(true);
+    expect(useStore.getState().data.planId).toBe('ul');
+    expect(loadState().planId).toBe('ul');
+  });
+
+  it('tryUpdate leaves state untouched when the save fails', () => {
+    const spy = vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => {
+      throw new DOMException('full', 'QuotaExceededError');
+    });
+    try {
+      const ok = useStore.getState().tryUpdate({ planId: 'ul' });
+      expect(ok).toBe(false);
+      // Not applied in memory — would otherwise vanish on reload.
+      expect(useStore.getState().data.planId).toBe('ppl');
+    } finally {
+      spy.mockRestore();
+    }
   });
 });

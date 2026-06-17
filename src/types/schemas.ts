@@ -158,6 +158,16 @@ export const ShoppingItemSchema = z.object({
   have: z.boolean().catch(false),
 });
 
+export const ProgressPhotoSchema = z.object({
+  id: z.string().catch(''),
+  /** Capture date, `YYYY-MM-DD`. */
+  d: z.string().catch(''),
+  /** Compressed JPEG data URL. */
+  src: z.string().catch(''),
+  /** Body weight (kg) snapshot at capture time, if known. */
+  w: finite.optional(),
+});
+
 export const MealTypeSchema = z.enum(['breakfast', 'lunch', 'dinner', 'snack']);
 
 export const CustomRecipeSchema = z.object({
@@ -210,6 +220,7 @@ export const PersistedStateSchema = z
     customPlans: z.array(CustomPlanSchema).catch([]),
     shopping: z.array(ShoppingItemSchema).catch([]),
     customRecipes: z.array(CustomRecipeSchema).catch([]),
+    photos: z.array(ProgressPhotoSchema).catch([]),
   })
   .catch(() => defaultState());
 
@@ -223,6 +234,7 @@ export type LiftEntry = z.infer<typeof LiftEntrySchema>;
 export type CustomPlan = z.infer<typeof CustomPlanSchema>;
 export type ShoppingItem = z.infer<typeof ShoppingItemSchema>;
 export type CustomRecipe = z.infer<typeof CustomRecipeSchema>;
+export type ProgressPhoto = z.infer<typeof ProgressPhotoSchema>;
 export type PersistedState = z.infer<typeof PersistedStateSchema>;
 
 /** A complete, valid default state for first run or unrecoverable data. */
@@ -252,5 +264,6 @@ export function defaultState(): PersistedState {
     customPlans: [],
     shopping: [],
     customRecipes: [],
+    photos: [],
   };
 }

@@ -219,6 +219,19 @@ export const en = {
   findByMuscle: 'Find by muscle',
   muscleHint: 'Tap a muscle to see the exercises that train it.',
   exercisesL: 'exercises',
+  // Progress photos
+  progressPhotos: 'Progress photos',
+  photosSub: 'Snap a photo to track how your physique changes over time.',
+  photosEmpty: 'No photos yet. Add your first to start your timeline.',
+  addPhoto: 'Add a photo',
+  photoSaving: 'Saving…',
+  photoCap: 'Photo limit reached',
+  photoFull: "Couldn't save — your device storage is full. Delete a photo and try again.",
+  photoErr: "Couldn't read that image. Try another one.",
+  photoFirst: 'First',
+  photoLatest: 'Latest',
+  viewPhoto: 'View photo',
+  photosPrivate: 'Stored only on this device',
 } as const;
 
 export type TKey = keyof typeof en;
