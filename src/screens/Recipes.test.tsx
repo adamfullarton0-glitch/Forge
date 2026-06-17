@@ -91,4 +91,37 @@ describe('Recipes', () => {
     const countAfter = screen.getByText(/recipes match ·/i).textContent;
     expect(countAfter).not.toBe(countBefore);
   });
+
+  it('adds a recipe’s ingredients to the shopping list', async () => {
+    const user = userEvent.setup();
+    renderRecipes();
+    await screen.findByText('Chicken Burrito Bowl');
+    await user.click(screen.getByRole('button', { name: /add to list — chicken burrito bowl/i }));
+    const shopping = useStore.getState().data.shopping;
+    expect(shopping.length).toBeGreaterThan(0);
+    expect(shopping.some((i) => i.name === 'chicken breast')).toBe(true);
+    // Adding again de-duplicates rather than piling up.
+    const len = shopping.length;
+    await user.click(screen.getByRole('button', { name: /add to list — chicken burrito bowl/i }));
+    expect(useStore.getState().data.shopping).toHaveLength(len);
+  });
+
+  it('ticks off and clears shopping list items', async () => {
+    const user = userEvent.setup();
+    seed({
+      shopping: [
+        { name: 'rice', have: false },
+        { name: 'eggs', have: false },
+      ],
+    });
+    renderRecipes();
+    await user.click(screen.getByRole('button', { name: /shopping list/i }));
+    // Tick "rice" off the list.
+    await user.click(screen.getByRole('button', { name: /in the basket: rice/i }));
+    expect(useStore.getState().data.shopping.find((i) => i.name === 'rice')?.have).toBe(true);
+    // Clear what I have removes only the checked item.
+    await user.click(screen.getByRole('button', { name: /clear what i have/i }));
+    const names = useStore.getState().data.shopping.map((i) => i.name);
+    expect(names).toEqual(['eggs']);
+  });
 });

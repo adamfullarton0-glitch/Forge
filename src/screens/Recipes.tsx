@@ -7,8 +7,16 @@ import { Icon } from '@/components/Icon';
 import { RealDishSearch } from './recipes/RealDish';
 import { RecipeTile } from './recipes/RecipeTile';
 import { RecipeModal } from './recipes/RecipeModal';
+import { ShoppingList } from './recipes/ShoppingList';
 import { useData, useUpdate } from '@/features/store';
 import { ALL_RECIPES, type Recipe } from '@/features/recipes/data';
+import {
+  addIngredients,
+  toggleHave,
+  removeItem,
+  clearHave,
+  counts,
+} from '@/features/recipes/shopping';
 import {
   filterRecipes,
   canSee,
@@ -44,6 +52,8 @@ export function Recipes(): JSX.Element | null {
   const [show, setShow] = useState(PAGE);
   const [photos, setPhotos] = useState<Record<string, string[]> | null>(null);
   const [modal, setModal] = useState<Recipe | null>(null);
+  const [showList, setShowList] = useState(false);
+  const [added, setAdded] = useState<string | null>(null);
 
   useEffect(() => {
     let live = true;
@@ -84,6 +94,15 @@ export function Recipes(): JSX.Element | null {
     });
   };
 
+  const addToList = (r: Recipe): void => {
+    const { list } = addIngredients(data.shopping, r.ing);
+    update({ shopping: list });
+    setAdded(r.name);
+    window.setTimeout(() => setAdded((cur) => (cur === r.name ? null : cur)), 2200);
+  };
+
+  const cart = counts(data.shopping);
+
   const fRow = (
     label: string,
     items: ReadonlyArray<readonly [string, string]>,
@@ -117,7 +136,24 @@ export function Recipes(): JSX.Element | null {
 
   return (
     <div className="screen">
-      <h1 className="screen__title">{t('recipes')}</h1>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          gap: 8,
+        }}
+      >
+        <h1 className="screen__title" style={{ margin: 0 }}>
+          {t('recipes')}
+        </h1>
+        <Button variant="ghost" onClick={() => setShowList(true)}>
+          {t('shoppingList')}
+          {cart.left > 0 ? ` (${cart.left})` : ''}
+        </Button>
+      </div>
+
+      <div style={{ height: 14 }} />
 
       <RealDishSearch lang={data.settings.lang} />
 
@@ -282,9 +318,16 @@ export function Recipes(): JSX.Element | null {
               </div>
             </div>
           </button>
-          <div style={{ marginTop: 8 }}>
+          <div style={{ display: 'flex', gap: 8, marginTop: 8, flexWrap: 'wrap' }}>
             <Button variant="ghost" aria-label={`Log ${r.name}`} onClick={() => addRecipe(r)}>
               {t('logMeal')}
+            </Button>
+            <Button
+              variant="ghost"
+              aria-label={`${t('addToList')} — ${r.name}`}
+              onClick={() => addToList(r)}
+            >
+              {added === r.name ? t('addedToList') : t('addToList')}
             </Button>
           </div>
         </Card>
@@ -323,6 +366,19 @@ export function Recipes(): JSX.Element | null {
           mealLabel={meal}
           onClose={() => setModal(null)}
           onLog={() => addRecipe(modal)}
+          onAddToList={() => addToList(modal)}
+        />
+      ) : null}
+
+      {showList ? (
+        <ShoppingList
+          lang={data.settings.lang}
+          items={data.shopping}
+          onToggle={(name) => update({ shopping: toggleHave(data.shopping, name) })}
+          onRemove={(name) => update({ shopping: removeItem(data.shopping, name) })}
+          onClearGot={() => update({ shopping: clearHave(data.shopping) })}
+          onClearAll={() => update({ shopping: [] })}
+          onClose={() => setShowList(false)}
         />
       ) : null}
     </div>

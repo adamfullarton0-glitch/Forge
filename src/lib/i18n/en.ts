@@ -193,6 +193,16 @@ export const en = {
   routineHint: 'Name it, add days and exercises, set your sets & reps.',
   emptyRoutine: 'Add at least one exercise to a day.',
   edit: 'Edit',
+  // Shopping list
+  shoppingList: 'Shopping list',
+  addToList: '+ Add to list',
+  toBuy: 'To buy',
+  gotIt: 'In the basket',
+  clearGot: 'Clear what I have',
+  clearAll: 'Clear list',
+  emptyShopping: 'Your list is empty. Open a recipe and add its ingredients.',
+  addedToList: 'Added to your shopping list.',
+  allGot: "Nice — you've got everything on your list.",
 } as const;
 
 export type TKey = keyof typeof en;

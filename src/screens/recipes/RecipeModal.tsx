@@ -14,6 +14,7 @@ interface RecipeModalProps {
   lang: string;
   onClose: () => void;
   onLog: () => void;
+  onAddToList: () => void;
 }
 
 export function RecipeModal({
@@ -23,6 +24,7 @@ export function RecipeModal({
   lang,
   onClose,
   onLog,
+  onAddToList,
 }: RecipeModalProps): JSX.Element {
   const t = translator(lang);
   const [imgErr, setImgErr] = useState(false);
@@ -208,6 +210,9 @@ export function RecipeModal({
         style={{ width: '100%' }}
       >
         {t('logTo')} {t(mealLabel)}
+      </Button>
+      <Button variant="ghost" onClick={onAddToList} style={{ width: '100%', marginTop: 8 }}>
+        {t('addToList')}
       </Button>
     </Modal>
   );
