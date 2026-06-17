@@ -127,3 +127,24 @@ describe('Train · custom routines', () => {
     expect(screen.getByRole('heading', { name: 'Bench Day' })).toBeInTheDocument();
   });
 });
+
+describe('Train · body-map finder', () => {
+  beforeEach(() => {
+    localStorage.clear();
+    seed();
+  });
+  afterEach(() => localStorage.clear());
+
+  it('finds exercises by muscle group and opens an exercise', async () => {
+    const user = userEvent.setup();
+    renderTrain();
+
+    await user.click(screen.getByRole('button', { name: /find by muscle/i }));
+    // Pick "Chest" from the accessible muscle chips.
+    await user.click(screen.getByRole('button', { name: 'Chest' }));
+    const benchBtn = await screen.findByRole('button', { name: /^Barbell Bench Press/ });
+    await user.click(benchBtn);
+    // The exercise detail modal opens.
+    expect(screen.getByText('How to do it')).toBeInTheDocument();
+  });
+});

@@ -3,6 +3,7 @@ import { Card } from '@/components/Card';
 import { Button } from '@/components/Button';
 import { ActiveWorkout } from './train/ActiveWorkout';
 import { RoutineBuilder } from './train/RoutineBuilder';
+import { BodyMapFinder } from './train/BodyMapFinder';
 import { useData, useUpdate } from '@/features/store';
 import { PLANS, getPlan, DEFAULT_PLAN_ID } from '@/features/workouts/plans';
 import { translator } from '@/lib/i18n';
@@ -19,6 +20,7 @@ export function Train(): JSX.Element {
     open: false,
     editing: null,
   });
+  const [finder, setFinder] = useState(false);
 
   if (data.active) {
     return <ActiveWorkout active={data.active} />;
@@ -60,7 +62,21 @@ export function Train(): JSX.Element {
 
   return (
     <div className="screen">
-      <h1 className="screen__title">Train</h1>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          gap: 8,
+        }}
+      >
+        <h1 className="screen__title" style={{ margin: 0 }}>
+          Train
+        </h1>
+        <Button variant="ghost" onClick={() => setFinder(true)}>
+          {t('findByMuscle')}
+        </Button>
+      </div>
       <p className="screen__lede">{t('startSession')}.</p>
 
       <Card
@@ -213,6 +229,8 @@ export function Train(): JSX.Element {
           onClose={() => setBuilder({ open: false, editing: null })}
         />
       ) : null}
+
+      {finder ? <BodyMapFinder lang={data.settings.lang} onClose={() => setFinder(false)} /> : null}
     </div>
   );
 }

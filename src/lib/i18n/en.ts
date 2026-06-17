@@ -215,6 +215,10 @@ export const en = {
   emptyRecipe: 'Give it a name and at least one ingredient.',
   optional: 'optional',
   step: 'step',
+  // Body-map exercise finder
+  findByMuscle: 'Find by muscle',
+  muscleHint: 'Tap a muscle to see the exercises that train it.',
+  exercisesL: 'exercises',
 } as const;
 
 export type TKey = keyof typeof en;
