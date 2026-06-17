@@ -223,6 +223,16 @@ export const en = {
   findByMuscle: 'Find by muscle',
   muscleHint: 'Tap a muscle to see the exercises that train it.',
   exercisesL: 'exercises',
+  // Recovery / HRV
+  recovery: 'Recovery',
+  hrvL: 'HRV last night',
+  hrvBaselineL: 'baseline',
+  vsBaseline: 'vs baseline',
+  respRate: 'resp. rate',
+  rrUnit: 'br/min',
+  recElevated: 'Elevated',
+  recBalanced: 'Balanced',
+  recStrained: 'Strained',
   // Progress photos
   progressPhotos: 'Progress photos',
   photosSub: 'Snap a photo to track how your physique changes over time.',

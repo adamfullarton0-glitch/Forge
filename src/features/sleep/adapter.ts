@@ -23,6 +23,10 @@ export interface NightSummary {
   bedMinutes: number;
   wakeMinutes: number;
   restingHr: number;
+  /** Heart-rate variability (rMSSD, ms) — the core recovery signal. */
+  hrv: number;
+  /** Respiratory rate, breaths per minute. */
+  respiratory: number;
   /** Sleep efficiency, %. */
   efficiency: number;
 }
@@ -58,6 +62,8 @@ export const simulatedSleepAdapter: DeviceSleepAdapter = {
       bedMinutes: 21 * 60 + seedNum(date + 'bt', 30, 210),
       wakeMinutes: 5 * 60 + seedNum(date + 'wt', 30, 180),
       restingHr: seedNum(date + 'rhr', 47, 61),
+      hrv: seedNum(date + 'hrv', 38, 86),
+      respiratory: Math.round(seedNum(date + 'rr', 122, 168)) / 10,
       efficiency: seedNum(date + 'eff', 84, 96),
     };
   },

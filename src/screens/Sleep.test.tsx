@@ -62,6 +62,14 @@ describe('Sleep', () => {
     expect(screen.getByText(/simulated in this demo build/i)).toBeInTheDocument();
   });
 
+  it('shows the HRV recovery panel with a baseline comparison', () => {
+    seed({ pro: true, devices: ['Garmin'] });
+    render2();
+    expect(screen.getByText('Recovery')).toBeInTheDocument();
+    expect(screen.getByText('HRV last night')).toBeInTheDocument();
+    expect(screen.getByText(/vs baseline/i)).toBeInTheDocument();
+  });
+
   it('switches the trend range', async () => {
     const user = userEvent.setup();
     seed({ pro: true, devices: ['Garmin'] });

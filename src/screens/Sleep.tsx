@@ -17,6 +17,8 @@ import {
   SLEEP_RANGES,
   type SleepRange,
 } from '@/features/sleep/sleep';
+import { buildRecovery } from '@/features/sleep/recovery';
+import { Recovery } from './sleep/Recovery';
 import { translator } from '@/lib/i18n';
 import './sleep/sleep.css';
 
@@ -105,6 +107,7 @@ export function Sleep(): JSX.Element {
   const stages = nightStages(night);
   const trend = buildTrend(adapter, range);
   const tips = sleepTips(trend, night);
+  const recovery = buildRecovery(adapter);
 
   const tiles: ReadonlyArray<[string, string]> = [
     [`${night.hours}h`, 'last night'],
@@ -166,6 +169,9 @@ export function Sleep(): JSX.Element {
           ))}
         </div>
       </Card>
+
+      {/* Recovery / HRV */}
+      <Recovery lang={data.settings.lang} recovery={recovery} />
 
       {/* Stages */}
       <Card style={{ marginBottom: 14 }}>
