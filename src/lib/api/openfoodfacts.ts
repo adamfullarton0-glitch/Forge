@@ -21,6 +21,16 @@ export interface FoodItem {
   fiber: number;
   sugar: number;
   sodium: number;
+  /** Saturated fat (g). */
+  satfat: number;
+  /** Potassium (mg). */
+  potassium: number;
+  /** Calcium (mg). */
+  calcium: number;
+  /** Iron (mg). */
+  iron: number;
+  /** Vitamin C (mg). */
+  vitc: number;
   /** "100g" or the product's serving description. */
   basis: string;
 }
@@ -70,6 +80,12 @@ function mapProduct(pr: Product): FoodItem {
     fiber: Math.round(read('fiber')),
     sugar: Math.round(read('sugars')),
     sodium: Math.round(read('sodium') * 1000),
+    // OFF stores these per-100g in grams; minerals/vitamins convert to mg.
+    satfat: Math.round(read('saturated-fat')),
+    potassium: Math.round(read('potassium') * 1000),
+    calcium: Math.round(read('calcium') * 1000),
+    iron: Math.round(read('iron') * 1000),
+    vitc: Math.round(read('vitamin-c') * 1000),
     basis: basis === 'serving' ? (pr.serving_size ?? 'serving') : '100g',
   };
 }

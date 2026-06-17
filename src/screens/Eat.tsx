@@ -5,8 +5,10 @@ import { Chip } from '@/components/Chip';
 import { Bar } from '@/components/Bar';
 import { Icon } from '@/components/Icon';
 import { Loading, ErrorState, EmptyState } from '@/components/states';
+import { Micronutrients } from './eat/Micronutrients';
 import { useData, useUpdate } from '@/features/store';
 import { QUICK_FOODS } from '@/features/nutrition/constants';
+import { sumMicros } from '@/features/nutrition/micros';
 import { searchFoods, type FoodItem } from '@/lib/api/openfoodfacts';
 import { calcTargets, calorieGuide, todayKey } from '@/lib/calc';
 import { translator } from '@/lib/i18n';
@@ -14,9 +16,6 @@ import type { FoodEntry, Profile } from '@/types/schemas';
 
 const MEALS = ['breakfast', 'lunch', 'dinner', 'snacks'] as const;
 type Meal = (typeof MEALS)[number];
-
-const FIBER_TARGET = 30;
-const SODIUM_CEIL = 2300;
 
 const n = (v: number | undefined): number => (typeof v === 'number' && Number.isFinite(v) ? v : 0);
 
@@ -128,12 +127,10 @@ export function Eat(): JSX.Element | null {
       p: s.p + n(x.p),
       c: s.c + n(x.c),
       f: s.f + n(x.f),
-      fiber: s.fiber + n(x.fiber),
-      sugar: s.sugar + n(x.sugar),
-      sodium: s.sodium + n(x.sodium),
     }),
-    { kcal: 0, p: 0, c: 0, f: 0, fiber: 0, sugar: 0, sodium: 0 },
+    { kcal: 0, p: 0, c: 0, f: 0 },
   );
+  const micros = sumMicros(log);
 
   const addFood = (item: Omit<FoodEntry, 'meal'>): void => {
     update({ foodLog: { ...data.foodLog, [tk]: [...log, { meal, ...item }] } });
@@ -184,28 +181,10 @@ export function Eat(): JSX.Element | null {
           <Bar label={t('protein')} value={tot.p} max={tg.protein} color="#3D8BFF" unit="g" />
           <Bar label={t('carbs')} value={tot.c} max={tg.carbs} color="#F5A623" unit="g" />
           <Bar label={t('fat')} value={tot.f} max={tg.fat} color="#F0479C" unit="g" />
-          <Bar label={t('fiber')} value={tot.fiber} max={FIBER_TARGET} color="#10B981" unit="g" />
-        </div>
-        <div style={{ display: 'flex', gap: 8, marginTop: 6 }}>
-          <div className="mini-stat" style={{ textAlign: 'left' }}>
-            <div className="stat-label">{t('sugar')}</div>
-            <div className="pulse-stat" style={{ fontSize: '1rem' }}>
-              {Math.round(tot.sugar)}
-              <span className="stat-label"> g</span>
-            </div>
-          </div>
-          <div className="mini-stat" style={{ textAlign: 'left' }}>
-            <div className="stat-label">{t('sodium')}</div>
-            <div
-              className="pulse-stat"
-              style={{ fontSize: '1rem', color: tot.sodium > SODIUM_CEIL ? '#F0479C' : undefined }}
-            >
-              {Math.round(tot.sodium)}
-              <span className="stat-label"> mg</span>
-            </div>
-          </div>
         </div>
       </Card>
+
+      <Micronutrients lang={data.settings.lang} totals={micros} />
 
       <CalorieGuideCard p={p} />
 

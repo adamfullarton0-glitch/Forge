@@ -60,6 +60,23 @@ describe('Eat', () => {
     expect(entry?.kcal).toBe(200);
   });
 
+  it('shows the micronutrient breakdown summed from the log', () => {
+    seed({
+      foodLog: {
+        [todayKey()]: [
+          { meal: 'lunch', n: 'Beans', kcal: 200, p: 12, c: 30, f: 2, fiber: 12, iron: 4 },
+        ],
+      },
+    });
+    render(<Eat />);
+    expect(screen.getByText('Micronutrients')).toBeInTheDocument();
+    // Labels unique to the micros panel.
+    expect(screen.getByText('Potassium')).toBeInTheDocument();
+    expect(screen.getByText('Vitamin C')).toBeInTheDocument();
+    // Fiber's target line (12 logged of the 30 g goal).
+    expect(screen.getByText(/\/ 30 g/)).toBeInTheDocument();
+  });
+
   it('removes a logged food', async () => {
     const user = userEvent.setup();
     seed({

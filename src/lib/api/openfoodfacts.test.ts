@@ -51,6 +51,35 @@ describe('searchFoods', () => {
     }
   });
 
+  it('maps the expanded micronutrients, converting minerals to mg', async () => {
+    stubFetch({
+      products: [
+        {
+          product_name: 'Yogurt',
+          nutriments: {
+            'energy-kcal_100g': 90,
+            proteins_100g: 10,
+            'saturated-fat_100g': 2,
+            potassium_100g: 0.18, // 180 mg
+            calcium_100g: 0.12, // 120 mg
+            iron_100g: 0.002, // 2 mg
+            'vitamin-c_100g': 0.01, // 10 mg
+          },
+        },
+      ],
+    });
+    const res = await searchFoods('yogurt');
+    expect(res.ok).toBe(true);
+    if (res.ok) {
+      const item = res.items[0]!;
+      expect(item.satfat).toBe(2);
+      expect(item.potassium).toBe(180);
+      expect(item.calcium).toBe(120);
+      expect(item.iron).toBe(2);
+      expect(item.vitc).toBe(10);
+    }
+  });
+
   it('looks up a single product by barcode and prefers per-serving values', async () => {
     stubFetch({
       status: 1,

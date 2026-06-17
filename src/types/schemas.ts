@@ -104,6 +104,11 @@ export const FoodEntrySchema = z.object({
   fiber: finite.optional(),
   sugar: finite.optional(),
   sodium: finite.optional(),
+  satfat: finite.optional(),
+  potassium: finite.optional(),
+  calcium: finite.optional(),
+  iron: finite.optional(),
+  vitc: finite.optional(),
   basis: z.string().optional(),
 });
 
