@@ -158,6 +158,22 @@ export const ShoppingItemSchema = z.object({
   have: z.boolean().catch(false),
 });
 
+export const MealTypeSchema = z.enum(['breakfast', 'lunch', 'dinner', 'snack']);
+
+export const CustomRecipeSchema = z.object({
+  id: z.string().catch(''),
+  name: z.string().catch('My recipe'),
+  kcal: num(0),
+  p: num(0),
+  c: num(0),
+  f: num(0),
+  ing: z.array(z.string()).catch([]),
+  meal: MealTypeSchema.optional(),
+  time: z.string().optional(),
+  desc: z.string().optional(),
+  steps: z.array(z.string()).optional(),
+});
+
 export const CustomPlanSchema = z.object({
   id: z.string().catch(''),
   name: z.string().catch('My routine'),
@@ -193,6 +209,7 @@ export const PersistedStateSchema = z
     lifts: z.record(z.string(), z.array(LiftEntrySchema).catch([])).catch({}),
     customPlans: z.array(CustomPlanSchema).catch([]),
     shopping: z.array(ShoppingItemSchema).catch([]),
+    customRecipes: z.array(CustomRecipeSchema).catch([]),
   })
   .catch(() => defaultState());
 
@@ -205,6 +222,7 @@ export type ActiveWorkout = z.infer<typeof ActiveSchema>;
 export type LiftEntry = z.infer<typeof LiftEntrySchema>;
 export type CustomPlan = z.infer<typeof CustomPlanSchema>;
 export type ShoppingItem = z.infer<typeof ShoppingItemSchema>;
+export type CustomRecipe = z.infer<typeof CustomRecipeSchema>;
 export type PersistedState = z.infer<typeof PersistedStateSchema>;
 
 /** A complete, valid default state for first run or unrecoverable data. */
@@ -233,5 +251,6 @@ export function defaultState(): PersistedState {
     lifts: {},
     customPlans: [],
     shopping: [],
+    customRecipes: [],
   };
 }

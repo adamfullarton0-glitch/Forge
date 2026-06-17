@@ -203,6 +203,18 @@ export const en = {
   emptyShopping: 'Your list is empty. Open a recipe and add its ingredients.',
   addedToList: 'Added to your shopping list.',
   allGot: "Nice — you've got everything on your list.",
+  // Custom recipes
+  myRecipes: 'My recipes',
+  createRecipe: 'Create recipe',
+  editRecipe: 'Edit recipe',
+  recipeNameL: 'Recipe name',
+  addIngredient: 'Add an ingredient',
+  addStep: 'Add a method step',
+  addBtn: 'Add',
+  saveRecipe: 'Save recipe',
+  emptyRecipe: 'Give it a name and at least one ingredient.',
+  optional: 'optional',
+  step: 'step',
 } as const;
 
 export type TKey = keyof typeof en;

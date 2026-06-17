@@ -30,6 +30,9 @@ export interface Recipe {
   bIdx?: number;
   sIdx?: number;
   fmt?: string;
+  /** Set on user-created recipes (carries the persisted CustomRecipe id). */
+  id?: string;
+  custom?: boolean;
 }
 
 /** [name, protein, carbs, fat, allergens, ingredient keywords] */

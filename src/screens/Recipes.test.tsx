@@ -124,4 +124,34 @@ describe('Recipes', () => {
     const names = useStore.getState().data.shopping.map((i) => i.name);
     expect(names).toEqual(['eggs']);
   });
+
+  it('creates a custom recipe that appears in the library', async () => {
+    const user = userEvent.setup();
+    renderRecipes();
+    await user.click(screen.getByRole('button', { name: /create recipe/i }));
+    await user.type(screen.getByLabelText(/recipe name/i), 'My Power Bowl');
+    await user.type(screen.getByLabelText(/add an ingredient/i), 'chicken breast');
+    // The "Add" button next to the ingredient input.
+    await user.click(screen.getAllByRole('button', { name: 'Add' })[0]!);
+    await user.click(screen.getByRole('button', { name: /save recipe/i }));
+
+    const recipes = useStore.getState().data.customRecipes;
+    expect(recipes).toHaveLength(1);
+    expect(recipes[0]?.name).toBe('My Power Bowl');
+    expect(recipes[0]?.ing).toContain('chicken breast');
+    expect(await screen.findByText('My Power Bowl')).toBeInTheDocument();
+  });
+
+  it('deletes a custom recipe', async () => {
+    const user = userEvent.setup();
+    seed({
+      customRecipes: [
+        { id: 'crec:zzz', name: 'Throwaway Bowl', kcal: 400, p: 30, c: 40, f: 10, ing: ['oats'] },
+      ],
+    });
+    renderRecipes();
+    await screen.findByText('Throwaway Bowl');
+    await user.click(screen.getByRole('button', { name: /delete throwaway bowl/i }));
+    expect(useStore.getState().data.customRecipes).toHaveLength(0);
+  });
 });

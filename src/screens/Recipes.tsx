@@ -8,8 +8,10 @@ import { RealDishSearch } from './recipes/RealDish';
 import { RecipeTile } from './recipes/RecipeTile';
 import { RecipeModal } from './recipes/RecipeModal';
 import { ShoppingList } from './recipes/ShoppingList';
+import { RecipeBuilder } from './recipes/RecipeBuilder';
 import { useData, useUpdate } from '@/features/store';
 import { ALL_RECIPES, type Recipe } from '@/features/recipes/data';
+import { customRecipeList } from '@/features/recipes/custom';
 import {
   addIngredients,
   toggleHave,
@@ -28,6 +30,7 @@ import {
 import { fetchPhotos } from '@/lib/api/themealdb';
 import { translator, type TKey } from '@/lib/i18n';
 import { todayKey } from '@/lib/calc';
+import type { CustomRecipe } from '@/types/schemas';
 
 const PAGE = 16;
 
@@ -54,6 +57,10 @@ export function Recipes(): JSX.Element | null {
   const [modal, setModal] = useState<Recipe | null>(null);
   const [showList, setShowList] = useState(false);
   const [added, setAdded] = useState<string | null>(null);
+  const [builder, setBuilder] = useState<{ open: boolean; editing: CustomRecipe | null }>({
+    open: false,
+    editing: null,
+  });
 
   useEffect(() => {
     let live = true;
@@ -69,7 +76,8 @@ export function Recipes(): JSX.Element | null {
 
   const meal = hourMeal();
   const tk = todayKey();
-  const list = filterRecipes(ALL_RECIPES, {
+  const allRecipes = [...customRecipeList(data.customRecipes), ...ALL_RECIPES];
+  const list = filterRecipes(allRecipes, {
     allergies: p.allergies,
     dislikes: p.dislikes,
     goal: p.goal,
@@ -102,6 +110,22 @@ export function Recipes(): JSX.Element | null {
   };
 
   const cart = counts(data.shopping);
+
+  const saveRecipe = (recipe: CustomRecipe): void => {
+    const others = data.customRecipes.filter((r) => r.id !== recipe.id);
+    update({ customRecipes: [...others, recipe] });
+    setBuilder({ open: false, editing: null });
+  };
+
+  const deleteRecipe = (id: string): void => {
+    update({ customRecipes: data.customRecipes.filter((r) => r.id !== id) });
+    setModal(null);
+  };
+
+  const editRecipe = (r: Recipe): void => {
+    const stored = data.customRecipes.find((c) => c.id === r.id);
+    if (stored) setBuilder({ open: true, editing: stored });
+  };
 
   const fRow = (
     label: string,
@@ -147,10 +171,15 @@ export function Recipes(): JSX.Element | null {
         <h1 className="screen__title" style={{ margin: 0 }}>
           {t('recipes')}
         </h1>
-        <Button variant="ghost" onClick={() => setShowList(true)}>
-          {t('shoppingList')}
-          {cart.left > 0 ? ` (${cart.left})` : ''}
-        </Button>
+        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', justifyContent: 'flex-end' }}>
+          <Button variant="ghost" onClick={() => setBuilder({ open: true, editing: null })}>
+            {t('createRecipe')}
+          </Button>
+          <Button variant="ghost" onClick={() => setShowList(true)}>
+            {t('shoppingList')}
+            {cart.left > 0 ? ` (${cart.left})` : ''}
+          </Button>
+        </div>
       </div>
 
       <div style={{ height: 14 }} />
@@ -329,6 +358,24 @@ export function Recipes(): JSX.Element | null {
             >
               {added === r.name ? t('addedToList') : t('addToList')}
             </Button>
+            {r.custom ? (
+              <>
+                <Button
+                  variant="ghost"
+                  aria-label={`${t('edit')} ${r.name}`}
+                  onClick={() => editRecipe(r)}
+                >
+                  {t('edit')}
+                </Button>
+                <Button
+                  variant="ghost"
+                  aria-label={`${t('deleteR')} ${r.name}`}
+                  onClick={() => r.id && deleteRecipe(r.id)}
+                >
+                  {t('deleteR')}
+                </Button>
+              </>
+            ) : null}
           </div>
         </Card>
       ))}
@@ -379,6 +426,15 @@ export function Recipes(): JSX.Element | null {
           onClearGot={() => update({ shopping: clearHave(data.shopping) })}
           onClearAll={() => update({ shopping: [] })}
           onClose={() => setShowList(false)}
+        />
+      ) : null}
+
+      {builder.open ? (
+        <RecipeBuilder
+          lang={data.settings.lang}
+          initial={builder.editing}
+          onSave={saveRecipe}
+          onClose={() => setBuilder({ open: false, editing: null })}
         />
       ) : null}
     </div>
