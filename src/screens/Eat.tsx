@@ -77,7 +77,7 @@ function CalorieGuideCard({ p }: { p: Profile }): JSX.Element | null {
                 alignItems: 'center',
                 padding: '11px 13px',
                 borderRadius: 12,
-                background: on ? 'var(--accent-soft)' : 'var(--panel-2)',
+                background: 'var(--panel-2)',
                 border: `1px solid ${on ? 'var(--accent)' : 'transparent'}`,
               }}
             >

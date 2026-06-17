@@ -4,9 +4,11 @@ A dark, premium fitness + nutrition + sleep PWA. Built to be **unbreakable**:
 TypeScript strict, validated storage, error boundaries everywhere, and a real
 test gate.
 
-> **Status: Phase 1 — Scaffold & guardrails.**
-> Only Home + Train are fleshed out; the other nav routes are typed
-> placeholders. Real features arrive in later phases (see the build plan).
+> **Status: feature-complete (Phases 1–10).**
+> Onboarding, Home, Train + Active Workout, Eat, Recipes, Sleep, Progress,
+> Settings and the More hub are all built and tested. Plan (schedule) is the
+> only remaining typed placeholder. See [SECURITY.md](./SECURITY.md) for the
+> security posture.
 
 ## Stack
 
@@ -17,7 +19,11 @@ test gate.
 - **Playwright** — e2e, including an **offline** run
 - **vite-plugin-pwa (Workbox)** — installable, offline-first app shell
 - **ESLint + Prettier + Husky** — pre-commit gate
-- **GitHub Actions** — CI gate (typecheck · lint · format · unit · e2e)
+- **GitHub Actions** — CI gate (typecheck · lint · format · coverage · e2e)
+- **Strict CSP + security headers** — see [SECURITY.md](./SECURITY.md)
+- **Accessibility** — automated axe (WCAG 2 A/AA) scan of every screen,
+  keyboard-operable cards, 320px-safe layout
+- **Code-split routes** — initial JS ~110KB gzip; screens + data load on demand
 
 ## Commands
 

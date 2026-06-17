@@ -50,10 +50,11 @@ describe('app shell', () => {
     expect(screen.queryByRole('navigation', { name: /primary/i })).not.toBeInTheDocument();
   });
 
-  it('renders the Home dashboard and the 7-item nav once onboarded', () => {
+  it('renders the Home dashboard and the 7-item nav once onboarded', async () => {
     seed({ profile });
     renderApp('/');
-    expect(screen.getByRole('heading', { name: /alex/i })).toBeInTheDocument();
+    // Home is code-split, so it streams in.
+    expect(await screen.findByRole('heading', { name: /alex/i })).toBeInTheDocument();
     expect(screen.getByRole('navigation', { name: /primary/i })).toBeInTheDocument();
     for (const label of ['Home', 'Train', 'Plan', 'Eat', 'Recipes', 'Stats', 'More']) {
       expect(screen.getByRole('link', { name: new RegExp(label, 'i') })).toBeInTheDocument();
@@ -64,8 +65,8 @@ describe('app shell', () => {
     const user = userEvent.setup();
     seed({ profile });
     renderApp('/');
-    await user.click(screen.getByRole('link', { name: /train/i }));
-    expect(screen.getByRole('heading', { name: 'Train' })).toBeInTheDocument();
+    await user.click(await screen.findByRole('link', { name: /train/i }));
+    expect(await screen.findByRole('heading', { name: 'Train' })).toBeInTheDocument();
   });
 
   it('contains a thrown screen error and keeps the nav + other screens alive', async () => {
@@ -73,11 +74,11 @@ describe('app shell', () => {
     seed({ profile });
     renderApp('/__diag/boom');
 
-    expect(screen.getByRole('alert')).toBeInTheDocument();
+    expect(await screen.findByRole('alert')).toBeInTheDocument();
     const trainLink = screen.getByRole('link', { name: /train/i });
     expect(trainLink).toBeInTheDocument();
 
     await user.click(trainLink);
-    expect(screen.getByRole('heading', { name: 'Train' })).toBeInTheDocument();
+    expect(await screen.findByRole('heading', { name: 'Train' })).toBeInTheDocument();
   });
 });

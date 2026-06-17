@@ -1,6 +1,8 @@
+import { Suspense } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import { NavBar } from '@/components/NavBar';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
+import { Loading } from '@/components/states';
 import { Onboarding } from '@/screens/Onboarding';
 import { useData } from '@/features/store';
 
@@ -28,7 +30,15 @@ export function Layout(): JSX.Element {
     <>
       <main>
         <ErrorBoundary key={location.pathname} area={area}>
-          <Outlet />
+          <Suspense
+            fallback={
+              <div className="screen">
+                <Loading />
+              </div>
+            }
+          >
+            <Outlet />
+          </Suspense>
         </ErrorBoundary>
       </main>
       <NavBar />

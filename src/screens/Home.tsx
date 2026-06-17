@@ -199,23 +199,23 @@ export function Home(): JSX.Element | null {
 
         {/* Calorie + macro rings */}
         <Card onClick={() => navigate('/eat')} style={{ cursor: 'pointer' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
             <Ring
               value={eaten}
               max={tg.kcal}
-              size={106}
+              size={104}
               stroke={11}
               sub={t('calories')}
               numberSize={25}
             />
-            <div style={{ flex: 1 }}>
+            <div style={{ flex: 1, minWidth: 0 }}>
               <div style={{ fontWeight: 700 }}>
                 {Math.max(0, tg.kcal - Math.round(eaten))} {t('kcalLeft')}
               </div>
               <div className="state__msg" style={{ textAlign: 'left', marginBottom: 12 }}>
                 {Math.round(eaten)} / {tg.kcal} kcal
               </div>
-              <div style={{ display: 'flex', gap: 16 }}>
+              <div style={{ display: 'flex', gap: 10, justifyContent: 'space-between' }}>
                 {MACROS.map((m) => (
                   <div key={m.key} style={{ textAlign: 'center' }}>
                     <Ring

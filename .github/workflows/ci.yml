@@ -8,7 +8,7 @@ on:
 # The merge gate: typecheck + lint + unit + e2e must all pass.
 jobs:
   quality:
-    name: Typecheck · Lint · Unit
+    name: Typecheck · Lint · Unit (coverage-gated)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -20,10 +20,11 @@ jobs:
       - run: npm run typecheck
       - run: npm run lint
       - run: npm run format:check
-      - run: npm run test
+      # Coverage run enforces the lib/ ≥90% gate (fails the build if it drops).
+      - run: npm run test:coverage
 
   e2e:
-    name: E2E (incl. offline)
+    name: E2E (offline · error-boundary · a11y)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

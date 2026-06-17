@@ -1,15 +1,20 @@
+import { lazy } from 'react';
 import { createBrowserRouter, type RouteObject } from 'react-router-dom';
 import { Layout } from './Layout';
-import { Home } from '@/screens/Home';
-import { Train } from '@/screens/Train';
-import { Eat } from '@/screens/Eat';
-import { Recipes } from '@/screens/Recipes';
-import { More } from '@/screens/More';
-import { Sleep } from '@/screens/Sleep';
-import { Progress } from '@/screens/Progress';
-import { Settings } from '@/screens/Settings';
 import { Placeholder } from '@/screens/Placeholder';
 import { Boom } from '@/screens/Boom';
+
+// Screens are code-split per route: the initial load is only the shell + Home;
+// other screens (and their data, e.g. the recipe library) load on navigation.
+// The service worker precaches every chunk, so this stays fully offline-capable.
+const Home = lazy(() => import('@/screens/Home').then((m) => ({ default: m.Home })));
+const Train = lazy(() => import('@/screens/Train').then((m) => ({ default: m.Train })));
+const Eat = lazy(() => import('@/screens/Eat').then((m) => ({ default: m.Eat })));
+const Recipes = lazy(() => import('@/screens/Recipes').then((m) => ({ default: m.Recipes })));
+const More = lazy(() => import('@/screens/More').then((m) => ({ default: m.More })));
+const Sleep = lazy(() => import('@/screens/Sleep').then((m) => ({ default: m.Sleep })));
+const Progress = lazy(() => import('@/screens/Progress').then((m) => ({ default: m.Progress })));
+const Settings = lazy(() => import('@/screens/Settings').then((m) => ({ default: m.Settings })));
 
 export const routes: RouteObject[] = [
   {
@@ -21,7 +26,7 @@ export const routes: RouteObject[] = [
       {
         path: 'plan',
         element: (
-          <Placeholder title="Plan" icon="plan" note="Weekly training schedule comes in Phase 5." />
+          <Placeholder title="Plan" icon="plan" note="Your weekly training schedule lives here." />
         ),
       },
       { path: 'eat', element: <Eat /> },

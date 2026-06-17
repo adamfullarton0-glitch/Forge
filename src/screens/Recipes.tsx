@@ -207,12 +207,23 @@ export function Recipes(): JSX.Element | null {
       ) : null}
 
       {visible.map((r) => (
-        <Card
-          key={r.name + (r.gi ?? 'f')}
-          onClick={() => setModal(r)}
-          style={{ marginBottom: 10, cursor: 'pointer' }}
-        >
-          <div style={{ display: 'flex', gap: 12 }}>
+        <Card key={r.name + (r.gi ?? 'f')} style={{ marginBottom: 10 }}>
+          <button
+            type="button"
+            onClick={() => setModal(r)}
+            aria-label={`View ${r.name}`}
+            style={{
+              display: 'flex',
+              gap: 12,
+              width: '100%',
+              textAlign: 'left',
+              background: 'none',
+              border: 'none',
+              padding: 0,
+              color: 'inherit',
+              cursor: 'pointer',
+            }}
+          >
             <RecipeTile r={r} photos={photos} size={70} />
             <div style={{ flex: 1, minWidth: 0 }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', gap: 8 }}>
@@ -269,19 +280,12 @@ export function Recipes(): JSX.Element | null {
               >
                 {r.desc}
               </div>
-              <div style={{ marginTop: 8 }}>
-                <Button
-                  variant="ghost"
-                  aria-label={`Log ${r.name}`}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    addRecipe(r);
-                  }}
-                >
-                  {t('logMeal')}
-                </Button>
-              </div>
             </div>
+          </button>
+          <div style={{ marginTop: 8 }}>
+            <Button variant="ghost" aria-label={`Log ${r.name}`} onClick={() => addRecipe(r)}>
+              {t('logMeal')}
+            </Button>
           </div>
         </Card>
       ))}
