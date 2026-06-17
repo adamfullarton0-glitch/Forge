@@ -180,6 +180,19 @@ export const en = {
   exportNote: 'Downloads everything as a file you control. Keep it safe.',
   imported: 'Backup restored.',
   badNote: "That file didn't look like a FORGE backup.",
+  // Custom routines
+  myRoutines: 'My routines',
+  createRoutine: 'Create routine',
+  editRoutine: 'Edit routine',
+  routineName: 'Routine name',
+  dayName: 'Day name',
+  addExercise: '+ Add exercise',
+  addDay: '+ Add day',
+  saveRoutine: 'Save routine',
+  deleteR: 'Delete',
+  routineHint: 'Name it, add days and exercises, set your sets & reps.',
+  emptyRoutine: 'Add at least one exercise to a day.',
+  edit: 'Edit',
 } as const;
 
 export type TKey = keyof typeof en;

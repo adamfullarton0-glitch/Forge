@@ -147,6 +147,20 @@ export const SleepEntrySchema = z.object({
   q: finite.optional(),
 });
 
+export const CustomPlanDaySchema = z.object({
+  name: z.string().catch('Day'),
+  focus: z.string().optional(),
+  ex: z.array(z.string()).catch([]),
+});
+
+export const CustomPlanSchema = z.object({
+  id: z.string().catch(''),
+  name: z.string().catch('My routine'),
+  days: z.array(CustomPlanDaySchema).catch([]),
+  /** Optional per-exercise sets×reps override (e.g. "4 × 6–8"). */
+  sr: z.record(z.string(), z.string()).optional(),
+});
+
 /**
  * The full persisted state. Mirrors the prototype's `DEFAULT_DATA` plus a
  * `schemaVersion`. Records are keyed by date string (`YYYY-MM-DD`) or day index.
@@ -172,6 +186,7 @@ export const PersistedStateSchema = z
       .array(z.string())
       .catch(['barbell', 'dumbbell', 'cable', 'machine', 'bench', 'pullupbar']),
     lifts: z.record(z.string(), z.array(LiftEntrySchema).catch([])).catch({}),
+    customPlans: z.array(CustomPlanSchema).catch([]),
   })
   .catch(() => defaultState());
 
@@ -182,6 +197,7 @@ export type WeightEntry = z.infer<typeof WeightEntrySchema>;
 export type DoneEntry = z.infer<typeof DoneEntrySchema>;
 export type ActiveWorkout = z.infer<typeof ActiveSchema>;
 export type LiftEntry = z.infer<typeof LiftEntrySchema>;
+export type CustomPlan = z.infer<typeof CustomPlanSchema>;
 export type PersistedState = z.infer<typeof PersistedStateSchema>;
 
 /** A complete, valid default state for first run or unrecoverable data. */
@@ -208,5 +224,6 @@ export function defaultState(): PersistedState {
     measure: {},
     gear: ['barbell', 'dumbbell', 'cable', 'machine', 'bench', 'pullupbar'],
     lifts: {},
+    customPlans: [],
   };
 }

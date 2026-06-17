@@ -1,4 +1,6 @@
 /** Workout plans and equipment — static data ported from the prototype. */
+import { getExercise } from './exercises';
+import type { CustomPlan } from '@/types/schemas';
 
 export interface PlanDay {
   name: string;
@@ -341,9 +343,47 @@ export type PlanId = keyof typeof PLANS;
 
 export const DEFAULT_PLAN_ID: PlanId = 'ppl';
 
-/** Returns a valid plan for any (possibly stale) id, falling back to PPL. */
-export function getPlan(id: string): Plan {
+/** A plan as the app consumes it — built-in or a resolved custom routine. */
+export interface RoutinePlan extends Plan {
+  /** Optional per-exercise sets×reps override (custom routines only). */
+  sr?: Record<string, string>;
+  /** True for user-created routines. */
+  custom?: boolean;
+}
+
+/** Prefix that marks a custom-routine plan id. */
+export const CUSTOM_PREFIX = 'custom:';
+export const isCustomPlanId = (id: string): boolean => id.startsWith(CUSTOM_PREFIX);
+
+/** A fresh, collision-resistant id for a new custom routine. */
+export function newCustomPlanId(): string {
+  return `${CUSTOM_PREFIX}${Date.now().toString(36)}${Math.random().toString(36).slice(2, 7)}`;
+}
+
+function customToRoutine(c: CustomPlan): RoutinePlan {
+  return {
+    name: c.name,
+    tag: `${c.days.length} day${c.days.length === 1 ? '' : 's'} · custom`,
+    desc: 'Your custom routine.',
+    days: c.days.map((d) => ({ name: d.name, focus: d.focus ?? '', ex: d.ex })),
+    custom: true,
+    ...(c.sr ? { sr: c.sr } : {}),
+  };
+}
+
+/**
+ * Resolves any plan id — built-in or a user routine — to a usable plan,
+ * falling back to PPL for unknown ids.
+ */
+export function getPlan(id: string, customPlans: readonly CustomPlan[] = []): RoutinePlan {
+  const custom = customPlans.find((c) => c.id === id);
+  if (custom) return customToRoutine(custom);
   return (PLANS as Record<string, Plan>)[id] ?? PLANS[DEFAULT_PLAN_ID];
+}
+
+/** The sets×reps prescription for an exercise within a plan (custom override → default). */
+export function planSr(plan: RoutinePlan, name: string): string {
+  return plan.sr?.[name] ?? getExercise(name)?.sr ?? '';
 }
 
 /** Equipment options: [id, label]. */

@@ -6,7 +6,7 @@ import { Chip } from '@/components/Chip';
 import { RestTimer } from './RestTimer';
 import { ExerciseModal } from './ExerciseModal';
 import { useData, useUpdate } from '@/features/store';
-import { getPlan, EQUIPMENT, DEFAULT_GEAR } from '@/features/workouts/plans';
+import { getPlan, planSr, EQUIPMENT, DEFAULT_GEAR } from '@/features/workouts/plans';
 import { getExercise } from '@/features/workouts/exercises';
 import { translator } from '@/lib/i18n';
 import { e1rm, getUnits, kg2lb, lb2kg, todayKey, topRepOf } from '@/lib/calc';
@@ -65,7 +65,7 @@ export function ActiveWorkout({ active }: { active: ActiveState }): JSX.Element 
     return () => clearInterval(id);
   }, []);
 
-  const plan = getPlan(data.planId);
+  const plan = getPlan(data.planId, data.customPlans);
   const day = plan.days[Math.min(active.day, plan.days.length - 1)];
   const swaps = active.swaps;
   const sets = active.sets ?? {};
@@ -90,7 +90,7 @@ export function ActiveWorkout({ active }: { active: ActiveState }): JSX.Element 
     const history = data.lifts[nm] ?? [];
     const last = history[history.length - 1];
     const w = last ? showW(last.w) : '';
-    const reps = topRepOf(getExercise(nm)?.sr ?? '');
+    const reps = topRepOf(planSr(plan, nm));
     return [0, 1, 2].map(() => ({ w, reps, done: false }));
   };
 
@@ -118,7 +118,7 @@ export function ActiveWorkout({ active }: { active: ActiveState }): JSX.Element 
           e1rm(kgOf(a.w), Number(a.reps)) >= e1rm(kgOf(b.w), Number(b.reps)) ? a : b,
         );
         const topKg = kgOf(top.w);
-        const hit = Number(top.reps) >= topRepOf(ex?.sr ?? '');
+        const hit = Number(top.reps) >= topRepOf(planSr(plan, nm));
         lifts[nm] = [
           ...(lifts[nm] ?? []),
           {
@@ -248,7 +248,9 @@ export function ActiveWorkout({ active }: { active: ActiveState }): JSX.Element 
                 </div>
                 <div className="state__msg" style={{ textAlign: 'left', margin: '2px 0 0' }}>
                   {ex?.m} ·{' '}
-                  <span style={{ color: 'var(--accent)', fontWeight: 700 }}>{ex?.sr}</span>
+                  <span style={{ color: 'var(--accent)', fontWeight: 700 }}>
+                    {planSr(plan, nm)}
+                  </span>
                   {curBestE > 0 ? (
                     <>
                       {' '}
@@ -345,7 +347,7 @@ export function ActiveWorkout({ active }: { active: ActiveState }): JSX.Element 
                     ...exSets,
                     {
                       w: exSets[exSets.length - 1]?.w ?? '',
-                      reps: topRepOf(ex?.sr ?? ''),
+                      reps: topRepOf(planSr(plan, nm)),
                       done: false,
                     },
                   ])

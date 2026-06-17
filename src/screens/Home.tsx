@@ -35,7 +35,7 @@ export function Home(): JSX.Element | null {
 
   const tg = calcTargets(p);
   const tk = todayKey();
-  const plan = getPlan(data.planId);
+  const plan = getPlan(data.planId, data.customPlans);
   const todaySched = data.schedule[String(dayIdx())];
   const todayFoods = data.foodLog[tk] ?? [];
   const eaten = todayFoods.reduce((s, x) => s + (x.kcal || 0), 0);

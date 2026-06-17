@@ -66,3 +66,64 @@ describe('Train', () => {
     expect(screen.getByRole('heading', { name: 'Push' })).toBeInTheDocument();
   });
 });
+
+describe('Train · custom routines', () => {
+  beforeEach(() => {
+    localStorage.clear();
+    seed();
+  });
+  afterEach(() => localStorage.clear());
+
+  it('builds, saves and selects a custom routine', async () => {
+    const user = userEvent.setup();
+    renderTrain();
+
+    await user.click(screen.getByRole('button', { name: /create routine/i }));
+    await user.type(screen.getByLabelText(/routine name/i), 'My Upper/Lower');
+    await user.click(screen.getByRole('button', { name: /add exercise/i }));
+    await user.click(screen.getByText('Barbell Bench Press')); // from the picker
+    await user.click(screen.getByRole('button', { name: /save routine/i }));
+
+    const plans = useStore.getState().data.customPlans;
+    expect(plans).toHaveLength(1);
+    expect(plans[0]?.name).toBe('My Upper/Lower');
+    expect(plans[0]?.days[0]?.ex).toContain('Barbell Bench Press');
+    // The new routine becomes the active plan and shows in "My routines"
+    // (and in the active-plan summary line), so it appears more than once.
+    expect(useStore.getState().data.planId).toBe(plans[0]?.id);
+    expect(screen.getAllByText('My Upper/Lower').length).toBeGreaterThan(0);
+  });
+
+  it('deletes a custom routine and falls back to a built-in plan', async () => {
+    const user = userEvent.setup();
+    const routine = {
+      id: 'custom:zzz',
+      name: 'Bench Only',
+      days: [{ name: 'Day 1', ex: ['Barbell Bench Press'] }],
+    };
+    seed({ customPlans: [routine], planId: 'custom:zzz' });
+    renderTrain();
+
+    await user.click(screen.getByRole('button', { name: /delete bench only/i }));
+    expect(useStore.getState().data.customPlans).toHaveLength(0);
+    expect(useStore.getState().data.planId).toBe('ppl');
+  });
+
+  it('starts a session from a custom routine', async () => {
+    const user = userEvent.setup();
+    seed({
+      customPlans: [
+        {
+          id: 'custom:zzz',
+          name: 'Bench Day',
+          days: [{ name: 'Bench Day', ex: ['Barbell Bench Press'] }],
+        },
+      ],
+      planId: 'custom:zzz',
+    });
+    renderTrain();
+    await user.selectOptions(screen.getByLabelText(/choose session/i), '0');
+    await user.click(screen.getByRole('button', { name: /start workout/i }));
+    expect(screen.getByRole('heading', { name: 'Bench Day' })).toBeInTheDocument();
+  });
+});
