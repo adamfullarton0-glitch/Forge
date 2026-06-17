@@ -6,6 +6,8 @@ import { Eat } from '@/screens/Eat';
 import { Recipes } from '@/screens/Recipes';
 import { More } from '@/screens/More';
 import { Sleep } from '@/screens/Sleep';
+import { Progress } from '@/screens/Progress';
+import { Settings } from '@/screens/Settings';
 import { Placeholder } from '@/screens/Placeholder';
 import { Boom } from '@/screens/Boom';
 
@@ -24,18 +26,10 @@ export const routes: RouteObject[] = [
       },
       { path: 'eat', element: <Eat /> },
       { path: 'recipes', element: <Recipes /> },
-      {
-        path: 'stats',
-        element: <Placeholder title="Stats" icon="stats" note="Progress charts come in Phase 9." />,
-      },
+      { path: 'stats', element: <Progress /> },
       { path: 'more', element: <More /> },
       { path: 'sleep', element: <Sleep /> },
-      {
-        path: 'settings',
-        element: (
-          <Placeholder title="Settings" icon="settings" note="Settings arrives in Phase 9." />
-        ),
-      },
+      { path: 'settings', element: <Settings /> },
       // Hidden diagnostics route — proves the per-route error boundary works.
       { path: '__diag/boom', element: <Boom /> },
       {

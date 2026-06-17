@@ -1,4 +1,5 @@
 import { en, type TKey } from './en';
+import { DICTS as TRANSLATIONS } from './translations';
 
 /** The 14 supported languages (display names). */
 export const LANGS: Record<string, string> = {
@@ -19,10 +20,11 @@ export const LANGS: Record<string, string> = {
 };
 
 /**
- * Translation tables, keyed by language. Only English is fully populated for
- * now; the other 13 land in Phase 9 and fall back to English meanwhile.
+ * Translation tables, keyed by language. English is the full base; the other
+ * 13 are partial and fall back to English per key via the translator. Exercise
+ * steps and recipe text intentionally stay in English.
  */
-const DICTS: Partial<Record<string, Partial<Record<TKey, string>>>> = { en };
+const DICTS: Partial<Record<string, Partial<Record<TKey, string>>>> = { en, ...TRANSLATIONS };
 
 export type Translate = (key: TKey) => string;
 
