@@ -21,7 +21,8 @@ export type IconName =
   | 'star'
   | 'check'
   | 'trophy'
-  | 'dumbbell';
+  | 'dumbbell'
+  | 'clock';
 
 const paths: Record<IconName, string> = {
   home: 'M3 11.5 12 4l9 7.5M5 10v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-9',
@@ -48,6 +49,7 @@ const paths: Record<IconName, string> = {
   trophy:
     'M7 4h10v4a5 5 0 0 1-10 0zM7 6H4.5v1.5A3 3 0 0 0 7 10.4M17 6h2.5v1.5A3 3 0 0 1 17 10.4M9.5 17h5l.5 3h-6z',
   dumbbell: 'M4 9v6M8 7v10M16 7v10M20 9v6M8 12h8',
+  clock: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 7v5l3.5 2',
 };
 
 interface IconProps extends Omit<SVGProps<SVGSVGElement>, 'name'> {

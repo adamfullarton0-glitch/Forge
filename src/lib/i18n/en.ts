@@ -112,6 +112,19 @@ export const en = {
   unlockRecipes: 'PRO recipes locked',
   proRecipesT: 'PRO recipes',
   upgrade: 'Upgrade to PRO',
+  // More hub, PRO, Sleep
+  settings: 'Settings',
+  membership: 'Membership',
+  proPitch: 'Sleep tracking, smart devices, exclusive recipes and more.',
+  startPro: 'Activate PRO (demo)',
+  demoNote: 'Demo build — no real payment is taken.',
+  perMonth: '/month',
+  manage: 'Switch back to Free',
+  devices: 'Smart devices',
+  connect: 'Connect',
+  connected: '✓ Connected',
+  proOnly: 'PRO feature',
+  unlockSleep: 'Track your sleep and see how it affects your training.',
 } as const;
 
 export type TKey = keyof typeof en;

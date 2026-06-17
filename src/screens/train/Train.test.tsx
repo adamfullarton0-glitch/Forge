@@ -58,9 +58,11 @@ describe('Train', () => {
   it('starts a session and shows the active workout', async () => {
     const user = userEvent.setup();
     renderTrain();
+    // Pick session 0 explicitly so the test is independent of today's weekday.
+    await user.selectOptions(screen.getByLabelText(/choose session/i), '0');
     await user.click(screen.getByRole('button', { name: /start workout/i }));
     expect(useStore.getState().data.active).not.toBeNull();
-    // Active workout for PPL day 0 is "Push".
+    // PPL day 0 is "Push".
     expect(screen.getByRole('heading', { name: 'Push' })).toBeInTheDocument();
   });
 });

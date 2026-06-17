@@ -4,6 +4,8 @@ import { Home } from '@/screens/Home';
 import { Train } from '@/screens/Train';
 import { Eat } from '@/screens/Eat';
 import { Recipes } from '@/screens/Recipes';
+import { More } from '@/screens/More';
+import { Sleep } from '@/screens/Sleep';
 import { Placeholder } from '@/screens/Placeholder';
 import { Boom } from '@/screens/Boom';
 
@@ -26,14 +28,12 @@ export const routes: RouteObject[] = [
         path: 'stats',
         element: <Placeholder title="Stats" icon="stats" note="Progress charts come in Phase 9." />,
       },
+      { path: 'more', element: <More /> },
+      { path: 'sleep', element: <Sleep /> },
       {
-        path: 'more',
+        path: 'settings',
         element: (
-          <Placeholder
-            title="More"
-            icon="more"
-            note="Sleep, Settings and Upgrade live here from Phase 8 onward."
-          />
+          <Placeholder title="Settings" icon="settings" note="Settings arrives in Phase 9." />
         ),
       },
       // Hidden diagnostics route — proves the per-route error boundary works.
