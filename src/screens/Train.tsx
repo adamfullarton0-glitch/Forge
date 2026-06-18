@@ -46,8 +46,12 @@ export function Train(): JSX.Element {
   };
 
   const saveRoutine = (routine: CustomPlan): void => {
-    const others = data.customPlans.filter((c) => c.id !== routine.id);
-    update({ customPlans: [...others, routine], planId: routine.id });
+    // Replace in place when editing (preserves list order); append when new.
+    const exists = data.customPlans.some((c) => c.id === routine.id);
+    const customPlans = exists
+      ? data.customPlans.map((c) => (c.id === routine.id ? routine : c))
+      : [...data.customPlans, routine];
+    update({ customPlans, planId: routine.id });
     setSel(null);
     setBuilder({ open: false, editing: null });
   };

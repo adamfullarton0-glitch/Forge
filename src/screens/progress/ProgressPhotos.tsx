@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import { Card } from '@/components/Card';
 import { Button } from '@/components/Button';
 import { Modal } from '@/components/Modal';
-import { useData, useTryUpdate } from '@/features/store';
+import { useData, usePhotos, useSetPhotos } from '@/features/store';
 import {
   addPhoto,
   removePhoto,
@@ -32,7 +32,8 @@ const thumb = (src: string, alt: string): JSX.Element => (
 
 export function ProgressPhotos({ curWeightKg }: ProgressPhotosProps): JSX.Element {
   const data = useData();
-  const tryUpdate = useTryUpdate();
+  const photos = usePhotos();
+  const setPhotos = useSetPhotos();
   const t = translator(data.settings.lang);
   const fileRef = useRef<HTMLInputElement>(null);
 
@@ -40,7 +41,6 @@ export function ProgressPhotos({ curWeightKg }: ProgressPhotosProps): JSX.Elemen
   const [error, setError] = useState<string | null>(null);
   const [view, setView] = useState<ProgressPhoto | null>(null);
 
-  const photos = data.photos;
   const pair = comparePair(photos);
 
   const onPick = async (file: File | undefined): Promise<void> => {
@@ -56,7 +56,7 @@ export function ProgressPhotos({ curWeightKg }: ProgressPhotosProps): JSX.Elemen
         ...(curWeightKg > 0 ? { w: curWeightKg } : {}),
       };
       // Persistence-gated: if storage is full the photo is not kept in memory.
-      const saved = tryUpdate({ photos: addPhoto(photos, photo) });
+      const saved = setPhotos(addPhoto(photos, photo));
       if (!saved) setError(t('photoFull'));
     } catch {
       setError(t('photoErr'));
@@ -67,7 +67,7 @@ export function ProgressPhotos({ curWeightKg }: ProgressPhotosProps): JSX.Elemen
   };
 
   const remove = (id: string): void => {
-    tryUpdate({ photos: removePhoto(photos, id) });
+    setPhotos(removePhoto(photos, id));
     setView((v) => (v?.id === id ? null : v));
   };
 

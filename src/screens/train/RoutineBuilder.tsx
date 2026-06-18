@@ -13,6 +13,8 @@ interface BuilderItem {
 }
 interface BuilderDay {
   name: string;
+  /** Preserved across edits even though there's no input for it yet. */
+  focus: string | undefined;
   items: BuilderItem[];
 }
 
@@ -22,6 +24,7 @@ const srOf = (name: string): string => getExercise(name)?.sr ?? DEFAULT_SR;
 function fromCustom(c: CustomPlan): BuilderDay[] {
   return c.days.map((d) => ({
     name: d.name,
+    focus: d.focus,
     items: d.ex.map((n) => ({ name: n, sr: c.sr?.[n] ?? srOf(n) })),
   }));
 }
@@ -43,7 +46,7 @@ export function RoutineBuilder({
   const t = translator(lang);
   const [name, setName] = useState(initial?.name ?? '');
   const [days, setDays] = useState<BuilderDay[]>(
-    initial ? fromCustom(initial) : [{ name: 'Day 1', items: [] }],
+    initial ? fromCustom(initial) : [{ name: 'Day 1', focus: undefined, items: [] }],
   );
   const [pickerDay, setPickerDay] = useState<number | null>(null);
 
@@ -51,7 +54,8 @@ export function RoutineBuilder({
 
   const patchDay = (i: number, patch: Partial<BuilderDay>): void =>
     setDays((ds) => ds.map((d, j) => (j === i ? { ...d, ...patch } : d)));
-  const addDay = (): void => setDays((ds) => [...ds, { name: `Day ${ds.length + 1}`, items: [] }]);
+  const addDay = (): void =>
+    setDays((ds) => [...ds, { name: `Day ${ds.length + 1}`, focus: undefined, items: [] }]);
   const removeDay = (i: number): void => setDays((ds) => ds.filter((_, j) => j !== i));
   const addItem = (dayIdx: number, exName: string): void => {
     setDays((ds) =>
@@ -84,7 +88,12 @@ export function RoutineBuilder({
         d.items.forEach((it) => {
           if (it.sr.trim()) sr[it.name] = it.sr.trim();
         });
-        return { name: d.name.trim() || 'Day', ex: d.items.map((it) => it.name) };
+        return {
+          name: d.name.trim() || 'Day',
+          ex: d.items.map((it) => it.name),
+          // Preserve any existing focus rather than silently dropping it.
+          ...(d.focus && d.focus.trim() ? { focus: d.focus } : {}),
+        };
       });
     onSave({ id: initial?.id ?? newCustomPlanId(), name: name.trim(), days: cleanDays, sr });
   };

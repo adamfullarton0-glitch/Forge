@@ -74,4 +74,33 @@ describe('buildRecovery', () => {
     expect(rec.hrv).toBeGreaterThan(0);
     expect(['Strained', 'Balanced', 'Elevated']).toContain(rec.status.band);
   });
+
+  it('never lets a non-finite wearable reading reach the output', () => {
+    // A real (untrusted) adapter could return NaN/Infinity for HRV.
+    const broken: DeviceSleepAdapter = {
+      simulated: false,
+      getNight: (date) => ({
+        date,
+        hours: 8,
+        quality: 4,
+        deepFraction: 0.2,
+        remFraction: 0.2,
+        lightFraction: 0.55,
+        awakeFraction: 0.05,
+        bedMinutes: 1380,
+        wakeMinutes: 420,
+        restingHr: Number.POSITIVE_INFINITY,
+        hrv: NaN,
+        respiratory: NaN,
+        efficiency: 92,
+      }),
+    };
+    const rec = buildRecovery(broken, NOW);
+    expect(Number.isFinite(rec.hrv)).toBe(true);
+    expect(Number.isFinite(rec.baseline)).toBe(true);
+    expect(Number.isFinite(rec.restingHr)).toBe(true);
+    expect(Number.isFinite(rec.respiratory)).toBe(true);
+    expect(Number.isFinite(rec.status.deviation)).toBe(true);
+    expect(rec.trend.every((p) => Number.isFinite(p.hrv))).toBe(true);
+  });
 });

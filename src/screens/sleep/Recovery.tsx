@@ -8,14 +8,17 @@ interface RecoveryProps {
 }
 
 /** Renders the HRV sparkline as a simple inline SVG polyline. */
-function Sparkline({ values, color }: { values: number[]; color: string }): JSX.Element {
+function Sparkline({ values, color }: { values: number[]; color: string }): JSX.Element | null {
   const w = 100;
   const h = 32;
-  const min = Math.min(...values);
-  const max = Math.max(...values);
+  // Defensive: drop any non-finite point so a bad value can't NaN the geometry.
+  const safe = values.filter((v) => Number.isFinite(v));
+  if (safe.length === 0) return null;
+  const min = Math.min(...safe);
+  const max = Math.max(...safe);
   const span = Math.max(1, max - min);
-  const step = values.length > 1 ? w / (values.length - 1) : w;
-  const pts = values.map((v, i) => `${i * step},${h - 4 - ((v - min) / span) * (h - 8)}`).join(' ');
+  const step = safe.length > 1 ? w / (safe.length - 1) : w;
+  const pts = safe.map((v, i) => `${i * step},${h - 4 - ((v - min) / span) * (h - 8)}`).join(' ');
   return (
     <svg
       viewBox={`0 0 ${w} ${h}`}

@@ -57,4 +57,10 @@ describe('topRepOf', () => {
     expect(topRepOf('max reps')).toBe(12);
     expect(topRepOf('')).toBe(12);
   });
+
+  it('clamps absurd free-text rep counts to a sane bound', () => {
+    // A custom routine could carry adversarial sets×reps text.
+    expect(topRepOf('3 × 999999999999')).toBe(100);
+    expect(topRepOf('3 × 0')).toBe(12);
+  });
 });

@@ -9,7 +9,7 @@ import type { ProgressPhoto } from '@/types/schemas';
 export const MAX_PHOTOS = 12;
 
 export function newPhotoId(): string {
-  return `ph:${Date.now().toString(36)}${Math.random().toString(36).slice(2, 7)}`;
+  return `ph:${Date.now().toString(36)}${Math.random().toString(36).slice(2, 11)}`;
 }
 
 /** Prepend a new photo (newest first) and trim to the cap. */

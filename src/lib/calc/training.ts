@@ -30,9 +30,16 @@ export function e1rm(weight: number, reps: number): number {
   return reps <= 1 ? weight : Math.round(weight * (1 + reps / 30));
 }
 
+/** Highest rep count a single set can seed/target (free-text is untrusted). */
+const MAX_REPS = 100;
+
 /** Pulls the top of a rep range like "4 × 6–8" → 8. Defaults to 12. */
 export function topRepOf(setsReps: string): number {
   const nums = (setsReps || '').match(/\d+/g);
   if (!nums || nums.length === 0) return 12;
-  return Number(nums[nums.length - 1]);
+  const n = Number(nums[nums.length - 1]);
+  // Custom routine sets/reps are free text — clamp to a sane bound so an absurd
+  // value can't seed nonsense reps or pollute e1RM/PR history.
+  if (!Number.isFinite(n) || n <= 0) return 12;
+  return Math.min(n, MAX_REPS);
 }

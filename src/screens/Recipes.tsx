@@ -112,8 +112,12 @@ export function Recipes(): JSX.Element | null {
   const cart = counts(data.shopping);
 
   const saveRecipe = (recipe: CustomRecipe): void => {
-    const others = data.customRecipes.filter((r) => r.id !== recipe.id);
-    update({ customRecipes: [...others, recipe] });
+    // Replace in place when editing (preserves order); append when new.
+    const exists = data.customRecipes.some((r) => r.id === recipe.id);
+    const customRecipes = exists
+      ? data.customRecipes.map((r) => (r.id === recipe.id ? recipe : r))
+      : [...data.customRecipes, recipe];
+    update({ customRecipes });
     setBuilder({ open: false, editing: null });
   };
 

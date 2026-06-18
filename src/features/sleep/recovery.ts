@@ -25,15 +25,21 @@ export interface RecoveryStatus {
 
 const mean = (a: number[]): number => (a.length ? a.reduce((s, x) => s + x, 0) / a.length : 0);
 
+/**
+ * Clamp to a finite, non-negative number. The adapter is the documented
+ * swap-point for real wearables, so values arriving here are treated as
+ * untrusted — a NaN/Infinity must never reach the UI or the maths.
+ */
+const finite = (v: number): number => (Number.isFinite(v) && v >= 0 ? v : 0);
+
 /** Rolling mean HRV over the trailing window (today inclusive). */
 export function hrvBaseline(
   adapter: DeviceSleepAdapter,
   now: Date = new Date(),
   days: number = BASELINE_DAYS,
 ): number {
-  const vals = Array.from(
-    { length: Math.max(1, days) },
-    (_, i) => adapter.getNight(daysAgoKey(i, now)).hrv,
+  const vals = Array.from({ length: Math.max(1, days) }, (_, i) =>
+    finite(adapter.getNight(daysAgoKey(i, now)).hrv),
   );
   return Math.round(mean(vals));
 }
@@ -57,8 +63,9 @@ const BAND_META: Record<RecoveryBand, { color: string; message: string }> = {
 
 /** Classifies today's HRV against the baseline (±8% defines the normal band). */
 export function recoveryStatus(hrv: number, baseline: number): RecoveryStatus {
-  const base = baseline > 0 ? baseline : 1;
-  const deviation = (hrv - base) / base;
+  const h = finite(hrv);
+  const base = Number.isFinite(baseline) && baseline > 0 ? baseline : 1;
+  const deviation = (h - base) / base;
   const band: RecoveryBand =
     deviation >= 0.08 ? 'Elevated' : deviation <= -0.08 ? 'Strained' : 'Balanced';
   const meta = BAND_META[band];
@@ -86,17 +93,18 @@ export function buildRecovery(
   now: Date = new Date(),
 ): RecoverySummary {
   const night = adapter.getNight(todayKey(now));
+  const hrv = finite(night.hrv);
   const baseline = hrvBaseline(adapter, now);
   const trend: HrvPoint[] = Array.from({ length: HRV_TREND_DAYS }, (_, i) => {
     const date = daysAgoKey(HRV_TREND_DAYS - 1 - i, now);
-    return { date, hrv: adapter.getNight(date).hrv };
+    return { date, hrv: finite(adapter.getNight(date).hrv) };
   });
   return {
-    hrv: night.hrv,
+    hrv,
     baseline,
-    restingHr: night.restingHr,
-    respiratory: night.respiratory,
-    status: recoveryStatus(night.hrv, baseline),
+    restingHr: finite(night.restingHr),
+    respiratory: finite(night.respiratory),
+    status: recoveryStatus(hrv, baseline),
     trend,
   };
 }

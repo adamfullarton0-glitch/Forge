@@ -225,9 +225,27 @@ export const PersistedStateSchema = z
     customPlans: z.array(CustomPlanSchema).catch([]),
     shopping: z.array(ShoppingItemSchema).catch([]),
     customRecipes: z.array(CustomRecipeSchema).catch([]),
-    photos: z.array(ProgressPhotoSchema).catch([]),
   })
   .catch(() => defaultState());
+
+/**
+ * Progress photos are persisted under a SEPARATE storage key (not in the main
+ * state blob) so their base64 payload can never starve the quota of the
+ * hot-path data (food log, workouts, weights). See lib/storage `loadPhotos`.
+ *
+ * Validated element-by-element so a single corrupt entry only drops itself and
+ * the user's other photos are always salvaged. Entries missing an id or image
+ * source are discarded.
+ */
+export const ProgressPhotosSchema = z
+  .array(z.unknown())
+  .catch([])
+  .transform((arr) =>
+    arr.flatMap((x) => {
+      const r = ProgressPhotoSchema.safeParse(x);
+      return r.success && r.data.id !== '' && r.data.src !== '' ? [r.data] : [];
+    }),
+  );
 
 export type Profile = z.infer<typeof ProfileSchema>;
 export type Settings = z.infer<typeof SettingsSchema>;
@@ -269,6 +287,5 @@ export function defaultState(): PersistedState {
     customPlans: [],
     shopping: [],
     customRecipes: [],
-    photos: [],
   };
 }

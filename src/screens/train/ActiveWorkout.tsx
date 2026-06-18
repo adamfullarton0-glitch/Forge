@@ -80,7 +80,23 @@ export function ActiveWorkout({ active }: { active: ActiveState }): JSX.Element 
     return wu === 'lb' ? lb2kg(n) : n;
   };
 
-  if (!day) return <div className="screen">Workout unavailable.</div>;
+  // Defensive: an empty/corrupt plan can't produce a day. Never dead-end —
+  // always offer a way to clear the broken session.
+  if (!day) {
+    return (
+      <div className="screen">
+        <h1 className="screen__title">Workout</h1>
+        <Card>
+          <div className="state__msg" style={{ marginBottom: 14 }}>
+            This session can&apos;t be opened — its plan has no exercises.
+          </div>
+          <Button onClick={() => update({ active: null })} style={{ width: '100%' }}>
+            {t('discard')}
+          </Button>
+        </Card>
+      </div>
+    );
+  }
 
   const setSets = (orig: string, arr: SetEntry[]): void => {
     update({ active: { ...active, sets: { ...sets, [orig]: arr } } });

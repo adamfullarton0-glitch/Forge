@@ -1,12 +1,21 @@
 import {
   CURRENT_SCHEMA_VERSION,
   PersistedStateSchema,
+  ProgressPhotosSchema,
   defaultState,
   type PersistedState,
+  type ProgressPhoto,
 } from '@/types/schemas';
 
-/** The single localStorage key everything lives under. */
+/** The localStorage key the main state blob lives under. */
 export const STORAGE_KEY = 'forge-data';
+
+/**
+ * Progress photos live under their OWN key, isolated from the main state blob
+ * so their large base64 payload can never cause a hot-path `saveState` (food
+ * log, workouts) to fail for lack of quota.
+ */
+export const PHOTOS_KEY = 'forge-photos';
 
 type StorageLike = Pick<Storage, 'getItem' | 'setItem' | 'removeItem'>;
 
@@ -103,11 +112,46 @@ export function saveState(
   }
 }
 
-/** Clears the saved state. Returns false instead of throwing on failure. */
+/** Clears the saved state (both the main blob and photos). Never throws. */
 export function clearState(storage: StorageLike | null = defaultStorage()): boolean {
   try {
     if (!storage) return false;
     storage.removeItem(STORAGE_KEY);
+    storage.removeItem(PHOTOS_KEY);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Progress photos (separate key)                                      */
+/* ------------------------------------------------------------------ */
+
+/** Loads + validates progress photos. Missing/corrupt data → []. Never throws. */
+export function loadPhotos(storage: StorageLike | null = defaultStorage()): ProgressPhoto[] {
+  try {
+    const raw = storage?.getItem(PHOTOS_KEY);
+    if (raw == null) return [];
+    const parsed: unknown = JSON.parse(raw);
+    return ProgressPhotosSchema.parse(parsed);
+  } catch {
+    return [];
+  }
+}
+
+/**
+ * Persists progress photos under their own key. Returns false (never throws)
+ * if storage is unavailable or full, so a failed photo save can't crash the
+ * app or corrupt the main state.
+ */
+export function savePhotos(
+  photos: readonly ProgressPhoto[],
+  storage: StorageLike | null = defaultStorage(),
+): boolean {
+  try {
+    if (!storage) return false;
+    storage.setItem(PHOTOS_KEY, JSON.stringify(photos));
     return true;
   } catch {
     return false;
@@ -141,7 +185,9 @@ export function importBackup(json: string): ImportResult {
   }
   // The schema's per-field + top-level `.catch` coerce anything FORGE-shaped
   // into a valid state, so once it parses as JSON and looks like a backup it
-  // always loads — malformed fields just fall back to safe defaults.
-  const state = PersistedStateSchema.parse(migrate(parsed));
-  return { ok: true, state };
+  // always loads — malformed fields just fall back to safe defaults. safeParse
+  // makes this bulletproof even if the top-level `.catch` is ever removed.
+  const result = PersistedStateSchema.safeParse(migrate(parsed));
+  if (!result.success) return { ok: false, error: "That file didn't look like a FORGE backup." };
+  return { ok: true, state: result.data };
 }

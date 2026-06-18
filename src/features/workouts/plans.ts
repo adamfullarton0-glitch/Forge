@@ -357,7 +357,7 @@ export const isCustomPlanId = (id: string): boolean => id.startsWith(CUSTOM_PREF
 
 /** A fresh, collision-resistant id for a new custom routine. */
 export function newCustomPlanId(): string {
-  return `${CUSTOM_PREFIX}${Date.now().toString(36)}${Math.random().toString(36).slice(2, 7)}`;
+  return `${CUSTOM_PREFIX}${Date.now().toString(36)}${Math.random().toString(36).slice(2, 11)}`;
 }
 
 function customToRoutine(c: CustomPlan): RoutinePlan {

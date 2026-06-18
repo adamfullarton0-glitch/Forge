@@ -1,14 +1,17 @@
 import { describe, it, expect, afterEach, vi } from 'vitest';
 import {
   STORAGE_KEY,
+  PHOTOS_KEY,
   loadState,
   saveState,
   clearState,
+  loadPhotos,
+  savePhotos,
   migrate,
   exportBackup,
   importBackup,
 } from './storage';
-import { CURRENT_SCHEMA_VERSION, defaultState } from '@/types/schemas';
+import { CURRENT_SCHEMA_VERSION, defaultState, type ProgressPhoto } from '@/types/schemas';
 
 type Store = Pick<Storage, 'getItem' | 'setItem' | 'removeItem'>;
 
@@ -295,5 +298,64 @@ describe('backup import / export', () => {
       expect(result.state.schemaVersion).toBe(CURRENT_SCHEMA_VERSION);
       expect(result.state.planId).toBe('fb');
     }
+  });
+});
+
+describe('progress photos (separate storage key)', () => {
+  const photo = (id: string): ProgressPhoto => ({ id, d: '2026-06-16', src: `data:,${id}` });
+
+  it('persists and reloads photos under their own key', () => {
+    const store = fakeStorage();
+    expect(savePhotos([photo('a'), photo('b')], store)).toBe(true);
+    expect(store.map.has(PHOTOS_KEY)).toBe(true);
+    expect(loadPhotos(store).map((p) => p.id)).toEqual(['a', 'b']);
+  });
+
+  it('returns [] for missing or corrupt photo data, never throwing', () => {
+    expect(loadPhotos(fakeStorage())).toEqual([]);
+    expect(loadPhotos(fakeStorage({ [PHOTOS_KEY]: '{not json' }))).toEqual([]);
+    expect(loadPhotos(fakeStorage({ [PHOTOS_KEY]: '"text"' }))).toEqual([]);
+    expect(() => loadPhotos(throwingStorage)).not.toThrow();
+    expect(loadPhotos(null)).toEqual([]);
+  });
+
+  it('drops a corrupt photo entry but keeps the valid ones', () => {
+    const store = fakeStorage({
+      [PHOTOS_KEY]: JSON.stringify([photo('good'), 'garbage', { id: 7 }]),
+    });
+    const loaded = loadPhotos(store);
+    expect(loaded.some((p) => p.id === 'good')).toBe(true);
+  });
+
+  it('savePhotos returns false (not throw) when storage is full/unavailable', () => {
+    expect(savePhotos([photo('a')], null)).toBe(false);
+    expect(savePhotos([photo('a')], throwingStorage)).toBe(false);
+  });
+
+  it('a full photos key never corrupts or blocks the main state blob', () => {
+    // A store that only rejects writes to the PHOTOS key (simulating photos
+    // hitting quota) must still let the main state save succeed.
+    const map = new Map<string, string>();
+    const store: Store = {
+      getItem: (k) => map.get(k) ?? null,
+      setItem: (k, v) => {
+        if (k === PHOTOS_KEY) throw new Error('quota');
+        map.set(k, v);
+      },
+      removeItem: (k) => void map.delete(k),
+    };
+    expect(savePhotos([photo('big')], store)).toBe(false); // photo save fails
+    expect(saveState({ ...defaultState(), pro: true }, store)).toBe(true); // state still saves
+    expect(loadState(store).pro).toBe(true);
+  });
+
+  it('clearState removes the photos key too', () => {
+    const store = fakeStorage({
+      [STORAGE_KEY]: JSON.stringify(defaultState()),
+      [PHOTOS_KEY]: JSON.stringify([photo('a')]),
+    });
+    expect(clearState(store)).toBe(true);
+    expect(store.map.has(PHOTOS_KEY)).toBe(false);
+    expect(loadPhotos(store)).toEqual([]);
   });
 });

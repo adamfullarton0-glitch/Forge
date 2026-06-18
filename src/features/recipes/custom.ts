@@ -13,7 +13,7 @@ export const isCustomRecipeId = (id: string | undefined): id is string =>
   typeof id === 'string' && id.startsWith(CUSTOM_RECIPE_PREFIX);
 
 export function newCustomRecipeId(): string {
-  return `${CUSTOM_RECIPE_PREFIX}${Date.now().toString(36)}${Math.random().toString(36).slice(2, 7)}`;
+  return `${CUSTOM_RECIPE_PREFIX}${Date.now().toString(36)}${Math.random().toString(36).slice(2, 11)}`;
 }
 
 /** Convert a stored custom recipe into a renderable library recipe. */

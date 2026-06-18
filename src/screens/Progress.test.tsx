@@ -30,6 +30,8 @@ describe('Progress', () => {
   beforeEach(() => {
     localStorage.clear();
     seed();
+    // Photos live in their own store slice now; reset between tests.
+    useStore.setState({ photos: [] });
   });
   afterEach(() => localStorage.clear());
 
@@ -82,7 +84,7 @@ describe('Progress', () => {
   it('views and deletes a seeded progress photo', async () => {
     const user = userEvent.setup();
     const px = 'data:image/jpeg;base64,/9j/AAAQ';
-    seed({
+    useStore.setState({
       photos: [
         { id: 'ph:1', d: '2026-06-01', src: px },
         { id: 'ph:2', d: '2026-06-10', src: px },
@@ -92,7 +94,7 @@ describe('Progress', () => {
     // Open the newest photo from the grid.
     await user.click(screen.getByRole('button', { name: /view photo 2026-06-10/i }));
     await user.click(screen.getByRole('button', { name: /delete 2026-06-10/i }));
-    const photos = useStore.getState().data.photos;
+    const photos = useStore.getState().photos;
     expect(photos.map((p) => p.id)).toEqual(['ph:1']);
   });
 });
