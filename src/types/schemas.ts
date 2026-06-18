@@ -163,6 +163,31 @@ export const ShoppingItemSchema = z.object({
   have: z.boolean().catch(false),
 });
 
+/**
+ * The shopping list, validated element-by-element. Names are trimmed, blanks
+ * dropped, and entries de-duplicated case-insensitively (first wins) so that
+ * by-name toggle/remove can never act on two colliding items — even if a
+ * hand-edited/corrupt import slipped duplicates in.
+ */
+export const ShoppingListSchema = z
+  .array(z.unknown())
+  .catch([])
+  .transform((arr) => {
+    const seen = new Set<string>();
+    const out: { name: string; have: boolean }[] = [];
+    for (const x of arr) {
+      const r = ShoppingItemSchema.safeParse(x);
+      if (!r.success) continue;
+      const name = r.data.name.trim();
+      if (name === '') continue;
+      const k = name.toLowerCase();
+      if (seen.has(k)) continue;
+      seen.add(k);
+      out.push({ name, have: r.data.have });
+    }
+    return out;
+  });
+
 export const ProgressPhotoSchema = z.object({
   id: z.string().catch(''),
   /** Capture date, `YYYY-MM-DD`. */
@@ -223,7 +248,7 @@ export const PersistedStateSchema = z
       .catch(['barbell', 'dumbbell', 'cable', 'machine', 'bench', 'pullupbar']),
     lifts: z.record(z.string(), z.array(LiftEntrySchema).catch([])).catch({}),
     customPlans: z.array(CustomPlanSchema).catch([]),
-    shopping: z.array(ShoppingItemSchema).catch([]),
+    shopping: ShoppingListSchema,
     customRecipes: z.array(CustomRecipeSchema).catch([]),
   })
   .catch(() => defaultState());

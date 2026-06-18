@@ -381,6 +381,17 @@ export function getPlan(id: string, customPlans: readonly CustomPlan[] = []): Ro
   return (PLANS as Record<string, Plan>)[id] ?? PLANS[DEFAULT_PLAN_ID];
 }
 
+/**
+ * The id a plan id actually resolves to — itself when it's a known built-in or
+ * an existing custom routine, otherwise the default. Use this to record what
+ * was really trained when the active plan may have been deleted.
+ */
+export function resolvePlanId(id: string, customPlans: readonly CustomPlan[] = []): string {
+  if (customPlans.some((c) => c.id === id)) return id;
+  if (Object.prototype.hasOwnProperty.call(PLANS, id)) return id;
+  return DEFAULT_PLAN_ID;
+}
+
 /** The sets×reps prescription for an exercise within a plan (custom override → default). */
 export function planSr(plan: RoutinePlan, name: string): string {
   return plan.sr?.[name] ?? getExercise(name)?.sr ?? '';

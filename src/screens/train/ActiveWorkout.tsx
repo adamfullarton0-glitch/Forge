@@ -6,7 +6,7 @@ import { Chip } from '@/components/Chip';
 import { RestTimer } from './RestTimer';
 import { ExerciseModal } from './ExerciseModal';
 import { useData, useUpdate } from '@/features/store';
-import { getPlan, planSr, EQUIPMENT, DEFAULT_GEAR } from '@/features/workouts/plans';
+import { getPlan, planSr, resolvePlanId, EQUIPMENT, DEFAULT_GEAR } from '@/features/workouts/plans';
 import { getExercise } from '@/features/workouts/exercises';
 import { translator } from '@/lib/i18n';
 import { e1rm, getUnits, kg2lb, lb2kg, todayKey, topRepOf } from '@/lib/calc';
@@ -154,7 +154,9 @@ export function ActiveWorkout({ active }: { active: ActiveState }): JSX.Element 
         ...data.done,
         {
           d: todayKey(),
-          plan: data.planId,
+          // Record the plan actually used (the active id may have been deleted
+          // and resolved to the default), so the session log stays accurate.
+          plan: resolvePlanId(data.planId, data.customPlans),
           day: day.name,
           vol: Math.round(totalVol),
           sets: totalSets,

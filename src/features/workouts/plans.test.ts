@@ -1,5 +1,12 @@
 import { describe, it, expect } from 'vitest';
-import { getPlan, planSr, isCustomPlanId, newCustomPlanId, DEFAULT_PLAN_ID } from './plans';
+import {
+  getPlan,
+  planSr,
+  resolvePlanId,
+  isCustomPlanId,
+  newCustomPlanId,
+  DEFAULT_PLAN_ID,
+} from './plans';
 import { getExercise } from './exercises';
 import type { CustomPlan } from '@/types/schemas';
 
@@ -49,5 +56,20 @@ describe('custom plan ids', () => {
     const id = newCustomPlanId();
     expect(isCustomPlanId(id)).toBe(true);
     expect(newCustomPlanId()).not.toBe(id);
+  });
+});
+
+describe('resolvePlanId', () => {
+  it('keeps a known built-in id', () => {
+    expect(resolvePlanId('ppl')).toBe('ppl');
+  });
+
+  it('keeps an existing custom id', () => {
+    expect(resolvePlanId('custom:abc', [routine])).toBe('custom:abc');
+  });
+
+  it('falls back to the default for a deleted/unknown id', () => {
+    expect(resolvePlanId('custom:gone', [])).toBe(DEFAULT_PLAN_ID);
+    expect(resolvePlanId('nope')).toBe(DEFAULT_PLAN_ID);
   });
 });

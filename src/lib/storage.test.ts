@@ -153,6 +153,25 @@ describe('schema resilience (malformed fields fall back, never crash)', () => {
     expect(Number.isFinite(loaded.profile?.weight ?? NaN)).toBe(true);
   });
 
+  it('trims, drops blanks, and de-duplicates the shopping list', () => {
+    const loaded = loadState(
+      withState({
+        schemaVersion: 1,
+        shopping: [
+          { name: '  Chicken ', have: true },
+          { name: 'chicken', have: false }, // case-folded duplicate -> dropped
+          { name: '   ', have: false }, // blank -> dropped
+          'garbage', // not an object -> dropped
+          { name: 'Rice', have: false },
+        ],
+      }),
+    );
+    expect(loaded.shopping).toEqual([
+      { name: 'Chicken', have: true }, // trimmed, first wins (keeps have)
+      { name: 'Rice', have: false },
+    ]);
+  });
+
   it('drops a corrupt day of the food log without losing the rest', () => {
     const loaded = loadState(
       withState({
