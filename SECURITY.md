@@ -6,10 +6,20 @@ model and the controls that protect your data.
 ## Where your data lives
 
 - **On your device only.** All user data (profile, workouts, food log,
-  weights, lifts, settings) is stored in the browser's `localStorage`. There
-  is **no backend, no account, and no server** that holds your data.
+  weights, lifts, custom routines & recipes, shopping list, and settings) is
+  stored in the browser's `localStorage`. There is **no backend, no account,
+  and no server** that holds your data.
+- **Progress photos never leave the device.** Photos you add are downscaled
+  and re-encoded in-browser, then stored as `data:` URLs under their own
+  `localStorage` key (`forge-photos`), isolated from the main data so they can
+  never corrupt it. They are rendered with `<img src="data:…">` and, by CSP
+  (`connect-src`, below), **cannot be uploaded anywhere** — not even to the two
+  food APIs. The app only ever receives a single file you explicitly pick;
+  `Permissions-Policy: camera=()` blocks any live camera stream.
 - **Nothing is transmitted to us.** There is no analytics, telemetry, ad SDK,
-  or third-party tracker anywhere in the app. We never see your data.
+  or third-party tracker anywhere in the app. We never see your data. (The
+  Part C.4 accounts/sync/push/billing/ads layer exists only as inert local
+  stubs behind typed interfaces — none of them transmit anything.)
 - **You control your backup.** Export/import writes a JSON file you keep; it
   is never uploaded.
 
@@ -48,8 +58,10 @@ reading `localStorage`. FORGE closes that off:
   `public/_headers`):
   - `script-src 'self'` — no inline or remote scripts can run (the build has
     **zero inline scripts**), so injected `<script>` payloads are inert.
-  - `connect-src` is limited to the two food APIs — exfiltration to an
-    attacker's server is blocked.
+  - `connect-src` is limited to `'self'` and the two food APIs — exfiltration
+    of `localStorage` (including progress photos) to an attacker's server is
+    blocked. `img-src` permits `data:` so local photos render, but `data:`
+    images cannot execute script.
   - `frame-src` allows only the YouTube tutorial frame; `object-src 'none'`,
     `base-uri 'self'`, `frame-ancestors 'none'` (anti-clickjacking).
     An e2e test fails the build if any of our own resources trip the CSP.
@@ -66,7 +78,8 @@ reading `localStorage`. FORGE closes that off:
   — which the CSP already governs — so it adds defence-in-depth, not real
   secrecy (the key would have to ship in the bundle). If you share a device,
   use a separate OS/browser profile. Account-based encrypted cloud sync is on
-  the roadmap (Part H) behind a clean `syncAdapter` interface.
+  the roadmap behind the clean `SyncAdapter`/`AuthAdapter` interfaces, which
+  today ship as inert local stubs (`src/features/platform/`).
 - Anyone with physical access to an unlocked device can read the data, as with
   any local app.
 
