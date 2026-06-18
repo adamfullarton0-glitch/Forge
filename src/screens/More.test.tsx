@@ -45,6 +45,13 @@ describe('More hub', () => {
     expect(screen.getByText('Settings')).toBeInTheDocument();
   });
 
+  it('shows the local account & sync status from the platform layer', () => {
+    render2();
+    expect(screen.getByText('Account & sync')).toBeInTheDocument();
+    expect(screen.getByText('On-device account')).toBeInTheDocument();
+    expect(screen.getByText(/this device only/i)).toBeInTheDocument();
+  });
+
   it('activates PRO via the upgrade modal and reveals device pairing', async () => {
     const user = userEvent.setup();
     render2();

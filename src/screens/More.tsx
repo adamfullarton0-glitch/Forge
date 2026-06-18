@@ -6,6 +6,7 @@ import { Icon, type IconName } from '@/components/Icon';
 import { ProModal } from '@/components/ProModal';
 import { useData, useUpdate } from '@/features/store';
 import { SMART_DEVICES } from '@/features/devices';
+import { platform } from '@/features/platform';
 import { translator } from '@/lib/i18n';
 
 const ROWS: ReadonlyArray<[string, IconName, string, string]> = [
@@ -60,6 +61,33 @@ export function More(): JSX.Element {
           </Card>
         ))}
       </div>
+
+      {/* Account & sync (platform layer — local stub today) */}
+      <span className="pulse-header" style={{ display: 'block', marginTop: 22 }}>
+        {t('accountSync')}
+      </span>
+      <Card style={{ marginTop: 12, display: 'flex', alignItems: 'center', gap: 14 }}>
+        <div
+          style={{
+            width: 42,
+            height: 42,
+            borderRadius: 12,
+            background: 'var(--accent-soft)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexShrink: 0,
+          }}
+        >
+          <Icon name="refresh" size={21} style={{ color: 'var(--accent)' }} />
+        </div>
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <div style={{ fontWeight: 700 }}>{t('localAccount')}</div>
+          <div className="state__msg" style={{ textAlign: 'left', margin: 0 }}>
+            {platform.sync.status().detail}
+          </div>
+        </div>
+      </Card>
 
       {/* Membership */}
       <span className="pulse-header" style={{ display: 'block', marginTop: 22 }}>

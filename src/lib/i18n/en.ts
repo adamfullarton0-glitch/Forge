@@ -223,6 +223,9 @@ export const en = {
   findByMuscle: 'Find by muscle',
   muscleHint: 'Tap a muscle to see the exercises that train it.',
   exercisesL: 'exercises',
+  // Account & sync (platform layer)
+  accountSync: 'Account & sync',
+  localAccount: 'On-device account',
   // Recovery / HRV
   recovery: 'Recovery',
   hrvL: 'HRV last night',
