@@ -4,11 +4,38 @@ A dark, premium fitness + nutrition + sleep PWA. Built to be **unbreakable**:
 TypeScript strict, validated storage, error boundaries everywhere, and a real
 test gate.
 
-> **Status: feature-complete (Phases 1–10).**
+> **Status: feature-complete.**
 > Onboarding, Home, Train + Active Workout, Eat, Recipes, Sleep, Progress,
-> Settings and the More hub are all built and tested. Plan (schedule) is the
-> only remaining typed placeholder. See [SECURITY.md](./SECURITY.md) for the
-> security posture.
+> Settings and the More hub are all built and tested, plus the full set of
+> advanced features below. Plan (schedule) is the only remaining typed
+> placeholder. See [SECURITY.md](./SECURITY.md) for the security posture.
+
+## Features
+
+Core: onboarding & profile, dashboard, workout plans + live session tracking
+(rest timer, plate maths, e1RM/PR detection), nutrition logging with an Open
+Food Facts search, a 580+ recipe library with TheMealDB photos, body-weight &
+measurement trends, a workout-consistency heatmap, achievements, and 14
+translated UI languages.
+
+Advanced (all device-local, all tested):
+
+- **Custom workout routines** — build/edit your own split with per-exercise
+  sets×reps; it slots in beside the built-in plans.
+- **Body-map exercise finder** — tap a muscle to see the lifts that train it.
+- **Custom recipes** — add your own meals (macros, ingredients, method); they
+  join the searchable library.
+- **Shopping list** — push a recipe's ingredients to a de-duplicated list.
+- **Expanded micronutrients** — track fiber, sugar, sodium, saturated fat,
+  potassium, calcium, iron and vitamin C against daily targets.
+- **HRV recovery** — wearable-style recovery from heart-rate variability vs
+  your own rolling baseline (simulated behind a swap-in adapter).
+- **Progress photos** — a private, on-device photo timeline (compressed,
+  quota-safe, never uploaded — see [SECURITY.md](./SECURITY.md)).
+
+Backend/native capabilities (accounts, cross-device sync, push, store/IAP,
+ads) exist as typed, inert **local stubs** behind clean adapter interfaces
+(`src/features/platform/`), ready to swap for real implementations.
 
 ## Stack
 
@@ -55,10 +82,16 @@ test gate.
 
 ```
 src/
-  app/        shell, router, providers, global error boundary
-  components/ Card, Button, Chip, Icon, NavBar, ErrorBoundary, state primitives
-  screens/    Home, Train, Placeholder (others land later)
+  app/        shell, router (code-split), providers, global error boundary
+  components/ Card, Button, Chip, Icon, NavBar, Modal, ErrorBoundary, states
+  screens/    every screen + per-area subfolders (train/, recipes/, eat/,
+              progress/, sleep/) for the feature modals/widgets
+  features/   pure domain logic + state — store, workouts, recipes,
+              nutrition, sleep (adapter + recovery), progress, platform stubs
+  lib/        calc/ (pure, ≥90% covered), api/ (Zod-validated clients),
+              storage (validated, isolated photo key), i18n, image
+  types/      Zod schemas — the single source of persisted shape
   theme/      Pulse design tokens + global CSS
-  test/       Vitest setup
-e2e/          Playwright specs (app + offline)
+  test/       Vitest setup + security source-scan
+e2e/          Playwright specs (onboarding, offline, error isolation, a11y, smoke)
 ```
