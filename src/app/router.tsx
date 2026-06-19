@@ -9,6 +9,7 @@ import { Boom } from '@/screens/Boom';
 // The service worker precaches every chunk, so this stays fully offline-capable.
 const Home = lazy(() => import('@/screens/Home').then((m) => ({ default: m.Home })));
 const Train = lazy(() => import('@/screens/Train').then((m) => ({ default: m.Train })));
+const Plan = lazy(() => import('@/screens/Plan').then((m) => ({ default: m.Plan })));
 const Eat = lazy(() => import('@/screens/Eat').then((m) => ({ default: m.Eat })));
 const Recipes = lazy(() => import('@/screens/Recipes').then((m) => ({ default: m.Recipes })));
 const More = lazy(() => import('@/screens/More').then((m) => ({ default: m.More })));
@@ -23,12 +24,7 @@ export const routes: RouteObject[] = [
     children: [
       { index: true, element: <Home /> },
       { path: 'train', element: <Train /> },
-      {
-        path: 'plan',
-        element: (
-          <Placeholder title="Plan" icon="plan" note="Your weekly training schedule lives here." />
-        ),
-      },
+      { path: 'plan', element: <Plan /> },
       { path: 'eat', element: <Eat /> },
       { path: 'recipes', element: <Recipes /> },
       { path: 'stats', element: <Progress /> },

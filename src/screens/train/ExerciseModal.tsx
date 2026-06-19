@@ -106,15 +106,15 @@ export function ExerciseModal({ name, onClose, onOpen }: ExerciseModalProps): JS
             </>
           ) : (
             <>
-              {/* Default: a poster that opens YouTube directly. No embed means
-                  no "Error 153", which can be caused by referrer/origin policies,
-                  ad-blockers, localhost, or per-video embedding restrictions. */}
-              <a
+              {/* Default: tap the poster to play the tutorial in-app. The embed
+                  uses youtube-nocookie + a referrer policy to avoid "Error 153";
+                  a YouTube escape-hatch link sits below for the rare video that
+                  refuses to embed. */}
+              <button
+                type="button"
                 className="ex-poster"
-                href={`https://www.youtube.com/watch?v=${ex.vid}`}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={`Watch ${name} form tutorial on YouTube`}
+                onClick={() => setPlay(true)}
+                aria-label={`Play ${name} form tutorial`}
               >
                 {posterFailed ? null : (
                   <img
@@ -126,11 +126,16 @@ export function ExerciseModal({ name, onClose, onOpen }: ExerciseModalProps): JS
                   />
                 )}
                 <span className="ex-poster__play" aria-hidden="true" />
-                <span className="ex-poster__badge">Watch form tutorial on YouTube ↗</span>
-              </a>
-              <button type="button" className="ex-inline-toggle" onClick={() => setPlay(true)}>
-                Or try the in-app player
+                <span className="ex-poster__badge">Watch form tutorial</span>
               </button>
+              <a
+                className="ex-inline-toggle"
+                href={`https://www.youtube.com/watch?v=${ex.vid}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Prefer YouTube? Open there ↗
+              </a>
             </>
           )
         ) : (

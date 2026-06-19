@@ -181,7 +181,7 @@
   font-weight: 700;
 }
 
-/* Poster that opens YouTube (the reliable default — no embed, no Error 153) */
+/* Poster — tap to play the tutorial in-app (it's a <button>) */
 .ex-poster {
   position: relative;
   display: block;
@@ -192,6 +192,10 @@
   border: 1px solid var(--glass-border);
   background: linear-gradient(135deg, #16181f, #23262f);
   cursor: pointer;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  text-align: left;
 }
 .ex-poster__img {
   position: absolute;
@@ -244,6 +248,9 @@
   font-weight: 700;
   cursor: pointer;
   min-height: 36px;
+  text-align: center;
+  text-decoration: none;
+  line-height: 36px;
 }
 .plate {
   background: var(--accent-soft);

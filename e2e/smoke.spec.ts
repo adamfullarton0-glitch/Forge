@@ -75,14 +75,15 @@ test('every screen renders with a clean console and a working video embed', asyn
   await page.getByRole('button', { name: /start workout/i }).click();
   await page.getByText('Chest · Triceps · Front delts').first().click();
 
-  // The tutorial defaults to a poster that opens YouTube directly (no embed,
-  // so the dreaded "Error 153" can never appear).
-  await expect(
-    page.getByRole('link', { name: /watch barbell bench press form tutorial/i }),
-  ).toHaveAttribute('href', 'https://www.youtube.com/watch?v=4Y2ZdHCOXok');
+  // A YouTube escape-hatch link is available for the rare non-embeddable video.
+  await expect(page.getByRole('link', { name: /prefer youtube/i })).toHaveAttribute(
+    'href',
+    'https://www.youtube.com/watch?v=4Y2ZdHCOXok',
+  );
 
-  // The opt-in inline player carries the referrer policy that avoids Error 153.
-  await page.getByRole('button', { name: /in-app player/i }).click();
+  // The tutorial plays IN-APP: tap the poster → inline player with the
+  // referrer policy that avoids Error 153.
+  await page.getByRole('button', { name: /play barbell bench press form tutorial/i }).click();
   await expect(page.getByTitle(/barbell bench press tutorial/i)).toHaveAttribute(
     'referrerpolicy',
     'strict-origin-when-cross-origin',
