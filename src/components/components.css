@@ -169,7 +169,10 @@
 
 /* ---- Screen layout ---- */
 .screen {
-  padding: 24px 18px calc(var(--nav-height) + 28px);
+  /* Respect the iOS notch (top) and home indicator (bottom) when installed as
+     a standalone PWA with viewport-fit=cover. env() is 0 elsewhere. */
+  padding: calc(24px + env(safe-area-inset-top, 0px)) 18px
+    calc(var(--nav-height) + 28px + env(safe-area-inset-bottom, 0px));
   min-height: 100vh;
 }
 .screen__title {
@@ -181,6 +184,34 @@
 .screen__lede {
   color: var(--muted);
   margin: 0 0 22px;
+}
+
+/* FAQ accordion (Settings → Help). Native <details> for accessibility. */
+.faq {
+  border-top: 1px solid var(--glass-border);
+  padding: 10px 0;
+}
+.faq summary {
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.9rem;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+.faq summary::after {
+  content: '+';
+  color: var(--accent);
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+.faq[open] summary::after {
+  content: '–';
 }
 .stack {
   display: flex;

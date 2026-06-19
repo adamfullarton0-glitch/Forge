@@ -184,6 +184,7 @@ export const en = {
   exportNote: 'Downloads everything as a file you control. Keep it safe.',
   imported: 'Backup restored.',
   badNote: "That file didn't look like a FORGE backup.",
+  help: 'Help & about',
   // Custom routines
   myRoutines: 'My routines',
   createRoutine: 'Create routine',

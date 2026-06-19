@@ -283,6 +283,52 @@ export function Settings(): JSX.Element | null {
         ) : null}
       </Card>
 
+      {/* Help & about */}
+      <span className="pulse-header" style={{ display: 'block', marginTop: 22 }}>
+        {t('help')}
+      </span>
+      <Card style={{ marginTop: 12 }}>
+        <div className="state__msg" style={{ textAlign: 'left', margin: '0 0 12px' }}>
+          FORGE is a private, on-device fitness, nutrition and sleep app. Your data stays in this
+          browser — there is no account and nothing is sent to a server.
+        </div>
+        {[
+          {
+            q: 'Is my data private?',
+            a: "Yes. Everything stays on this device. There's no account and no server — nothing is sent to us. Only food and recipe searches go out, and they send just the term you type.",
+          },
+          {
+            q: 'Does it work offline?',
+            a: 'Yes. After your first visit it installs as an app and works with no connection. Only the live food and recipe search needs the internet.',
+          },
+          {
+            q: 'How do reminders and my schedule work?',
+            a: 'Set your training days on the Plan tab; the Home screen shows your upcoming sessions. (Phone push notifications arrive with the optional backend.)',
+          },
+          {
+            q: 'How do I move my data to another device?',
+            a: 'Use Export above to download a backup file, then Import it on the other device.',
+          },
+          {
+            q: 'Is it free?',
+            a: 'Yes. PRO features (sleep tracking, smart devices, extra recipes) are unlocked free in this demo build.',
+          },
+        ].map(({ q, a }) => (
+          <details key={q} className="faq">
+            <summary>{q}</summary>
+            <div className="state__msg" style={{ textAlign: 'left', margin: '6px 0 0' }}>
+              {a}
+            </div>
+          </details>
+        ))}
+        <div
+          className="state__msg"
+          style={{ textAlign: 'left', fontSize: '0.72rem', margin: '12px 0 0' }}
+        >
+          FORGE · version 0.1.0 · works offline · your data never leaves this device
+        </div>
+      </Card>
+
       <div style={{ marginTop: 28 }}>
         <Button variant="ghost" onClick={reset} style={{ width: '100%' }}>
           {t('reset')}
