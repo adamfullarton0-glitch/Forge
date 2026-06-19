@@ -63,24 +63,20 @@ describe('ExerciseModal', () => {
     expect(container).toBeEmptyDOMElement();
   });
 
-  it('shows a tap-to-play poster with a YouTube escape-hatch link (no iframe yet)', () => {
+  it('shows an animated movement demo by default (no iframe, no ads)', () => {
     render(<ExerciseModal name="Barbell Bench Press" onClose={() => undefined} />);
-    // The poster is the play trigger; no iframe mounts until tapped.
-    expect(
-      screen.getByRole('button', { name: /play barbell bench press form tutorial/i }),
-    ).toBeInTheDocument();
+    // The ad-free SVG animation is the default; no YouTube iframe is mounted.
+    expect(screen.getByRole('img', { name: /movement animation/i })).toBeInTheDocument();
     expect(screen.queryByTitle(/tutorial/i)).not.toBeInTheDocument();
-    const escape = screen.getByRole('link', { name: /prefer youtube/i });
-    expect(escape).toHaveAttribute('href', 'https://www.youtube.com/watch?v=4Y2ZdHCOXok');
-    expect(escape).toHaveAttribute('target', '_blank');
+    expect(
+      screen.getByRole('button', { name: /watch the real video tutorial/i }),
+    ).toBeInTheDocument();
   });
 
-  it('plays the tutorial in-app, embedding with a referrer policy that avoids Error 153', async () => {
+  it('reveals the real video in-app, embedding with a referrer policy that avoids Error 153', async () => {
     const user = userEvent.setup();
     render(<ExerciseModal name="Barbell Bench Press" onClose={() => undefined} />);
-    await user.click(
-      screen.getByRole('button', { name: /play barbell bench press form tutorial/i }),
-    );
+    await user.click(screen.getByRole('button', { name: /watch the real video tutorial/i }));
     const frame = screen.getByTitle(/barbell bench press tutorial/i);
     expect(frame.getAttribute('src')).toContain('youtube-nocookie.com/embed/');
     expect(frame.getAttribute('referrerpolicy')).toBe('strict-origin-when-cross-origin');
