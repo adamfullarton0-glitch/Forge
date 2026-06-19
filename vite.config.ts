@@ -49,7 +49,12 @@ function cspPlugin(): Plugin {
 }
 
 // https://vitejs.dev/config/
+// `BASE_PATH` lets a sub-path host (e.g. GitHub Pages project site at
+// /Forge/) build correctly; defaults to '/' for root hosting + local dev.
+const base = process.env.BASE_PATH ?? '/';
+
 export default defineConfig({
+  base,
   plugins: [
     react(),
     cspPlugin(),
@@ -66,7 +71,8 @@ export default defineConfig({
         background_color: '#0A0E14',
         display: 'standalone',
         orientation: 'portrait',
-        start_url: '/',
+        start_url: base,
+        scope: base,
         icons: [
           { src: 'icon-192.png', sizes: '192x192', type: 'image/png' },
           { src: 'icon-512.png', sizes: '512x512', type: 'image/png' },
@@ -81,7 +87,7 @@ export default defineConfig({
       workbox: {
         // App shell must open with no network — precache everything built.
         globPatterns: ['**/*.{js,css,html,svg,png,woff2}'],
-        navigateFallback: '/index.html',
+        navigateFallback: `${base}index.html`,
         runtimeCaching: [
           {
             // External APIs: network-first with a short timeout, cached fallback.

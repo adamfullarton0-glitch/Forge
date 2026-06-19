@@ -47,4 +47,10 @@ export const routes: RouteObject[] = [
   },
 ];
 
-export const router = createBrowserRouter(routes);
+// Honour Vite's base (e.g. '/Forge/' on a GitHub Pages project site) so routing
+// works under a sub-path. react-router wants the basename without a trailing
+// slash, except the root which stays '/'.
+const rawBase = import.meta.env.BASE_URL;
+const basename = rawBase === '/' ? '/' : rawBase.replace(/\/$/, '');
+
+export const router = createBrowserRouter(routes, { basename });
