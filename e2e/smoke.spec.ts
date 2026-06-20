@@ -75,12 +75,15 @@ test('every screen renders with a clean console and a working video embed', asyn
   await page.getByRole('button', { name: /start workout/i }).click();
   await page.getByText('Chest · Triceps · Front delts').first().click();
 
-  // By default the movement is shown as an ad-free, in-app SVG animation.
-  await expect(page.getByRole('img', { name: /movement animation/i })).toBeVisible();
+  // A YouTube escape-hatch link is available for the rare non-embeddable video.
+  await expect(page.getByRole('link', { name: /prefer youtube/i })).toHaveAttribute(
+    'href',
+    'https://www.youtube.com/watch?v=4Y2ZdHCOXok',
+  );
 
-  // The real video is one tap away: reveal it → inline player with the
+  // The tutorial plays IN-APP: tap the poster → inline player with the
   // referrer policy that avoids Error 153.
-  await page.getByRole('button', { name: /watch the real video tutorial/i }).click();
+  await page.getByRole('button', { name: /play barbell bench press form tutorial/i }).click();
   await expect(page.getByTitle(/barbell bench press tutorial/i)).toHaveAttribute(
     'referrerpolicy',
     'strict-origin-when-cross-origin',

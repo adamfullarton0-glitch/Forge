@@ -2,10 +2,8 @@ import { useState } from 'react';
 import { Modal } from '@/components/Modal';
 import { Button } from '@/components/Button';
 import { Chip } from '@/components/Chip';
-import { ExerciseAnimation } from '@/components/ExerciseAnimation';
 import { useData, useUpdate } from '@/features/store';
 import { getExercise, ytSearch } from '@/features/workouts/exercises';
-import { moveTypeOf } from '@/features/workouts/animation';
 import { EQUIPMENT, DEFAULT_GEAR } from '@/features/workouts/plans';
 import { getUnits, kg2lb, lb2kg, platesFor, todayKey } from '@/lib/calc';
 
@@ -26,6 +24,7 @@ export function ExerciseModal({ name, onClose, onOpen }: ExerciseModalProps): JS
 
   const [att, setAtt] = useState(0);
   const [play, setPlay] = useState(false);
+  const [posterFailed, setPosterFailed] = useState(false);
   const [w, setW] = useState('');
   const [hit, setHit] = useState(false);
 
@@ -79,45 +78,76 @@ export function ExerciseModal({ name, onClose, onOpen }: ExerciseModalProps): JS
         </button>
       </div>
 
-      {/* Movement demo — a looping, ad-free SVG animation by default, with the
-          real video one tap away (an in-app youtube-nocookie embed). */}
+      {/* Video */}
       <div style={{ margin: '14px 0 16px' }}>
-        {play && ex.vid ? (
-          <>
-            <div className="ex-video">
-              <iframe
-                src={`https://www.youtube-nocookie.com/embed/${ex.vid}?autoplay=1&playsinline=1&rel=0&modestbranding=1`}
-                title={`${name} tutorial`}
-                loading="lazy"
-                // Without a referrer YouTube's player throws "Error 153"; this
-                // guarantees a valid origin even under a strict page policy.
-                referrerPolicy="strict-origin-when-cross-origin"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-              />
-            </div>
-            <button type="button" className="ex-inline-toggle" onClick={() => setPlay(false)}>
-              ← Back to animated demo
-            </button>
-          </>
-        ) : (
-          <>
-            <ExerciseAnimation type={moveTypeOf(name)} />
-            {ex.vid ? (
-              <button type="button" className="ex-inline-toggle" onClick={() => setPlay(true)}>
-                ▶ Watch the real video tutorial
-              </button>
-            ) : (
+        {ex.vid ? (
+          play ? (
+            <>
+              <div className="ex-video">
+                <iframe
+                  src={`https://www.youtube-nocookie.com/embed/${ex.vid}?autoplay=1&playsinline=1&rel=0&modestbranding=1`}
+                  title={`${name} tutorial`}
+                  loading="lazy"
+                  // Without a referrer YouTube's player throws "Error 153"; this
+                  // guarantees a valid origin even under a strict page policy.
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
+              </div>
               <a
-                className="ex-inline-toggle"
-                href={ytSearch(name)}
+                className="ex-video__fallback"
+                href={`https://www.youtube.com/watch?v=${ex.vid}`}
                 target="_blank"
                 rel="noreferrer"
               >
-                Watch a video on YouTube ↗
+                Not playing? Watch on YouTube ↗
               </a>
-            )}
-          </>
+            </>
+          ) : (
+            <>
+              {/* Default: tap the poster to play the tutorial in-app. The embed
+                  uses youtube-nocookie + a referrer policy to avoid "Error 153";
+                  a YouTube escape-hatch link sits below for the rare video that
+                  refuses to embed. */}
+              <button
+                type="button"
+                className="ex-poster"
+                onClick={() => setPlay(true)}
+                aria-label={`Play ${name} form tutorial`}
+              >
+                {posterFailed ? null : (
+                  <img
+                    className="ex-poster__img"
+                    src={`https://i.ytimg.com/vi/${ex.vid}/hqdefault.jpg`}
+                    alt=""
+                    loading="lazy"
+                    onError={() => setPosterFailed(true)}
+                  />
+                )}
+                <span className="ex-poster__play" aria-hidden="true" />
+                <span className="ex-poster__badge">Watch form tutorial</span>
+              </button>
+              <a
+                className="ex-inline-toggle"
+                href={`https://www.youtube.com/watch?v=${ex.vid}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Prefer YouTube? Open there ↗
+              </a>
+            </>
+          )
+        ) : (
+          <div
+            className="warn-box"
+            style={{ background: 'var(--panel-2)', borderColor: 'var(--glass-border)' }}
+          >
+            Tutorial not bundled for this movement.{' '}
+            <a href={ytSearch(name)} target="_blank" rel="noreferrer" style={{ fontWeight: 700 }}>
+              Watch on YouTube ↗
+            </a>
+          </div>
         )}
       </div>
 
