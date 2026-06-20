@@ -2,14 +2,14 @@ import { useState } from 'react';
 import { Modal } from '@/components/Modal';
 import { Button } from '@/components/Button';
 import { Icon } from '@/components/Icon';
-import { photoFor, recipeMeta } from '@/features/recipes/filter';
+import { recipeMeta } from '@/features/recipes/filter';
 import { cookSteps } from '@/features/recipes/cooking';
 import { gradOf, type Recipe } from '@/features/recipes/data';
 import { translator, type TKey } from '@/lib/i18n';
 
 interface RecipeModalProps {
   r: Recipe;
-  photos: Record<string, string[]> | null;
+  photoUrl: string | null;
   mealLabel: TKey;
   lang: string;
   onClose: () => void;
@@ -19,7 +19,7 @@ interface RecipeModalProps {
 
 export function RecipeModal({
   r,
-  photos,
+  photoUrl,
   mealLabel,
   lang,
   onClose,
@@ -28,7 +28,7 @@ export function RecipeModal({
 }: RecipeModalProps): JSX.Element {
   const t = translator(lang);
   const [imgErr, setImgErr] = useState(false);
-  const url = photoFor(r, photos);
+  const url = photoUrl;
   const g = gradOf(r.grad ?? 0);
   const meta = recipeMeta(r);
   const method = cookSteps(r);

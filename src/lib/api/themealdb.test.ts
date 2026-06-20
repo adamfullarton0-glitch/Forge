@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, afterEach } from 'vitest';
-import { searchMeals, fetchPhotos } from './themealdb';
+import { searchMeals, fetchNamedThumbs } from './themealdb';
 
 function stubFetch(payload: unknown, ok = true): void {
   vi.stubGlobal(
@@ -70,28 +70,27 @@ describe('searchMeals', () => {
   });
 });
 
-describe('fetchPhotos', () => {
-  it('builds a term → thumbnail-list map (with /medium suffix)', async () => {
+describe('fetchNamedThumbs', () => {
+  it('maps a keyword to its first dish thumbnail (with /medium suffix)', async () => {
     stubFetch({
-      meals: [{ strMealThumb: 'http://img/a.jpg' }, { strMealThumb: 'http://img/b.jpg' }],
+      meals: [{ strMealThumb: 'http://img/burrito.jpg' }, { strMealThumb: 'http://img/x.jpg' }],
     });
-    const map = await fetchPhotos(['Chicken'], ['Salmon']);
-    expect(map['Chicken']).toEqual(['http://img/a.jpg/medium', 'http://img/b.jpg/medium']);
-    expect(map['Salmon']).toHaveLength(2);
+    const map = await fetchNamedThumbs(['burrito']);
+    expect(map['burrito']).toBe('http://img/burrito.jpg/medium');
   });
 
-  it('contributes an empty list for a failing fetch rather than rejecting', async () => {
+  it('omits a keyword with no match (caller falls back to a tile)', async () => {
+    stubFetch({ meals: null });
+    const map = await fetchNamedThumbs(['nope']);
+    expect(map['nope']).toBeUndefined();
+  });
+
+  it('omits a keyword on a failing fetch rather than rejecting', async () => {
     vi.stubGlobal(
       'fetch',
       vi.fn(() => Promise.reject(new Error('boom'))),
     );
-    const map = await fetchPhotos(['Chicken'], []);
-    expect(map['Chicken']).toEqual([]);
-  });
-
-  it('handles null meals from the filter endpoint', async () => {
-    stubFetch({ meals: null });
-    const map = await fetchPhotos(['Beef'], []);
-    expect(map['Beef']).toEqual([]);
+    const map = await fetchNamedThumbs(['curry']);
+    expect(map).toEqual({});
   });
 });

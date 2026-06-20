@@ -1,16 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { ALL_RECIPES, GEN_RECIPES, gradOf, type Recipe } from './data';
-import {
-  mealOf,
-  catOf,
-  recipeMins,
-  recipeMeta,
-  hashIdx,
-  isSafe,
-  canSee,
-  filterRecipes,
-  photoFor,
-} from './filter';
+import { mealOf, catOf, recipeMins, recipeMeta, isSafe, canSee, filterRecipes } from './filter';
+import { photoQueryFor, recipePhoto, PHOTO_QUERIES } from './photos';
 import { cookSteps } from './cooking';
 
 const find = (name: string): Recipe => {
@@ -69,10 +60,13 @@ describe('classification helpers', () => {
     expect(recipeMeta({ time: '10 min' } as Recipe).diff).toBe('Easy');
   });
 
-  it('hashIdx is deterministic and in range', () => {
-    expect(hashIdx('Chicken', 5)).toBe(hashIdx('Chicken', 5));
-    expect(hashIdx('Chicken', 5)).toBeLessThan(5);
-    expect(hashIdx('x', 0)).toBeGreaterThanOrEqual(0);
+  it('curated photo queries are defined for featured recipes only', () => {
+    expect(photoQueryFor(find('Chicken Burrito Bowl'))).toBe('burrito');
+    expect(photoQueryFor(find('Shrimp Tacos'))).toBe('tacos');
+    // A generated recipe has no curated photo → gradient tile.
+    const gen = GEN_RECIPES[0]!;
+    expect(photoQueryFor(gen)).toBeNull();
+    expect(PHOTO_QUERIES).toContain('burrito');
   });
 });
 
@@ -119,12 +113,14 @@ describe('safety + gating + filtering', () => {
     ).toBe(true);
   });
 
-  it('photoFor picks a stable photo or null', () => {
-    const photos = { Chicken: ['a.jpg', 'b.jpg'], Salmon: ['s.jpg'] };
-    const salmon = find('Salmon, Rice & Greens');
-    expect(photoFor(salmon, photos)).toBe('s.jpg');
-    expect(photoFor(salmon, null)).toBeNull();
-    expect(photoFor({ ing: ['nothing'], name: 'X' } as Recipe, photos)).toBeNull();
+  it('recipePhoto resolves a curated thumbnail, else null (→ tile)', () => {
+    const thumbs = { burrito: 'https://img/burrito/medium', salmon: 'https://img/salmon/medium' };
+    expect(recipePhoto(find('Chicken Burrito Bowl'), thumbs)).toBe('https://img/burrito/medium');
+    expect(recipePhoto(find('Chicken Burrito Bowl'), null)).toBeNull();
+    // Mapped recipe but its keyword wasn't fetched → null.
+    expect(recipePhoto(find('Turkey Chili'), thumbs)).toBeNull();
+    // Generated recipe → never a photo.
+    expect(recipePhoto(GEN_RECIPES[0]!, thumbs)).toBeNull();
   });
 });
 

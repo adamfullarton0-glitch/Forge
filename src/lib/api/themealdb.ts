@@ -28,15 +28,6 @@ const SearchSchema = z
   .object({ meals: z.array(RawMealSchema).nullable().catch(null) })
   .catch({ meals: null });
 
-const FilterSchema = z
-  .object({
-    meals: z
-      .array(z.object({ strMealThumb: z.string().catch('') }).catch({ strMealThumb: '' }))
-      .nullable()
-      .catch(null),
-  })
-  .catch({ meals: null });
-
 const str = (v: unknown): string => (typeof v === 'string' ? v : '');
 
 function mapMeal(raw: Record<string, unknown>): Dish {
@@ -76,34 +67,27 @@ export async function searchMeals(term: string): Promise<DishSearchResult> {
 }
 
 /**
- * Fetches thumbnail URLs for the given categories + ingredients, used to put a
- * real photo on each generated recipe. Any failed fetch contributes an empty
- * list rather than rejecting the whole map.
+ * Fetches one representative thumbnail per dish keyword (by name search), used
+ * to put an on-theme real photo on the curated featured recipes. Keywords with
+ * no match are omitted, so callers fall back to a gradient tile. Never throws.
  */
-export async function fetchPhotos(
-  categories: readonly string[],
-  ingredients: readonly string[],
-): Promise<Record<string, string[]>> {
-  const grab = async (key: string, url: string): Promise<readonly [string, string[]]> => {
+export async function fetchNamedThumbs(
+  queries: readonly string[],
+): Promise<Record<string, string>> {
+  const grab = async (q: string): Promise<readonly [string, string]> => {
     try {
-      const data = await fetchJson(url);
-      const parsed = FilterSchema.parse(data);
-      const thumbs = (parsed.meals ?? [])
-        .map((m) => m.strMealThumb)
-        .filter(Boolean)
-        .map((t) => `${t}/medium`);
-      return [key, thumbs];
+      const data = await fetchJson(`${BASE}/search.php?s=${encodeURIComponent(q)}`);
+      const parsed = SearchSchema.parse(data);
+      const first = (parsed.meals ?? [])[0];
+      const thumb = first ? str(first.strMealThumb) : '';
+      return [q, thumb ? `${thumb}/medium` : ''];
     } catch {
-      return [key, []];
+      return [q, ''];
     }
   };
   try {
-    const jobs = [
-      ...categories.map((c) => grab(c, `${BASE}/filter.php?c=${encodeURIComponent(c)}`)),
-      ...ingredients.map((i) => grab(i, `${BASE}/filter.php?i=${i.replace(/ /g, '_')}`)),
-    ];
-    const pairs = await Promise.all(jobs);
-    return Object.fromEntries(pairs);
+    const pairs = await Promise.all(queries.map(grab));
+    return Object.fromEntries(pairs.filter(([, url]) => url !== ''));
   } catch {
     return {};
   }

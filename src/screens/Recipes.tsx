@@ -19,15 +19,9 @@ import {
   clearHave,
   counts,
 } from '@/features/recipes/shopping';
-import {
-  filterRecipes,
-  canSee,
-  mealOf,
-  recipeMins,
-  PHOTO_CATS,
-  PHOTO_INGS,
-} from '@/features/recipes/filter';
-import { fetchPhotos } from '@/lib/api/themealdb';
+import { filterRecipes, canSee, mealOf, recipeMins } from '@/features/recipes/filter';
+import { recipePhoto, PHOTO_QUERIES } from '@/features/recipes/photos';
+import { fetchNamedThumbs } from '@/lib/api/themealdb';
 import { translator, type TKey } from '@/lib/i18n';
 import { todayKey } from '@/lib/calc';
 import type { CustomRecipe } from '@/types/schemas';
@@ -53,7 +47,7 @@ export function Recipes(): JSX.Element | null {
   const [gf, setGf] = useState('all');
   const [sortBy, setSortBy] = useState('default');
   const [show, setShow] = useState(PAGE);
-  const [photos, setPhotos] = useState<Record<string, string[]> | null>(null);
+  const [thumbs, setThumbs] = useState<Record<string, string> | null>(null);
   const [modal, setModal] = useState<Recipe | null>(null);
   const [showList, setShowList] = useState(false);
   const [added, setAdded] = useState<string | null>(null);
@@ -64,8 +58,8 @@ export function Recipes(): JSX.Element | null {
 
   useEffect(() => {
     let live = true;
-    void fetchPhotos(PHOTO_CATS, PHOTO_INGS).then((ph) => {
-      if (live) setPhotos(ph);
+    void fetchNamedThumbs(PHOTO_QUERIES).then((th) => {
+      if (live) setThumbs(th);
     });
     return () => {
       live = false;
@@ -293,7 +287,7 @@ export function Recipes(): JSX.Element | null {
               cursor: 'pointer',
             }}
           >
-            <RecipeTile r={r} photos={photos} size={70} />
+            <RecipeTile r={r} photoUrl={recipePhoto(r, thumbs)} size={70} />
             <div style={{ flex: 1, minWidth: 0 }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', gap: 8 }}>
                 <div style={{ fontWeight: 700, lineHeight: 1.25 }}>{r.name}</div>
@@ -412,7 +406,7 @@ export function Recipes(): JSX.Element | null {
       {modal ? (
         <RecipeModal
           r={modal}
-          photos={photos}
+          photoUrl={recipePhoto(modal, thumbs)}
           lang={data.settings.lang}
           mealLabel={meal}
           onClose={() => setModal(null)}

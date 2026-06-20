@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { photoFor } from '@/features/recipes/filter';
 import { gradOf, type Recipe } from '@/features/recipes/data';
 
 function GradTile({ r, size }: { r: Recipe; size: number }): JSX.Element {
@@ -25,22 +24,21 @@ function GradTile({ r, size }: { r: Recipe; size: number }): JSX.Element {
   );
 }
 
-/** A recipe thumbnail — a real photo when available, else a gradient initial. */
+/** A recipe thumbnail — a curated real photo when available, else a gradient initial. */
 export function RecipeTile({
   r,
-  photos,
+  photoUrl,
   size = 70,
 }: {
   r: Recipe;
-  photos: Record<string, string[]> | null;
+  photoUrl: string | null;
   size?: number;
 }): JSX.Element {
   const [err, setErr] = useState(false);
-  const url = photoFor(r, photos);
-  if (!url || err) return <GradTile r={r} size={size} />;
+  if (!photoUrl || err) return <GradTile r={r} size={size} />;
   return (
     <img
-      src={url}
+      src={photoUrl}
       alt={r.name}
       loading="lazy"
       onError={() => setErr(true)}

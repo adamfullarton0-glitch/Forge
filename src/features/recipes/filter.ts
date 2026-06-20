@@ -1,39 +1,5 @@
 import type { Recipe } from './data';
 
-/** Categories + ingredient terms we pull TheMealDB photos for. */
-export const PHOTO_CATS = ['Chicken', 'Beef', 'Pork', 'Seafood', 'Vegetarian'] as const;
-export const PHOTO_INGS = [
-  'Chicken Breast',
-  'Turkey',
-  'Beef',
-  'Salmon',
-  'Cod',
-  'Tuna',
-  'Prawns',
-  'Eggs',
-  'Tofu',
-  'Chicken',
-  'Pork',
-  'Halloumi',
-] as const;
-/** Photo term per generated-protein index (parallel to GP). */
-const ING_PHOTO = [
-  'Chicken Breast',
-  'Turkey',
-  'Beef',
-  'Salmon',
-  'Cod',
-  'Tuna',
-  'Prawns',
-  'Eggs',
-  'Tofu',
-  'Chicken',
-  'Cheese',
-  'Pork',
-  'Tofu',
-  'Halloumi',
-];
-
 export type MealType = 'breakfast' | 'lunch' | 'dinner' | 'snack';
 
 /** Infers the meal type for a recipe. */
@@ -89,43 +55,6 @@ export function recipeMeta(r: Recipe): RecipeMeta {
     cook: Math.max(5, total - prep),
     diff: total <= 15 ? 'Easy' : total <= 30 ? 'Medium' : 'Involved',
   };
-}
-
-/** Deterministic hash → index, used to pick a stable photo per recipe. */
-export function hashIdx(strInput: string, n: number): number {
-  let h = 7;
-  for (let i = 0; i < strInput.length; i++) h = (h * 31 + strInput.charCodeAt(i)) >>> 0;
-  return n > 0 ? h % n : h;
-}
-
-function featTerm(r: Recipe): string | null {
-  const j = (r.ing || []).join(' ').toLowerCase();
-  if (/salmon/.test(j)) return 'Salmon';
-  if (/tuna/.test(j)) return 'Tuna';
-  if (/cod/.test(j)) return 'Cod';
-  if (/prawn|shrimp/.test(j)) return 'Prawns';
-  if (/chicken|turkey/.test(j)) return 'Chicken';
-  if (/beef|steak/.test(j)) return 'Beef';
-  if (/pork|bacon|ham/.test(j)) return 'Pork';
-  if (/halloumi/.test(j)) return 'Halloumi';
-  if (/tofu|tempeh/.test(j)) return 'Tofu';
-  if (/egg/.test(j)) return 'Eggs';
-  return null;
-}
-
-function photoTerm(r: Recipe): string | null {
-  if (r.pIdx != null) return ING_PHOTO[r.pIdx] ?? null;
-  return featTerm(r);
-}
-
-/** Picks a stable photo URL for a recipe from the fetched photo map, or null. */
-export function photoFor(r: Recipe, photos: Record<string, string[]> | null): string | null {
-  if (!photos) return null;
-  const term = photoTerm(r);
-  let arr = term ? photos[term] : undefined;
-  if (!arr || arr.length === 0) arr = photos[catOf(r)];
-  if (!arr || arr.length === 0) return null;
-  return arr[hashIdx(r.name, arr.length)] ?? null;
 }
 
 export interface RecipeFilters {
