@@ -19,7 +19,8 @@
     "e2e": "playwright test",
     "e2e:install": "playwright install --with-deps chromium",
     "verify": "npm run typecheck && npm run lint && npm run test",
-    "prepare": "husky || true"
+    "prepare": "husky || true",
+    "fetch:exercise-media": "node scripts/fetch-exercise-media.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",

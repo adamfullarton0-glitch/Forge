@@ -86,7 +86,7 @@ export default defineConfig({
       },
       workbox: {
         // App shell must open with no network — precache everything built.
-        globPatterns: ['**/*.{js,css,html,svg,png,woff2}'],
+        globPatterns: ['**/*.{js,css,html,svg,png,jpg,woff2}'],
         navigateFallback: `${base}index.html`,
         runtimeCaching: [
           {
