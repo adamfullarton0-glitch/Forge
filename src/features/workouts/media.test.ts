@@ -17,11 +17,13 @@ describe('exerciseImage', () => {
 });
 
 describe('hasExerciseImage', () => {
-  it('is false when the manifest has no entry (none bundled yet)', () => {
-    expect(hasExerciseImage('Barbell Bench Press')).toBe(false);
+  it('is true for a bundled exercise and false for an unknown one', () => {
+    // The manifest is populated by `npm run fetch:exercise-media`.
+    expect(hasExerciseImage('Barbell Bench Press')).toBe(true);
+    expect(hasExerciseImage('Some Made-Up Lift')).toBe(false);
   });
 
-  it('is true when the slug is in the provided manifest', () => {
+  it('honours a provided manifest', () => {
     const slugs = new Set(['barbell-bench-press']);
     expect(hasExerciseImage('Barbell Bench Press', slugs)).toBe(true);
     expect(hasExerciseImage('Deadlift', slugs)).toBe(false);
