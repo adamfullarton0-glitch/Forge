@@ -5,7 +5,7 @@ import rateLimit from '@fastify/rate-limit';
 import type { Config } from './config.js';
 import type { StateRepo, UserRepo } from './repo/types.js';
 import { ConflictError } from './repo/types.js';
-import { hashPassword, verifyPassword } from './auth/password.js';
+import { dummyHash, hashPassword, verifyPassword } from './auth/password.js';
 import { signToken, verifyToken, bearer } from './auth/tokens.js';
 import { CredentialsSchema, LoginSchema, SyncPutSchema } from './schemas.js';
 
@@ -31,6 +31,10 @@ const publicUser = (u: { id: string; email: string; createdAt: string }) => ({
  */
 export function buildApp({ config, users, state }: Deps): FastifyInstance {
   const app = Fastify({ logger: config.isProd, bodyLimit: BODY_LIMIT });
+
+  // A real hash at the configured cost, compared against when an email is
+  // unknown so login timing can't reveal which emails are registered.
+  const DUMMY_HASH = dummyHash(config.bcryptRounds);
 
   void app.register(helmet, { contentSecurityPolicy: false });
   void app.register(cors, {
@@ -78,13 +82,9 @@ export function buildApp({ config, users, state }: Deps): FastifyInstance {
     }
     const { email, password } = parsed.data;
     const user = await users.findByEmail(email);
-    // Always run a hash compare to avoid leaking which emails exist (timing).
-    const ok = user
-      ? await verifyPassword(password, user.passwordHash)
-      : await verifyPassword(
-          password,
-          '$2a$10$0000000000000000000000000000000000000000000000000000',
-        );
+    // Always run a real hash compare (against DUMMY_HASH when no user) so the
+    // response time doesn't leak whether the email is registered.
+    const ok = await verifyPassword(password, user ? user.passwordHash : DUMMY_HASH);
     if (!user || !ok) {
       return reply.code(401).send({ error: 'Invalid email or password.' });
     }

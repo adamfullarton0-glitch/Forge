@@ -2,7 +2,7 @@
 
 A small, production-grade API that gives FORGE **accounts** and **cross-device
 sync**. Node + TypeScript (strict) · Fastify · Postgres (raw SQL, no ORM) ·
-JWT auth · Zod validation. Fully tested (`npm test`, 15 tests, no database
+JWT auth · Zod validation. Fully tested (`npm test`, 32 tests incl. an in-memory-Postgres (pg-mem) contract suite, no live database
 needed — routes run against an in-memory repo).
 
 This is the real implementation behind the app's `AuthAdapter` / `SyncAdapter`
@@ -27,7 +27,7 @@ offline-first PWA without it; this adds optional login + sync on top.
 | Config via env / secrets   | ✅     | `src/config.ts`, fails fast if `JWT_SECRET`/`DATABASE_URL` missing in prod |
 | Health check               | ✅     | `GET /health` (for the platform's liveness probe)                          |
 | Migrations                 | ✅     | idempotent `db/schema.sql` via `npm run migrate` (runs on deploy)          |
-| Tests                      | ✅     | Vitest, route + logic coverage, no DB required                             |
+| Tests                      | ✅     | Vitest — routes, auth, and the real SQL via pg-mem; no DB required         |
 | Containerised deploy       | ✅     | multi-stage `Dockerfile`                                                   |
 | Graceful shutdown          | ✅     | SIGTERM/SIGINT close server + pool                                         |
 
@@ -59,7 +59,7 @@ server snapshot so the client can merge and retry. Simple, robust last-writer
 cd server
 cp .env.example .env        # set JWT_SECRET; DATABASE_URL optional for dev
 npm install
-npm test                    # 15 tests, no database needed
+npm test                    # 32 tests (incl. pg-mem SQL contract), no DB needed
 npm run dev                 # needs a Postgres DATABASE_URL to actually serve
 ```
 

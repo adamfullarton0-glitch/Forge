@@ -62,16 +62,29 @@ export function pgRepos(pool: Pool): { users: UserRepo; state: StateRepo } {
       return r ? { data: r.data, rev: r.rev, updatedAt: r.updated_at.toISOString() } : null;
     },
     async put(userId, data, baseRev) {
-      // Atomic optimistic-concurrency upsert: only writes when the stored rev
-      // matches baseRev (or the row doesn't exist yet and baseRev is 0).
+      // Atomic optimistic concurrency that exactly mirrors the in-memory repo:
+      //  - update when a row exists AND its rev == baseRev;
+      //  - insert (rev 1) only when no row exists AND baseRev == 0;
+      //  - otherwise write nothing → caller returns conflict + current state.
+      // Both branches run in one statement (one DB snapshot); the insert's
+      // ON CONFLICT DO NOTHING makes a concurrent first-write race safe.
       const json = JSON.stringify(data);
       const { rows } = await pool.query<SnapRow>(
-        `INSERT INTO snapshots (user_id, data, rev, updated_at)
-           VALUES ($1, $2::jsonb, 1, now())
-         ON CONFLICT (user_id) DO UPDATE
-           SET data = EXCLUDED.data, rev = snapshots.rev + 1, updated_at = now()
-           WHERE snapshots.rev = $3
-         RETURNING data, rev, updated_at`,
+        `WITH upd AS (
+           UPDATE snapshots SET data = $2::jsonb, rev = rev + 1, updated_at = now()
+           WHERE user_id = $1 AND rev = $3
+           RETURNING data, rev, updated_at
+         ),
+         ins AS (
+           INSERT INTO snapshots (user_id, data, rev, updated_at)
+           SELECT $1, $2::jsonb, 1, now()
+           WHERE $3 = 0 AND NOT EXISTS (SELECT 1 FROM snapshots WHERE user_id = $1)
+           ON CONFLICT (user_id) DO NOTHING
+           RETURNING data, rev, updated_at
+         )
+         SELECT data, rev, updated_at FROM upd
+         UNION ALL
+         SELECT data, rev, updated_at FROM ins`,
         [userId, json, baseRev],
       );
       const updated = rows[0];

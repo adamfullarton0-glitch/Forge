@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { hashPassword, verifyPassword } from '../src/auth/password.js';
+import { hashPassword, verifyPassword, dummyHash } from '../src/auth/password.js';
 import { signToken, verifyToken, bearer } from '../src/auth/tokens.js';
 
 const SECRET = 'test-secret-test-secret-test-secret-0001';
@@ -15,6 +15,14 @@ describe('password hashing', () => {
     const hash = await hashPassword('right', 8);
     expect(await verifyPassword('wrong', hash)).toBe(false);
     expect(await verifyPassword('x', 'not-a-real-hash')).toBe(false);
+  });
+
+  it('dummyHash is a real 60-char bcrypt hash (constant-time login, no enum leak)', () => {
+    const h = dummyHash(8);
+    // A valid bcrypt hash is exactly 60 chars; a malformed one would make the
+    // compare short-circuit and leak account existence via timing.
+    expect(h).toHaveLength(60);
+    expect(h.startsWith('$2')).toBe(true);
   });
 });
 
