@@ -3,10 +3,11 @@ import type { Recipe } from './data';
 
 /**
  * Recipe photos. The hand-written featured / breakfast / snack recipes have a
- * curated, openly-licensed photo bundled in public/recipes/<slug>.jpg (offline,
- * served from our own origin). Every real-recipe-library dish carries its own
- * real photo URL (`thumb`, from TheMealDB's CDN), shown directly and cached on
- * view. Only user-created custom recipes fall back to the branded gradient tile.
+ * curated, openly-licensed photo bundled in public/recipes/<slug>.jpg. Every
+ * real-recipe-library dish has its own real photo bundled in
+ * public/recipes/db/<id>.jpg (downloaded from TheMealDB at build time). Both are
+ * served from our own origin — reliable and offline-cacheable. Only user-created
+ * custom recipes fall back to the branded gradient tile.
  */
 
 const SLUGS = new Set<string>(manifest);
@@ -26,11 +27,12 @@ export function hasRecipePhoto(name: string, slugs: ReadonlySet<string> = SLUGS)
 
 /**
  * The photo URL for a recipe, or null (→ gradient tile). Featured/meal recipes
- * resolve to their bundled photo by name; real-recipe-library dishes use their
- * own `thumb`; custom recipes have none. Resolves under the deploy base.
+ * resolve to their bundled photo by name; real-recipe-library dishes by their
+ * bundled `img` id; custom recipes have none. Resolves under the deploy base.
  */
 export function recipePhoto(r: Recipe, slugs: ReadonlySet<string> = SLUGS): string | null {
+  const base = import.meta.env.BASE_URL;
   const slug = recipeSlug(r.name);
-  if (slugs.has(slug)) return `${import.meta.env.BASE_URL}recipes/${slug}.jpg`;
-  return r.thumb ?? null;
+  if (slugs.has(slug)) return `${base}recipes/${slug}.jpg`;
+  return r.img ? `${base}recipes/db/${r.img}.jpg` : null;
 }

@@ -11,7 +11,8 @@
 //
 // Run on a machine with internet:  node scripts/build-real-recipes.mjs
 
-import { writeFile } from 'node:fs/promises';
+import { writeFile, mkdir } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -225,7 +226,7 @@ function toRecipe(m, idx) {
     cat,
     area,
     ...(meal ? { meal } : {}),
-    thumb: `${str(m.strMealThumb)}/medium`,
+    img: str(m.idMeal),
     yt: str(m.strYoutube) || undefined,
     gi: idx,
     grad: idx % 8,
@@ -244,10 +245,33 @@ async function main() {
   const meals = [...byId.values()].sort((a, b) => a.strMeal.localeCompare(b.strMeal));
   const recipes = meals.map((m, i) => toRecipe(m, i));
 
+  // Download each dish's real photo so it's served from our own origin (reliable
+  // + offline-cacheable) instead of hotlinked. ~350px is sharp for the hero/tile.
+  const imgDir = join(ROOT, 'public', 'recipes', 'db');
+  await mkdir(imgDir, { recursive: true });
+  let got = 0, failed = 0;
+  for (const m of meals) {
+    const id = m.idMeal;
+    const out = join(imgDir, `${id}.jpg`);
+    if (existsSync(out)) { got++; continue; }
+    try {
+      const res = await fetch(`${m.strMealThumb}/medium`);
+      if (!res.ok) throw new Error(String(res.status));
+      const buf = Buffer.from(await res.arrayBuffer());
+      if (buf.length < 1024) throw new Error('too small');
+      await writeFile(out, buf);
+      got++;
+    } catch (e) {
+      failed++;
+      console.warn(`  ✗ photo ${id} (${m.strMeal}): ${e.message}`);
+    }
+  }
+
   await writeFile(
     join(ROOT, 'src', 'features', 'recipes', 'real-recipes.json'),
     JSON.stringify(recipes) + '\n',
   );
+  console.log(`Photos: ${got} bundled, ${failed} failed.`);
 
   // Sanity report
   const k = recipes.map((r) => r.kcal).sort((a, b) => a - b);

@@ -14,9 +14,9 @@ describe('recipe data', () => {
   it('loads the full real-recipe library', () => {
     expect(REAL_RECIPES.length).toBeGreaterThan(600); // TheMealDB full catalogue
     expect(ALL_RECIPES.length).toBeGreaterThan(REAL_RECIPES.length); // + featured
-    // Every real recipe is a genuine dish with its own photo and a method.
+    // Every real recipe is a genuine dish with its own bundled photo + a method.
     for (const r of REAL_RECIPES) {
-      expect(r.thumb).toMatch(/^https:\/\/www\.themealdb\.com\/.+\.jpg\/medium$/);
+      expect(r.img).toMatch(/^\d+$/);
       expect(r.steps?.length ?? 0).toBeGreaterThan(0);
     }
   });
@@ -77,9 +77,9 @@ describe('classification helpers', () => {
     }
   });
 
-  it('gives every real recipe its own photo', () => {
+  it('gives every real recipe its own bundled photo', () => {
     for (const r of REAL_RECIPES) {
-      expect(recipePhoto(r)).toBe(r.thumb);
+      expect(recipePhoto(r)).toBe(`/recipes/db/${r.img}.jpg`);
     }
   });
 });
@@ -127,13 +127,13 @@ describe('safety + gating + filtering', () => {
     ).toBe(true);
   });
 
-  it('recipePhoto resolves featured by name, real by thumb, custom → null', () => {
+  it('recipePhoto resolves featured by name, real by bundled id, custom → null', () => {
     // import.meta.env.BASE_URL is '/' in the test env.
     expect(recipePhoto(find('Chicken Burrito Bowl'))).toBe('/recipes/chicken-burrito-bowl.jpg');
     expect(recipePhoto(find('Turkey Chili'))).toBe('/recipes/turkey-chili.jpg');
-    // A real-library dish → its own TheMealDB photo.
-    expect(recipePhoto(REAL_RECIPES[0]!)).toBe(REAL_RECIPES[0]!.thumb);
-    // A custom recipe (no thumb, not a featured name) → gradient tile.
+    // A real-library dish → its own bundled photo.
+    expect(recipePhoto(REAL_RECIPES[0]!)).toBe(`/recipes/db/${REAL_RECIPES[0]!.img}.jpg`);
+    // A custom recipe (no photo, not a featured name) → gradient tile.
     expect(recipePhoto({ name: 'My Custom Meal', custom: true } as Recipe)).toBeNull();
   });
 

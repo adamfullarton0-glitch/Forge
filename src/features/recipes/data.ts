@@ -35,10 +35,10 @@ export interface Recipe {
   /** Set on user-created recipes (carries the persisted CustomRecipe id). */
   id?: string;
   custom?: boolean;
-  /** Real-recipe fields (TheMealDB): category, cuisine, photo URL, video id. */
+  /** Real-recipe fields (TheMealDB): category, cuisine, bundled photo id, video. */
   cat?: string;
   area?: string;
-  thumb?: string;
+  img?: string;
   yt?: string;
 }
 
