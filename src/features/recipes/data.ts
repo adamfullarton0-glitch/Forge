@@ -1,8 +1,10 @@
 /**
- * Recipe data ported from the prototype: 12 featured savoury recipes, 12
- * featured breakfast/snack recipes (with hand-written steps), and ~560
- * procedurally-generated protein × base × sauce × format combinations.
+ * Recipe data: 12 featured savoury recipes + 12 featured breakfast/snack
+ * recipes (hand-written steps, curated photos, exact macros), plus the full
+ * catalogue of real, popular dishes from TheMealDB (real photos, ingredients
+ * and methods; macros estimated — see scripts/build-real-recipes.mjs).
  */
+import REAL_RECIPES_RAW from './real-recipes.json';
 
 export interface Recipe {
   name: string;
@@ -33,6 +35,11 @@ export interface Recipe {
   /** Set on user-created recipes (carries the persisted CustomRecipe id). */
   id?: string;
   custom?: boolean;
+  /** Real-recipe fields (TheMealDB): category, cuisine, photo URL, video id. */
+  cat?: string;
+  area?: string;
+  thumb?: string;
+  yt?: string;
 }
 
 /** [name, protein, carbs, fat, allergens, ingredient keywords] */
@@ -110,55 +117,12 @@ export function gradOf(i: number): readonly [string, string] {
   return GRADS[((i % len) + len) % len] ?? FALLBACK_GRAD;
 }
 
-const uniq = (arr: string[]): string[] => [...new Set(arr)];
-
-/** Builds the ~560 generated recipes (14 proteins × 10 bases × 4 formats). */
-function buildGenerated(): Recipe[] {
-  const out: Recipe[] = [];
-  GP.forEach(([pn, pp, pc, pf, pa, pi], i) => {
-    GB.forEach(([bn, bp, bc, bf, ba, bi], j) => {
-      for (let k = 0; k < 4; k++) {
-        const sIdx = (i * 3 + j * 5 + k * 4) % GS.length;
-        const s = GS[sIdx];
-        if (!s) continue;
-        const fmt = GF[(i + j + k) % GF.length] ?? 'Bowl';
-        const P = pp + bp + 2;
-        const C = pc + bc + 9;
-        const F = pf + bf + s[3];
-        const kcal = Math.round((P * 4 + C * 4 + F * 9) / 5) * 5;
-        const goal =
-          kcal < 540 && P >= 35
-            ? ['lose', 'maintain']
-            : kcal > 660
-              ? ['gain', 'maintain']
-              : ['maintain', 'lose', 'gain'];
-        out.push({
-          gi: out.length,
-          name: `${s[0]} ${pn} ${fmt}`,
-          time: `${15 + ((i + j + k) % 5) * 5} min`,
-          kcal,
-          p: P,
-          c: C,
-          f: F,
-          allergens: uniq([...pa, ...ba, ...s[1]]),
-          ing: uniq([...pi, ...bi, ...s[2], 'mixed greens']),
-          goal,
-          grad: (i * 7 + j * 3 + k) % GRADS.length,
-          pIdx: i,
-          bIdx: j,
-          sIdx,
-          fmt,
-          desc: `${s[0].toLowerCase()} ${pn.toLowerCase()} served ${
-            fmt === 'Bowl' ? 'over' : 'with'
-          } ${bn.toLowerCase()} and greens — macro-friendly and meal-prep ready.`,
-        });
-      }
-    });
-  });
-  return out;
-}
-
-export const GEN_RECIPES: Recipe[] = buildGenerated();
+/**
+ * The full catalogue of real, popular dishes (TheMealDB). Each carries its own
+ * real photo (`thumb`), ingredients and method; macros are estimates. `gi` gives
+ * a stable index so a sample is unlocked for free users.
+ */
+export const REAL_RECIPES = REAL_RECIPES_RAW as unknown as Recipe[];
 
 const FEATURED: Recipe[] = [
   {
@@ -543,9 +507,9 @@ const MEAL_RECIPES: Recipe[] = [
   },
 ].map((r) => ({ ...r, featured: true }));
 
-/** Everything, featured first. */
+/** Everything: hand-written featured picks first, then the real-recipe library. */
 export const ALL_RECIPES: Recipe[] = [
   ...MEAL_RECIPES,
   ...FEATURED.map((r, i) => ({ ...r, featured: true, grad: i % GRADS.length })),
-  ...GEN_RECIPES,
+  ...REAL_RECIPES,
 ];

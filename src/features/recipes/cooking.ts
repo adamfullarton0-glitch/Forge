@@ -391,7 +391,9 @@ export function cookSteps(r: Recipe): Method | null {
         r.tip ??
         (r.meal === 'snack'
           ? 'Keep these ingredients on hand for an easy high-protein hit any time of day.'
-          : 'A high-protein start to the day — prep ahead on busy mornings and scale the portion to your calorie goal.'),
+          : r.meal === 'breakfast'
+            ? 'A great start to the day — prep ahead on busy mornings and scale the portion to your calorie goal.'
+            : 'Taste as you go and season at the end — a final pinch of salt or squeeze of acid lifts the whole dish. Macros are an estimate; adjust portions to your goal.'),
     };
   }
   const featured = FEATURED_STEPS[r.name];

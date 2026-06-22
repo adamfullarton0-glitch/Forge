@@ -104,49 +104,6 @@ const OVERRIDES = {
   },
 };
 
-// The ~560 generated recipes are protein × base × sauce × format combos. Rather
-// than 560 unique photos, we bundle one representative photo per protein ×
-// format (the two things that actually change how a dish looks) and map every
-// generated recipe to it by its main ingredient + cooking style. Protein display
-// names MUST match GP in src/features/recipes/data.ts (the app keys off them).
-const PROTEINS = [
-  ['Chicken Breast', 'chicken'],
-  ['Turkey Mince', 'turkey'],
-  ['Lean Beef', 'beef'],
-  ['Salmon', 'salmon'],
-  ['Cod', 'cod'],
-  ['Tuna Steak', 'tuna'],
-  ['King Prawn', 'prawn'],
-  ['Egg & Egg White', 'egg'],
-  ['Crispy Tofu', 'tofu'],
-  ['Greek Yogurt Chicken', 'chicken'],
-  ['Cottage Cheese', 'cottage cheese'],
-  ['Pork Loin', 'pork'],
-  ['Tempeh', 'tempeh'],
-  ['Halloumi', 'halloumi'],
-];
-// Format display name (must match GF in data.ts) → ordered search phrases.
-const FORMATS = [
-  ['Bowl', ['rice bowl', 'grain bowl', 'bowl']],
-  ['Traybake', ['traybake', 'roasted vegetables', 'sheet pan dinner']],
-  ['Stir-Fry', ['stir fry', 'stir-fried vegetables']],
-  ['Skillet', ['skillet', 'pan seared', 'cooked']],
-];
-
-// Hand-picked replacements for combos whose automatic top hit was a product
-// package or a cluttered amateur shot (verified by eye), pinned the same way as
-// the featured OVERRIDES.
-const COMBO_OVERRIDES = {
-  'chicken-breast-skillet': {
-    query: 'pan fried chicken breast plate',
-    url: 'https://live.staticflickr.com/4148/5191668694_b0be1e8161_b.jpg',
-  },
-  'greek-yogurt-chicken-skillet': {
-    query: 'grilled chicken breast vegetables dinner',
-    url: 'https://live.staticflickr.com/8669/15933034486_54d4d4c890_b.jpg',
-  },
-};
-
 const slug = (s) =>
   s
     .toLowerCase()
@@ -189,9 +146,7 @@ async function main() {
   await mkdir(outDir, { recursive: true });
 
   // Reserve hand-picked URLs so an earlier recipe's auto-pick can't grab them.
-  const used = new Set(
-    [...Object.values(OVERRIDES), ...Object.values(COMBO_OVERRIDES)].map((o) => o.url),
-  );
+  const used = new Set(Object.values(OVERRIDES).map((o) => o.url));
   const manifest = [];
   const credits = [];
 
@@ -229,60 +184,6 @@ async function main() {
     JSON.stringify(manifest, null, 2) + '\n',
   );
 
-  // --- Generated combos: one photo per protein × format -------------------
-  const genDir = join(outDir, 'gen');
-  await mkdir(genDir, { recursive: true });
-  const comboManifest = [];
-  for (const [protein, word] of PROTEINS) {
-    for (const [format, phrases] of FORMATS) {
-      const key = `${slug(protein)}-${slug(format)}`;
-      const onTopic = (r) => (r.title ?? '').toLowerCase().includes(word.toLowerCase());
-      let pick = null;
-      const override = COMBO_OVERRIDES[key];
-      if (override) {
-        const results = await search(override.query);
-        pick = results.find((r) => r.url === override.url) ?? null;
-      }
-      if (!pick) {
-        // Gather candidates across all queries, then strongly prefer a photo whose
-        // title actually mentions the protein (kills "wine"/"fruit compote" noise).
-        const queries = [...phrases.map((p) => `${word} ${p}`), `${word} dish`, word];
-        const seen = new Set();
-        const pool = [];
-        for (const q of queries) {
-          for (const r of await search(q)) {
-            if (r.url && !used.has(r.url) && !seen.has(r.url)) {
-              seen.add(r.url);
-              pool.push(r);
-            }
-          }
-          pick = pool.find(onTopic);
-          if (pick) break; // a title-matched hit is good enough; stop querying
-        }
-        pick = pick ?? pool[0] ?? null;
-      }
-      if (!pick) {
-        console.warn(`✗ ${key} — no photo found`);
-        continue;
-      }
-      const buf = await download(pick.url);
-      if (!buf) {
-        console.warn(`✗ ${key} → "${pick.title}": download failed`);
-        continue;
-      }
-      used.add(pick.url);
-      await writeFile(join(genDir, `${key}.jpg`), buf);
-      comboManifest.push(key);
-      credits.push({ name: `${protein} ${format}`, slug: `gen/${key}`, ...pick });
-      console.log(`✓ ${key} → "${pick.title ?? 'untitled'}" (${pick.license})`);
-    }
-  }
-  comboManifest.sort();
-  await writeFile(
-    join(ROOT, 'src', 'features', 'recipes', 'recipe-combo-media.json'),
-    JSON.stringify(comboManifest, null, 2) + '\n',
-  );
-
   const md = [
     '# Recipe photo credits',
     '',
@@ -299,10 +200,8 @@ async function main() {
   ].join('\n');
   await writeFile(join(outDir, 'CREDITS.md'), md);
 
-  console.log(
-    `\nDone: ${manifest.length}/${QUERIES.length} featured + ${comboManifest.length}/${PROTEINS.length * FORMATS.length} combo photos bundled.`,
-  );
-  console.log('Commit public/recipes/**, public/recipes/CREDITS.md, and the two manifests.');
+  console.log(`\nDone: ${manifest.length}/${QUERIES.length} featured photos bundled.`);
+  console.log('Commit public/recipes/*.jpg, public/recipes/CREDITS.md, and recipe-media.json.');
 }
 
 main().catch((err) => {

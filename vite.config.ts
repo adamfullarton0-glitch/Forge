@@ -85,20 +85,18 @@ export default defineConfig({
         ],
       },
       workbox: {
-        // App shell must open with no network — precache everything built,
-        // except the ~560 generated-recipe combo photos (a long tail that would
-        // bloat the install). Those are cached on first view instead.
+        // App shell must open with no network — precache everything built.
         globPatterns: ['**/*.{js,css,html,svg,png,jpg,woff2}'],
-        globIgnores: ['**/recipes/gen/**'],
         navigateFallback: `${base}index.html`,
         runtimeCaching: [
           {
-            // Generated-recipe photos: cache-first, kept offline once seen.
-            urlPattern: ({ url }) => url.pathname.includes('/recipes/gen/'),
+            // Real-recipe photos (TheMealDB CDN): immutable, so cache-first and
+            // kept offline once a recipe has been viewed.
+            urlPattern: /^https:\/\/www\.themealdb\.com\/images\/.*/,
             handler: 'CacheFirst',
             options: {
               cacheName: 'forge-recipe-photos',
-              expiration: { maxEntries: 600, maxAgeSeconds: 60 * 60 * 24 * 30 },
+              expiration: { maxEntries: 800, maxAgeSeconds: 60 * 60 * 24 * 30 },
               cacheableResponse: { statuses: [0, 200] },
             },
           },
