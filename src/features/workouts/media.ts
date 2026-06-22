@@ -22,7 +22,7 @@ export function exerciseImage(name: string): string {
   return `${import.meta.env.BASE_URL}exercises/${exerciseSlug(name)}.jpg`;
 }
 
-const SLUGS: ReadonlySet<string> = new Set(MEDIA as string[]);
+const SLUGS = new Set<string>(MEDIA);
 
 /** Whether a bundled demo image exists for this exercise. */
 export function hasExerciseImage(name: string, slugs: ReadonlySet<string> = SLUGS): boolean {

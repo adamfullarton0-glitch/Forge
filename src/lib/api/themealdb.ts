@@ -65,30 +65,3 @@ export async function searchMeals(term: string): Promise<DishSearchResult> {
     return { ok: false, error: "Couldn't reach the recipe database. Works in the live app." };
   }
 }
-
-/**
- * Fetches one representative thumbnail per dish keyword (by name search), used
- * to put an on-theme real photo on the curated featured recipes. Keywords with
- * no match are omitted, so callers fall back to a gradient tile. Never throws.
- */
-export async function fetchNamedThumbs(
-  queries: readonly string[],
-): Promise<Record<string, string>> {
-  const grab = async (q: string): Promise<readonly [string, string]> => {
-    try {
-      const data = await fetchJson(`${BASE}/search.php?s=${encodeURIComponent(q)}`);
-      const parsed = SearchSchema.parse(data);
-      const first = (parsed.meals ?? [])[0];
-      const thumb = first ? str(first.strMealThumb) : '';
-      return [q, thumb ? `${thumb}/medium` : ''];
-    } catch {
-      return [q, ''];
-    }
-  };
-  try {
-    const pairs = await Promise.all(queries.map(grab));
-    return Object.fromEntries(pairs.filter(([, url]) => url !== ''));
-  } catch {
-    return {};
-  }
-}

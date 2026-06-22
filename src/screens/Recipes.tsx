@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card } from '@/components/Card';
 import { Button } from '@/components/Button';
@@ -20,8 +20,7 @@ import {
   counts,
 } from '@/features/recipes/shopping';
 import { filterRecipes, canSee, mealOf, recipeMins } from '@/features/recipes/filter';
-import { recipePhoto, PHOTO_QUERIES } from '@/features/recipes/photos';
-import { fetchNamedThumbs } from '@/lib/api/themealdb';
+import { recipePhoto } from '@/features/recipes/media';
 import { translator, type TKey } from '@/lib/i18n';
 import { todayKey } from '@/lib/calc';
 import type { CustomRecipe } from '@/types/schemas';
@@ -47,7 +46,6 @@ export function Recipes(): JSX.Element | null {
   const [gf, setGf] = useState('all');
   const [sortBy, setSortBy] = useState('default');
   const [show, setShow] = useState(PAGE);
-  const [thumbs, setThumbs] = useState<Record<string, string> | null>(null);
   const [modal, setModal] = useState<Recipe | null>(null);
   const [showList, setShowList] = useState(false);
   const [added, setAdded] = useState<string | null>(null);
@@ -55,16 +53,6 @@ export function Recipes(): JSX.Element | null {
     open: false,
     editing: null,
   });
-
-  useEffect(() => {
-    let live = true;
-    void fetchNamedThumbs(PHOTO_QUERIES).then((th) => {
-      if (live) setThumbs(th);
-    });
-    return () => {
-      live = false;
-    };
-  }, []);
 
   if (!p) return null;
 
@@ -287,7 +275,7 @@ export function Recipes(): JSX.Element | null {
               cursor: 'pointer',
             }}
           >
-            <RecipeTile r={r} photoUrl={recipePhoto(r, thumbs)} size={70} />
+            <RecipeTile r={r} photoUrl={recipePhoto(r)} size={70} />
             <div style={{ flex: 1, minWidth: 0 }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', gap: 8 }}>
                 <div style={{ fontWeight: 700, lineHeight: 1.25 }}>{r.name}</div>
@@ -406,7 +394,7 @@ export function Recipes(): JSX.Element | null {
       {modal ? (
         <RecipeModal
           r={modal}
-          photoUrl={recipePhoto(modal, thumbs)}
+          photoUrl={recipePhoto(modal)}
           lang={data.settings.lang}
           mealLabel={meal}
           onClose={() => setModal(null)}

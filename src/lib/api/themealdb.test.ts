@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, afterEach } from 'vitest';
-import { searchMeals, fetchNamedThumbs } from './themealdb';
+import { searchMeals } from './themealdb';
 
 function stubFetch(payload: unknown, ok = true): void {
   vi.stubGlobal(
@@ -67,30 +67,5 @@ describe('searchMeals', () => {
   it('survives a malformed response shape', async () => {
     stubFetch('not what we expected');
     expect(await searchMeals('chicken')).toEqual({ ok: true, dishes: [] });
-  });
-});
-
-describe('fetchNamedThumbs', () => {
-  it('maps a keyword to its first dish thumbnail (with /medium suffix)', async () => {
-    stubFetch({
-      meals: [{ strMealThumb: 'http://img/burrito.jpg' }, { strMealThumb: 'http://img/x.jpg' }],
-    });
-    const map = await fetchNamedThumbs(['burrito']);
-    expect(map['burrito']).toBe('http://img/burrito.jpg/medium');
-  });
-
-  it('omits a keyword with no match (caller falls back to a tile)', async () => {
-    stubFetch({ meals: null });
-    const map = await fetchNamedThumbs(['nope']);
-    expect(map['nope']).toBeUndefined();
-  });
-
-  it('omits a keyword on a failing fetch rather than rejecting', async () => {
-    vi.stubGlobal(
-      'fetch',
-      vi.fn(() => Promise.reject(new Error('boom'))),
-    );
-    const map = await fetchNamedThumbs(['curry']);
-    expect(map).toEqual({});
   });
 });
