@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { MUSCLE_GROUPS, trains, exercisesForMuscle, muscleCounts } from './muscles';
+import { MUSCLE_GROUPS, trains, exercisesForMuscle, muscleCounts, musclesWorked } from './muscles';
 
 describe('trains', () => {
   it('matches an exercise to the muscles in its description', () => {
@@ -11,6 +11,22 @@ describe('trains', () => {
   it('maps posterior-chain lifts to glutes and hamstrings', () => {
     expect(trains('Deadlift', 'glutes')).toBe(true);
     expect(trains('Deadlift', 'hamstrings')).toBe(true);
+  });
+});
+
+describe('musclesWorked', () => {
+  it('splits the prime mover from the assisting groups', () => {
+    // "Chest · Triceps · Front delts" → chest is primary, the rest secondary.
+    const m = musclesWorked('Barbell Bench Press');
+    expect(m.primary).toContain('chest');
+    expect(m.secondary).toContain('triceps');
+    expect(m.secondary).toContain('shoulders');
+    // A group is never both primary and secondary.
+    expect(m.primary.every((g) => !m.secondary.includes(g))).toBe(true);
+  });
+
+  it('returns empty arrays for an unknown exercise', () => {
+    expect(musclesWorked('No Such Lift')).toEqual({ primary: [], secondary: [] });
   });
 });
 

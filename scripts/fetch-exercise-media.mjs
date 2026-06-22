@@ -132,21 +132,26 @@ async function main() {
   const manifest = [];
   for (const name of EXERCISES) {
     const match = bestMatch(name, db);
-    const img = match?.images?.[0];
-    if (!match || !img) {
-      console.warn(`✗ ${name} — no match (add an OVERRIDE)`);
+    // free-exercise-db ships two frames per exercise: [0] start, [1] finish.
+    const frames = match?.images ?? [];
+    if (!match || frames.length < 2) {
+      console.warn(`✗ ${name} — no match / too few frames (add an OVERRIDE)`);
       continue;
     }
-    const url = IMG_BASE + img;
-    const imgRes = await fetch(url);
-    if (!imgRes.ok) {
-      console.warn(`✗ ${name} → ${match.name}: image ${imgRes.status}`);
-      continue;
+    let ok = true;
+    for (let i = 0; i < 2; i++) {
+      const imgRes = await fetch(IMG_BASE + frames[i]);
+      if (!imgRes.ok) {
+        console.warn(`✗ ${name} → ${match.name}: frame ${i} ${imgRes.status}`);
+        ok = false;
+        break;
+      }
+      const buf = Buffer.from(await imgRes.arrayBuffer());
+      await writeFile(join(outDir, `${slug(name)}-${i + 1}.jpg`), buf);
     }
-    const buf = Buffer.from(await imgRes.arrayBuffer());
-    await writeFile(join(outDir, `${slug(name)}.jpg`), buf);
+    if (!ok) continue;
     manifest.push(slug(name));
-    console.log(`✓ ${name} → ${match.name}`);
+    console.log(`✓ ${name} → ${match.name} (start + finish)`);
   }
 
   manifest.sort();

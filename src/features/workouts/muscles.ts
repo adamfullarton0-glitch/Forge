@@ -55,6 +55,30 @@ export function trains(name: string, group: MuscleGroup): boolean {
   return def.match.some((kw) => m.includes(kw));
 }
 
+export interface MusclesWorked {
+  /** Prime movers (the first muscle listed in the exercise's `m` field). */
+  primary: MuscleGroup[];
+  /** Assisting groups (the rest), shown dimmer on the diagram. */
+  secondary: MuscleGroup[];
+}
+
+const groupsIn = (text: string): MuscleGroup[] => {
+  const t = text.toLowerCase();
+  return MUSCLE_GROUPS.filter((g) => g.match.some((kw) => t.includes(kw))).map((g) => g.id);
+};
+
+/**
+ * Splits an exercise's muscles into prime movers vs assisting groups for the
+ * "muscles worked" diagram. The `m` field reads e.g. "Chest · Triceps · Front
+ * delts" — the first segment is the primary target, the rest are secondary.
+ */
+export function musclesWorked(name: string): MusclesWorked {
+  const segments = (EX[name]?.m ?? '').split('·');
+  const primary = groupsIn(segments[0] ?? '');
+  const secondary = groupsIn(segments.slice(1).join(' ')).filter((g) => !primary.includes(g));
+  return { primary, secondary };
+}
+
 /** All exercise names that train the given muscle group. */
 export function exercisesForMuscle(group: MuscleGroup): string[] {
   return EXERCISE_NAMES.filter((n) => trains(n, group));

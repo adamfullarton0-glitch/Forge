@@ -198,6 +198,47 @@
   justify-content: center;
   background: radial-gradient(120% 120% at 50% 20%, var(--accent-soft), var(--panel-2) 70%);
 }
+/* Two-panel start → finish demo (a proper "how to perform it" diagram). */
+.ex-frames {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.ex-frame {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+  background: var(--panel-2);
+  aspect-ratio: 4 / 3;
+}
+.ex-frame img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.ex-frame__tag {
+  position: absolute;
+  left: 8px;
+  bottom: 8px;
+  padding: 2px 9px;
+  border-radius: 99px;
+  font-size: 0.64rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.62);
+}
+.ex-muscles {
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid var(--glass-border);
+  background: var(--panel-2);
+}
 .ex-inline-toggle {
   display: block;
   width: 100%;

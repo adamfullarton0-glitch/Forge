@@ -5,7 +5,8 @@ import { Chip } from '@/components/Chip';
 import { Icon } from '@/components/Icon';
 import { useData, useUpdate } from '@/features/store';
 import { getExercise, ytSearch } from '@/features/workouts/exercises';
-import { exerciseImage, hasExerciseImage } from '@/features/workouts/media';
+import { exerciseFrames, hasExerciseImage } from '@/features/workouts/media';
+import { ExerciseMuscles } from './ExerciseMuscles';
 import { EQUIPMENT, DEFAULT_GEAR } from '@/features/workouts/plans';
 import { getUnits, kg2lb, lb2kg, platesFor, todayKey } from '@/lib/calc';
 
@@ -80,8 +81,9 @@ export function ExerciseModal({ name, onClose, onOpen }: ExerciseModalProps): JS
         </button>
       </div>
 
-      {/* Movement demo: a bundled, license-clean photo by default (offline);
-          the YouTube thumbnail as a fallback; and the real video one tap away. */}
+      {/* Movement demo: a two-frame (start → finish) "how to perform it" diagram
+          from bundled, license-clean photos (offline); the YouTube thumbnail as
+          a fallback; and the real video one tap away. */}
       <div style={{ margin: '14px 0 16px' }}>
         {play && ex.vid ? (
           <>
@@ -103,29 +105,37 @@ export function ExerciseModal({ name, onClose, onOpen }: ExerciseModalProps): JS
           </>
         ) : (
           <>
-            <div className="ex-demo">
-              {hasExerciseImage(name) && !demoFailed ? (
-                <img
-                  className="ex-demo__img"
-                  src={exerciseImage(name)}
-                  alt={`${name} demonstration`}
-                  loading="lazy"
-                  onError={() => setDemoFailed(true)}
-                />
-              ) : ex.vid && !demoFailed ? (
-                <img
-                  className="ex-demo__img"
-                  src={`https://i.ytimg.com/vi/${ex.vid}/hqdefault.jpg`}
-                  alt=""
-                  loading="lazy"
-                  onError={() => setDemoFailed(true)}
-                />
-              ) : (
-                <div className="ex-demo__ph">
-                  <Icon name="dumbbell" size={40} style={{ color: 'var(--accent)' }} />
-                </div>
-              )}
-            </div>
+            {hasExerciseImage(name) && !demoFailed ? (
+              <div className="ex-frames">
+                {(['start', 'finish'] as const).map((phase) => (
+                  <div key={phase} className="ex-frame">
+                    <img
+                      src={exerciseFrames(name)[phase]}
+                      alt={`${name} — ${phase} position`}
+                      loading="lazy"
+                      onError={() => setDemoFailed(true)}
+                    />
+                    <span className="ex-frame__tag">{phase === 'start' ? 'Start' : 'Finish'}</span>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="ex-demo">
+                {ex.vid && !demoFailed ? (
+                  <img
+                    className="ex-demo__img"
+                    src={`https://i.ytimg.com/vi/${ex.vid}/hqdefault.jpg`}
+                    alt=""
+                    loading="lazy"
+                    onError={() => setDemoFailed(true)}
+                  />
+                ) : (
+                  <div className="ex-demo__ph">
+                    <Icon name="dumbbell" size={40} style={{ color: 'var(--accent)' }} />
+                  </div>
+                )}
+              </div>
+            )}
             {ex.vid ? (
               <button type="button" className="ex-inline-toggle" onClick={() => setPlay(true)}>
                 ▶ Watch the video tutorial
@@ -142,6 +152,14 @@ export function ExerciseModal({ name, onClose, onOpen }: ExerciseModalProps): JS
             )}
           </>
         )}
+      </div>
+
+      {/* Muscles worked — a highlighted body diagram (primary in accent). */}
+      <div className="ex-muscles">
+        <div className="ex-modal__label" style={{ marginTop: 0 }}>
+          Muscles worked
+        </div>
+        <ExerciseMuscles name={name} />
       </div>
 
       {missing.length > 0 ? (

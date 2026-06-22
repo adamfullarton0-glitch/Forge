@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { exerciseSlug, exerciseImage, hasExerciseImage } from './media';
+import { exerciseSlug, exerciseFrames, hasExerciseImage } from './media';
 
 describe('exerciseSlug', () => {
   it('makes a filename-safe slug', () => {
@@ -9,10 +9,13 @@ describe('exerciseSlug', () => {
   });
 });
 
-describe('exerciseImage', () => {
-  it('points at the bundled path under the deploy base', () => {
+describe('exerciseFrames', () => {
+  it('points at the bundled start + finish frames under the deploy base', () => {
     // import.meta.env.BASE_URL is '/' in the test env.
-    expect(exerciseImage('Barbell Bench Press')).toBe('/exercises/barbell-bench-press.jpg');
+    expect(exerciseFrames('Barbell Bench Press')).toEqual({
+      start: '/exercises/barbell-bench-press-1.jpg',
+      finish: '/exercises/barbell-bench-press-2.jpg',
+    });
   });
 });
 
