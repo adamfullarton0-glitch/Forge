@@ -2,10 +2,10 @@
   {
     "name": "15-minute chicken & halloumi burgers",
     "time": "90 min",
-    "kcal": 535,
+    "kcal": 575,
     "p": 39,
-    "c": 11,
-    "f": 37,
+    "c": 13,
+    "f": 41,
     "allergens": ["Dairy", "Gluten"],
     "ing": [
       "2 Chicken Breasts",
@@ -20,7 +20,7 @@
       "4 leaves Lettuce",
       "2 Red Pepper"
     ],
-    "goal": ["lose", "maintain"],
+    "goal": ["maintain", "lose", "gain"],
     "desc": "A United States chicken classic — a popular United States dish.",
     "steps": [
       "Put the chicken breasts between two pieces of baking parchment and use a rolling pin to gently bash them until they are approximately 1cm thick.",
@@ -118,10 +118,10 @@
   {
     "name": "Algerian Kefta (Meatballs)",
     "time": "90 min",
-    "kcal": 345,
-    "p": 32,
-    "c": 10,
-    "f": 19,
+    "kcal": 315,
+    "p": 31,
+    "c": 7,
+    "f": 17,
     "allergens": [],
     "ing": [
       "1 lb Ground Beef",
@@ -159,64 +159,46 @@
     "grad": 2
   },
   {
-    "name": "Apple Potato Mash (Hete bliksem) ",
-    "time": "90 min",
-    "kcal": 480,
-    "p": 27,
-    "c": 22,
-    "f": 31,
-    "allergens": ["Dairy", "Eggs"],
+    "name": "Arepa Pabellón",
+    "time": "45 min",
+    "kcal": 560,
+    "p": 94,
+    "c": 21,
+    "f": 9,
+    "allergens": ["Dairy"],
     "ing": [
-      "250g Apples",
-      "250g Potatoes",
-      "1 Cinnamon Stick",
-      "1 tsp Maple Syrup",
-      "Sprinkling Ground Cinnamon",
-      "4 Bacon",
-      "200g Cheese",
+      "2 Corn Arepa Filled With Mozarella Cheese",
+      "1 Fried Ripe Bananas",
+      "1 Can Black Beans",
+      "1 Pico De Gallo Sauce",
+      "2kg Shredded Meat",
+      "1 chopped Tomato",
       "Pinch Salt",
-      "1 Egg",
-      "50g Sesame Seed"
+      "Pinch Pepper"
     ],
     "goal": ["maintain", "lose", "gain"],
-    "desc": "A Netherlands side classic — a popular Netherlands dish.",
+    "desc": "A Venezuela beef classic — a popular Venezuela dish.",
     "steps": [
-      "Clean and peel the potatoes and cut them into even size chunks.",
-      "Boil them in salted water for about 10 min and then add the cleaned and chopped apples into the boiling water.",
-      "Add the cinnamon stick as well.",
-      "Leave to boil for another 10 minutes or until both apples and potatoes are to your liking.",
-      "I like mine to be fairly chunky but that is a personal preference",
-      "In the mean time bake the streaky bacon in a dry frying pan until crispy and set aside to drain on paper towels.",
-      "Slice a few apple pieces and melt a little butter in a fryin pan.",
-      "Add the apple slices to it and add a bit of maple syrup into the pan as well as some cinnamon.",
-      "Let it simmer until the apple is soft.",
-      "Prepare a plate with one whisked egg and one plate with sesame seeds.",
-      "Cut your cheese into the required size.",
-      "The smaller it is, the easier it is too handle.",
-      "Dip the cheese into the egg and make sure it coats all sides.",
-      "Then dip the cheese into the sesame seeds and make sure it is covered everywhere.",
-      "Heat a non stick frying pan on high until nice and hot.",
-      "Put the cheese slice in and bake until the sesame seeds are brown.",
-      "You have to do this rather quickly or the cheese will melt completely.",
-      "Turn and bake the other side.",
-      "Drain the apples and potatoes and mash them together.",
-      "Taste and add cinnamon and salt where needed.",
-      "Remove the cinnamon stick before mashing"
+      "Prepare the meat in a skillet and add salt and pepper to taste, heat the beans over medium heat in a pan, fry or grill the ripe plantains as indicated on its package and cut the tomato into small cubes.",
+      "Reserve these ingredients until filling.",
+      "Preheat the grill or pan and grill the arepa, putting it once on each side until they are golden brown.",
+      "With the help of a knife, open it by the edge through the middle, creating a space to fill it with the ripe plantain, the beans, meat and chopped tomato.",
+      "Serve with a little pico de gallo or guacamole dip sauce."
     ],
-    "cat": "Side",
-    "area": "Netherlands",
-    "meal": "snack",
-    "img": "53389",
+    "cat": "Beef",
+    "area": "Venezuela",
+    "img": "53334",
+    "yt": "https://www.youtube.com/shorts/Tb1PPOyqthA",
     "gi": 3,
     "grad": 3
   },
   {
     "name": "Arepa pelua",
     "time": "80 min",
-    "kcal": 1050,
-    "p": 91,
-    "c": 16,
-    "f": 65,
+    "kcal": 985,
+    "p": 90,
+    "c": 6,
+    "f": 63,
     "allergens": ["Dairy"],
     "ing": [
       "500g Beef",
@@ -260,8 +242,8 @@
     "time": "90 min",
     "kcal": 1300,
     "p": 119,
-    "c": 70,
-    "f": 58,
+    "c": 74,
+    "f": 57,
     "allergens": [],
     "ing": [
       "2 tbsp Extra Virgin Olive Oil",
@@ -421,10 +403,10 @@
   {
     "name": "Ayam Percik",
     "time": "90 min",
-    "kcal": 825,
+    "kcal": 785,
     "p": 70,
-    "c": 40,
-    "f": 42,
+    "c": 35,
+    "f": 40,
     "allergens": ["Dairy"],
     "ing": [
       "6 Chicken Thighs",
@@ -510,10 +492,10 @@
   {
     "name": "Bangladeshi fish curry with daikon",
     "time": "90 min",
-    "kcal": 420,
-    "p": 30,
-    "c": 22,
-    "f": 23,
+    "kcal": 325,
+    "p": 28,
+    "c": 12,
+    "f": 20,
     "allergens": ["Fish"],
     "ing": [
       "450g White Fish",
@@ -529,7 +511,7 @@
       "Handful Coriander Leaves",
       "1 Lime"
     ],
-    "goal": ["lose", "maintain"],
+    "goal": ["maintain", "lose", "gain"],
     "desc": "A seafood classic.",
     "steps": [
       "If you are using rohu fish it will usually be frozen.",
@@ -567,7 +549,7 @@
   {
     "name": "BBQ Pork Sloppy Joes",
     "time": "90 min",
-    "kcal": 460,
+    "kcal": 455,
     "p": 34,
     "c": 29,
     "f": 22,
@@ -630,7 +612,7 @@
     "time": "90 min",
     "kcal": 460,
     "p": 36,
-    "c": 11,
+    "c": 12,
     "f": 31,
     "allergens": ["Soy"],
     "ing": [
@@ -737,10 +719,10 @@
   {
     "name": "Beef Asado",
     "time": "90 min",
-    "kcal": 1185,
-    "p": 85,
-    "c": 51,
-    "f": 70,
+    "kcal": 1110,
+    "p": 84,
+    "c": 41,
+    "f": 68,
     "allergens": ["Dairy", "Soy"],
     "ing": [
       "1.5kg Beef",
@@ -851,10 +833,10 @@
   {
     "name": "Beef Bourguignon",
     "time": "90 min",
-    "kcal": 935,
-    "p": 55,
-    "c": 36,
-    "f": 47,
+    "kcal": 895,
+    "p": 53,
+    "c": 35,
+    "f": 46,
     "allergens": [],
     "ing": [
       "3 tsp Goose Fat",
@@ -912,10 +894,10 @@
   {
     "name": "Beef Brisket Pot Roast",
     "time": "90 min",
-    "kcal": 1060,
+    "kcal": 1050,
     "p": 98,
     "c": 34,
-    "f": 55,
+    "f": 54,
     "allergens": [],
     "ing": [
       "4-5 pound Beef Brisket",
@@ -986,10 +968,10 @@
   {
     "name": "Beef Caldereta",
     "time": "90 min",
-    "kcal": 1130,
-    "p": 88,
-    "c": 58,
-    "f": 60,
+    "kcal": 1080,
+    "p": 87,
+    "c": 51,
+    "f": 58,
     "allergens": ["Dairy", "Nuts", "Soy"],
     "ing": [
       "2kg cut cubes Beef",
@@ -1038,10 +1020,10 @@
   {
     "name": "Beef Dumpling Stew",
     "time": "90 min",
-    "kcal": 1000,
+    "kcal": 990,
     "p": 74,
-    "c": 43,
-    "f": 53,
+    "c": 44,
+    "f": 52,
     "allergens": ["Dairy", "Gluten"],
     "ing": [
       "2 tbs Olive Oil",
@@ -1090,71 +1072,12 @@
     "grad": 4
   },
   {
-    "name": "Beef Empanadas",
-    "time": "90 min",
-    "kcal": 1020,
-    "p": 59,
-    "c": 108,
-    "f": 37,
-    "allergens": ["Eggs", "Gluten"],
-    "ing": [
-      "60g Lard",
-      "340g Water",
-      "1 tsp Salt",
-      "600g All purpose flour",
-      "3 Tomato",
-      "1 clove Garlic",
-      "1 large Red Onions",
-      "Bunch Spring Onions",
-      "750g Sirloin steak",
-      "1 tablespoon Dried Oregano",
-      "1 tsp Paprika",
-      "1 tsp Red Pepper Flakes",
-      "1 tsp Parsley",
-      "To taste Salt",
-      "To taste Pepper",
-      "3 Egg",
-      "Splash Egg Wash",
-      "Drizzle Chimichurri sauce"
-    ],
-    "goal": ["gain", "maintain"],
-    "desc": "A Uruguayan beef classic — a popular Uruguayan dish.",
-    "steps": [
-      "For the dough place lard, warm water and salt in a large kneading bowl and stir.",
-      "Add flour and oregano and either knead five miutes by hand or with the kneading function of your machine.",
-      "Let rest covered for at least half an hour or overnight in the fridge.",
-      "For the filling place tomatoes for about 30 seconds in boiling water, then cool with cold water and peel of skin and cut into cubes.",
-      "Press garlic through garlic press, cut onions into cubes.",
-      "Simmer garlic and onions in some olive oil until translucent.",
-      "Take out onions and garlic and brown the meat at high heat from all sides.",
-      "Season with all herbs and add the onions, garlic and tomatoes.",
-      "Let simmer for a few minutes, add salt, pepper and additional spices to taste.",
-      "You can prepare the meat the night before, chill in fridge if doing so.",
-      "Boil eggs and also cut into cubes and mix with prepared meat.",
-      "Cut dough into half and roll out one half thinnly on floured surface.",
-      "Cut out circles about 12-15cm in diameter.",
-      "Mine have a diameter of 12.5 cm.",
-      "Place about 2-4 teaspoons of filling on one circle, put a bit of water all around the edges and fold over the other half so that you get half moons.",
-      "Be sure to seal the edges with a fork.",
-      "Repeat until you have no dough and filling left.",
-      "Meanwhile preheat oven to 200 degrees Celsius.",
-      "Brush empanadas with egg wash and bake about 8 empanadas on a baking sheet lined with parchment paper for about 25min or until golden.",
-      "Serve warm with chimichurri sauce."
-    ],
-    "cat": "Beef",
-    "area": "Uruguayan",
-    "img": "53317",
-    "yt": "https://www.youtube.com/watch?v=RRNVLC6IAv4",
-    "gi": 21,
-    "grad": 5
-  },
-  {
     "name": "BEEF LOK LAK (Lok Lak Sach Ko)",
     "time": "90 min",
-    "kcal": 860,
+    "kcal": 855,
     "p": 71,
-    "c": 21,
-    "f": 53,
+    "c": 20,
+    "f": 52,
     "allergens": ["Eggs", "Soy"],
     "ing": [
       "1 kg Beef Tenderloin",
@@ -1199,16 +1122,16 @@
     "area": "",
     "img": "53421",
     "yt": "https://www.youtube.com/watch?v=3oWgjFhQQW0",
-    "gi": 22,
-    "grad": 6
+    "gi": 21,
+    "grad": 5
   },
   {
     "name": "Beef Mechado",
     "time": "80 min",
-    "kcal": 885,
+    "kcal": 855,
     "p": 66,
-    "c": 58,
-    "f": 44,
+    "c": 54,
+    "f": 43,
     "allergens": ["Soy"],
     "ing": [
       "3 cloves Garlic",
@@ -1244,16 +1167,16 @@
     "area": "Filipino",
     "img": "53068",
     "yt": "https://www.youtube.com/watch?v=jxW3Lj8VjyE",
-    "gi": 23,
-    "grad": 7
+    "gi": 22,
+    "grad": 6
   },
   {
     "name": "Beef pho",
     "time": "80 min",
-    "kcal": 915,
+    "kcal": 920,
     "p": 76,
-    "c": 48,
-    "f": 44,
+    "c": 47,
+    "f": 45,
     "allergens": ["Fish", "Gluten", "Soy"],
     "ing": [
       "1 L Beef Stock",
@@ -1294,15 +1217,15 @@
     "area": "Vietnamese",
     "img": "53238",
     "yt": "https://www.youtube.com/watch?v=WlosNFMCnE4",
-    "gi": 24,
-    "grad": 0
+    "gi": 23,
+    "grad": 7
   },
   {
     "name": "Beef stroganoff",
     "time": "70 min",
-    "kcal": 630,
+    "kcal": 625,
     "p": 43,
-    "c": 11,
+    "c": 10,
     "f": 45,
     "allergens": ["Dairy", "Gluten"],
     "ing": [
@@ -1336,8 +1259,8 @@
     "area": "Russian",
     "img": "52834",
     "yt": "https://www.youtube.com/watch?v=PQHgQX1Ss74",
-    "gi": 25,
-    "grad": 1
+    "gi": 24,
+    "grad": 0
   },
   {
     "name": "Beef Sunday Roast",
@@ -1378,16 +1301,16 @@
     "area": "British",
     "img": "52824",
     "yt": "https://www.youtube.com/watch?v=2l3-dBdNehY",
-    "gi": 26,
-    "grad": 2
+    "gi": 25,
+    "grad": 1
   },
   {
     "name": "Bengali Chicken Curry with Potatoes",
     "time": "60 min",
-    "kcal": 485,
+    "kcal": 465,
     "p": 57,
-    "c": 26,
-    "f": 15,
+    "c": 25,
+    "f": 14,
     "allergens": [],
     "ing": [
       "2 tablespoons Olive Oil",
@@ -1418,16 +1341,16 @@
     "cat": "Chicken",
     "area": "",
     "img": "53453",
-    "gi": 27,
-    "grad": 3
+    "gi": 26,
+    "grad": 2
   },
   {
     "name": "Big Mac",
     "time": "85 min",
-    "kcal": 450,
+    "kcal": 560,
     "p": 32,
-    "c": 10,
-    "f": 29,
+    "c": 8,
+    "f": 43,
     "allergens": ["Dairy", "Gluten"],
     "ing": [
       "400g Minced Beef",
@@ -1445,7 +1368,7 @@
       "1 1/2 tsp Garlic Powder",
       "1/2 tsp Paprika"
     ],
-    "goal": ["lose", "maintain"],
+    "goal": ["maintain", "lose", "gain"],
     "desc": "A United States beef classic — a popular United States dish.",
     "steps": [
       "For the Big Mac sauce, combine all the ingredients in a bowl, season with salt and chill until ready to use.",
@@ -1466,16 +1389,16 @@
     "area": "United States",
     "img": "53013",
     "yt": "https://www.youtube.com/watch?v=C5J39YnnPsg",
-    "gi": 28,
-    "grad": 4
+    "gi": 27,
+    "grad": 3
   },
   {
     "name": "Bigos (Hunters Stew)",
     "time": "90 min",
-    "kcal": 1000,
+    "kcal": 1090,
     "p": 87,
-    "c": 41,
-    "f": 51,
+    "c": 29,
+    "f": 67,
     "allergens": ["Gluten"],
     "ing": [
       "2 sliced Bacon",
@@ -1523,16 +1446,16 @@
     "area": "Polish",
     "img": "53018",
     "yt": "https://www.youtube.com/watch?v=Oqg_cO4s8ik",
-    "gi": 29,
-    "grad": 5
+    "gi": 28,
+    "grad": 4
   },
   {
     "name": "Bigos (Polish hunter's stew)",
     "time": "75 min",
-    "kcal": 1145,
-    "p": 86,
-    "c": 34,
-    "f": 70,
+    "kcal": 1210,
+    "p": 84,
+    "c": 57,
+    "f": 69,
     "allergens": [],
     "ing": [
       "1 sliced White Cabbage",
@@ -1571,16 +1494,16 @@
     "area": "Polish",
     "img": "53300",
     "yt": "https://www.youtube.com/watch?v=Oqg_cO4s8ik",
-    "gi": 30,
-    "grad": 6
+    "gi": 29,
+    "grad": 5
   },
   {
     "name": "Bistek",
     "time": "90 min",
-    "kcal": 535,
-    "p": 35,
-    "c": 19,
-    "f": 34,
+    "kcal": 480,
+    "p": 33,
+    "c": 13,
+    "f": 32,
     "allergens": ["Soy"],
     "ing": [
       "1 lb Beef",
@@ -1621,14 +1544,14 @@
     "area": "Filipino",
     "img": "53069",
     "yt": "https://www.youtube.com/watch?v=xOQON5_S7as",
-    "gi": 31,
-    "grad": 7
+    "gi": 30,
+    "grad": 6
   },
   {
     "name": "Bitterballen (Dutch meatballs)",
     "time": "80 min",
     "kcal": 965,
-    "p": 68,
+    "p": 69,
     "c": 41,
     "f": 56,
     "allergens": ["Dairy", "Eggs", "Gluten"],
@@ -1666,45 +1589,16 @@
     "area": "Netherlands",
     "img": "52979",
     "yt": "https://www.youtube.com/watch?v=q8AKfYUtDuM",
-    "gi": 32,
-    "grad": 0
-  },
-  {
-    "name": "Bolita di Keshi",
-    "time": "65 min",
-    "kcal": 795,
-    "p": 47,
-    "c": 8,
-    "f": 63,
-    "allergens": ["Dairy", "Eggs"],
-    "ing": ["1 lb Cheddar Cheese", "1 lb Feta", "1 beaten Eggs", "5 tablespoons Cornstarch"],
-    "goal": ["gain", "maintain"],
-    "desc": "A miscellaneous classic.",
-    "steps": [
-      "Grate finely and toss together.",
-      "1 lb. sharp yellow cheese (cheddar or oude boerenkaas)",
-      "1 lb. keshi di buriko (or any white cheese such as fromage blanc, queso blanco, ricotto, feta etc.)",
-      "6 eggs, beaten",
-      "Cornstarch",
-      "Shape the mixture into small balls.",
-      "These may be kept indefinitely in the freezer.",
-      "Drop the balls into deep, hot fat and fry until golden.",
-      "Serve piping hot on toothpicks."
-    ],
-    "cat": "Miscellaneous",
-    "area": "",
-    "img": "53438",
-    "yt": "https://www.youtube.com/watch?v=WovQkxxrUeE",
-    "gi": 33,
-    "grad": 1
+    "gi": 31,
+    "grad": 7
   },
   {
     "name": "Borsch",
     "time": "75 min",
     "kcal": 1055,
-    "p": 68,
-    "c": 86,
-    "f": 47,
+    "p": 67,
+    "c": 90,
+    "f": 46,
     "allergens": ["Gluten"],
     "ing": [
       "1kg Beef Shin",
@@ -1743,16 +1637,16 @@
     "area": "Ukrainian",
     "img": "53311",
     "yt": "https://www.youtube.com/watch?v=6CXgPVw_-0g",
-    "gi": 34,
-    "grad": 2
+    "gi": 32,
+    "grad": 0
   },
   {
     "name": "Braised Beef Chilli",
     "time": "70 min",
     "kcal": 960,
-    "p": 72,
+    "p": 73,
     "c": 22,
-    "f": 61,
+    "f": 62,
     "allergens": [],
     "ing": [
       "1kg Beef",
@@ -1791,15 +1685,15 @@
     "area": "Mexican",
     "img": "52826",
     "yt": "https://www.youtube.com/watch?v=z4kSoJgsu6Y",
-    "gi": 35,
-    "grad": 3
+    "gi": 33,
+    "grad": 1
   },
   {
     "name": "Brun Lapskaus (Norwegian Beef Vegetable Stew)",
     "time": "75 min",
-    "kcal": 950,
+    "kcal": 940,
     "p": 83,
-    "c": 27,
+    "c": 26,
     "f": 53,
     "allergens": [],
     "ing": [
@@ -1834,8 +1728,8 @@
     "area": "Norway",
     "img": "53126",
     "yt": "https://www.youtube.com/watch?v=VuLnP0Yu84o",
-    "gi": 36,
-    "grad": 4
+    "gi": 34,
+    "grad": 2
   },
   {
     "name": "Callaloo and SaltFish",
@@ -1879,16 +1773,16 @@
     "meal": "snack",
     "img": "53361",
     "yt": "https://www.youtube.com/watch?v=n1fRCk-zTRM",
-    "gi": 37,
-    "grad": 5
+    "gi": 35,
+    "grad": 3
   },
   {
     "name": "Camaro Grelhado Com Molho Cru (Grilled Prawns with Green Onion Sauce)",
     "time": "40 min",
     "kcal": 160,
-    "p": 29,
-    "c": 6,
-    "f": 2,
+    "p": 35,
+    "c": 3,
+    "f": 1,
     "allergens": ["Shellfish"],
     "ing": [
       "1 lb Prawns",
@@ -1899,7 +1793,7 @@
       "4 tablespoons White Vinegar",
       "4 tablespoons Water"
     ],
-    "goal": ["maintain", "lose", "gain"],
+    "goal": ["lose", "maintain"],
     "desc": "A seafood classic.",
     "steps": [
       "Make the sauce by combining all the ingredients and grinding them into a paste.",
@@ -1910,16 +1804,16 @@
     "cat": "Seafood",
     "area": "",
     "img": "53428",
-    "gi": 38,
-    "grad": 6
+    "gi": 36,
+    "grad": 4
   },
   {
     "name": "Carbonada Criolla",
     "time": "80 min",
-    "kcal": 460,
-    "p": 39,
-    "c": 23,
-    "f": 22,
+    "kcal": 435,
+    "p": 38,
+    "c": 22,
+    "f": 21,
     "allergens": [],
     "ing": [
       "500g Beef",
@@ -1952,8 +1846,8 @@
     "area": "Argentina",
     "img": "53141",
     "yt": "https://www.youtube.com/watch?v=MSyvKDBXuKQ",
-    "gi": 39,
-    "grad": 7
+    "gi": 37,
+    "grad": 5
   },
   {
     "name": "Cassava pizza",
@@ -1961,7 +1855,7 @@
     "kcal": 515,
     "p": 38,
     "c": 15,
-    "f": 32,
+    "f": 33,
     "allergens": [],
     "ing": [
       "6 cut thick slices Casabe",
@@ -1987,16 +1881,16 @@
     "area": "Venezuela",
     "img": "53330",
     "yt": "https://www.youtube.com/watch?v=3fK4zsa2AYM",
-    "gi": 40,
-    "grad": 0
+    "gi": 38,
+    "grad": 6
   },
   {
     "name": "Cevapi Sausages",
     "time": "90 min",
-    "kcal": 550,
+    "kcal": 525,
     "p": 52,
-    "c": 14,
-    "f": 29,
+    "c": 11,
+    "f": 28,
     "allergens": ["Gluten"],
     "ing": [
       "500g Minced Beef",
@@ -2012,7 +1906,7 @@
       "1 tsp Salt",
       "1 tsp Pepper"
     ],
-    "goal": ["maintain", "lose", "gain"],
+    "goal": ["lose", "maintain"],
     "desc": "A Croatian beef classic — a popular Croatian dish.",
     "steps": [
       "Place the ground meat in a bowl.",
@@ -2035,8 +1929,8 @@
     "area": "Croatian",
     "img": "53055",
     "yt": "https://www.youtube.com/watch?v=_MpSxSgS7f8",
-    "gi": 41,
-    "grad": 1
+    "gi": 39,
+    "grad": 7
   },
   {
     "name": "Cheese Sticks",
@@ -2073,14 +1967,14 @@
     "meal": "snack",
     "img": "53442",
     "yt": "https://www.youtube.com/shorts/_RC2m-VGdP0",
-    "gi": 42,
-    "grad": 2
+    "gi": 40,
+    "grad": 0
   },
   {
     "name": "Chicken & chorizo rice pot",
     "time": "80 min",
-    "kcal": 980,
-    "p": 70,
+    "kcal": 975,
+    "p": 71,
     "c": 73,
     "f": 41,
     "allergens": [],
@@ -2118,8 +2012,8 @@
     "area": "Spanish",
     "img": "53161",
     "yt": "https://www.youtube.com/watch?v=CiY6ZOYRMI4",
-    "gi": 43,
-    "grad": 3
+    "gi": 41,
+    "grad": 1
   },
   {
     "name": "Chicken & mushroom Hotpot",
@@ -2167,15 +2061,15 @@
     "area": "British",
     "img": "52846",
     "yt": "https://www.youtube.com/watch?v=bXKWu4GojNI",
-    "gi": 44,
-    "grad": 4
+    "gi": 42,
+    "grad": 2
   },
   {
     "name": "Chicken Alfredo Primavera",
     "time": "90 min",
-    "kcal": 965,
+    "kcal": 960,
     "p": 63,
-    "c": 60,
+    "c": 59,
     "f": 51,
     "allergens": ["Dairy", "Gluten"],
     "ing": [
@@ -2227,15 +2121,15 @@
     "area": "Italian",
     "img": "52796",
     "yt": "https://www.youtube.com/watch?v=qCIbq8HywpQ",
-    "gi": 45,
-    "grad": 5
+    "gi": 43,
+    "grad": 3
   },
   {
     "name": "Chicken Basquaise",
     "time": "90 min",
-    "kcal": 1265,
-    "p": 101,
-    "c": 66,
+    "kcal": 1245,
+    "p": 100,
+    "c": 64,
     "f": 63,
     "allergens": ["Dairy"],
     "ing": [
@@ -2284,59 +2178,16 @@
     "area": "France",
     "img": "52934",
     "yt": "https://www.youtube.com/watch?v=emfm6TwsVhg",
-    "gi": 46,
-    "grad": 6
-  },
-  {
-    "name": "Chicken Congee",
-    "time": "85 min",
-    "kcal": 645,
-    "p": 36,
-    "c": 63,
-    "f": 25,
-    "allergens": [],
-    "ing": [
-      "8 oz Chicken",
-      "pinch Salt",
-      "pinch Pepper",
-      "1 tsp Ginger Cordial",
-      "1 tsp Ginger",
-      "1 tbs Spring Onions",
-      "1/2 cup Rice",
-      "8 cups Water",
-      "2 oz Coriander"
-    ],
-    "goal": ["maintain", "lose", "gain"],
-    "desc": "A Chinese chicken classic — a popular Chinese dish.",
-    "steps": [
-      "- MARINATING THE CHICKEN",
-      "In a bowl, add chicken, salt, white pepper, ginger juice and then mix it together well.",
-      "Set the chicken aside.",
-      "- RINSE THE WHITE RICE",
-      "Rinse the rice in a metal bowl or pot a couple times and then drain the water.",
-      "- BOILING THE WHITE RICE",
-      "Next add 8 cups of water and then set the stove on high heat until it is boiling.",
-      "Once rice porridge starts to boil, set the stove on low heat and then stir it once every 8-10 minutes for around 20-25 minutes.",
-      "After 25 minutes, this is optional but you can add a little bit more water to make rice porridge to make it less thick or to your preference.",
-      "Next add the marinated chicken to the rice porridge and leave the stove on low heat for another 10 minutes.",
-      "After an additional 10 minutes add the green onions, sliced ginger, 1 pinch of salt, 1 pinch of white pepper and stir for 10 seconds.",
-      "Serve the rice porridge in a bowl",
-      "Optional: add Coriander on top of the rice porridge."
-    ],
-    "cat": "Chicken",
-    "area": "Chinese",
-    "img": "52956",
-    "yt": "https://www.youtube.com/watch?v=kqEfk801E94",
-    "gi": 47,
-    "grad": 7
+    "gi": 44,
+    "grad": 4
   },
   {
     "name": "Chicken Couscous",
     "time": "55 min",
-    "kcal": 590,
-    "p": 44,
-    "c": 65,
-    "f": 16,
+    "kcal": 560,
+    "p": 43,
+    "c": 68,
+    "f": 13,
     "allergens": ["Gluten"],
     "ing": [
       "1 tbsp Olive Oil",
@@ -2365,16 +2216,16 @@
     "area": "Moroccan",
     "img": "52850",
     "yt": "https://www.youtube.com/watch?v=GZQGy9oscVk",
-    "gi": 48,
-    "grad": 0
+    "gi": 45,
+    "grad": 5
   },
   {
     "name": "Chicken Enchilada Casserole",
     "time": "90 min",
-    "kcal": 820,
-    "p": 59,
-    "c": 17,
-    "f": 57,
+    "kcal": 845,
+    "p": 58,
+    "c": 26,
+    "f": 56,
     "allergens": ["Dairy", "Gluten"],
     "ing": [
       "14 oz jar Enchilada sauce",
@@ -2404,16 +2255,16 @@
     "area": "Mexican",
     "img": "52765",
     "yt": "https://www.youtube.com/watch?v=EtVkwVKLc_M",
-    "gi": 49,
-    "grad": 1
+    "gi": 46,
+    "grad": 6
   },
   {
     "name": "Chicken Fajita Mac and Cheese",
     "time": "60 min",
-    "kcal": 850,
-    "p": 78,
-    "c": 23,
-    "f": 48,
+    "kcal": 990,
+    "p": 76,
+    "c": 86,
+    "f": 37,
     "allergens": ["Dairy"],
     "ing": [
       "500g macaroni",
@@ -2445,13 +2296,13 @@
     "area": "United States",
     "img": "52818",
     "yt": "https://www.youtube.com/watch?v=bwTSmLTZKNg",
-    "gi": 50,
-    "grad": 2
+    "gi": 47,
+    "grad": 7
   },
   {
     "name": "Chicken Ham and Leek Pie",
     "time": "90 min",
-    "kcal": 1160,
+    "kcal": 1155,
     "p": 69,
     "c": 60,
     "f": 70,
@@ -2519,8 +2370,8 @@
     "area": "British",
     "img": "52875",
     "yt": "https://www.youtube.com/watch?v=xr-CpPE_lNk",
-    "gi": 51,
-    "grad": 3
+    "gi": 48,
+    "grad": 0
   },
   {
     "name": "Chicken Handi",
@@ -2576,13 +2427,13 @@
     "area": "India",
     "img": "52795",
     "yt": "https://www.youtube.com/watch?v=IO0issT0Rmc",
-    "gi": 52,
-    "grad": 4
+    "gi": 49,
+    "grad": 1
   },
   {
     "name": "Chicken Karaage",
     "time": "75 min",
-    "kcal": 400,
+    "kcal": 395,
     "p": 32,
     "c": 8,
     "f": 27,
@@ -2617,8 +2468,8 @@
     "area": "Japanese",
     "img": "52831",
     "yt": "https://www.youtube.com/watch?v=XivddFddthc",
-    "gi": 53,
-    "grad": 5
+    "gi": 50,
+    "grad": 2
   },
   {
     "name": "Chicken Liver Pate Recipe",
@@ -2654,16 +2505,16 @@
     "cat": "Chicken",
     "area": "",
     "img": "53455",
-    "gi": 54,
-    "grad": 6
+    "gi": 51,
+    "grad": 3
   },
   {
     "name": "Chicken Marengo",
     "time": "50 min",
-    "kcal": 610,
-    "p": 61,
-    "c": 21,
-    "f": 30,
+    "kcal": 605,
+    "p": 60,
+    "c": 19,
+    "f": 32,
     "allergens": [],
     "ing": [
       "1 tbs Olive Oil",
@@ -2688,16 +2539,16 @@
     "area": "France",
     "img": "52920",
     "yt": "https://www.youtube.com/watch?v=U33HYUr-0Fw",
-    "gi": 55,
-    "grad": 7
+    "gi": 52,
+    "grad": 4
   },
   {
     "name": "Chicken Parmentier",
     "time": "90 min",
-    "kcal": 1055,
-    "p": 71,
-    "c": 79,
-    "f": 49,
+    "kcal": 1020,
+    "p": 67,
+    "c": 82,
+    "f": 48,
     "allergens": ["Dairy", "Eggs"],
     "ing": [
       "1.5kg Potatoes",
@@ -2740,8 +2591,8 @@
     "area": "France",
     "img": "52879",
     "yt": "https://www.youtube.com/watch?v=tiG-xlmeyjg",
-    "gi": 56,
-    "grad": 0
+    "gi": 53,
+    "grad": 5
   },
   {
     "name": "Chicken Quinoa Greek Salad",
@@ -2781,16 +2632,16 @@
     "area": "Greek",
     "img": "53011",
     "yt": "https://www.youtube.com/watch?v=akcrkXYr61M",
-    "gi": 57,
-    "grad": 1
+    "gi": 54,
+    "grad": 6
   },
   {
     "name": "Chicken Shawarma with homemade garlic herb yoghurt sauce",
     "time": "90 min",
-    "kcal": 595,
-    "p": 83,
-    "c": 6,
-    "f": 24,
+    "kcal": 580,
+    "p": 82,
+    "c": 5,
+    "f": 23,
     "allergens": ["Dairy"],
     "ing": [
       "1kg Chicken Breast",
@@ -2836,8 +2687,8 @@
     "area": "Saudi Arabian",
     "img": "53218",
     "yt": "https://www.youtube.com/watch?v=TROZvPHqP1g",
-    "gi": 58,
-    "grad": 2
+    "gi": 55,
+    "grad": 7
   },
   {
     "name": "Chicken wings with cumin, lemon & garlic",
@@ -2870,14 +2721,14 @@
     "area": "Turkish",
     "img": "53261",
     "yt": "https://www.youtube.com/watch?v=hmJPOVzMvK4",
-    "gi": 59,
-    "grad": 3
+    "gi": 56,
+    "grad": 0
   },
   {
     "name": "Chicken with saffron, raisins & pine nuts",
     "time": "85 min",
-    "kcal": 860,
-    "p": 94,
+    "kcal": 855,
+    "p": 95,
     "c": 17,
     "f": 46,
     "allergens": [],
@@ -2914,16 +2765,16 @@
     "area": "Spanish",
     "img": "53186",
     "yt": "https://www.youtube.com/watch?v=uKWjI2DNq0Q",
-    "gi": 60,
-    "grad": 4
+    "gi": 57,
+    "grad": 1
   },
   {
     "name": "Chilli prawn linguine",
     "time": "70 min",
-    "kcal": 750,
+    "kcal": 745,
     "p": 42,
     "c": 125,
-    "f": 11,
+    "f": 10,
     "allergens": ["Shellfish", "Gluten"],
     "ing": [
       "280g Linguine Pasta",
@@ -2958,15 +2809,15 @@
     "area": "Italian",
     "img": "52839",
     "yt": "https://www.youtube.com/watch?v=SC17Mc70Db0",
-    "gi": 61,
-    "grad": 5
+    "gi": 58,
+    "grad": 2
   },
   {
     "name": "Chivito sandwich",
     "time": "90 min",
-    "kcal": 1090,
-    "p": 64,
-    "c": 96,
+    "kcal": 1075,
+    "p": 62,
+    "c": 94,
     "f": 49,
     "allergens": ["Dairy", "Eggs", "Gluten"],
     "ing": [
@@ -3016,8 +2867,8 @@
     "area": "Uruguayan",
     "img": "53319",
     "yt": "https://www.youtube.com/watch?v=tX3fN9AG_ik",
-    "gi": 62,
-    "grad": 6
+    "gi": 59,
+    "grad": 3
   },
   {
     "name": "Chivito uruguayo",
@@ -3051,16 +2902,16 @@
     "area": "Uruguayan",
     "img": "53063",
     "yt": "https://www.youtube.com/watch?v=0PXbbL1QdaA&ab_channel=D%C3%ADadeCocina",
-    "gi": 63,
-    "grad": 7
+    "gi": 60,
+    "grad": 4
   },
   {
     "name": "Chorizo & chickpea soup",
     "time": "45 min",
-    "kcal": 435,
-    "p": 29,
-    "c": 37,
-    "f": 19,
+    "kcal": 400,
+    "p": 28,
+    "c": 35,
+    "f": 17,
     "allergens": ["Gluten"],
     "ing": [
       "400g Tinned Tomatos",
@@ -3084,13 +2935,13 @@
     "area": "Spanish",
     "img": "53168",
     "yt": "https://www.youtube.com/watch?v=I_oZ8r6VxL4",
-    "gi": 64,
-    "grad": 0
+    "gi": 61,
+    "grad": 5
   },
   {
     "name": "Chorizo & tomato salad",
     "time": "45 min",
-    "kcal": 425,
+    "kcal": 420,
     "p": 30,
     "c": 3,
     "f": 31,
@@ -3116,16 +2967,16 @@
     "area": "Spanish",
     "img": "53185",
     "yt": "https://www.youtube.com/watch?v=RFlENguMJNA",
-    "gi": 65,
-    "grad": 1
+    "gi": 62,
+    "grad": 6
   },
   {
     "name": "Classic Tourtière",
     "time": "90 min",
-    "kcal": 820,
-    "p": 74,
-    "c": 14,
-    "f": 49,
+    "kcal": 840,
+    "p": 72,
+    "c": 20,
+    "f": 50,
     "allergens": ["Eggs", "Gluten"],
     "ing": [
       "2 tablespoons Canola Oil",
@@ -3168,16 +3019,16 @@
     "area": "Canadian",
     "img": "53343",
     "yt": "https://www.youtube.com/watch?v=PM9TZPUJTiU",
-    "gi": 66,
-    "grad": 2
+    "gi": 63,
+    "grad": 7
   },
   {
     "name": "Clear Soup with Semolina Dumplings",
     "time": "90 min",
-    "kcal": 830,
-    "p": 67,
-    "c": 5,
-    "f": 58,
+    "kcal": 860,
+    "p": 66,
+    "c": 22,
+    "f": 54,
     "allergens": ["Dairy", "Eggs"],
     "ing": [
       "120g Semolina",
@@ -3210,8 +3061,8 @@
     "cat": "Miscellaneous",
     "area": "",
     "img": "53446",
-    "gi": 67,
-    "grad": 3
+    "gi": 64,
+    "grad": 0
   },
   {
     "name": "Corned Beef and Cabbage",
@@ -3239,13 +3090,13 @@
     "cat": "Beef",
     "area": "Irish",
     "img": "52998",
-    "gi": 68,
-    "grad": 4
+    "gi": 65,
+    "grad": 1
   },
   {
     "name": "Corned Beef Hash",
     "time": "90 min",
-    "kcal": 525,
+    "kcal": 520,
     "p": 38,
     "c": 23,
     "f": 30,
@@ -3285,15 +3136,15 @@
     "area": "British",
     "img": "53096",
     "yt": "https://www.youtube.com/watch?v=SPr_UnCrYPg",
-    "gi": 69,
-    "grad": 5
+    "gi": 66,
+    "grad": 2
   },
   {
     "name": "Crispy Sausages and Greens",
     "time": "80 min",
-    "kcal": 480,
+    "kcal": 470,
     "p": 35,
-    "c": 8,
+    "c": 7,
     "f": 35,
     "allergens": [],
     "ing": [
@@ -3326,15 +3177,15 @@
     "cat": "Pork",
     "area": "Irish",
     "img": "52999",
-    "gi": 70,
-    "grad": 6
+    "gi": 67,
+    "grad": 3
   },
   {
     "name": "Croatian lamb peka",
     "time": "90 min",
     "kcal": 885,
     "p": 49,
-    "c": 33,
+    "c": 34,
     "f": 56,
     "allergens": [],
     "ing": [
@@ -3381,16 +3232,16 @@
     "area": "Croatian",
     "img": "53056",
     "yt": "https://www.youtube.com/watch?v=K0ipnz4fwJI",
-    "gi": 71,
-    "grad": 7
+    "gi": 68,
+    "grad": 4
   },
   {
     "name": "Crock Pot Chicken Baked Tacos",
     "time": "90 min",
-    "kcal": 830,
-    "p": 69,
-    "c": 24,
-    "f": 50,
+    "kcal": 925,
+    "p": 63,
+    "c": 49,
+    "f": 53,
     "allergens": ["Dairy"],
     "ing": [
       "4 - 6 Chicken Breasts",
@@ -3433,16 +3284,16 @@
     "area": "Mexican",
     "img": "52830",
     "yt": "https://www.youtube.com/watch?v=oqL0mLDBzS4",
-    "gi": 72,
-    "grad": 0
+    "gi": 69,
+    "grad": 5
   },
   {
     "name": "Cumberland Pie",
     "time": "80 min",
-    "kcal": 855,
-    "p": 60,
-    "c": 50,
-    "f": 44,
+    "kcal": 845,
+    "p": 61,
+    "c": 51,
+    "f": 43,
     "allergens": ["Dairy", "Gluten"],
     "ing": [
       "2 Celery",
@@ -3481,16 +3332,16 @@
     "area": "British",
     "img": "53098",
     "yt": "https://www.youtube.com/watch?v=r1lnsOTNjws",
-    "gi": 73,
-    "grad": 1
+    "gi": 70,
+    "grad": 6
   },
   {
     "name": "Easy Spanish chicken",
     "time": "65 min",
     "kcal": 1190,
-    "p": 68,
-    "c": 13,
-    "f": 97,
+    "p": 67,
+    "c": 11,
+    "f": 99,
     "allergens": ["Dairy"],
     "ing": [
       "2 tbsp Extra Virgin Olive Oil",
@@ -3523,15 +3374,15 @@
     "area": "Spanish",
     "img": "53143",
     "yt": "https://www.youtube.com/watch?v=EusTpzrqYK4",
-    "gi": 74,
-    "grad": 2
+    "gi": 71,
+    "grad": 7
   },
   {
     "name": "Egg Drop Soup",
     "time": "50 min",
     "kcal": 315,
     "p": 38,
-    "c": 5,
+    "c": 7,
     "f": 15,
     "allergens": [],
     "ing": [
@@ -3560,15 +3411,15 @@
     "area": "Chinese",
     "img": "52955",
     "yt": "https://www.youtube.com/watch?v=9XpzHm9QpZg",
-    "gi": 75,
-    "grad": 3
+    "gi": 72,
+    "grad": 0
   },
   {
     "name": "English Breakfast",
     "time": "90 min",
-    "kcal": 490,
+    "kcal": 485,
     "p": 32,
-    "c": 15,
+    "c": 16,
     "f": 34,
     "allergens": ["Eggs", "Gluten"],
     "ing": [
@@ -3618,16 +3469,16 @@
     "meal": "breakfast",
     "img": "52895",
     "yt": "https://www.youtube.com/watch?v=FXjYU2Ensck",
-    "gi": 76,
-    "grad": 4
+    "gi": 73,
+    "grad": 1
   },
   {
     "name": "Fårikål (Norwegian National Dish)",
     "time": "75 min",
-    "kcal": 965,
+    "kcal": 925,
     "p": 75,
-    "c": 20,
-    "f": 63,
+    "c": 13,
+    "f": 62,
     "allergens": ["Gluten"],
     "ing": [
       "3 Lbs Lamb",
@@ -3656,15 +3507,15 @@
     "area": "Norway",
     "img": "53123",
     "yt": "https://www.youtube.com/shorts/2mMT71Knp8E",
-    "gi": 77,
-    "grad": 5
+    "gi": 74,
+    "grad": 2
   },
   {
     "name": "Fašírky",
     "time": "90 min",
-    "kcal": 700,
+    "kcal": 695,
     "p": 47,
-    "c": 60,
+    "c": 59,
     "f": 28,
     "allergens": ["Dairy", "Eggs", "Gluten"],
     "ing": [
@@ -3711,16 +3562,16 @@
     "area": "Slovakia",
     "img": "53188",
     "yt": "https://www.youtube.com/watch?v=ecBMVy3p6Ns",
-    "gi": 78,
-    "grad": 6
+    "gi": 75,
+    "grad": 3
   },
   {
     "name": "Fish fofos",
     "time": "90 min",
-    "kcal": 430,
-    "p": 41,
-    "c": 37,
-    "f": 13,
+    "kcal": 415,
+    "p": 40,
+    "c": 36,
+    "f": 12,
     "allergens": ["Fish", "Eggs", "Gluten"],
     "ing": [
       "600g Haddock",
@@ -3759,16 +3610,16 @@
     "area": "Portuguese",
     "img": "53043",
     "yt": "https://www.youtube.com/watch?v=YXUZHK2PrV8",
-    "gi": 79,
-    "grad": 7
+    "gi": 76,
+    "grad": 4
   },
   {
     "name": "Fish pie",
     "time": "90 min",
-    "kcal": 1075,
+    "kcal": 1060,
     "p": 66,
-    "c": 148,
-    "f": 21,
+    "c": 151,
+    "f": 19,
     "allergens": ["Fish", "Shellfish", "Dairy", "Gluten"],
     "ing": [
       "900g Floury Potatoes",
@@ -3813,16 +3664,16 @@
     "area": "British",
     "img": "52802",
     "yt": "https://www.youtube.com/watch?v=2sX4fCgg-UI",
-    "gi": 80,
-    "grad": 0
+    "gi": 77,
+    "grad": 5
   },
   {
     "name": "Fish Soup (Ukha)",
     "time": "80 min",
-    "kcal": 555,
-    "p": 42,
-    "c": 50,
-    "f": 19,
+    "kcal": 390,
+    "p": 35,
+    "c": 34,
+    "f": 12,
     "allergens": ["Fish"],
     "ing": [
       "2 tbs Olive Oil",
@@ -3835,7 +3686,7 @@
       "1 Cod",
       "1 Salmon"
     ],
-    "goal": ["maintain", "lose", "gain"],
+    "goal": ["lose", "maintain"],
     "desc": "A Russian seafood classic — a popular Russian dish.",
     "steps": [
       "In a medium pot, heat the olive oil over medium-high heat.",
@@ -3855,16 +3706,16 @@
     "area": "Russian",
     "img": "53079",
     "yt": "https://www.youtube.com/watch?v=cS3Yn-y5uVg",
-    "gi": 81,
-    "grad": 1
+    "gi": 78,
+    "grad": 6
   },
   {
     "name": "Fish Stew with Rouille",
     "time": "90 min",
-    "kcal": 395,
+    "kcal": 390,
     "p": 33,
-    "c": 25,
-    "f": 15,
+    "c": 27,
+    "f": 14,
     "allergens": ["Fish", "Shellfish", "Gluten"],
     "ing": [
       "6 large Prawns",
@@ -3922,13 +3773,13 @@
     "area": "France",
     "img": "52918",
     "yt": "https://www.youtube.com/watch?v=fp9Lqx2EUco",
-    "gi": 82,
-    "grad": 2
+    "gi": 79,
+    "grad": 7
   },
   {
     "name": "Fiskesuppe (Creamy Norwegian Fish Soup)",
     "time": "90 min",
-    "kcal": 815,
+    "kcal": 810,
     "p": 78,
     "c": 35,
     "f": 38,
@@ -3969,8 +3820,8 @@
     "area": "Norway",
     "img": "53122",
     "yt": "https://www.bing.com/videos/riverview/relatedvideo?&q=Fiskesuppe+(Creamy+Norwegian+Fish+Soup)+youtube&qpvt=Fiskesuppe+(Creamy+Norwegian+Fish+Soup)+youtube&mid=BA1D06D0C6BB703F9960BA1D06D0C6BB703F9960&&mcid=1B82C46C54684D60AEB9F663316D725F&FORM=VRDGAR",
-    "gi": 83,
-    "grad": 3
+    "gi": 80,
+    "grad": 0
   },
   {
     "name": "French Onion Chicken with Roasted Carrots & Mashed Potatoes",
@@ -4025,8 +3876,8 @@
     "cat": "Chicken",
     "area": "United States",
     "img": "52996",
-    "gi": 84,
-    "grad": 4
+    "gi": 81,
+    "grad": 1
   },
   {
     "name": "French Onion Soup",
@@ -4070,16 +3921,16 @@
     "meal": "snack",
     "img": "52903",
     "yt": "https://www.youtube.com/watch?v=-DLDMQucqDI",
-    "gi": 85,
-    "grad": 5
+    "gi": 82,
+    "grad": 2
   },
   {
     "name": "Full English Breakfast",
     "time": "90 min",
     "kcal": 805,
     "p": 52,
-    "c": 31,
-    "f": 54,
+    "c": 33,
+    "f": 53,
     "allergens": ["Eggs", "Gluten"],
     "ing": [
       "4 Sausages",
@@ -4129,13 +3980,13 @@
     "meal": "breakfast",
     "img": "52896",
     "yt": "https://www.youtube.com/watch?v=FXjYU2Ensck",
-    "gi": 86,
-    "grad": 6
+    "gi": 83,
+    "grad": 3
   },
   {
     "name": "Garides Saganaki",
     "time": "90 min",
-    "kcal": 300,
+    "kcal": 295,
     "p": 31,
     "c": 6,
     "f": 12,
@@ -4174,13 +4025,13 @@
     "area": "Greek",
     "img": "52764",
     "yt": "https://www.youtube.com/watch?v=uO0ejc85zSE",
-    "gi": 87,
-    "grad": 7
+    "gi": 84,
+    "grad": 4
   },
   {
     "name": "Garlicky prawns with sherry",
     "time": "45 min",
-    "kcal": 220,
+    "kcal": 215,
     "p": 25,
     "c": 2,
     "f": 12,
@@ -4205,16 +4056,16 @@
     "area": "Spanish",
     "img": "53180",
     "yt": "https://www.youtube.com/watch?v=2hf2xltFbxQ",
-    "gi": 88,
-    "grad": 0
+    "gi": 85,
+    "grad": 5
   },
   {
     "name": "General Tsos Chicken",
     "time": "80 min",
-    "kcal": 505,
-    "p": 37,
-    "c": 49,
-    "f": 17,
+    "kcal": 465,
+    "p": 35,
+    "c": 45,
+    "f": 15,
     "allergens": ["Eggs", "Gluten", "Soy"],
     "ing": [
       "1 1/2 Chicken Breast",
@@ -4258,8 +4109,8 @@
     "area": "Chinese",
     "img": "52951",
     "yt": "https://www.youtube.com/watch?v=wWGwz0iBmvU",
-    "gi": 89,
-    "grad": 1
+    "gi": 86,
+    "grad": 6
   },
   {
     "name": "Golabki (cabbage roll)",
@@ -4306,16 +4157,16 @@
     "area": "Polish",
     "img": "53021",
     "yt": "https://www.youtube.com/watch?v=rBrTkDdoPYg",
-    "gi": 90,
-    "grad": 2
+    "gi": 87,
+    "grad": 7
   },
   {
     "name": "Honey Balsamic Chicken with Crispy Broccoli & Potatoes",
     "time": "90 min",
-    "kcal": 415,
+    "kcal": 410,
     "p": 32,
     "c": 38,
-    "f": 15,
+    "f": 14,
     "allergens": ["Dairy"],
     "ing": [
       "5 Potatoes",
@@ -4359,16 +4210,48 @@
     "cat": "Chicken",
     "area": "United States",
     "img": "52993",
-    "gi": 91,
-    "grad": 3
+    "gi": 88,
+    "grad": 0
+  },
+  {
+    "name": "Honey Teriyaki Salmon",
+    "time": "50 min",
+    "kcal": 370,
+    "p": 26,
+    "c": 5,
+    "f": 26,
+    "allergens": ["Fish", "Soy"],
+    "ing": [
+      "1 lb Salmon",
+      "1 tablespoon Olive oil",
+      "2 tablespoons Soy Sauce",
+      "2 tablespoons Sake",
+      "4 tablespoons Sesame Seed"
+    ],
+    "goal": ["maintain", "lose", "gain"],
+    "desc": "A Japanese seafood classic — a popular Japanese dish.",
+    "steps": [
+      "Mix all the ingredients in the Honey Teriyaki Glaze together.",
+      "Whisk to blend well.",
+      "Combine the salmon and the Glaze together.",
+      "Heat up a skillet on medium-low heat.",
+      "Add the oil, Pan-fry the salmon on both sides until it’s completely cooked inside and the glaze thickens.",
+      "Garnish with sesame and serve immediately."
+    ],
+    "cat": "Seafood",
+    "area": "Japanese",
+    "img": "52773",
+    "yt": "https://www.youtube.com/watch?v=4MpYuaJsvRw",
+    "gi": 89,
+    "grad": 1
   },
   {
     "name": "Hot and Sour Soup",
     "time": "55 min",
-    "kcal": 350,
-    "p": 37,
-    "c": 10,
-    "f": 18,
+    "kcal": 305,
+    "p": 34,
+    "c": 7,
+    "f": 15,
     "allergens": ["Soy"],
     "ing": [
       "1/3 cup Mushrooms",
@@ -4402,16 +4285,16 @@
     "area": "Chinese",
     "img": "52954",
     "yt": "https://www.youtube.com/watch?v=KgV9Zq3aSTo",
-    "gi": 92,
-    "grad": 4
+    "gi": 90,
+    "grad": 2
   },
   {
     "name": "Irish stew",
     "time": "90 min",
     "kcal": 1300,
-    "p": 85,
-    "c": 45,
-    "f": 82,
+    "p": 84,
+    "c": 81,
+    "f": 71,
     "allergens": [],
     "ing": [
       "300g soaked overnight in water whole wheat",
@@ -4451,16 +4334,16 @@
     "area": "Irish",
     "img": "52781",
     "yt": "https://www.youtube.com/watch?v=kYH2qJXnSMo",
-    "gi": 93,
-    "grad": 5
+    "gi": 91,
+    "grad": 3
   },
   {
     "name": "Jamaican Curry Chicken Recipe",
     "time": "90 min",
-    "kcal": 680,
+    "kcal": 665,
     "p": 66,
     "c": 23,
-    "f": 36,
+    "f": 35,
     "allergens": [],
     "ing": [
       "2 Lbs Chicken Thighs",
@@ -4501,15 +4384,70 @@
     "cat": "Chicken",
     "area": "Jamaican",
     "img": "53345",
-    "gi": 94,
-    "grad": 6
+    "gi": 92,
+    "grad": 4
+  },
+  {
+    "name": "Jamaican Curry Goat",
+    "time": "90 min",
+    "kcal": 510,
+    "p": 73,
+    "c": 15,
+    "f": 16,
+    "allergens": [],
+    "ing": [
+      "3 Lbs Goat Meat",
+      "2.5 tbsp Jamaican Curry Powder",
+      "1/2 tsp Ground Ginger",
+      "1/2 tsp All-purpose Seasoning",
+      "1/4 tsp Allspice",
+      "1 chopped Onion",
+      "6 cloves sliced Garlic",
+      "3 sprigs Thyme",
+      "2 tablespoons Oil",
+      "1 1/4 cup Water",
+      "1 Scotch Bonnet",
+      "1 large Russet Potato",
+      "To taste Salt",
+      "To taste Pepper"
+    ],
+    "goal": ["lose", "maintain"],
+    "desc": "A Jamaican goat classic — a popular Jamaican dish.",
+    "steps": [
+      "Equipment",
+      "6QT Pressure cooker",
+      "Instructions",
+      "Rinse goat meat with vinegar and water.",
+      "Season goat meat with 1 ½ tablespoon curry powder, all-purpose seasoning, ground ginger, allspice, onion, garlic cloves, and thyme.",
+      "Marinate for at least 4 hours or up to overnight.",
+      "Remove onion and garlic from goat and set aside.",
+      "Set an electric pressure cooker, like an Instant Pot, on high sauté and add oil.",
+      "Add goat meat and brown, about 2-3 minutes per side.",
+      "Remove goat from insert and add 1 tablespoon oil and remaining curry powder and sauté for about 10 seconds.",
+      "Then add onions and garlic and sauté until softened.",
+      "About 4 minutes.",
+      "If the onions look dry, add a little water and continue to sauté.",
+      "Add goat and water to the pressure cooker and cover the pressure cooker.",
+      "Cook for 40 minutes on high pressure.",
+      "Allow to naturally release for 10 minutes, then release the remaining pressure.",
+      "Once all the pressure has been released, open the pressure cooker.",
+      "Place on sauté for 10-15 minutes, add potatoes and a whole scotch bonnet pepper.",
+      "Cook until potatoes have softened.",
+      "Remove scotch bonnet pepper."
+    ],
+    "cat": "Goat",
+    "area": "Jamaican",
+    "img": "53354",
+    "yt": "https://www.youtube.com/watch?v=SrX2KMsWbF4",
+    "gi": 93,
+    "grad": 5
   },
   {
     "name": "Jamaican Curry Shrimp Recipe",
     "time": "60 min",
     "kcal": 285,
     "p": 33,
-    "c": 15,
+    "c": 16,
     "f": 10,
     "allergens": ["Shellfish", "Dairy"],
     "ing": [
@@ -4544,16 +4482,16 @@
     "area": "Jamaican",
     "img": "53362",
     "yt": "https://www.youtube.com/watch?v=Lnaj4duQ7hs",
-    "gi": 95,
-    "grad": 7
+    "gi": 94,
+    "grad": 6
   },
   {
     "name": "Jamaican Pepper Shrimp",
     "time": "75 min",
-    "kcal": 190,
+    "kcal": 185,
     "p": 37,
-    "c": 5,
-    "f": 2,
+    "c": 7,
+    "f": 1,
     "allergens": ["Shellfish"],
     "ing": [
       "1 lb Shrimp",
@@ -4587,15 +4525,15 @@
     "area": "Jamaican",
     "img": "53349",
     "yt": "https://www.youtube.com/watch?v=ILCmxtCp8jc",
-    "gi": 96,
-    "grad": 0
+    "gi": 95,
+    "grad": 7
   },
   {
     "name": "Jerk chicken with rice & peas",
     "time": "90 min",
     "kcal": 1155,
     "p": 93,
-    "c": 82,
+    "c": 83,
     "f": 52,
     "allergens": ["Dairy", "Soy"],
     "ing": [
@@ -4648,16 +4586,16 @@
     "area": "Jamaican",
     "img": "52937",
     "yt": "https://www.youtube.com/watch?v=qfchrS2D_v4",
-    "gi": 97,
-    "grad": 1
+    "gi": 96,
+    "grad": 0
   },
   {
     "name": "Jiggs Dinner",
     "time": "85 min",
-    "kcal": 880,
+    "kcal": 870,
     "p": 62,
-    "c": 60,
-    "f": 42,
+    "c": 61,
+    "f": 40,
     "allergens": ["Dairy"],
     "ing": [
       "2 Lbs Beef",
@@ -4690,15 +4628,15 @@
     "area": "Canadian",
     "img": "53335",
     "yt": "https://www.youtube.com/watch?v=w-rVGvZXVfs",
-    "gi": 98,
-    "grad": 2
+    "gi": 97,
+    "grad": 1
   },
   {
     "name": "kabse",
     "time": "40 min",
     "kcal": 420,
     "p": 32,
-    "c": 47,
+    "c": 48,
     "f": 11,
     "allergens": [],
     "ing": [
@@ -4727,16 +4665,16 @@
     "area": "Saudi Arabian",
     "img": "53220",
     "yt": "https://www.youtube.com/watch?v=lrcUixJEPK0",
-    "gi": 99,
-    "grad": 3
+    "gi": 98,
+    "grad": 2
   },
   {
     "name": "Kafteji",
     "time": "90 min",
-    "kcal": 835,
-    "p": 49,
-    "c": 66,
-    "f": 42,
+    "kcal": 760,
+    "p": 47,
+    "c": 62,
+    "f": 38,
     "allergens": ["Eggs"],
     "ing": [
       "5 Large Potatoes",
@@ -4777,13 +4715,54 @@
     "area": "Tunisian",
     "img": "52971",
     "yt": "https://www.youtube.com/watch?v=-TFf-Zu-xQU",
+    "gi": 99,
+    "grad": 3
+  },
+  {
+    "name": "Kapsalon",
+    "time": "80 min",
+    "kcal": 335,
+    "p": 39,
+    "c": 12,
+    "f": 13,
+    "allergens": ["Dairy"],
+    "ing": [
+      "250 Grams Fries",
+      "500 Grams Doner Meat",
+      "Topping Garlic sauce",
+      "Topping Hotsauce",
+      "1 Bulb Lettuce",
+      "1 Tomato",
+      "3rd Cucumber",
+      "100 Grams Gouda cheese"
+    ],
+    "goal": ["lose", "maintain"],
+    "desc": "A Netherlands lamb classic — a popular Netherlands dish.",
+    "steps": [
+      "Cut the meat into strips.",
+      "Heat oil in a pan and fry the strips for 6 minutes until it's ready.",
+      "Bake the fries until golden brown in a deep fryrer.",
+      "When ready transfer to a backing dish.",
+      "Make sure the fries are spread over the whole dish.",
+      "Cover the fries with a new layer of meat and spread evenly.",
+      "Add a layer of cheese over the meat.",
+      "You can also use grated cheese.",
+      "When done put in the oven for a few minutes until the cheese is melted.",
+      "Chop the lettuce, tomato and cucumber in small pieces and mix together. for a basic salad.",
+      "As extra you can add olives jalapenos and a red union.",
+      "Dived the salad over the dish and Serve with garlicsauce and hot sauce"
+    ],
+    "cat": "Lamb",
+    "area": "Netherlands",
+    "img": "52769",
+    "yt": "https://www.youtube.com/watch?v=UIcuiU1kV8I",
     "gi": 100,
     "grad": 4
   },
   {
     "name": "Karbonader (Lean Beef Patties) with Caramelized Onions",
     "time": "55 min",
-    "kcal": 415,
+    "kcal": 405,
     "p": 31,
     "c": 9,
     "f": 27,
@@ -4873,10 +4852,10 @@
   {
     "name": "Kelem dolmasi",
     "time": "90 min",
-    "kcal": 550,
-    "p": 31,
-    "c": 24,
-    "f": 35,
+    "kcal": 525,
+    "p": 30,
+    "c": 22,
+    "f": 34,
     "allergens": [],
     "ing": [
       "500g Lamb Mince",
@@ -4894,7 +4873,7 @@
       "1 tablespoon Tomato Puree",
       "3  tablespoons Water"
     ],
-    "goal": ["maintain", "lose", "gain"],
+    "goal": ["lose", "maintain"],
     "desc": "A lamb classic.",
     "steps": [
       "First boil the rice for eight minutes.",
@@ -4965,9 +4944,9 @@
   {
     "name": "Keleya Zaara",
     "time": "60 min",
-    "kcal": 750,
+    "kcal": 735,
     "p": 48,
-    "c": 7,
+    "c": 5,
     "f": 58,
     "allergens": ["Dairy"],
     "ing": [
@@ -5002,10 +4981,10 @@
   {
     "name": "Kenyan Beef Curry",
     "time": "90 min",
-    "kcal": 890,
-    "p": 62,
-    "c": 36,
-    "f": 55,
+    "kcal": 775,
+    "p": 60,
+    "c": 18,
+    "f": 52,
     "allergens": [],
     "ing": [
       "4 cups Water",
@@ -5055,7 +5034,7 @@
     "time": "55 min",
     "kcal": 870,
     "p": 64,
-    "c": 37,
+    "c": 36,
     "f": 51,
     "allergens": ["Dairy", "Gluten"],
     "ing": [
@@ -5092,9 +5071,9 @@
   {
     "name": "Kung Pao Chicken",
     "time": "65 min",
-    "kcal": 850,
-    "p": 54,
-    "c": 39,
+    "kcal": 845,
+    "p": 53,
+    "c": 38,
     "f": 57,
     "allergens": ["Gluten", "Nuts", "Soy"],
     "ing": [
@@ -5135,9 +5114,9 @@
   {
     "name": "Kung Po Prawns",
     "time": "60 min",
-    "kcal": 865,
+    "kcal": 860,
     "p": 51,
-    "c": 35,
+    "c": 36,
     "f": 63,
     "allergens": ["Shellfish", "Gluten", "Nuts", "Soy"],
     "ing": [
@@ -5176,8 +5155,8 @@
   {
     "name": "Lamb and Lemon Souvlaki",
     "time": "75 min",
-    "kcal": 700,
-    "p": 48,
+    "kcal": 695,
+    "p": 47,
     "c": 3,
     "f": 55,
     "allergens": ["Gluten"],
@@ -5213,54 +5192,12 @@
     "grad": 5
   },
   {
-    "name": "Lamb and Potato pie",
-    "time": "80 min",
-    "kcal": 695,
-    "p": 41,
-    "c": 44,
-    "f": 38,
-    "allergens": ["Eggs", "Gluten"],
-    "ing": [
-      "500g Lamb Shoulder",
-      "1 tbls Flour",
-      "Dash Vegetable Oil",
-      "1 sliced Onion",
-      "2 sliced Carrots",
-      "350ml/12fl Vegetable Stock",
-      "500g Potatoes",
-      "450g Shortcrust Pastry",
-      "To Glaze Eggs"
-    ],
-    "goal": ["maintain", "lose", "gain"],
-    "desc": "A British lamb classic — a popular British dish.",
-    "steps": [
-      "Dust the meat with flour to lightly coat.",
-      "Heat enough vegetable oil in a large saucepan to fill the base, and fry the onion and meat until lightly browned.",
-      "Season with salt and pepper.",
-      "Add the carrots, stock and more seasoning to taste.",
-      "Bring to the boil, cover and reduce the heat to a simmer.",
-      "Simmer for at least an hour or until the meat is tender.",
-      "Take your time cooking the meat, the longer you leave it to cook, the better the flavour will be.",
-      "Preheat the oven to 180C/350F/Gas 4.",
-      "Add the drained potato cubes to the lamb.",
-      "Turn the mixture into a pie dish or casserole and cover with the shortcrust pastry.",
-      "Make three slits in the top of the pastry to release any steam while cooking.",
-      "Brush with beaten egg and bake for about 40 minutes, until the pastry is golden brown."
-    ],
-    "cat": "Lamb",
-    "area": "British",
-    "img": "52877",
-    "yt": "https://www.youtube.com/watch?v=NCyPaaUNYUk",
-    "gi": 110,
-    "grad": 6
-  },
-  {
     "name": "Lamb Rogan josh",
     "time": "60 min",
-    "kcal": 900,
+    "kcal": 905,
     "p": 62,
     "c": 15,
-    "f": 64,
+    "f": 65,
     "allergens": ["Dairy"],
     "ing": [
       "2 quartered Onion",
@@ -5294,16 +5231,16 @@
     "area": "India",
     "img": "52808",
     "yt": "https://www.youtube.com/watch?v=NZVo32n7iS8",
-    "gi": 111,
-    "grad": 7
+    "gi": 110,
+    "grad": 6
   },
   {
     "name": "Lamb Tagine",
     "time": "70 min",
-    "kcal": 570,
-    "p": 34,
+    "kcal": 550,
+    "p": 33,
     "c": 18,
-    "f": 40,
+    "f": 38,
     "allergens": ["Dairy", "Gluten"],
     "ing": [
       "2 tblsp Olive Oil",
@@ -5340,53 +5277,86 @@
     "area": "Moroccan",
     "img": "52843",
     "yt": "https://www.youtube.com/watch?v=bR5Cqu84S_k",
+    "gi": 111,
+    "grad": 7
+  },
+  {
+    "name": "Lamb tomato and sweet spices",
+    "time": "90 min",
+    "kcal": 610,
+    "p": 35,
+    "c": 51,
+    "f": 33,
+    "allergens": [],
+    "ing": [
+      "2 tbsp olive oil",
+      "4cm piece finely chopped ginger",
+      "2 cloves peeled and chopped garlic",
+      "800g peeled and chopped tomatoes",
+      "2 tbsp lemon juice",
+      "1 tsp caster sugar",
+      "50 vine leaves",
+      "1 large fennel bulb",
+      "400g lamb mince",
+      "1 medium onion",
+      "1 small peeled and coarsely grated potatoes",
+      "2 tbsp basmati rice",
+      "2 tbsp chopped parsley",
+      "2 tbsp chopped coriander",
+      "1 tbsp lemon juice",
+      "2 cloves garlic",
+      "½ tsp ground clove",
+      "½ tsp ground cinnamon",
+      "2 medium tomatoes"
+    ],
+    "goal": ["maintain", "lose", "gain"],
+    "desc": "A Moroccan lamb classic — a popular Moroccan dish.",
+    "steps": [
+      "Use pickled vine leaves here, preserved in brine.",
+      "Small delicate leaves are better than the large bristly ones but, if only large leaves are to hand, then trim them to roughly 12 by 12 cms so that you don't get too many layers of leaves around the filling.",
+      "And remove any stalks.",
+      "Drain the preserved leaves, immerse them in boiling water for 10 minutes and then leave to dry on a tea towel before use.",
+      "Basmati rice with butter and pine nuts is an ideal accompaniment.",
+      "Couscous is great, too.",
+      "Serves four.",
+      "First make the filling.",
+      "Put all the ingredients, apart from the tomatoes, in a bowl.",
+      "Cut the tomatoes in half, coarsely grate into the bowl and discard the skins.",
+      "Add half a teaspoon of salt and some black pepper, and stir.",
+      "Leave on the side, or in the fridge, for up to a day.",
+      "Before using, gently squeeze with your hands and drain away any juices that come out.",
+      "To make the sauce, heat the oil in a medium pan.",
+      "Add the ginger and garlic, cook for a minute or two, taking care not to burn them, then add the tomato, lemon juice and sugar.",
+      "Season, and simmer for 20 minutes.",
+      "While the sauce is bubbling away, prepare the vine leaves.",
+      "Use any torn or broken leaves to line the base of a wide, heavy saucepan.",
+      "Trim any leaves from the fennel, cut it vertically into 0.5cm-thick slices and spread over the base of the pan to cover completely.",
+      "Lay a prepared vine leaf (see intro) on a work surface, veiny side up.",
+      "Put two teaspoons of filling at the base of the leaf in a 2cm-long by 1cm-wide strip.",
+      "Fold the sides of the leaf over the filling, then roll it tightly from bottom to top, in a cigar shape.",
+      "Place in the pan, seam down, and repeat with the remaining leaves, placing them tightly next to each other in lines or circles (in two layers if necessary).",
+      "Pour the sauce over the leaves (and, if needed, add water just to cover).",
+      "Place a plate on top, to weigh the leaves down, then cover with a lid.",
+      "Bring to a boil, reduce the heat and cook on a bare simmer for 70 minutes.",
+      "Most of the liquid should evaporate.",
+      "Remove from the heat, and leave to cool a little - they are best served warm.",
+      "When serving, bring to the table in the pan - it looks great.",
+      "Serve a few vine leaves and fennel slices with warm rice.",
+      "Spoon the braising juices on top and garnish with coriander."
+    ],
+    "cat": "Lamb",
+    "area": "Moroccan",
+    "img": "52782",
+    "yt": "https://www.youtube.com/watch?v=vaZb1MnFBgA",
     "gi": 112,
     "grad": 0
   },
   {
-    "name": "Lamb Tzatziki Burgers",
-    "time": "50 min",
-    "kcal": 490,
-    "p": 28,
-    "c": 7,
-    "f": 38,
-    "allergens": ["Dairy", "Gluten"],
-    "ing": [
-      "25g Bulgur Wheat",
-      "500g Lamb Mince",
-      "1 tsp Cumin",
-      "1 tsp Coriander",
-      "1 tsp Paprika",
-      "1 clove finely chopped Garlic",
-      "For frying Olive Oil",
-      "4 Bun",
-      "Grated Cucumber",
-      "200g Greek Yogurt",
-      "2 tbs Mint"
-    ],
-    "goal": ["maintain", "lose", "gain"],
-    "desc": "A Greek lamb classic — a popular Greek dish.",
-    "steps": [
-      "Tip the bulghar into a pan, cover with water and boil for 10 mins.",
-      "Drain really well in a sieve, pressing out any excess water.",
-      "To make the tzatziki, squeeze and discard the juice from the cucumber, then mix into the yogurt with the chopped mint and a little salt.",
-      "Work the bulghar into the lamb with the spices, garlic (if using) and seasoning, then shape into 4 burgers.",
-      "Brush with a little oil and fry or barbecue for about 5 mins each side until cooked all the way through.",
-      "Serve in the buns (toasted if you like) with the tzatziki, tomatoes, onion and a few mint leaves."
-    ],
-    "cat": "Lamb",
-    "area": "Greek",
-    "img": "53010",
-    "yt": "https://www.youtube.com/watch?v=s7_TF4ZHjPc",
-    "gi": 113,
-    "grad": 1
-  },
-  {
     "name": "Lancashire hotpot",
     "time": "60 min",
-    "kcal": 1070,
+    "kcal": 1065,
     "p": 77,
-    "c": 44,
+    "c": 43,
     "f": 64,
     "allergens": ["Dairy", "Gluten"],
     "ing": [
@@ -5417,13 +5387,13 @@
     "area": "British",
     "img": "52884",
     "yt": "https://www.youtube.com/watch?v=w6TS5J8YRA4",
-    "gi": 114,
-    "grad": 2
+    "gi": 113,
+    "grad": 1
   },
   {
     "name": "Lemongrass beef stew with noodles",
     "time": "65 min",
-    "kcal": 655,
+    "kcal": 645,
     "p": 48,
     "c": 30,
     "f": 35,
@@ -5459,16 +5429,16 @@
     "cat": "Beef",
     "area": "Thai",
     "img": "53211",
-    "gi": 115,
-    "grad": 3
+    "gi": 114,
+    "grad": 2
   },
   {
     "name": "Locro",
     "time": "65 min",
-    "kcal": 690,
-    "p": 50,
-    "c": 48,
-    "f": 31,
+    "kcal": 575,
+    "p": 45,
+    "c": 52,
+    "f": 22,
     "allergens": [],
     "ing": [
       "500g Dried white corn",
@@ -5500,74 +5470,13 @@
     "area": "Argentina",
     "img": "53146",
     "yt": "https://www.youtube.com/watch?v=vX0KYKAkBTU",
-    "gi": 116,
-    "grad": 4
-  },
-  {
-    "name": "Ma Po Tofu",
-    "time": "90 min",
-    "kcal": 460,
-    "p": 26,
-    "c": 31,
-    "f": 26,
-    "allergens": ["Soy"],
-    "ing": [
-      "450g Tofu",
-      "100g Minced Beef",
-      "1/2 tbs Sesame Seed Oil",
-      "1 1/2 tsp Doubanjiang",
-      "1/2 tsp Fermented Black Beans",
-      "1 tbs Pepper",
-      "1/2 tsp Salt",
-      "1/2 tsp Sichuan pepper",
-      "1 tbs Soy Sauce",
-      "400ml Water",
-      "2 tbs Olive Oil",
-      "2 chopped Scallions",
-      "4 Spring Onions",
-      "2 cloves chopped Garlic",
-      "4 sliced Ginger",
-      "2 1/2 tbs Water",
-      "1 tbs Cornstarch"
-    ],
-    "goal": ["maintain", "lose", "gain"],
-    "desc": "A Chinese beef classic — a popular Chinese dish.",
-    "steps": [
-      "Add a small pinch of salt and sesame oil to minced beef.",
-      "Mix well and set aside.",
-      "Mix 1 tablespoon of cornstarch with 2 and ½ tablespoons of water in a small bowl to make water starch.",
-      "Cut tofu into square cubes (around 2cms).",
-      "Bring a large amount of water to a boil and then add a pinch of salt.",
-      "Slide the tofu in and cook for 1 minute.",
-      "Move out and drain.",
-      "Get a wok and heat up around 2 tablespoons of oil, fry the minced meat until crispy.",
-      "Transfer out beef out and leave the oil in.",
-      "Fry doubanjiang for 1 minute over slow fire and then add garlic, scallion white, ginger and fermented black beans to cook for 30 seconds until aroma.",
-      "Then mix pepper flakes in.",
-      "Add water to the seasonings and bring to boil over high fire.",
-      "Gently slide the tofu cubes.",
-      "Add light soy sauce and beef.Slow the heat after boiling and then simmer for 6-8 minutes.",
-      "Then add chopped garlic greens.",
-      "Stir the water starch and then pour half of the mixture to the simmering pot.",
-      "Wait for around 30 seconds and then pour the other half.",
-      "You can slightly taste the tofu and add pinch of salt if not salty enough.",
-      "By the way, if you feel it is too spicy, add some sugar can milder the taste.",
-      "But be carefully as the broth is very hot at this point.",
-      "Transfer out when almost all the seasonings stick to tofu cubes.",
-      "Sprinkle Szechuan peppercorn powder (to taste)and chopped garlic greens if using.",
-      "Serve immediately with steamed rice."
-    ],
-    "cat": "Beef",
-    "area": "Chinese",
-    "img": "52947",
-    "yt": "https://www.youtube.com/watch?v=IhwPQL9dFYc",
-    "gi": 117,
-    "grad": 5
+    "gi": 115,
+    "grad": 3
   },
   {
     "name": "Mastawa Lamb and Rice",
     "time": "90 min",
-    "kcal": 880,
+    "kcal": 875,
     "p": 53,
     "c": 64,
     "f": 44,
@@ -5608,16 +5517,16 @@
     "cat": "Lamb",
     "area": "",
     "img": "53400",
-    "gi": 118,
-    "grad": 6
+    "gi": 116,
+    "grad": 4
   },
   {
     "name": "Matambre a la Pizza",
     "time": "65 min",
     "kcal": 805,
-    "p": 80,
-    "c": 7,
-    "f": 47,
+    "p": 79,
+    "c": 5,
+    "f": 50,
     "allergens": [],
     "ing": [
       "1 kg Beef Flank Steak",
@@ -5645,16 +5554,54 @@
     "area": "Argentina",
     "img": "53140",
     "yt": "https://www.youtube.com/watch?v=X5UxDaNHD30",
-    "gi": 119,
-    "grad": 7
+    "gi": 117,
+    "grad": 5
+  },
+  {
+    "name": "Mbuzi Choma (Roasted Goat)",
+    "time": "75 min",
+    "kcal": 990,
+    "p": 63,
+    "c": 160,
+    "f": 7,
+    "allergens": ["Gluten"],
+    "ing": [
+      "1 kg Goat Meat",
+      "1 kg Corn Flour",
+      "2 Tomatoes",
+      "Pinch Salt",
+      "1 Onion",
+      "1 Green Chilli",
+      "1  bunch Coriander Leaves"
+    ],
+    "goal": ["gain", "maintain"],
+    "desc": "A Kenyan goat classic — a popular Kenyan dish.",
+    "steps": [
+      "Steps for the Meat:",
+      "Roast meat over medium heat for 50 minutes and salt it as you turn it.",
+      "Steps for Ugali:",
+      "Bring the water and salt to a boil in a heavy-bottomed saucepan.",
+      "Stir in the cornmeal slowly, letting it fall through the fingers of your hand.",
+      "Reduce heat to medium-low and continue stirring regularly, smashing any lumps with a spoon, until the mush pulls away from the sides of the pot and becomes very thick, about 10 minutes.",
+      "4.Remove from heat and allow to cool.",
+      "Place the ugali into a large serving bowl.",
+      "Wet your hands with water, form a ball and serve.",
+      "Steps for Kachumbari: Mix the tomatoes, onions, chili and coriander leaves in a bowl.",
+      "Serve and enjoy!"
+    ],
+    "cat": "Goat",
+    "area": "Kenyan",
+    "img": "52968",
+    "gi": 118,
+    "grad": 6
   },
   {
     "name": "Minced Beef Pie",
     "time": "80 min",
-    "kcal": 715,
-    "p": 57,
-    "c": 20,
-    "f": 42,
+    "kcal": 880,
+    "p": 52,
+    "c": 51,
+    "f": 50,
     "allergens": ["Eggs", "Gluten"],
     "ing": [
       "2 tbs Vegetable Oil",
@@ -5668,7 +5615,7 @@
       "400g Shortcrust Pastry",
       "1 Egg Yolks"
     ],
-    "goal": ["maintain", "lose", "gain"],
+    "goal": ["gain", "maintain"],
     "desc": "A British beef classic — a popular British dish.",
     "steps": [
       "Preheat the oven to 200C/400F/Gas 6.",
@@ -5688,97 +5635,8 @@
     "area": "British",
     "img": "52876",
     "yt": "https://www.youtube.com/watch?v=QY47h-uqq5g",
-    "gi": 120,
-    "grad": 0
-  },
-  {
-    "name": "Mini chilli beef pies",
-    "time": "90 min",
-    "kcal": 585,
-    "p": 39,
-    "c": 41,
-    "f": 28,
-    "allergens": ["Dairy", "Gluten"],
-    "ing": [
-      "450g Ready rolled shortcrust pastry",
-      "1 tablespoon Sunflower Oil",
-      "1 small Onion",
-      "2 tsp Hot Chilli Powder",
-      "2 tsp Ground Cumin",
-      "250g Minced Beef",
-      "85g Tomato Puree",
-      "150ml Beef Stock",
-      "Pinch Ground Cinnamon",
-      "200g Kidney Beans",
-      "1 large Potatoes",
-      "3  tablespoons Sour Cream",
-      "2 tablespoons Chopped Chive"
-    ],
-    "goal": ["maintain", "lose", "gain"],
-    "desc": "A Australian beef classic — a popular Australian dish.",
-    "steps": [
-      "To make chilli, heat oil in a pan and fry onion for 5 mins until soft.",
-      "Add spices; fry for 1 min.",
-      "Stir in beef and cook for a few mins.",
-      "Add tomato purée, stock and cinnamon.",
-      "Give it a stir, bring to the boil, then simmer for 15-20 mins until very little liquid is left.",
-      "Add beans 5 mins before the end of cooking.",
-      "Check seasoning and cool.",
-      "Heat oven to 200C/fan 180C/gas 6.",
-      "Using a 7cm pastry cutter, stamp out 12 circles from the pastry.",
-      "Use to line a 12-hole mini muffin tray, prick the base of the pastry with a fork, and bake for 10 mins.",
-      "Remove from oven and cool on a wire tray.",
-      "Repeat with remaining pastry.",
-      "Meanwhile, cook the potato in boiling water until tender.",
-      "Drain, mash with soured cream and seasoning, then stir through chives.",
-      "Spoon 1-2 tsp of chilli mix into the pastry cases and top with a tsp of mash.",
-      "Ruffle mash with a fork; return to the oven for 15 mins or until golden."
-    ],
-    "cat": "Beef",
-    "area": "Australian",
-    "img": "53109",
-    "yt": "https://www.youtube.com/watch?v=PHuU1L92-Ns",
-    "gi": 121,
-    "grad": 1
-  },
-  {
-    "name": "Molasses Baked Beans",
-    "time": "65 min",
-    "kcal": 525,
-    "p": 31,
-    "c": 40,
-    "f": 26,
-    "allergens": [],
-    "ing": [
-      "2 cups Dried White Navy Beans",
-      "1/2 lb Bacon",
-      "1 medium Onion",
-      "1/2 cup Molasses",
-      "1/4 cup Brown Sugar",
-      "2 tablespoons Cider Vinegar",
-      "Ground Mustard",
-      "To taste Salt",
-      "To taste Pepper"
-    ],
-    "goal": ["lose", "maintain"],
-    "desc": "A Canadian vegetarian classic — a popular Canadian dish.",
-    "steps": [
-      "Place the dried beans into a Dutch oven with 6 cups (1.5 L) of water.",
-      "Soak overnight.",
-      "Drain and pour beans back into the pot with enough water to cover the beans by a couple of inches, cook for 30 minutes until they are tender but still firm.",
-      "Drain beans, making sure to reserve cooking liquid, set aside.",
-      "Preheat the oven to 325 °F (160 °C).",
-      "While the oven is preheating, cook pork over medium-high heat in the Dutch Oven until fat is rendered and pork is beginning to brown, then add the onion cooking until tender.",
-      "Add the beans back to the pot, along with molasses, brown sugar, apple cider vinegar, ground mustard, salt and pepper and 3 cups (750 mL) of reserved bean water.",
-      "Bake uncovered for 3 to 5 hours until the beans are tender, and the sauce has thickened, and the edges of the pot get sticky.",
-      "(Note: if beans get dry, add another cup of water.)"
-    ],
-    "cat": "Vegetarian",
-    "area": "Canadian",
-    "img": "53336",
-    "yt": "https://www.youtube.com/watch?v=60tmFXd4uoI",
-    "gi": 122,
-    "grad": 2
+    "gi": 119,
+    "grad": 7
   },
   {
     "name": "Moussaka",
@@ -5813,15 +5671,15 @@
     "area": "Greek",
     "img": "53006",
     "yt": "https://www.youtube.com/watch?v=8U_29i9Qp5U",
-    "gi": 123,
-    "grad": 3
+    "gi": 120,
+    "grad": 0
   },
   {
     "name": "Nutty Chicken Curry",
     "time": "55 min",
-    "kcal": 585,
+    "kcal": 580,
     "p": 60,
-    "c": 8,
+    "c": 7,
     "f": 35,
     "allergens": ["Dairy", "Nuts"],
     "ing": [
@@ -5850,57 +5708,16 @@
     "area": "India",
     "img": "52851",
     "yt": "https://www.youtube.com/watch?v=nSQNfZxOdeU",
-    "gi": 124,
-    "grad": 4
-  },
-  {
-    "name": "Pad See Ew",
-    "time": "60 min",
-    "kcal": 435,
-    "p": 25,
-    "c": 29,
-    "f": 23,
-    "allergens": ["Eggs", "Gluten", "Nuts", "Soy"],
-    "ing": [
-      "6oz/180g rice stick noodles",
-      "2 tbsp dark soy sauce",
-      "2 tbsp oyster sauce",
-      "2 tsp soy sauce",
-      "2 tsp white vinegar",
-      "2 tsp sugar",
-      "2 tbsp water",
-      "2 tbsp peanut oil",
-      "2 cloves garlic",
-      "1 cup Chicken",
-      "1 Egg",
-      "4 cups Chinese broccoli"
-    ],
-    "goal": ["maintain", "lose", "gain"],
-    "desc": "A Thai chicken classic — a popular Thai dish.",
-    "steps": [
-      "Mix Sauce in small bowl.",
-      "Mince garlic into wok with oil.",
-      "Place over high heat, when hot, add chicken and Chinese broccoli stems, cook until chicken is light golden.",
-      "Push to the side of the wok, crack egg in and scramble.",
-      "Don't worry if it sticks to the bottom of the wok - it will char and which adds authentic flavour.",
-      "Add noodles, Chinese broccoli leaves and sauce.",
-      "Gently mix together until the noodles are stained dark and leaves are wilted.",
-      "Serve immediately!"
-    ],
-    "cat": "Chicken",
-    "area": "Thai",
-    "img": "52774",
-    "yt": "https://www.youtube.com/watch?v=Ohy1DELF4is",
-    "gi": 125,
-    "grad": 5
+    "gi": 121,
+    "grad": 1
   },
   {
     "name": "Pan-fried hake, white bean & chorizo broth",
     "time": "90 min",
-    "kcal": 935,
+    "kcal": 930,
     "p": 76,
     "c": 42,
-    "f": 52,
+    "f": 51,
     "allergens": ["Gluten"],
     "ing": [
       "450g Dried white beans",
@@ -5940,16 +5757,16 @@
     "area": "Spanish",
     "img": "53152",
     "yt": "https://www.youtube.com/watch?v=6hcNBBob_xI",
-    "gi": 126,
-    "grad": 6
+    "gi": 122,
+    "grad": 2
   },
   {
     "name": "Piri-piri chicken and slaw",
     "time": "55 min",
-    "kcal": 850,
-    "p": 98,
-    "c": 12,
-    "f": 44,
+    "kcal": 855,
+    "p": 97,
+    "c": 11,
+    "f": 45,
     "allergens": ["Dairy"],
     "ing": [
       "1.5kg Chicken",
@@ -5985,8 +5802,8 @@
     "area": "Portuguese",
     "img": "53039",
     "yt": "https://www.youtube.com/watch?v=_RKwKjskopk",
-    "gi": 127,
-    "grad": 7
+    "gi": 123,
+    "grad": 3
   },
   {
     "name": "Polish patties (kotlety)",
@@ -6024,16 +5841,16 @@
     "meal": "snack",
     "img": "53299",
     "yt": "https://www.youtube.com/shorts/0XrToCi-U1c",
-    "gi": 128,
-    "grad": 0
+    "gi": 124,
+    "grad": 4
   },
   {
     "name": "Pollo en pepitoria",
     "time": "90 min",
-    "kcal": 980,
-    "p": 96,
-    "c": 21,
-    "f": 57,
+    "kcal": 985,
+    "p": 97,
+    "c": 20,
+    "f": 58,
     "allergens": ["Eggs", "Gluten", "Nuts"],
     "ing": [
       "Pinch Saffron",
@@ -6085,16 +5902,16 @@
     "area": "Spanish",
     "img": "53162",
     "yt": "https://www.youtube.com/watch?v=dam5k5HCE1Y",
-    "gi": 129,
-    "grad": 1
+    "gi": 125,
+    "grad": 5
   },
   {
     "name": "Pork & sauerkraut goulash",
     "time": "70 min",
-    "kcal": 1290,
-    "p": 111,
-    "c": 27,
-    "f": 77,
+    "kcal": 1275,
+    "p": 108,
+    "c": 21,
+    "f": 81,
     "allergens": ["Dairy", "Gluten"],
     "ing": [
       "3  tablespoons Lard",
@@ -6128,16 +5945,16 @@
     "area": "Polish",
     "img": "53301",
     "yt": "https://www.youtube.com/watch?v=91FM8lHEGbQ",
-    "gi": 130,
-    "grad": 2
+    "gi": 126,
+    "grad": 6
   },
   {
     "name": "Pork Cassoulet",
     "time": "75 min",
-    "kcal": 505,
-    "p": 37,
-    "c": 43,
-    "f": 20,
+    "kcal": 620,
+    "p": 36,
+    "c": 42,
+    "f": 34,
     "allergens": ["Gluten"],
     "ing": [
       "4 tbsp Goose Fat",
@@ -6157,7 +5974,7 @@
       "to serve Bread",
       "to serve Broccoli"
     ],
-    "goal": ["lose", "maintain"],
+    "goal": ["maintain", "lose", "gain"],
     "desc": "A France pork classic — a popular France dish.",
     "steps": [
       "Heat oven to 140C/120C fan/gas 1.",
@@ -6176,13 +5993,13 @@
     "area": "France",
     "img": "52847",
     "yt": "https://www.youtube.com/watch?v=MEdHMTD0VCA",
-    "gi": 131,
-    "grad": 3
+    "gi": 127,
+    "grad": 7
   },
   {
     "name": "Pork rib bortsch",
     "time": "90 min",
-    "kcal": 865,
+    "kcal": 855,
     "p": 69,
     "c": 35,
     "f": 47,
@@ -6228,16 +6045,16 @@
     "area": "Polish",
     "img": "53306",
     "yt": "https://www.youtube.com/watch?v=SqRP4xYS6wA",
-    "gi": 132,
-    "grad": 4
+    "gi": 128,
+    "grad": 0
   },
   {
     "name": "Portuguese fish stew (Caldeirada de peixe)",
     "time": "70 min",
-    "kcal": 795,
+    "kcal": 790,
     "p": 61,
-    "c": 71,
-    "f": 20,
+    "c": 70,
+    "f": 19,
     "allergens": ["Fish", "Shellfish"],
     "ing": [
       "2 finely chopped Onions",
@@ -6275,8 +6092,8 @@
     "area": "Portuguese",
     "img": "53045",
     "yt": "https://www.youtube.com/watch?v=utv-GpSJypk",
-    "gi": 133,
-    "grad": 5
+    "gi": 129,
+    "grad": 1
   },
   {
     "name": "Potato Gratin with Chicken",
@@ -6311,8 +6128,8 @@
     "area": "Italian",
     "img": "52780",
     "yt": "https://www.youtube.com/watch?v=p3u8eiy3yHI",
-    "gi": 134,
-    "grad": 6
+    "gi": 130,
+    "grad": 2
   },
   {
     "name": "Poutine",
@@ -6337,13 +6154,13 @@
     "area": "Canadian",
     "img": "52804",
     "yt": "https://www.youtube.com/watch?v=UVAMAoA2_WU",
-    "gi": 135,
-    "grad": 7
+    "gi": 131,
+    "grad": 3
   },
   {
     "name": "Prawn & Fennel Bisque",
     "time": "85 min",
-    "kcal": 820,
+    "kcal": 815,
     "p": 91,
     "c": 17,
     "f": 39,
@@ -6384,64 +6201,16 @@
     "meal": "snack",
     "img": "52922",
     "yt": "https://www.youtube.com/watch?v=4thpMbDakgM",
-    "gi": 136,
-    "grad": 0
-  },
-  {
-    "name": "Prawn stir-fry",
-    "time": "75 min",
-    "kcal": 375,
-    "p": 25,
-    "c": 27,
-    "f": 20,
-    "allergens": ["Fish", "Shellfish", "Gluten", "Soy"],
-    "ing": [
-      "200g Raw tiger prawns",
-      "1 chopped Green Chilli",
-      "3 Cloves Crushed Garlic",
-      "1  bunch Coriander",
-      "1 tblsp Caster Sugar",
-      "Juice of 1 Lime",
-      "3 tbsp Fish Sauce",
-      "2 tablespoons Ground Nut Oil",
-      "3cm piece Ginger",
-      "8 slices Spring Onions",
-      "1 sliced Red Pepper",
-      "85g Water Chestnut",
-      "100g Bean Sprouts",
-      "1 tablespoon Soy Sauce",
-      "To serve Rice Noodles",
-      "To serve Lime"
-    ],
-    "goal": ["maintain", "lose", "gain"],
-    "desc": "A Thai seafood classic — a popular Thai dish.",
-    "steps": [
-      "Put the prawns in a bowl.",
-      "Put the chilli, garlic, coriander stalks (snip these up using scissors first) and caster sugar in a spice grinder or small food processor and whizz together.",
-      "Add half of the lime juice and the fish sauce, then pour this over the prawns.",
-      "Heat 1 tbsp oil in a wok, add the ginger and spring onions and fry for 1 min.",
-      "Add the red pepper and fry for 1 min, until the pepper starts to soften.",
-      "Add the water chestnuts and bean sprouts, and toss together until the bean sprouts start to wilt.",
-      "Add the soy sauce and a really good grind of black pepper, then tip the lot into a serving dish.",
-      "Heat the remaining oil in the wok and add the prawns, lifting them out of their juices.",
-      "Toss for 1-2 mins until they turn pink, add the marinade and swirl the wok quickly, then tip the lot onto the veg.",
-      "Snip over the coriander leaves and sprinkle on the remaining lime.",
-      "Serves over noodles with extra lime for squeezing over."
-    ],
-    "cat": "Seafood",
-    "area": "Thai",
-    "img": "53200",
-    "yt": "https://www.youtube.com/watch?v=DddM8OGb4Jc",
-    "gi": 137,
-    "grad": 1
+    "gi": 132,
+    "grad": 4
   },
   {
     "name": "Presh me Oriz Leek and Rice Bake",
     "time": "75 min",
-    "kcal": 1075,
-    "p": 68,
-    "c": 44,
-    "f": 66,
+    "kcal": 1040,
+    "p": 67,
+    "c": 47,
+    "f": 63,
     "allergens": [],
     "ing": [
       "500g Leek",
@@ -6472,14 +6241,14 @@
     "area": "",
     "img": "53410",
     "yt": "https://www.youtube.com/watch?v=se2DU0httvg",
-    "gi": 138,
-    "grad": 2
+    "gi": 133,
+    "grad": 5
   },
   {
     "name": "Rappie Pie",
     "time": "90 min",
-    "kcal": 1025,
-    "p": 130,
+    "kcal": 1020,
+    "p": 131,
     "c": 56,
     "f": 28,
     "allergens": ["Dairy"],
@@ -6516,16 +6285,16 @@
     "area": "Canadian",
     "img": "52933",
     "yt": "https://www.youtube.com/watch?v=Ys2kZnTVXAM",
-    "gi": 139,
-    "grad": 3
+    "gi": 134,
+    "grad": 6
   },
   {
     "name": "Red Peas Soup",
     "time": "90 min",
-    "kcal": 1160,
-    "p": 71,
-    "c": 105,
-    "f": 48,
+    "kcal": 955,
+    "p": 66,
+    "c": 83,
+    "f": 39,
     "allergens": ["Dairy", "Gluten"],
     "ing": [
       "2 cups Kidney Beans",
@@ -6576,16 +6345,16 @@
     "area": "Jamaican",
     "img": "52941",
     "yt": "https://www.youtube.com/watch?v=1ogCfDXotMw",
-    "gi": 140,
-    "grad": 4
+    "gi": 135,
+    "grad": 7
   },
   {
     "name": "Roasted chicken with creamy walnut sauce",
     "time": "90 min",
     "kcal": 955,
     "p": 87,
-    "c": 26,
-    "f": 58,
+    "c": 25,
+    "f": 57,
     "allergens": ["Dairy", "Gluten", "Nuts"],
     "ing": [
       "8 Chicken Thighs",
@@ -6625,15 +6394,15 @@
     "area": "Turkish",
     "img": "53268",
     "yt": "https://www.youtube.com/watch?v=e8Bn3V3kmpM",
-    "gi": 141,
-    "grad": 5
+    "gi": 136,
+    "grad": 0
   },
   {
     "name": "Rosol (Polish Chicken Soup)",
     "time": "75 min",
-    "kcal": 390,
+    "kcal": 380,
     "p": 43,
-    "c": 18,
+    "c": 17,
     "f": 16,
     "allergens": [],
     "ing": [
@@ -6670,16 +6439,16 @@
     "area": "Polish",
     "img": "53020",
     "yt": "https://www.youtube.com/watch?v=AU60fxyxXGw",
-    "gi": 142,
-    "grad": 6
+    "gi": 137,
+    "grad": 1
   },
   {
     "name": "Salmon noodle soup",
     "time": "50 min",
-    "kcal": 695,
+    "kcal": 690,
     "p": 75,
     "c": 33,
-    "f": 29,
+    "f": 28,
     "allergens": ["Fish", "Gluten", "Soy"],
     "ing": [
       "1 L Chicken Stock",
@@ -6707,16 +6476,16 @@
     "area": "Vietnamese",
     "img": "53234",
     "yt": "https://www.youtube.com/watch?v=__Kh1sizUAM",
-    "gi": 143,
-    "grad": 7
+    "gi": 138,
+    "grad": 2
   },
   {
     "name": "Salmon Prawn Risotto",
     "time": "60 min",
-    "kcal": 500,
-    "p": 32,
-    "c": 39,
-    "f": 21,
+    "kcal": 475,
+    "p": 31,
+    "c": 37,
+    "f": 19,
     "allergens": ["Fish", "Shellfish", "Dairy"],
     "ing": [
       "50g/2oz butter",
@@ -6747,15 +6516,15 @@
     "area": "Italian",
     "img": "52823",
     "yt": "https://www.youtube.com/watch?v=V2PMvBv52IE",
-    "gi": 144,
-    "grad": 0
+    "gi": 139,
+    "grad": 3
   },
   {
     "name": "Salt cod tortilla",
     "time": "90 min",
-    "kcal": 430,
-    "p": 31,
-    "c": 19,
+    "kcal": 420,
+    "p": 30,
+    "c": 18,
     "f": 26,
     "allergens": ["Fish", "Eggs"],
     "ing": [
@@ -6795,15 +6564,15 @@
     "area": "Spanish",
     "img": "53171",
     "yt": "https://www.youtube.com/watch?v=ga7YoAjGgnA",
-    "gi": 145,
-    "grad": 1
+    "gi": 140,
+    "grad": 4
   },
   {
     "name": "Saltfish and Ackee",
     "time": "90 min",
     "kcal": 555,
     "p": 36,
-    "c": 71,
+    "c": 70,
     "f": 13,
     "allergens": ["Fish", "Gluten"],
     "ing": [
@@ -6848,16 +6617,16 @@
     "area": "Jamaican",
     "img": "52936",
     "yt": "https://www.youtube.com/watch?v=nbfNyZbdn2I",
-    "gi": 146,
-    "grad": 2
+    "gi": 141,
+    "grad": 5
   },
   {
     "name": "Satee",
     "time": "90 min",
-    "kcal": 1270,
+    "kcal": 1260,
     "p": 71,
     "c": 12,
-    "f": 102,
+    "f": 101,
     "allergens": ["Soy"],
     "ing": [
       "1 chopped Onion",
@@ -6895,13 +6664,50 @@
     "cat": "Beef",
     "area": "",
     "img": "53443",
-    "gi": 147,
-    "grad": 3
+    "gi": 142,
+    "grad": 6
+  },
+  {
+    "name": "Sea bass with sizzled ginger, chilli & spring onions",
+    "time": "65 min",
+    "kcal": 480,
+    "p": 29,
+    "c": 15,
+    "f": 34,
+    "allergens": ["Soy"],
+    "ing": [
+      "6 Sea Bass Fillets",
+      "3  tablespoons Sunflower Oil",
+      "Knob Ginger",
+      "3 sliced thinly Garlic Clove",
+      "3 Large Red Chilli",
+      "Bunch Spring Onions",
+      "1 tablespoon Soy Sauce"
+    ],
+    "goal": ["maintain", "lose", "gain"],
+    "desc": "A Vietnamese seafood classic — a popular Vietnamese dish.",
+    "steps": [
+      "Season 6 sea bass fillets with salt and pepper, then slash the skin 3 times.",
+      "Heat a heavy-based frying pan and add 1 tbsp sunflower oil.",
+      "Once hot, fry the sea bass fillets, skin-side down, for 5 mins or until the skin is very crisp and golden.",
+      "The fish will be almost cooked through.",
+      "Turn over, cook for another 30 seconds - 1 minute, then transfer to a serving plate and keep warm.",
+      "You’ll need to fry the sea bass fillets in 2 batches.",
+      "Heat 2 tbsp sunflower oil, then fry the large knob of peeled ginger, cut into matchsticks, 3 thinly sliced garlic cloves and 3 thinly shredded red chillies for about 2 mins until golden.",
+      "Take off the heat and toss in the bunch of shredded spring onions.",
+      "Splash the fish with 1 tbsp soy sauce and spoon over the contents of the pan."
+    ],
+    "cat": "Seafood",
+    "area": "Vietnamese",
+    "img": "53247",
+    "yt": "https://www.youtube.com/watch?v=xzDYKZl50FQ",
+    "gi": 143,
+    "grad": 7
   },
   {
     "name": "Seafood fideuà",
     "time": "90 min",
-    "kcal": 855,
+    "kcal": 850,
     "p": 60,
     "c": 84,
     "f": 29,
@@ -6955,15 +6761,15 @@
     "area": "Spanish",
     "img": "52836",
     "yt": "https://www.youtube.com/watch?v=itsFEc8W468",
-    "gi": 148,
-    "grad": 4
+    "gi": 144,
+    "grad": 0
   },
   {
     "name": "Seafood rice",
     "time": "50 min",
-    "kcal": 830,
-    "p": 69,
-    "c": 76,
+    "kcal": 960,
+    "p": 60,
+    "c": 121,
     "f": 24,
     "allergens": ["Fish"],
     "ing": [
@@ -6990,16 +6796,16 @@
     "area": "Spanish",
     "img": "53167",
     "yt": "https://www.youtube.com/watch?v=Dr8Nsod20yg",
-    "gi": 149,
-    "grad": 5
+    "gi": 145,
+    "grad": 1
   },
   {
     "name": "Shawarma",
     "time": "90 min",
-    "kcal": 760,
-    "p": 76,
-    "c": 21,
-    "f": 41,
+    "kcal": 745,
+    "p": 75,
+    "c": 20,
+    "f": 40,
     "allergens": ["Dairy", "Gluten"],
     "ing": [
       "1 kg Chicken Thighs",
@@ -7042,16 +6848,16 @@
     "area": "Egyptian",
     "img": "53028",
     "yt": "https://www.youtube.com/watch?v=3lxUIeKDgic",
-    "gi": 150,
-    "grad": 6
+    "gi": 146,
+    "grad": 2
   },
   {
     "name": "Shawarma chuck roast wrap",
     "time": "85 min",
-    "kcal": 440,
-    "p": 25,
-    "c": 33,
-    "f": 20,
+    "kcal": 430,
+    "p": 56,
+    "c": 18,
+    "f": 13,
     "allergens": [],
     "ing": [
       "1kg Chuck Roast",
@@ -7067,7 +6873,7 @@
       "1/2 teaspoon Ground Coriander",
       "1/4 tsp Ground Clove"
     ],
-    "goal": ["maintain", "lose", "gain"],
+    "goal": ["lose", "maintain"],
     "desc": "A Saudi Arabian beef classic — a popular Saudi Arabian dish.",
     "steps": [
       "In a dutch oven or slow cooker, add all the spices, beef broth and lemon juice.",
@@ -7088,16 +6894,16 @@
     "area": "Saudi Arabian",
     "img": "53217",
     "yt": "https://www.youtube.com/shorts/YLhyRjyLkcE",
-    "gi": 151,
-    "grad": 7
+    "gi": 147,
+    "grad": 3
   },
   {
     "name": "Shrimp With Snow Peas",
     "time": "90 min",
-    "kcal": 335,
+    "kcal": 315,
     "p": 35,
-    "c": 12,
-    "f": 16,
+    "c": 15,
+    "f": 13,
     "allergens": ["Shellfish", "Nuts", "Soy"],
     "ing": [
       "2 tsp Cornstarch",
@@ -7140,15 +6946,15 @@
     "area": "Chinese",
     "img": "53375",
     "yt": "https://www.youtube.com/watch?v=RmbTaEqabN4",
-    "gi": 152,
-    "grad": 0
+    "gi": 148,
+    "grad": 4
   },
   {
     "name": "Sichuan Eggplant",
     "time": "90 min",
-    "kcal": 390,
+    "kcal": 385,
     "p": 27,
-    "c": 10,
+    "c": 11,
     "f": 27,
     "allergens": ["Eggs", "Nuts", "Soy"],
     "ing": [
@@ -7201,16 +7007,16 @@
     "area": "Chinese",
     "img": "53374",
     "yt": "https://www.youtube.com/watch?v=j54Af9gBmzo",
-    "gi": 153,
-    "grad": 1
+    "gi": 149,
+    "grad": 5
   },
   {
     "name": "Singapore Noodles with Shrimp",
     "time": "90 min",
-    "kcal": 415,
-    "p": 30,
+    "kcal": 405,
+    "p": 29,
     "c": 51,
-    "f": 10,
+    "f": 9,
     "allergens": ["Shellfish", "Eggs", "Gluten", "Soy"],
     "ing": [
       "2 tsp Sesame Seed Oil",
@@ -7232,7 +7038,7 @@
       "1/2 lb Shrimp",
       "2 tablespoons Cilantro Leaves"
     ],
-    "goal": ["lose", "maintain"],
+    "goal": ["maintain", "lose", "gain"],
     "desc": "A Chinese seafood classic — a popular Chinese dish.",
     "steps": [
       "For the sweet onion, look for Vidalia, OSO Sweet, or Walla Walla.",
@@ -7269,15 +7075,15 @@
     "area": "Chinese",
     "img": "53368",
     "yt": "https://www.youtube.com/watch?v=DiFUyPAGoug",
-    "gi": 154,
-    "grad": 2
+    "gi": 150,
+    "grad": 6
   },
   {
     "name": "Slow-roasted ham with lemon, garlic & sage",
     "time": "90 min",
     "kcal": 950,
     "p": 85,
-    "c": 6,
+    "c": 5,
     "f": 55,
     "allergens": [],
     "ing": [
@@ -7311,16 +7117,16 @@
     "cat": "Pork",
     "area": "Polish",
     "img": "53302",
-    "gi": 155,
-    "grad": 3
+    "gi": 151,
+    "grad": 7
   },
   {
     "name": "Smoked Haddock Kedgeree",
     "time": "90 min",
     "kcal": 1300,
     "p": 90,
-    "c": 118,
-    "f": 49,
+    "c": 116,
+    "f": 51,
     "allergens": ["Fish", "Dairy", "Eggs"],
     "ing": [
       "50g Butter",
@@ -7360,8 +7166,8 @@
     "meal": "breakfast",
     "img": "52964",
     "yt": "https://www.youtube.com/watch?v=QqdzDCWS4gQ",
-    "gi": 156,
-    "grad": 4
+    "gi": 152,
+    "grad": 0
   },
   {
     "name": "Smoky chicken skewers",
@@ -7397,13 +7203,59 @@
     "area": "Turkish",
     "img": "53264",
     "yt": "https://www.youtube.com/watch?v=vNDTGF4ppu8",
-    "gi": 157,
-    "grad": 5
+    "gi": 153,
+    "grad": 1
+  },
+  {
+    "name": "Snert (Dutch Split Pea Soup)",
+    "time": "85 min",
+    "kcal": 540,
+    "p": 33,
+    "c": 31,
+    "f": 32,
+    "allergens": [],
+    "ing": [
+      "2L Water",
+      "300g Peas",
+      "100g Pork",
+      "1 Vegetable Stock Cube",
+      "2 Celery",
+      "2 Carrots",
+      "1 large Potatoes",
+      "1 small Onion",
+      "1 small Leek",
+      "1 cup Celeriac",
+      "1 pound Sausages"
+    ],
+    "goal": ["maintain", "lose", "gain"],
+    "desc": "A Netherlands side classic — a popular Netherlands dish.",
+    "steps": [
+      "Gather the ingredients.",
+      "In a large soup pot, bring water, split peas, pork belly or bacon, pork chop, and bouillon cube to a boil.",
+      "Reduce the heat to a simmer, cover and let cook for 45 minutes, stirring occasionally and skimming off any foam that rises to the top.",
+      "Remove the pork chop, debone, and thinly slice the meat.",
+      "Set aside.",
+      "Add the celery, carrots, potato, onion, leek, and celeriac to the soup.",
+      "Return to the boil, reduce the heat to a simmer and let cook, uncovered, for another 30 minutes, adding a little extra water if the ingredients start to stick to the bottom of the pot.",
+      "Add the smoked sausage for the last 15 minutes of cooking time.",
+      "When the vegetables are tender, remove the bacon and smoked sausage, slice thinly and set aside.",
+      "If you prefer a smooth consistency, purée the soup with a stick blender.",
+      "Season to taste with salt and pepper.",
+      "Add the meat back to the soup, setting some slices of rookworst aside.",
+      "Serve in heated bowls or soup plates, garnished with slices of rookworst and chopped celery leaf."
+    ],
+    "cat": "Side",
+    "area": "Netherlands",
+    "meal": "snack",
+    "img": "52981",
+    "yt": "https://www.youtube.com/watch?v=5YV0sJLtLt8",
+    "gi": 154,
+    "grad": 2
   },
   {
     "name": "Spaghetti alla Carbonara",
     "time": "90 min",
-    "kcal": 625,
+    "kcal": 620,
     "p": 35,
     "c": 63,
     "f": 25,
@@ -7448,8 +7300,8 @@
     "area": "Italian",
     "img": "52982",
     "yt": "https://www.youtube.com/watch?v=_T6jkRvhlkk",
-    "gi": 158,
-    "grad": 6
+    "gi": 155,
+    "grad": 3
   },
   {
     "name": "Spaghetti Bolognese",
@@ -7489,13 +7341,13 @@
     "area": "Italian",
     "img": "52770",
     "yt": "https://www.youtube.com/watch?v=-gF8d-fitkU",
-    "gi": 159,
-    "grad": 7
+    "gi": 156,
+    "grad": 4
   },
   {
     "name": "Spanish beans with chicken & chorizo",
     "time": "55 min",
-    "kcal": 770,
+    "kcal": 760,
     "p": 66,
     "c": 36,
     "f": 40,
@@ -7526,13 +7378,13 @@
     "cat": "Chicken",
     "area": "Spanish",
     "img": "53181",
-    "gi": 160,
-    "grad": 0
+    "gi": 157,
+    "grad": 5
   },
   {
     "name": "Spanish Chicken",
     "time": "45 min",
-    "kcal": 765,
+    "kcal": 760,
     "p": 93,
     "c": 12,
     "f": 38,
@@ -7559,16 +7411,16 @@
     "area": "Spanish",
     "img": "53164",
     "yt": "https://www.youtube.com/watch?v=fKqSOn5NCrk",
-    "gi": 161,
-    "grad": 1
+    "gi": 158,
+    "grad": 6
   },
   {
     "name": "Spanish chicken pie",
     "time": "55 min",
     "kcal": 455,
     "p": 29,
-    "c": 61,
-    "f": 11,
+    "c": 60,
+    "f": 12,
     "allergens": [],
     "ing": [
       "1 kg Potatoes",
@@ -7595,16 +7447,16 @@
     "cat": "Chicken",
     "area": "Spanish",
     "img": "53155",
-    "gi": 162,
-    "grad": 2
+    "gi": 159,
+    "grad": 7
   },
   {
     "name": "Spiced smoky barbecued chicken",
     "time": "65 min",
     "kcal": 845,
     "p": 97,
-    "c": 6,
-    "f": 48,
+    "c": 7,
+    "f": 47,
     "allergens": [],
     "ing": [
       "2 cloves Garlic",
@@ -7635,16 +7487,16 @@
     "cat": "Chicken",
     "area": "Australian",
     "img": "53105",
-    "gi": 163,
-    "grad": 3
+    "gi": 160,
+    "grad": 0
   },
   {
     "name": "Spicy Thai prawn noodles",
     "time": "55 min",
-    "kcal": 430,
-    "p": 37,
-    "c": 45,
-    "f": 11,
+    "kcal": 420,
+    "p": 36,
+    "c": 46,
+    "f": 10,
     "allergens": ["Shellfish", "Eggs", "Gluten", "Nuts", "Soy"],
     "ing": [
       "200g Rice Noodles",
@@ -7673,15 +7525,15 @@
     "cat": "Seafood",
     "area": "Thai",
     "img": "53209",
-    "gi": 164,
-    "grad": 4
+    "gi": 161,
+    "grad": 1
   },
   {
     "name": "Spinach & Ricotta Cannelloni",
     "time": "90 min",
-    "kcal": 645,
+    "kcal": 640,
     "p": 40,
-    "c": 54,
+    "c": 53,
     "f": 32,
     "allergens": ["Dairy"],
     "ing": [
@@ -7726,16 +7578,16 @@
     "area": "Italian",
     "img": "52849",
     "yt": "https://www.youtube.com/watch?v=rYGaEJjyLQA",
-    "gi": 165,
-    "grad": 5
+    "gi": 162,
+    "grad": 2
   },
   {
     "name": "Split Pea Soup",
     "time": "90 min",
-    "kcal": 550,
-    "p": 60,
-    "c": 30,
-    "f": 20,
+    "kcal": 515,
+    "p": 61,
+    "c": 31,
+    "f": 16,
     "allergens": ["Gluten"],
     "ing": [
       "1kg Ham",
@@ -7747,7 +7599,7 @@
       "300g Frozen Peas",
       "to serve Bread"
     ],
-    "goal": ["maintain", "lose", "gain"],
+    "goal": ["lose", "maintain"],
     "desc": "A Canadian side classic — a popular Canadian dish.",
     "steps": [
       "Put the gammon in a very large pan with 2 litres water and bring to the boil.",
@@ -7770,8 +7622,8 @@
     "meal": "snack",
     "img": "52925",
     "yt": "https://www.youtube.com/watch?v=qdhWz7qAaCU",
-    "gi": 166,
-    "grad": 6
+    "gi": 163,
+    "grad": 3
   },
   {
     "name": "Spring onion and prawn empanadas",
@@ -7815,16 +7667,16 @@
     "area": "Portuguese",
     "img": "53040",
     "yt": "https://www.youtube.com/watch?v=Q24haJU-1dI",
-    "gi": 167,
-    "grad": 7
+    "gi": 164,
+    "grad": 4
   },
   {
     "name": "Steak Diane",
     "time": "70 min",
-    "kcal": 580,
-    "p": 42,
-    "c": 7,
-    "f": 42,
+    "kcal": 570,
+    "p": 41,
+    "c": 6,
+    "f": 41,
     "allergens": ["Dairy"],
     "ing": [
       "2 tbs Canola Oil",
@@ -7862,13 +7714,13 @@
     "area": "France",
     "img": "52935",
     "yt": "https://www.youtube.com/watch?v=9rWZNHkrsNg",
-    "gi": 168,
-    "grad": 0
+    "gi": 165,
+    "grad": 5
   },
   {
     "name": "Sticky Chicken",
     "time": "50 min",
-    "kcal": 655,
+    "kcal": 650,
     "p": 82,
     "c": 4,
     "f": 34,
@@ -7895,16 +7747,16 @@
     "area": "Australian",
     "img": "53110",
     "yt": "https://www.youtube.com/watch?v=o8tz2BOltTg",
-    "gi": 169,
-    "grad": 1
+    "gi": 166,
+    "grad": 6
   },
   {
     "name": "Stir-fried chicken with chillies & basil",
     "time": "60 min",
-    "kcal": 365,
+    "kcal": 355,
     "p": 34,
     "c": 10,
-    "f": 21,
+    "f": 20,
     "allergens": ["Fish", "Soy"],
     "ing": [
       "2 tablespoons Vegetable Oil",
@@ -7933,16 +7785,16 @@
     "area": "Thai",
     "img": "53201",
     "yt": "https://www.youtube.com/watch?v=fF4GpyiZL8Q",
-    "gi": 170,
-    "grad": 2
+    "gi": 167,
+    "grad": 7
   },
   {
     "name": "Sweet and Sour Chicken",
     "time": "90 min",
-    "kcal": 470,
-    "p": 38,
-    "c": 27,
-    "f": 23,
+    "kcal": 465,
+    "p": 37,
+    "c": 28,
+    "f": 22,
     "allergens": ["Eggs"],
     "ing": [
       "1 lb Chicken Thighs",
@@ -7997,8 +7849,8 @@
     "area": "Chinese",
     "img": "53376",
     "yt": "https://www.youtube.com/watch?v=cblsP5S9PhU",
-    "gi": 171,
-    "grad": 3
+    "gi": 168,
+    "grad": 0
   },
   {
     "name": "Syrian Rice with Meat",
@@ -8035,16 +7887,16 @@
     "cat": "Miscellaneous",
     "area": "Syrian",
     "img": "53095",
-    "gi": 172,
-    "grad": 4
+    "gi": 169,
+    "grad": 1
   },
   {
     "name": "Tafelspitz",
     "time": "80 min",
-    "kcal": 910,
+    "kcal": 905,
     "p": 88,
-    "c": 15,
-    "f": 51,
+    "c": 16,
+    "f": 50,
     "allergens": [],
     "ing": [
       "1.5kg Beef Brisket",
@@ -8077,16 +7929,16 @@
     "cat": "Beef",
     "area": "",
     "img": "53447",
-    "gi": 173,
-    "grad": 5
+    "gi": 170,
+    "grad": 2
   },
   {
     "name": "Tajine de Poulet aux Carottes et Patates Douces (Chicken and Sweet Potato Tagine)",
     "time": "85 min",
-    "kcal": 570,
-    "p": 56,
-    "c": 29,
-    "f": 26,
+    "kcal": 565,
+    "p": 55,
+    "c": 31,
+    "f": 25,
     "allergens": [],
     "ing": [
       "2 sliced Onion",
@@ -8129,16 +7981,16 @@
     "area": "Algerian",
     "img": "53287",
     "yt": "https://www.youtube.com/watch?v=thf-JDXoTVg",
-    "gi": 174,
-    "grad": 6
+    "gi": 171,
+    "grad": 3
   },
   {
     "name": "Tandoori chicken",
     "time": "60 min",
-    "kcal": 870,
-    "p": 101,
+    "kcal": 855,
+    "p": 102,
     "c": 15,
-    "f": 44,
+    "f": 43,
     "allergens": ["Dairy"],
     "ing": [
       "2 Juice lemons",
@@ -8170,8 +8022,8 @@
     "area": "India",
     "img": "52806",
     "yt": "https://www.youtube.com/watch?v=-CKvt1KNU74",
-    "gi": 175,
-    "grad": 7
+    "gi": 172,
+    "grad": 4
   },
   {
     "name": "Thai beef stir-fry",
@@ -8200,16 +8052,16 @@
     "area": "Thai",
     "img": "53199",
     "yt": "https://www.youtube.com/watch?v=N3OI_7zu5sA",
-    "gi": 176,
-    "grad": 0
+    "gi": 173,
+    "grad": 5
   },
   {
     "name": "Thai chicken cakes with sweet chilli sauce",
     "time": "45 min",
-    "kcal": 265,
+    "kcal": 245,
     "p": 28,
-    "c": 8,
-    "f": 12,
+    "c": 7,
+    "f": 11,
     "allergens": [],
     "ing": [
       "2 large Chicken Breast",
@@ -8237,13 +8089,13 @@
     "area": "Thai",
     "img": "53206",
     "yt": "https://www.youtube.com/watch?v=pT0WoqUZXw0",
-    "gi": 177,
-    "grad": 1
+    "gi": 174,
+    "grad": 6
   },
   {
     "name": "Thai drumsticks",
     "time": "50 min",
-    "kcal": 630,
+    "kcal": 620,
     "p": 82,
     "c": 3,
     "f": 31,
@@ -8270,16 +8122,16 @@
     "area": "Thai",
     "img": "53212",
     "yt": "https://www.youtube.com/watch?v=lv1tj9FK3f0",
-    "gi": 178,
-    "grad": 2
+    "gi": 175,
+    "grad": 7
   },
   {
     "name": "Thai fried rice with prawns & peas",
     "time": "60 min",
-    "kcal": 385,
+    "kcal": 375,
     "p": 27,
     "c": 36,
-    "f": 15,
+    "f": 13,
     "allergens": ["Fish", "Shellfish", "Eggs", "Soy"],
     "ing": [
       "2 tbsp Vegetable Oil",
@@ -8311,16 +8163,16 @@
     "area": "Thai",
     "img": "53198",
     "yt": "https://www.youtube.com/watch?v=9wZAYbPcF-I",
-    "gi": 179,
-    "grad": 3
+    "gi": 176,
+    "grad": 0
   },
   {
     "name": "Thai green chicken soup",
     "time": "55 min",
-    "kcal": 870,
-    "p": 62,
-    "c": 36,
-    "f": 55,
+    "kcal": 835,
+    "p": 64,
+    "c": 32,
+    "f": 53,
     "allergens": ["Fish", "Dairy"],
     "ing": [
       "2 tblsp Sunflower Oil",
@@ -8353,15 +8205,15 @@
     "area": "Thai",
     "img": "53214",
     "yt": "https://www.youtube.com/watch?v=3s4Yitd546w",
-    "gi": 180,
-    "grad": 4
+    "gi": 177,
+    "grad": 1
   },
   {
     "name": "Thai Green Curry",
     "time": "80 min",
-    "kcal": 585,
+    "kcal": 580,
     "p": 36,
-    "c": 27,
+    "c": 26,
     "f": 40,
     "allergens": ["Fish", "Dairy"],
     "ing": [
@@ -8398,15 +8250,15 @@
     "area": "Thai",
     "img": "52814",
     "yt": "https://www.youtube.com/watch?v=LIbKVpBQKJI",
-    "gi": 181,
-    "grad": 5
+    "gi": 178,
+    "grad": 2
   },
   {
     "name": "Thai prawn curry",
     "time": "55 min",
-    "kcal": 220,
+    "kcal": 215,
     "p": 26,
-    "c": 9,
+    "c": 8,
     "f": 9,
     "allergens": ["Shellfish", "Dairy"],
     "ing": [
@@ -8434,16 +8286,16 @@
     "area": "Thai",
     "img": "53205",
     "yt": "https://www.youtube.com/watch?v=dEMPVKQXSYA",
-    "gi": 182,
-    "grad": 6
+    "gi": 179,
+    "grad": 3
   },
   {
     "name": "Thai rice noodle salad",
     "time": "90 min",
-    "kcal": 510,
+    "kcal": 540,
     "p": 47,
-    "c": 23,
-    "f": 25,
+    "c": 24,
+    "f": 28,
     "allergens": ["Fish", "Gluten"],
     "ing": [
       "1/2 bag Vermicelli Rice Noodles",
@@ -8462,7 +8314,7 @@
       "4 Sirloin steak",
       "1 sliced Red Chilli"
     ],
-    "goal": ["lose", "maintain"],
+    "goal": ["maintain", "lose", "gain"],
     "desc": "A Thai vegetarian classic — a popular Thai dish.",
     "steps": [
       "Place the noodles and beansprouts in a heatproof bowl and cover with boiling water.",
@@ -8485,16 +8337,16 @@
     "cat": "Vegetarian",
     "area": "Thai",
     "img": "53203",
-    "gi": 183,
-    "grad": 7
+    "gi": 180,
+    "grad": 4
   },
   {
     "name": "Thai-style fish broth with greens",
     "time": "60 min",
-    "kcal": 490,
+    "kcal": 450,
     "p": 55,
-    "c": 27,
-    "f": 16,
+    "c": 25,
+    "f": 14,
     "allergens": ["Fish", "Shellfish", "Gluten"],
     "ing": [
       "100g Brown Rice Noodle",
@@ -8523,16 +8375,16 @@
     "area": "Thai",
     "img": "53213",
     "yt": "https://www.youtube.com/watch?v=rRwnwCd5om8",
-    "gi": 184,
-    "grad": 0
+    "gi": 181,
+    "grad": 5
   },
   {
     "name": "Tom kha gai",
     "time": "75 min",
-    "kcal": 1055,
-    "p": 82,
-    "c": 32,
-    "f": 69,
+    "kcal": 1025,
+    "p": 84,
+    "c": 29,
+    "f": 67,
     "allergens": ["Fish", "Dairy"],
     "ing": [
       "800ml Chicken Stock",
@@ -8568,16 +8420,16 @@
     "area": "Thai",
     "img": "53207",
     "yt": "https://www.youtube.com/watch?v=2BbIZwmIP7Q",
-    "gi": 185,
-    "grad": 1
+    "gi": 182,
+    "grad": 6
   },
   {
     "name": "Tom yum (hot & sour) soup with prawns",
     "time": "40 min",
-    "kcal": 580,
-    "p": 65,
-    "c": 19,
-    "f": 26,
+    "kcal": 510,
+    "p": 63,
+    "c": 14,
+    "f": 22,
     "allergens": ["Fish", "Shellfish"],
     "ing": [
       "700ml Chicken Stock",
@@ -8590,7 +8442,7 @@
       "6 small Green Chilli",
       "4 tablespoons Lime juice"
     ],
-    "goal": ["maintain", "lose", "gain"],
+    "goal": ["lose", "maintain"],
     "desc": "A Thai seafood classic — a popular Thai dish.",
     "steps": [
       "Bring the stock to a boil in a medium-sized saucepan.",
@@ -8602,16 +8454,16 @@
     "area": "Thai",
     "img": "53196",
     "yt": "https://www.youtube.com/watch?v=FJer_Cutb2I",
-    "gi": 186,
-    "grad": 2
+    "gi": 183,
+    "grad": 7
   },
   {
     "name": "Tom yum soup with prawns",
     "time": "75 min",
-    "kcal": 390,
-    "p": 36,
-    "c": 25,
-    "f": 16,
+    "kcal": 310,
+    "p": 35,
+    "c": 21,
+    "f": 11,
     "allergens": ["Fish", "Shellfish", "Dairy"],
     "ing": [
       "200g Onion",
@@ -8648,61 +8500,16 @@
     "area": "Thai",
     "img": "53194",
     "yt": "https://www.youtube.com/watch?v=fvLcZg9gNnE",
-    "gi": 187,
-    "grad": 3
-  },
-  {
-    "name": "Tourtiere",
-    "time": "85 min",
-    "kcal": 490,
-    "p": 41,
-    "c": 22,
-    "f": 25,
-    "allergens": ["Eggs", "Gluten"],
-    "ing": [
-      "1 medium Potatoes",
-      "1 tsp Sunflower Oil",
-      "500g Minced Pork",
-      "1 finely chopped Onion",
-      "1 finely chopped Garlic Clove",
-      "¼ tsp Cinnamon",
-      "¼ tsp Allspice",
-      "¼ tsp Nutmeg",
-      "100ml Vegetable Stock",
-      "400g Shortcrust Pastry",
-      "To Glaze Egg"
-    ],
-    "goal": ["lose", "maintain"],
-    "desc": "A Canadian pork classic — a popular Canadian dish.",
-    "steps": [
-      "Heat oven to 200C/180C fan/gas 6.",
-      "Boil the potato until tender, drain and mash, then leave to cool.",
-      "Heat the oil in a non-stick pan, add the mince and onion and quickly fry until browned.",
-      "Add the garlic, spices, stock, plenty of pepper and a little salt and mix well.",
-      "Remove from the heat, stir into the potato and leave to cool.",
-      "Roll out half the pastry and line the base of a 20-23cm pie plate or flan tin.",
-      "Fill with the pork mixture and brush the edges of the pastry with water.",
-      "Roll out the remaining dough and cover the pie.",
-      "Press the edges of the pastry to seal, trimming off the excess.",
-      "Prick the top of the pastry case to allow steam to escape and glaze the top with the beaten egg.",
-      "Bake for 30 mins until the pastry is crisp and golden.",
-      "Serve cut into wedges with a crisp green salad.",
-      "Leftovers are good cold for lunch the next day, served with a selection of pickles."
-    ],
-    "cat": "Pork",
-    "area": "Canadian",
-    "img": "52926",
-    "yt": "https://www.youtube.com/watch?v=A96hbwobKKs",
-    "gi": 188,
-    "grad": 4
+    "gi": 184,
+    "grad": 0
   },
   {
     "name": "Traditional Croatian Goulash",
     "time": "90 min",
-    "kcal": 510,
-    "p": 36,
-    "c": 16,
-    "f": 28,
+    "kcal": 485,
+    "p": 35,
+    "c": 14,
+    "f": 27,
     "allergens": [],
     "ing": [
       "500g Beef",
@@ -8740,16 +8547,16 @@
     "area": "Croatian",
     "img": "53057",
     "yt": "https://www.youtube.com/watch?v=ipEz5u2T7KM",
-    "gi": 189,
-    "grad": 5
+    "gi": 185,
+    "grad": 1
   },
   {
     "name": "Tuna and Egg Briks",
     "time": "90 min",
-    "kcal": 350,
+    "kcal": 405,
     "p": 27,
-    "c": 33,
-    "f": 14,
+    "c": 44,
+    "f": 16,
     "allergens": ["Fish", "Eggs", "Gluten"],
     "ing": [
       "2 tbs Olive Oil",
@@ -8790,16 +8597,16 @@
     "area": "Tunisian",
     "img": "52975",
     "yt": "https://www.youtube.com/watch?v=C5n1fN8TGHs",
-    "gi": 190,
-    "grad": 6
+    "gi": 186,
+    "grad": 2
   },
   {
     "name": "Tuna Nicoise",
     "time": "65 min",
-    "kcal": 490,
+    "kcal": 485,
     "p": 38,
     "c": 23,
-    "f": 27,
+    "f": 26,
     "allergens": ["Fish", "Eggs"],
     "ing": [
       "450g Potatoes",
@@ -8829,16 +8636,16 @@
     "area": "France",
     "img": "52852",
     "yt": "https://www.youtube.com/watch?v=3_UAxkx0u6U",
-    "gi": 191,
-    "grad": 7
+    "gi": 187,
+    "grad": 3
   },
   {
     "name": "Tunisian Lamb Soup",
     "time": "55 min",
-    "kcal": 945,
-    "p": 87,
-    "c": 36,
-    "f": 50,
+    "kcal": 985,
+    "p": 86,
+    "c": 55,
+    "f": 47,
     "allergens": [],
     "ing": [
       "500g Lamb Mince",
@@ -8870,15 +8677,15 @@
     "area": "Tunisian",
     "img": "52972",
     "yt": "https://www.youtube.com/watch?v=w1qgTQmLRe4",
-    "gi": 192,
-    "grad": 0
+    "gi": 188,
+    "grad": 4
   },
   {
     "name": "Turkey Meatloaf",
     "time": "80 min",
-    "kcal": 670,
+    "kcal": 665,
     "p": 60,
-    "c": 69,
+    "c": 68,
     "f": 17,
     "allergens": ["Eggs", "Gluten"],
     "ing": [
@@ -8914,8 +8721,8 @@
     "area": "British",
     "img": "52845",
     "yt": "https://www.youtube.com/watch?v=mTvlmY4vCug",
-    "gi": 193,
-    "grad": 1
+    "gi": 189,
+    "grad": 5
   },
   {
     "name": "Turkish rice (vermicelli rice)",
@@ -8951,16 +8758,16 @@
     "area": "Turkish",
     "img": "53252",
     "yt": "https://www.youtube.com/watch?v=gY6PZzjO53M",
-    "gi": 194,
-    "grad": 2
+    "gi": 190,
+    "grad": 6
   },
   {
     "name": "Venezuelan Sancocho",
     "time": "90 min",
-    "kcal": 1290,
-    "p": 80,
-    "c": 44,
-    "f": 83,
+    "kcal": 1280,
+    "p": 78,
+    "c": 55,
+    "f": 80,
     "allergens": ["Dairy"],
     "ing": [
       "2 Lbs Hind Shank",
@@ -9005,8 +8812,8 @@
     "area": "Venezuela",
     "img": "53326",
     "yt": "https://www.youtube.com/watch?v=w6KNOKkcRBs",
-    "gi": 195,
-    "grad": 3
+    "gi": 191,
+    "grad": 7
   },
   {
     "name": "Venezuelan Shredded Beef",
@@ -9057,16 +8864,16 @@
     "area": "Venezuela",
     "img": "53328",
     "yt": "https://www.youtube.com/watch?v=TPn1BKS5Eio",
-    "gi": 196,
-    "grad": 4
+    "gi": 192,
+    "grad": 0
   },
   {
     "name": "Venezuelan turnovers",
     "time": "90 min",
-    "kcal": 495,
-    "p": 35,
+    "kcal": 480,
+    "p": 34,
     "c": 18,
-    "f": 30,
+    "f": 29,
     "allergens": [],
     "ing": [
       "450g Ground Beef",
@@ -9107,16 +8914,16 @@
     "meal": "snack",
     "img": "53332",
     "yt": "https://www.youtube.com/watch?v=OfuQf6sCycU",
-    "gi": 197,
-    "grad": 5
+    "gi": 193,
+    "grad": 1
   },
   {
     "name": "Vietnamese chicken salad",
     "time": "50 min",
-    "kcal": 395,
+    "kcal": 385,
     "p": 27,
-    "c": 36,
-    "f": 16,
+    "c": 35,
+    "f": 15,
     "allergens": ["Fish", "Gluten", "Nuts", "Soy"],
     "ing": [
       "140g Rice Noodles",
@@ -9147,8 +8954,8 @@
     "area": "Vietnamese",
     "img": "53232",
     "yt": "https://www.youtube.com/watch?v=behSkhzKpHI",
-    "gi": 198,
-    "grad": 6
+    "gi": 194,
+    "grad": 2
   },
   {
     "name": "Vietnamese Grilled Pork (bun-thit-nuong)",
@@ -9190,13 +8997,13 @@
     "area": "Vietnamese",
     "img": "52828",
     "yt": "https://www.youtube.com/watch?v=Q3qcQcENzbU",
-    "gi": 199,
-    "grad": 7
+    "gi": 195,
+    "grad": 3
   },
   {
     "name": "Vietnamese lamb shanks with sweet potatoes",
     "time": "65 min",
-    "kcal": 950,
+    "kcal": 945,
     "p": 65,
     "c": 42,
     "f": 57,
@@ -9238,15 +9045,15 @@
     "area": "Vietnamese",
     "img": "53231",
     "yt": "https://www.tiktok.com/@shanice_and_lima/video/7280471655959383297",
-    "gi": 200,
-    "grad": 0
+    "gi": 196,
+    "grad": 4
   },
   {
     "name": "Vietnamese pork salad",
     "time": "85 min",
-    "kcal": 510,
+    "kcal": 500,
     "p": 40,
-    "c": 21,
+    "c": 20,
     "f": 29,
     "allergens": ["Fish", "Soy"],
     "ing": [
@@ -9290,16 +9097,16 @@
     "area": "Vietnamese",
     "img": "53237",
     "yt": "https://www.youtube.com/watch?v=_DCJNrNTTB4",
-    "gi": 201,
-    "grad": 1
+    "gi": 197,
+    "grad": 5
   },
   {
     "name": "Vietnamese-style caramel pork",
     "time": "65 min",
-    "kcal": 575,
-    "p": 38,
-    "c": 39,
-    "f": 31,
+    "kcal": 555,
+    "p": 37,
+    "c": 41,
+    "f": 28,
     "allergens": ["Fish"],
     "ing": [
       "1 ½ tbsp Ground Nut Oil",
@@ -9331,13 +9138,13 @@
     "area": "Vietnamese",
     "img": "53235",
     "yt": "https://www.youtube.com/watch?v=qmQe0Qxvyzc",
-    "gi": 202,
-    "grad": 2
+    "gi": 198,
+    "grad": 6
   },
   {
     "name": "Wontons",
     "time": "60 min",
-    "kcal": 445,
+    "kcal": 435,
     "p": 36,
     "c": 23,
     "f": 23,
@@ -9371,7 +9178,7 @@
     "area": "Chinese",
     "img": "52948",
     "yt": "https://www.youtube.com/watch?v=9h9No18ZyCI",
-    "gi": 203,
-    "grad": 3
+    "gi": 199,
+    "grad": 7
   }
 ]

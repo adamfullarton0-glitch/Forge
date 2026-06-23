@@ -22,6 +22,7 @@
     "prepare": "husky || true",
     "fetch:exercise-media": "node scripts/fetch-exercise-media.mjs",
     "fetch:recipe-media": "node scripts/fetch-recipe-media.mjs",
+    "build:usda-nutrition": "node scripts/build-usda-nutrition.mjs",
     "build:real-recipes": "node scripts/build-real-recipes.mjs"
   },
   "dependencies": {

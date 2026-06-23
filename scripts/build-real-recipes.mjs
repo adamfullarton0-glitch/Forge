@@ -12,7 +12,7 @@
 // Run on a machine with internet:  node scripts/build-real-recipes.mjs
 
 import { writeFile, mkdir } from 'node:fs/promises';
-import { existsSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -93,11 +93,60 @@ const ITEM_G = {
   chicken: 150, 'chicken breast': 170, 'chicken thigh': 120, sausage: 60, slice: 25,
 };
 
+// --- USDA FoodData Central (public domain) matcher: fills the long tail of
+// ingredients not in the curated table above with real per-100g macros. It's
+// deliberately conservative — it only returns a match when it confidently finds
+// the BASIC form of the food (raw/whole, not a branded/processed composite),
+// otherwise the caller falls back to the curated table / default.
+const USDA = JSON.parse(
+  readFileSync(join(ROOT, 'scripts', 'data', 'usda-foods.json'), 'utf8'),
+);
+const U_STOP = new Set(['raw', 'fresh', 'cooked', 'boiled', 'the', 'and', 'or', 'with', 'without',
+  'of', 'in', 'prepared', 'all', 'lean', 'plain', 'large', 'medium', 'small', 'free', 'range',
+  'whole', 'dried', 'frozen', 'canned', 'to', 'taste', 'finely', 'chopped', 'sliced', 'minced',
+  'extra', 'virgin', 'light', 'low', 'reduced', 'skinless', 'boneless', 'ground']);
+const U_BAD = /\b(spread|roll|nugget|powder|bar|rings|breaded|sauce|soup|baby|infant|fast food|restaurant|school|cereal|drink|imitation|substitute|dry mix|gravy|dessert|snack|candy|formula|pie|cake|pudding|beverage|juice|loaf|patties|luncheon)\b/i;
+const uNorm = (s) => s.toLowerCase().replace(/[^a-z0-9 ]/g, ' ').split(/\s+/).filter(Boolean);
+const U_IDX = USDA.map((f) => ({
+  n: f.n,
+  headTok: new Set(uNorm(f.d.split(',')[0])),
+  tok: new Set(uNorm(f.d)),
+  headSeg: f.d.split(',')[0].toLowerCase(),
+  commas: (f.d.match(/,/g) || []).length,
+  bad: U_BAD.test(f.d),
+  upper: /[A-Z]{4,}/.test(f.d),
+  raw: /\braw\b|\bwhole\b/i.test(f.d),
+  len: f.d.length,
+}));
+const sing = (w) => (w.endsWith('s') && w.length > 3 ? w.slice(0, -1) : w);
+
+/** Best-effort USDA per-100g [kcal,P,C,F] for an ingredient, or null. */
+function usdaMatch(name) {
+  const words = uNorm(name).filter((w) => !U_STOP.has(w) && w.length > 2);
+  if (!words.length) return null;
+  const main = sing(words[words.length - 1]);
+  const has = (set, w) => set.has(w) || set.has(w + 's') || set.has(sing(w));
+  let best = null, bestS = 6; // require a confident score
+  for (const e of U_IDX) {
+    if (!has(e.tok, main)) continue;
+    let s = 0;
+    for (const w of words) s += has(e.headTok, w) ? 5 : has(e.tok, w) ? 1.2 : 0;
+    if (has(e.headTok, main)) s += 4;
+    if (e.headSeg === main || e.headSeg === main + 's') s += 4;
+    if (e.raw) s += 3;
+    if (e.bad) s -= 8;
+    if (e.upper) s -= 4;
+    s -= e.commas * 0.8 + e.len * 0.015;
+    if (s > bestS) { bestS = s; best = e.n; }
+  }
+  return best;
+}
+
 function macroFor(name) {
   const k = name.toLowerCase().replace(/[^a-z ]/g, '').trim();
   if (N[k]) return N[k];
   for (const [kw, key] of KEYWORDS) if (k.includes(kw)) return N[key];
-  return DEFAULT_N;
+  return usdaMatch(name) ?? DEFAULT_N;
 }
 
 const FRAC = { '½': 0.5, '¼': 0.25, '¾': 0.75, '⅓': 0.333, '⅔': 0.667, '⅛': 0.125 };
