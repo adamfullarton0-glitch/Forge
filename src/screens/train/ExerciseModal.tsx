@@ -6,7 +6,7 @@ import { Icon } from '@/components/Icon';
 import { useData, useUpdate } from '@/features/store';
 import { getExercise, ytSearch } from '@/features/workouts/exercises';
 import { exerciseFrames, hasExerciseImage } from '@/features/workouts/media';
-import { ExerciseMuscles } from './ExerciseMuscles';
+import { MuscleMap } from './MuscleMap';
 import { EQUIPMENT, DEFAULT_GEAR } from '@/features/workouts/plans';
 import { getUnits, kg2lb, lb2kg, platesFor, todayKey } from '@/lib/calc';
 
@@ -159,7 +159,7 @@ export function ExerciseModal({ name, onClose, onOpen }: ExerciseModalProps): JS
         <div className="ex-modal__label" style={{ marginTop: 0 }}>
           Muscles worked
         </div>
-        <ExerciseMuscles name={name} />
+        <MuscleMap name={name} />
       </div>
 
       {missing.length > 0 ? (
