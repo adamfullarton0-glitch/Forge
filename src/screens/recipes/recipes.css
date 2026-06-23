@@ -1,0 +1,137 @@
+/* Category-carousel browse for the recipe section. */
+.rc-section {
+  margin: 0 0 26px;
+}
+.rc-section__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 0 0 12px;
+}
+.rc-section__title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+.rc-section__more {
+  background: none;
+  border: none;
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+.rc-row {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 4px;
+  scrollbar-width: none;
+}
+.rc-row::-webkit-scrollbar {
+  display: none;
+}
+
+.rc-card {
+  flex: 0 0 auto;
+  width: 168px;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+}
+.rc-card__open {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+.rc-card__info {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 0;
+  color: inherit;
+  cursor: pointer;
+}
+.rc-card__media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--panel-2);
+}
+.rc-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.rc-card__grad {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.92);
+}
+.rc-card__save {
+  position: absolute;
+  z-index: 2;
+  top: 8px;
+  right: 8px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+}
+.rc-card__save[aria-pressed='true'] {
+  color: var(--accent);
+}
+.rc-card__title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.28;
+  margin: 9px 0 6px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 2.3em;
+}
+.rc-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+.rc-card__kcal {
+  color: var(--text);
+}
+.rc-card__pro {
+  color: var(--accent);
+}

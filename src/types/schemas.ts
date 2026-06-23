@@ -250,6 +250,7 @@ export const PersistedStateSchema = z
     customPlans: z.array(CustomPlanSchema).catch([]),
     shopping: ShoppingListSchema,
     customRecipes: z.array(CustomRecipeSchema).catch([]),
+    savedRecipes: z.array(z.string()).catch([]),
   })
   .catch(() => defaultState());
 
@@ -312,5 +313,6 @@ export function defaultState(): PersistedState {
     customPlans: [],
     shopping: [],
     customRecipes: [],
+    savedRecipes: [],
   };
 }

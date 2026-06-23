@@ -59,6 +59,7 @@ describe('Recipes', () => {
   it('logs a recipe to the food log', async () => {
     const user = userEvent.setup();
     renderRecipes();
+    await user.type(screen.getByPlaceholderText(/recipes by name/i), 'Chicken Burrito Bowl');
     await user.click(await screen.findByRole('button', { name: /log chicken burrito bowl/i }));
     expect(todayLog().some((x) => x.n === 'Chicken Burrito Bowl')).toBe(true);
   });
@@ -86,6 +87,8 @@ describe('Recipes', () => {
   it('narrows results when a filter is applied', async () => {
     const user = userEvent.setup();
     renderRecipes();
+    await user.click(screen.getByRole('button', { name: /^filters$/i }));
+    await user.click(screen.getByRole('button', { name: 'Chicken' }));
     const countBefore = (await screen.findByText(/recipes match ·/i)).textContent;
     await user.click(screen.getByRole('button', { name: '≤ 15 min' }));
     const countAfter = screen.getByText(/recipes match ·/i).textContent;
@@ -95,7 +98,8 @@ describe('Recipes', () => {
   it('adds a recipe’s ingredients to the shopping list', async () => {
     const user = userEvent.setup();
     renderRecipes();
-    await screen.findByText('Chicken Burrito Bowl');
+    await user.type(screen.getByPlaceholderText(/recipes by name/i), 'Chicken Burrito Bowl');
+    await screen.findByRole('button', { name: /add to list — chicken burrito bowl/i });
     await user.click(screen.getByRole('button', { name: /add to list — chicken burrito bowl/i }));
     const shopping = useStore.getState().data.shopping;
     expect(shopping.length).toBeGreaterThan(0);
@@ -139,6 +143,7 @@ describe('Recipes', () => {
     expect(recipes).toHaveLength(1);
     expect(recipes[0]?.name).toBe('My Power Bowl');
     expect(recipes[0]?.ing).toContain('chicken breast');
+    await user.type(screen.getByPlaceholderText(/recipes by name/i), 'My Power Bowl');
     expect(await screen.findByText('My Power Bowl')).toBeInTheDocument();
   });
 
@@ -150,6 +155,7 @@ describe('Recipes', () => {
       ],
     });
     renderRecipes();
+    await user.type(screen.getByPlaceholderText(/recipes by name/i), 'Throwaway');
     await screen.findByText('Throwaway Bowl');
     await user.click(screen.getByRole('button', { name: /delete throwaway bowl/i }));
     expect(useStore.getState().data.customRecipes).toHaveLength(0);
