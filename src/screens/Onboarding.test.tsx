@@ -26,11 +26,11 @@ describe('Onboarding', () => {
     await user.click(screen.getByRole('button', { name: /female/i }));
 
     // Step through goal, equipment, allergies, dislikes.
-    await user.click(screen.getByRole('button', { name: /next/i })); // -> goal
+    await user.click(screen.getByRole('button', { name: /^continue$/i })); // -> goal
     await user.click(screen.getByRole('button', { name: /^build muscle/i }));
-    await user.click(screen.getByRole('button', { name: /next/i })); // -> equipment
-    await user.click(screen.getByRole('button', { name: /next/i })); // -> allergies
-    await user.click(screen.getByRole('button', { name: /next/i })); // -> dislikes
+    await user.click(screen.getByRole('button', { name: /^continue$/i })); // -> equipment
+    await user.click(screen.getByRole('button', { name: /^continue$/i })); // -> allergies
+    await user.click(screen.getByRole('button', { name: /^continue$/i })); // -> dislikes
     await user.click(screen.getByRole('button', { name: /build my plan/i }));
 
     const profile = useStore.getState().data.profile;
@@ -48,7 +48,7 @@ describe('Onboarding', () => {
     const user = userEvent.setup();
     render(<Onboarding />);
     await user.click(screen.getByRole('button', { name: /let's go/i }));
-    expect(screen.getByRole('button', { name: /next/i })).toBeDisabled();
+    expect(screen.getByRole('button', { name: /^continue$/i })).toBeDisabled();
   });
 
   it('converts imperial input to metric on the stored profile', async () => {
@@ -58,17 +58,17 @@ describe('Onboarding', () => {
 
     await user.type(screen.getByLabelText('Name'), 'Lee');
     await user.type(screen.getByLabelText('Age'), '28');
-    await user.click(screen.getByRole('button', { name: /ft \+ in/i }));
+    await user.click(screen.getByRole('button', { name: /ft.?in/i }));
     await user.type(screen.getByLabelText(/height feet/i), '5');
     await user.type(screen.getByLabelText(/height inches/i), '11');
     await user.click(screen.getByRole('button', { name: /^lbs$/i }));
     await user.type(screen.getByLabelText(/current weight in lb/i), '176');
     await user.type(screen.getByLabelText(/goal weight in lb/i), '165');
 
-    await user.click(screen.getByRole('button', { name: /next/i }));
-    await user.click(screen.getByRole('button', { name: /next/i }));
-    await user.click(screen.getByRole('button', { name: /next/i }));
-    await user.click(screen.getByRole('button', { name: /next/i }));
+    await user.click(screen.getByRole('button', { name: /^continue$/i }));
+    await user.click(screen.getByRole('button', { name: /^continue$/i }));
+    await user.click(screen.getByRole('button', { name: /^continue$/i }));
+    await user.click(screen.getByRole('button', { name: /^continue$/i }));
     await user.click(screen.getByRole('button', { name: /build my plan/i }));
 
     const profile = useStore.getState().data.profile;

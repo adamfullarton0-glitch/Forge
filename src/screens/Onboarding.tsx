@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Button } from '@/components/Button';
 import { Chip } from '@/components/Chip';
+import { Icon, type IconName } from '@/components/Icon';
 import { ftin2cm, lb2kg } from '@/lib/calc';
 import { ALLERGENS, DISLIKE_CHIPS } from '@/features/nutrition/constants';
 import { EQUIPMENT, DEFAULT_GEAR } from '@/features/workouts/plans';
@@ -60,6 +60,25 @@ const num = (v: string, fallback = 0): number => {
   return Number.isFinite(n) ? n : fallback;
 };
 
+const GOALS: ReadonlyArray<readonly [Goal, string, string, IconName, string]> = [
+  ['lose', 'Lose fat', 'Deficit, high protein', 'flame', '#3ddc84'],
+  ['maintain', 'Maintain', 'Eat at maintenance', 'bolt', '#3d8bff'],
+  ['gain', 'Build muscle', 'Small surplus to grow', 'dumbbell', '#ff5e8a'],
+];
+
+const ACTIVITIES: ReadonlyArray<readonly [Activity, string, string]> = [
+  ['sedentary', 'Desk job', 'Mostly sitting'],
+  ['light', 'On my feet a bit', 'Light moving'],
+  ['moderate', 'Fairly active', 'Recommended'],
+  ['high', 'Very active', 'On the go'],
+];
+
+const EXPERIENCE: ReadonlyArray<readonly [Experience, string, string]> = [
+  ['beginner', 'New to lifting', '< 1 year'],
+  ['intermediate', 'Intermediate', '1–3 years'],
+  ['advanced', 'Advanced', '3+ years'],
+];
+
 export function Onboarding(): JSX.Element {
   const data = useData();
   const update = useUpdate();
@@ -112,19 +131,42 @@ export function Onboarding(): JSX.Element {
     update({ profile, gear: f.gear });
   };
 
+  const next = (): void => (step >= TOTAL_STEPS - 1 ? finish() : setStep((s) => s + 1));
+  const ctaLabel = step === 0 ? "Let's go" : step >= TOTAL_STEPS - 1 ? 'Build my plan' : 'Continue';
+
   return (
     <div className="onboarding">
-      <div className="ob-progress">
-        <div
-          className="ob-progress__fill"
-          style={{ width: `${(step / (TOTAL_STEPS - 1)) * 100}%` }}
-        />
+      <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 22 }}>
+        {step > 0 && (
+          <button
+            type="button"
+            aria-label="Back"
+            onClick={() => setStep((s) => Math.max(0, s - 1))}
+            style={{
+              background: 'none',
+              border: 'none',
+              color: 'var(--muted)',
+              fontSize: '1.4rem',
+              cursor: 'pointer',
+              padding: 0,
+              lineHeight: 1,
+            }}
+          >
+            ←
+          </button>
+        )}
+        <div className="ob-progress" style={{ flex: 1, margin: 0 }}>
+          <div
+            className="ob-progress__fill"
+            style={{ width: `${(step / (TOTAL_STEPS - 1)) * 100}%` }}
+          />
+        </div>
       </div>
 
       {step === 0 && (
         <section>
           <div className="ob-eyebrow">WELCOME TO</div>
-          <h1 className="ob-title" style={{ fontSize: '3rem' }}>
+          <h1 className="ob-title" style={{ fontSize: '3.2rem', marginTop: 2 }}>
             FORGE
           </h1>
           <p className="ob-lede">
@@ -148,23 +190,13 @@ export function Onboarding(): JSX.Element {
               </option>
             ))}
           </select>
-          <p className="ob-lede" style={{ fontSize: '0.8rem' }}>
-            Menus &amp; buttons are translated. Exercise steps and recipes stay in English in this
-            build.
-          </p>
-          <div className="ob-next">
-            <Button onClick={() => setStep(1)}>Let&apos;s go →</Button>
-          </div>
         </section>
       )}
 
       {step === 1 && (
         <section>
           <h1 className="ob-title">About you</h1>
-          <p className="ob-lede">
-            This builds your calorie &amp; macro targets. Pick whichever units you think in — mix
-            them if you like.
-          </p>
+          <p className="ob-lede">This builds your calorie &amp; macro targets.</p>
 
           <label className="ob-label" htmlFor="ob-name">
             Name
@@ -177,26 +209,35 @@ export function Onboarding(): JSX.Element {
             placeholder="What should we call you?"
           />
 
-          <span className="ob-label">Sex (for the calorie maths)</span>
-          <div className="ob-row">
-            <button
-              type="button"
-              className="ob-opt"
-              style={{ textAlign: 'center' }}
-              aria-pressed={f.sex === 'm'}
-              onClick={() => set('sex', 'm')}
-            >
-              Male
-            </button>
-            <button
-              type="button"
-              className="ob-opt"
-              style={{ textAlign: 'center' }}
-              aria-pressed={f.sex === 'f'}
-              onClick={() => set('sex', 'f')}
-            >
-              Female
-            </button>
+          <span className="ob-label">Sex</span>
+          <div className="ob-cardgrid" style={{ marginTop: 0 }}>
+            {(
+              [
+                ['m', 'Male', '♂', '#3d8bff'],
+                ['f', 'Female', '♀', '#ff5e8a'],
+              ] as const
+            ).map(([k, label, glyph, color]) => (
+              <button
+                key={k}
+                type="button"
+                className="ob-card"
+                aria-pressed={f.sex === k}
+                onClick={() => set('sex', k)}
+              >
+                <span
+                  className="ob-card__badge"
+                  style={{
+                    background: `color-mix(in srgb, ${color} 22%, var(--panel-2))`,
+                    color,
+                    fontSize: '2.4rem',
+                    fontWeight: 700,
+                  }}
+                >
+                  {glyph}
+                </span>
+                <span className="ob-card__title">{label}</span>
+              </button>
+            ))}
           </div>
 
           <label className="ob-label" htmlFor="ob-age">
@@ -212,33 +253,43 @@ export function Onboarding(): JSX.Element {
             placeholder="e.g. 24"
           />
 
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <span className="ob-label">Height</span>
-            <div className="ob-chips" style={{ marginTop: 16 }}>
-              <Chip
-                label="cm"
-                active={f.heightUnit === 'cm'}
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+            <span className="ob-label" style={{ margin: '24px 0 0' }}>
+              Height
+            </span>
+            <div className="ob-seg" style={{ width: 150 }}>
+              <button
+                type="button"
+                className="ob-seg__btn"
+                aria-pressed={f.heightUnit === 'cm'}
                 onClick={() => set('heightUnit', 'cm')}
-              />
-              <Chip
-                label="ft + in"
-                active={f.heightUnit === 'ftin'}
+              >
+                cm
+              </button>
+              <button
+                type="button"
+                className="ob-seg__btn"
+                aria-pressed={f.heightUnit === 'ftin'}
                 onClick={() => set('heightUnit', 'ftin')}
-              />
+              >
+                ft·in
+              </button>
             </div>
           </div>
           {f.heightUnit === 'cm' ? (
-            <input
-              className="input"
-              type="number"
-              inputMode="numeric"
-              aria-label="Height in centimetres"
-              value={f.heightCm}
-              onChange={(e) => set('heightCm', e.target.value)}
-              placeholder="e.g. 178"
-            />
+            <div className="ob-bignum">
+              <input
+                type="number"
+                inputMode="numeric"
+                aria-label="Height in centimetres"
+                value={f.heightCm}
+                onChange={(e) => set('heightCm', e.target.value)}
+                placeholder="178"
+              />
+              <span className="ob-bignum__unit">cm</span>
+            </div>
           ) : (
-            <div className="ob-row">
+            <div className="ob-row" style={{ marginTop: 18 }}>
               <input
                 className="input"
                 type="number"
@@ -258,160 +309,146 @@ export function Onboarding(): JSX.Element {
             </div>
           )}
 
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <span className="ob-label">Weight</span>
-            <div className="ob-chips" style={{ marginTop: 16 }}>
-              <Chip
-                label="kg"
-                active={f.weightUnit === 'kg'}
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+            <span className="ob-label" style={{ margin: '24px 0 0' }}>
+              Weight
+            </span>
+            <div className="ob-seg" style={{ width: 150 }}>
+              <button
+                type="button"
+                className="ob-seg__btn"
+                aria-pressed={f.weightUnit === 'kg'}
                 onClick={() => set('weightUnit', 'kg')}
-              />
-              <Chip
-                label="lbs"
-                active={f.weightUnit === 'lb'}
+              >
+                kg
+              </button>
+              <button
+                type="button"
+                className="ob-seg__btn"
+                aria-pressed={f.weightUnit === 'lb'}
                 onClick={() => set('weightUnit', 'lb')}
-              />
+              >
+                lbs
+              </button>
             </div>
           </div>
-          <div className="ob-row">
+          <div className="ob-bignum">
             <input
-              className="input"
               type="number"
               aria-label={`Current weight in ${f.weightUnit}`}
               value={f.weight}
               onChange={(e) => set('weight', e.target.value)}
-              placeholder={`Now (${f.weightUnit})`}
+              placeholder={f.weightUnit === 'kg' ? '75' : '165'}
             />
-            <input
-              className="input"
-              type="number"
-              aria-label={`Goal weight in ${f.weightUnit}`}
-              value={f.targetWeight}
-              onChange={(e) => set('targetWeight', e.target.value)}
-              placeholder={`Goal (${f.weightUnit})`}
-            />
+            <span className="ob-bignum__unit">{f.weightUnit}</span>
           </div>
 
-          <div className="ob-next">
-            <Button onClick={() => setStep(2)} disabled={!canContinue}>
-              Next →
-            </Button>
-          </div>
+          <label className="ob-label" htmlFor="ob-target">
+            Goal weight ({f.weightUnit})
+          </label>
+          <input
+            id="ob-target"
+            className="input"
+            type="number"
+            aria-label={`Goal weight in ${f.weightUnit}`}
+            value={f.targetWeight}
+            onChange={(e) => set('targetWeight', e.target.value)}
+            placeholder={`Where you'd like to be (${f.weightUnit})`}
+          />
         </section>
       )}
 
       {step === 2 && (
         <section>
-          <h1 className="ob-title">Your goal</h1>
-          <p className="ob-lede">
-            This sets your calories, protein target and which recipes get pushed to you.
-          </p>
-          <span className="ob-label">Main goal</span>
-          <div className="ob-grid">
-            {(
-              [
-                ['lose', 'Lose fat', 'Calorie deficit, high protein to keep muscle'],
-                ['maintain', 'Maintain & recomp', 'Eat at maintenance, train hard'],
-                ['gain', 'Build muscle', 'Small surplus to fuel growth'],
-              ] as const
-            ).map(([k, title, desc]) => (
+          <h1 className="ob-title">What&apos;s your goal?</h1>
+          <p className="ob-lede">Sets your calories, protein target and recommended recipes.</p>
+          <div className="ob-cardgrid">
+            {GOALS.map(([k, title, desc, icon, color]) => (
               <button
                 key={k}
                 type="button"
-                className="ob-opt"
+                className="ob-card"
                 aria-pressed={f.goal === k}
                 onClick={() => set('goal', k)}
               >
-                <div className="ob-opt__title">{title}</div>
-                <div className="ob-opt__desc">{desc}</div>
+                <span
+                  className="ob-card__badge"
+                  style={{ background: `color-mix(in srgb, ${color} 20%, var(--panel-2))` }}
+                >
+                  <Icon name={icon} size={34} style={{ color }} />
+                </span>
+                <span className="ob-card__title">{title}</span>
+                <span className="ob-card__desc">{desc}</span>
               </button>
             ))}
           </div>
 
           <span className="ob-label">Activity outside the gym</span>
-          <div className="ob-chips">
-            {(
-              [
-                ['sedentary', 'Desk job'],
-                ['light', 'On my feet a bit'],
-                ['moderate', 'Fairly active'],
-                ['high', 'Very active'],
-              ] as const
-            ).map(([k, l]) => (
-              <Chip
+          <div className="ob-list" style={{ marginTop: 0 }}>
+            {ACTIVITIES.map(([k, label, tag]) => (
+              <button
                 key={k}
-                label={l}
-                active={f.activity === k}
+                type="button"
+                className="ob-rowcard"
+                aria-pressed={f.activity === k}
                 onClick={() => set('activity', k)}
-              />
+              >
+                <span className="ob-rowcard__label">{label}</span>
+                <span className="ob-rowcard__tag">{tag}</span>
+              </button>
             ))}
           </div>
 
           <span className="ob-label">Training experience</span>
-          <div className="ob-chips">
-            {(
-              [
-                ['beginner', 'New (< 1 yr)'],
-                ['intermediate', '1–3 years'],
-                ['advanced', '3+ years'],
-              ] as const
-            ).map(([k, l]) => (
-              <Chip
+          <div className="ob-list" style={{ marginTop: 0 }}>
+            {EXPERIENCE.map(([k, label, tag]) => (
+              <button
                 key={k}
-                label={l}
-                active={f.experience === k}
+                type="button"
+                className="ob-rowcard"
+                aria-pressed={f.experience === k}
                 onClick={() => set('experience', k)}
-              />
+              >
+                <span className="ob-rowcard__label">{label}</span>
+                <span className="ob-rowcard__tag">{tag}</span>
+              </button>
             ))}
-          </div>
-
-          <div className="ob-next">
-            <Button onClick={() => setStep(3)}>Next →</Button>
           </div>
         </section>
       )}
 
       {step === 3 && (
         <section>
-          <h1 className="ob-title">Your equipment</h1>
+          <h1 className="ob-title">What equipment do you have?</h1>
           <p className="ob-lede">
-            Tick what your gym (or home setup) has. FORGE flags exercises you can&apos;t do and
-            suggests a swap that fits your gear.
+            FORGE flags moves you can&apos;t do and suggests a swap. Change it anytime.
           </p>
-          <div className="ob-grid" style={{ marginTop: 22 }}>
+          <div className="ob-list">
             {EQUIPMENT.map(([id, label]) => {
               const on = f.gear.includes(id);
               return (
                 <button
                   key={id}
                   type="button"
-                  className="ob-opt"
+                  className="ob-rowcard"
                   aria-pressed={on}
                   onClick={() => toggle('gear', id)}
-                  style={{ display: 'flex', alignItems: 'center', gap: 12 }}
                 >
-                  <span className="ob-opt__title" style={{ flex: 1 }}>
-                    {label}
+                  <span className="ob-rowcard__icon">
+                    <Icon name="dumbbell" size={20} style={{ color: 'var(--accent)' }} />
                   </span>
-                  <span style={{ color: on ? 'var(--accent)' : 'var(--muted)', fontWeight: 900 }}>
-                    {on ? '✓' : '○'}
-                  </span>
+                  <span className="ob-rowcard__label">{label}</span>
+                  <span className="ob-rowcard__check">✓</span>
                 </button>
               );
             })}
-          </div>
-          <p className="ob-lede" style={{ fontSize: '0.8rem' }}>
-            Bodyweight moves are always available. Change this anytime in Settings.
-          </p>
-          <div className="ob-next">
-            <Button onClick={() => setStep(4)}>Next →</Button>
           </div>
         </section>
       )}
 
       {step === 4 && (
         <section>
-          <h1 className="ob-title">Allergies</h1>
+          <h1 className="ob-title">Any allergies?</h1>
           <p className="ob-lede">Recipes containing these will never be recommended to you.</p>
           <div className="ob-chips" style={{ marginTop: 22 }}>
             {ALLERGENS.map((a) => (
@@ -424,20 +461,16 @@ export function Onboarding(): JSX.Element {
             ))}
           </div>
           <p className="ob-lede" style={{ fontSize: '0.8rem' }}>
-            None apply? Just hit next.
+            None apply? Just hit continue.
           </p>
-          <div className="ob-next">
-            <Button onClick={() => setStep(5)}>Next →</Button>
-          </div>
         </section>
       )}
 
       {step === 5 && (
         <section>
-          <h1 className="ob-title">Foods you hate</h1>
+          <h1 className="ob-title">Foods you hate?</h1>
           <p className="ob-lede">
-            Life&apos;s too short to eat things you don&apos;t like. We&apos;ll filter these out
-            too.
+            Life&apos;s too short to eat things you don&apos;t like. We&apos;ll filter these out.
           </p>
           <div className="ob-chips" style={{ margin: '22px 0 14px' }}>
             {DISLIKE_CHIPS.map((d) => {
@@ -462,11 +495,14 @@ export function Onboarding(): JSX.Element {
             onChange={(e) => set('dislikeText', e.target.value)}
             placeholder="e.g. olives, blue cheese"
           />
-          <div className="ob-next">
-            <Button onClick={finish}>Build my plan</Button>
-          </div>
         </section>
       )}
+
+      <div className="ob-cta">
+        <button type="button" className="ob-continue" onClick={next} disabled={!canContinue}>
+          {ctaLabel}
+        </button>
+      </div>
     </div>
   );
 }

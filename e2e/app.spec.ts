@@ -13,9 +13,9 @@ test.describe('FORGE first run', () => {
     await page.getByLabel(/current weight in kg/i).fill('80');
     await page.getByLabel(/goal weight in kg/i).fill('75');
 
-    // Next through goal → equipment → allergies → dislikes, then finish.
+    // Continue through goal → equipment → allergies → dislikes, then finish.
     for (let i = 0; i < 4; i++) {
-      await page.getByRole('button', { name: /^next/i }).click();
+      await page.getByRole('button', { name: /^continue$/i }).click();
     }
     await page.getByRole('button', { name: /build my plan/i }).click();
 
