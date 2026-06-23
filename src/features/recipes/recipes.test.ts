@@ -11,11 +11,14 @@ const find = (name: string): Recipe => {
 };
 
 describe('recipe data', () => {
-  it('loads the full real-recipe library', () => {
-    expect(REAL_RECIPES.length).toBeGreaterThan(600); // TheMealDB full catalogue
+  it('loads a curated high-protein real-recipe library', () => {
+    expect(REAL_RECIPES.length).toBeGreaterThan(150); // high-protein subset
     expect(ALL_RECIPES.length).toBeGreaterThan(REAL_RECIPES.length); // + featured
-    // Every real recipe is a genuine dish with its own bundled photo + a method.
     for (const r of REAL_RECIPES) {
+      // Every dish is genuinely high-protein, with its own bundled photo + method.
+      expect(r.p).toBeGreaterThanOrEqual(25);
+      expect((r.p * 4) / r.kcal).toBeGreaterThanOrEqual(0.22);
+      expect(r.cat).not.toBe('Dessert');
       expect(r.img).toMatch(/^\d+$/);
       expect(r.steps?.length ?? 0).toBeGreaterThan(0);
     }

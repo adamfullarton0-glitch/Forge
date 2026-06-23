@@ -243,14 +243,23 @@ async function main() {
     for (const m of data.meals ?? []) byId.set(m.idMeal, m);
   }
   const meals = [...byId.values()].sort((a, b) => a.strMeal.localeCompare(b.strMeal));
-  const recipes = meals.map((m, i) => toRecipe(m, i));
 
-  // Download each dish's real photo so it's served from our own origin (reliable
-  // + offline-cacheable) instead of hotlinked. ~350px is sharp for the hero/tile.
+  // FORGE is a high-protein app: keep only genuinely high-protein savoury dishes
+  // (≥25 g protein/serving, ≥22% of calories from protein) and drop desserts.
+  // Macros are estimates, so the threshold is deliberately generous.
+  const isHighProtein = (r) => r.p >= 25 && (r.p * 4) / r.kcal >= 0.22 && r.cat !== 'Dessert';
+  const kept = meals
+    .map((m) => ({ m, r: toRecipe(m, 0) }))
+    .filter(({ r }) => isHighProtein(r));
+  const recipes = kept.map(({ r }, i) => ({ ...r, gi: i, grad: i % 8 }));
+  const keptMeals = kept.map(({ m }) => m);
+
+  // Download each kept dish's real photo so it's served from our own origin
+  // (reliable + offline-cacheable). ~350px is sharp for the hero/tile.
   const imgDir = join(ROOT, 'public', 'recipes', 'db');
   await mkdir(imgDir, { recursive: true });
   let got = 0, failed = 0;
-  for (const m of meals) {
+  for (const m of keptMeals) {
     const id = m.idMeal;
     const out = join(imgDir, `${id}.jpg`);
     if (existsSync(out)) { got++; continue; }
@@ -275,11 +284,12 @@ async function main() {
 
   // Sanity report
   const k = recipes.map((r) => r.kcal).sort((a, b) => a - b);
-  console.log(`Built ${recipes.length} real recipes.`);
-  console.log(`kcal median ${k[Math.floor(k.length / 2)]}, min ${k[0]}, max ${k[k.length - 1]}`);
-  for (const name of ['Beef and Mustard Pie', 'Greek Salad', 'Spaghetti Bolognese', 'Apple Frangipan Tart']) {
+  const p = recipes.map((r) => r.p).sort((a, b) => a - b);
+  console.log(`Built ${recipes.length} high-protein recipes (from ${meals.length} total).`);
+  console.log(`kcal median ${k[Math.floor(k.length / 2)]} | protein median ${p[Math.floor(p.length / 2)]}g, min ${p[0]}g`);
+  for (const name of ['Beef and Broccoli Stir-Fry', 'Ayam Percik', 'Bang bang prawn salad']) {
     const r = recipes.find((x) => x.name === name);
-    if (r) console.log(`  ${name}: ${r.kcal}kcal P${r.p} C${r.c} F${r.f} · ${r.cat}/${r.area} · ${r.steps.length} steps`);
+    if (r) console.log(`  ${name}: ${r.kcal}kcal P${r.p} C${r.c} F${r.f} · ${r.cat}/${r.area}`);
   }
 }
 
