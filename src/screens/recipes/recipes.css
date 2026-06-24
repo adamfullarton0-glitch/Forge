@@ -1,3 +1,42 @@
+/* Small round "create recipe" icon button in the header. */
+.rc-iconbtn {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  border: 1.5px solid var(--glass-border);
+  background: var(--glass);
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    transform 0.1s ease;
+}
+.rc-iconbtn:active {
+  transform: scale(0.92);
+}
+.rc-iconbtn__badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border-radius: 9px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.66rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 2px var(--bg);
+}
+
 /* Category-carousel browse for the recipe section. */
 .rc-section {
   margin: 0 0 26px;

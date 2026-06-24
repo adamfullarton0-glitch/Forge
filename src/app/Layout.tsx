@@ -1,7 +1,6 @@
 import { Suspense } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import { NavBar } from '@/components/NavBar';
-import { QuickAdd } from '@/components/QuickAdd';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { Loading } from '@/components/states';
 import { Onboarding } from '@/screens/Onboarding';
@@ -42,7 +41,6 @@ export function Layout(): JSX.Element {
           </Suspense>
         </ErrorBoundary>
       </main>
-      <QuickAdd />
       <NavBar />
     </>
   );

@@ -24,7 +24,8 @@ export type IconName =
   | 'dumbbell'
   | 'clock'
   | 'water'
-  | 'plus';
+  | 'plus'
+  | 'cart';
 
 const paths: Record<IconName, string> = {
   home: 'M3 11.5 12 4l9 7.5M5 10v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-9',
@@ -54,6 +55,7 @@ const paths: Record<IconName, string> = {
   clock: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 7v5l3.5 2',
   water: 'M12 3c4 4.5 6.5 7.8 6.5 10.5a6.5 6.5 0 0 1-13 0C5.5 10.8 8 7.5 12 3z',
   plus: 'M12 5v14M5 12h14',
+  cart: 'M3 4h2l2.4 11.4a1.5 1.5 0 0 0 1.5 1.2h8a1.5 1.5 0 0 0 1.5-1.2L21 8H6M9 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2zM17 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2z',
 };
 
 interface IconProps extends Omit<SVGProps<SVGSVGElement>, 'name'> {

@@ -240,14 +240,26 @@ export function Recipes(): JSX.Element | null {
         <h1 className="screen__title" style={{ margin: 0 }}>
           {t('recipes')}
         </h1>
-        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', justifyContent: 'flex-end' }}>
-          <Button variant="ghost" onClick={() => setBuilder({ open: true, editing: null })}>
-            {t('createRecipe')}
-          </Button>
-          <Button variant="ghost" onClick={() => setShowList(true)}>
-            {t('shoppingList')}
-            {cart.left > 0 ? ` (${cart.left})` : ''}
-          </Button>
+        <div style={{ display: 'flex', gap: 8, alignItems: 'center', justifyContent: 'flex-end' }}>
+          <button
+            type="button"
+            className="rc-iconbtn"
+            aria-label={t('createRecipe')}
+            title={t('createRecipe')}
+            onClick={() => setBuilder({ open: true, editing: null })}
+          >
+            <Icon name="plus" size={20} />
+          </button>
+          <button
+            type="button"
+            className="rc-iconbtn"
+            aria-label={`${t('shoppingList')}${cart.left > 0 ? ` (${cart.left})` : ''}`}
+            title={t('shoppingList')}
+            onClick={() => setShowList(true)}
+          >
+            <Icon name="cart" size={20} />
+            {cart.left > 0 ? <span className="rc-iconbtn__badge">{cart.left}</span> : null}
+          </button>
         </div>
       </div>
 
