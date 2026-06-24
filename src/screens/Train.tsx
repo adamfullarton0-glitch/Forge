@@ -5,7 +5,7 @@ import { ActiveWorkout } from './train/ActiveWorkout';
 import { RoutineBuilder } from './train/RoutineBuilder';
 import { BodyMapFinder } from './train/BodyMapFinder';
 import { useData, useUpdate } from '@/features/store';
-import { PLANS, getPlan, DEFAULT_PLAN_ID } from '@/features/workouts/plans';
+import { PLANS, PROGRAMS, getPlan, DEFAULT_PLAN_ID } from '@/features/workouts/plans';
 import { translator } from '@/lib/i18n';
 import { dayIdx } from '@/lib/calc';
 import type { CustomPlan } from '@/types/schemas';
@@ -191,7 +191,7 @@ export function Train(): JSX.Element {
         {t('yourPlan')}: <b style={{ color: 'var(--text)' }}>{plan.name}</b>
       </p>
       <div className="stack">
-        {Object.entries(PLANS).map(([id, pl]) => (
+        {[...Object.entries(PLANS), ...Object.entries(PROGRAMS)].map(([id, pl]) => (
           <Card
             key={id}
             onClick={() => selectPlan(id)}

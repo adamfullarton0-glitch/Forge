@@ -1,0 +1,3558 @@
+{
+  "programs": [
+    {
+      "id": "full-body-1day",
+      "name": "Full Body (1 Day)",
+      "category": "Build Muscle",
+      "goal": "Maintain / minimal time",
+      "level": "Beginner",
+      "daysPerWeek": 1,
+      "days": [
+        {
+          "day": 1,
+          "name": "Full Body",
+          "exercises": [
+            {
+              "name": "Barbell Back Squat",
+              "sets": 3,
+              "reps": "6-8",
+              "muscles": ["Quads", "Glutes", "Hamstrings"]
+            },
+            {
+              "name": "Barbell Bench Press",
+              "sets": 3,
+              "reps": "6-8",
+              "muscles": ["Chest", "Front Delts", "Triceps"]
+            },
+            {
+              "name": "Barbell Row",
+              "sets": 3,
+              "reps": "8-10",
+              "muscles": ["Lats", "Upper Back", "Biceps"]
+            },
+            {
+              "name": "Overhead Press",
+              "sets": 3,
+              "reps": "8-10",
+              "muscles": ["Shoulders", "Triceps"]
+            },
+            {
+              "name": "Romanian Deadlift",
+              "sets": 3,
+              "reps": "8-10",
+              "muscles": ["Hamstrings", "Glutes", "Lower Back"]
+            },
+            { "name": "Plank", "sets": 3, "reps": "30-60s", "muscles": ["Core"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "full-body-2day",
+      "name": "Full Body (2 Day)",
+      "category": "Build Muscle",
+      "goal": "Build muscle & strength",
+      "level": "Beginner",
+      "daysPerWeek": 2,
+      "days": [
+        {
+          "day": 1,
+          "name": "Full Body A",
+          "exercises": [
+            {
+              "name": "Barbell Back Squat",
+              "sets": 3,
+              "reps": "6-8",
+              "muscles": ["Quads", "Glutes", "Hamstrings"]
+            },
+            {
+              "name": "Barbell Bench Press",
+              "sets": 3,
+              "reps": "6-8",
+              "muscles": ["Chest", "Front Delts", "Triceps"]
+            },
+            { "name": "Lat Pulldown", "sets": 3, "reps": "10-12", "muscles": ["Lats", "Biceps"] },
+            {
+              "name": "Dumbbell Shoulder Press",
+              "sets": 3,
+              "reps": "8-10",
+              "muscles": ["Shoulders", "Triceps"]
+            },
+            { "name": "Leg Curl", "sets": 3, "reps": "10-12", "muscles": ["Hamstrings"] },
+            { "name": "Plank", "sets": 3, "reps": "30-60s", "muscles": ["Core"] }
+          ]
+        },
+        {
+          "day": 2,
+          "name": "Full Body B",
+          "exercises": [
+            {
+              "name": "Deadlift",
+              "sets": 3,
+              "reps": "5",
+              "muscles": ["Hamstrings", "Glutes", "Back"]
+            },
+            {
+              "name": "Incline Dumbbell Press",
+              "sets": 3,
+              "reps": "8-10",
+              "muscles": ["Upper Chest", "Triceps"]
+            },
+            { "name": "Barbell Row", "sets": 3, "reps": "8-10", "muscles": ["Lats", "Upper Back"] },
+            {
+              "name": "Dumbbell Lateral Raise",
+              "sets": 3,
+              "reps": "12-15",
+              "muscles": ["Side Delts"]
+            },
+            { "name": "Leg Press", "sets": 3, "reps": "10-12", "muscles": ["Quads", "Glutes"] },
+            { "name": "Hanging Leg Raise", "sets": 3, "reps": "12-15", "muscles": ["Core"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "full-body-3day",
+      "name": "Full Body (3 Day)",
+      "category": "Build Muscle",
+      "goal": "Build muscle & strength",
+      "level": "Beginner",
+      "daysPerWeek": 3,
+      "days": [
+        {
+          "day": 1,
+          "name": "Full Body A",
+          "exercises": [
+            {
+              "name": "Barbell Back Squat",
+              "sets": 3,
+              "reps": "6-8",
+              "muscles": ["Quads", "Glutes", "Hamstrings"]
+            },
+            {
+              "name": "Barbell Bench Press",
+              "sets": 3,
+              "reps": "6-8",
+              "muscles": ["Chest", "Front Delts", "Triceps"]
+            },
+            {
+              "name": "Barbell Row",
+              "sets": 3,
+              "reps": "8-10",
+              "muscles": ["Lats", "Upper Back", "Biceps"]
+            },
+            {
+              "name": "Overhead Press",
+              "sets": 3,
+              "reps": "8-10",
+              "muscles": ["Shoulders", "Triceps"]
+            },
+            {
+              "name": "Romanian Deadlift",
+              "sets": 3,
+              "reps": "8-10",
+              "muscles": ["Hamstrings", "Glutes", "Lower Back"]
+            },
+            { "name": "Plank", "sets": 3, "reps": "30-60s", "muscles": ["Core"] }
+          ]
+        },
+        {
+          "day": 2,
+          "name": "Full Body B",
+          "exercises": [
+            {
+              "name": "Deadlift",
+              "sets": 3,
+              "reps": "5",
+              "muscles": ["Hamstrings", "Glutes", "Back"]
+            },
+            {
+              "name": "Incline Dumbbell Press",
+              "sets": 3,
+              "reps": "8-10",
+              "muscles": ["Upper Chest", "Front Delts", "Triceps"]
+            },
+            { "name": "Lat Pulldown", "sets": 3, "reps": "10-12", "muscles": ["Lats", "Biceps"] },
+            {
+              "name": "Dumbbell Lateral Raise",
+              "sets": 3,
+              "reps": "12-15",
+              "muscles": ["Side Delts"]
+            },
+            { "name": "Leg Press", "sets": 3, "reps": "10-12", "muscles": ["Quads", "Glutes"] },
+            { "name": "Hanging Leg Raise", "sets": 3, "reps": "10-15", "muscles": ["Core"] }
+          ]
+        },
+        {
+          "day": 3,
+          "name": "Full Body C",
+          "exercises": [
+            { "name": "Goblet Squat", "sets": 3, "reps": "8-10", "muscles": ["Quads", "Glutes"] },
+            {
+              "name": "Weighted Dips",
+              "sets": 3,
+              "reps": "8-12",
+              "muscles": ["Chest", "Triceps", "Front Delts"]
+            },
+            { "name": "Pull-up", "sets": 3, "reps": "AMRAP", "muscles": ["Lats", "Biceps"] },
+            {
+              "name": "Dumbbell Shoulder Press",
+              "sets": 3,
+              "reps": "8-10",
+              "muscles": ["Shoulders", "Triceps"]
+            },
+            { "name": "Leg Curl", "sets": 3, "reps": "10-12", "muscles": ["Hamstrings"] },
+            { "name": "Cable Crunch", "sets": 3, "reps": "12-15", "muscles": ["Core"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "upper-lower-4day",
+      "name": "Upper / Lower",
+      "category": "Build Muscle",
+      "goal": "Build muscle & strength",
+      "level": "Intermediate",
+      "daysPerWeek": 4,
+      "days": [
+        {
+          "day": 1,
+          "name": "Upper A",
+          "exercises": [
+            {
+              "name": "Barbell Bench Press",
+              "sets": 4,
+              "reps": "6-8",
+              "muscles": ["Chest", "Front Delts", "Triceps"]
+            },
+            {
+              "name": "Barbell Row",
+              "sets": 4,
+              "reps": "6-8",
+              "muscles": ["Lats", "Upper Back", "Biceps"]
+            },
+            {
+              "name": "Overhead Press",
+              "sets": 3,
+              "reps": "8-10",
+              "muscles": ["Shoulders", "Triceps"]
+            },
+            { "name": "Lat Pulldown", "sets": 3, "reps": "10-12", "muscles": ["Lats", "Biceps"] },
+            {
+              "name": "Dumbbell Lateral Raise",
+              "sets": 3,
+              "reps": "12-15",
+              "muscles": ["Side Delts"]
+            },
+            { "name": "Barbell Curl", "sets": 3, "reps": "10-12", "muscles": ["Biceps"] },
+            { "name": "Tricep Pushdown", "sets": 3, "reps": "10-12", "muscles": ["Triceps"] }
+          ]
+        },
+        {
+          "day": 2,
+          "name": "Lower A",
+          "exercises": [
+            {
+              "name": "Barbell Back Squat",
+              "sets": 4,
+              "reps": "6-8",
+              "muscles": ["Quads", "Glutes", "Hamstrings"]
+            },
+            {
+              "name": "Romanian Deadlift",
+              "sets": 3,
+              "reps": "8-10",
+              "muscles": ["Hamstrings", "Glutes"]
+            },
+            { "name": "Leg Press", "sets": 3, "reps": "10-12", "muscles": ["Quads", "Glutes"] },
+            { "name": "Leg Curl", "sets": 3, "reps": "10-12", "muscles": ["Hamstrings"] },
+            { "name": "Standing Calf Raise", "sets": 4, "reps": "12-15", "muscles": ["Calves"] },
+            { "name": "Hanging Leg Raise", "sets": 3, "reps": "12-15", "muscles": ["Core"] }
+          ]
+        },
+        {
+          "day": 3,
+          "name": "Upper B",
+          "exercises": [
+            {
+              "name": "Incline Dumbbell Press",
+              "sets": 4,
+              "reps": "8-10",
+              "muscles": ["Upper Chest", "Front Delts", "Triceps"]
+            },
+            { "name": "Pull-up", "sets": 4, "reps": "6-10", "muscles": ["Lats", "Biceps"] },
+            {
+              "name": "Seated Cable Row",
+              "sets": 3,
+              "reps": "10-12",
+              "muscles": ["Upper Back", "Lats"]
+            },
+            {
+              "name": "Dumbbell Shoulder Press",
+              "sets": 3,
+              "reps": "8-10",
+              "muscles": ["Shoulders", "Triceps"]
+            },
+            { "name": "Cable Fly", "sets": 3, "reps": "12-15", "muscles": ["Chest"] },
+            {
+              "name": "Hammer Curl",
+              "sets": 3,
+              "reps": "10-12",
+              "muscles": ["Biceps", "Forearms"]
+            },
+            {
+              "name": "Overhead Tricep Extension",
+              "sets": 3,
+              "reps": "10-12",
+              "muscles": ["Triceps"]
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "name": "Lower B",
+          "exercises": [
+            {
+              "name": "Deadlift",
+              "sets": 3,
+              "reps": "5",
+              "muscles": ["Hamstrings", "Glutes", "Back"]
+            },
+            { "name": "Front Squat", "sets": 3, "reps": "8-10", "muscles": ["Quads", "Glutes"] },
+            {
+              "name": "Bulgarian Split Squat",
+              "sets": 3,
+              "reps": "10-12",
+              "muscles": ["Quads", "Glutes"]
+            },
+            { "name": "Leg Extension", "sets": 3, "reps": "12-15", "muscles": ["Quads"] },
+            { "name": "Seated Calf Raise", "sets": 4, "reps": "15-20", "muscles": ["Calves"] },
+            { "name": "Cable Crunch", "sets": 3, "reps": "12-15", "muscles": ["Core"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ppl-3day",
+      "name": "Push / Pull / Legs (3 Day)",
+      "category": "Build Muscle",
+      "goal": "Build muscle",
+      "level": "Beginner",
+      "note": "One round per week. Good entry point before moving to 6-day PPL.",
+      "daysPerWeek": 3,
+      "days": [
+        {
+          "day": 1,
+          "name": "Push",
+          "exercises": [
+            {
+              "name": "Barbell Bench Press",
+              "sets": 4,
+              "reps": "6-8",
+              "muscles": ["Chest", "Front Delts", "Triceps"]
+            },
+            {
+              "name": "Overhead Press",
+              "sets": 3,
+              "reps": "8-10",
+              "muscles": ["Shoulders", "Triceps"]
+            },
+            {
+              "name": "Incline Dumbbell Press",
+              "sets": 3,
+              "reps": "8-10",
+              "muscles": ["Upper Chest"]
+            },
+            {
+              "name": "Dumbbell Lateral Raise",
+              "sets": 3,
+              "reps": "12-15",
+              "muscles": ["Side Delts"]
+            },
+            { "name": "Tricep Pushdown", "sets": 3, "reps": "10-12", "muscles": ["Triceps"] }
+          ]
+        },
+        {
+          "day": 2,
+          "name": "Pull",
+          "exercises": [
+            {
+              "name": "Deadlift",
+              "sets": 3,
+              "reps": "5",
+              "muscles": ["Back", "Hamstrings", "Glutes"]
+            },
+            { "name": "Pull-up", "sets": 4, "reps": "6-10", "muscles": ["Lats", "Biceps"] },
+            { "name": "Barbell Row", "sets": 3, "reps": "8-10", "muscles": ["Upper Back", "Lats"] },
+            {
+              "name": "Face Pull",
+              "sets": 3,
+              "reps": "15-20",
+              "muscles": ["Rear Delts", "Upper Back"]
+            },
+            { "name": "Barbell Curl", "sets": 3, "reps": "10-12", "muscles": ["Biceps"] }
+          ]
+        },
+        {
+          "day": 3,
+          "name": "Legs",
+          "exercises": [
+            {
+              "name": "Barbell Back Squat",
+              "sets": 4,
+              "reps": "6-8",
+              "muscles": ["Quads", "Glutes"]
+            },
+            {
+              "name": "Romanian Deadlift",
+              "sets": 3,
+              "reps": "8-10",
+              "muscles": ["Hamstrings", "Glutes"]
+            },
+            { "name": "Leg Press", "sets": 3, "reps": "10-12", "muscles": ["Quads"] },
+            { "name": "Leg Curl", "sets": 3, "reps": "10-12", "muscles": ["Hamstrings"] },
+            { "name": "Standing Calf Raise", "sets": 4, "reps": "12-15", "muscles": ["Calves"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "push-pull-4day",
+      "name": "Push / Pull (4 Day)",
+      "category": "Build Muscle",
+      "goal": "Build muscle & strength",
+      "level": "Intermediate",
+      "note": "Legs folded into push (quads) and pull (posterior chain) days.",
+      "daysPerWeek": 4,
+      "days": [
+        {
+          "day": 1,
+          "name": "Push A",
+          "exercises": [
+            {
+              "name": "Barbell Bench Press",
+              "sets": 4,
+              "reps": "6-8",
+              "muscles": ["Chest", "Front Delts", "Triceps"]
+            },
+            {
+              "name": "Overhead Press",
+              "sets": 3,
+              "reps": "8-10",
+              "muscles": ["Shoulders", "Triceps"]
+            },
+            {
+              "name": "Barbell Back Squat",
+              "sets": 3,
+              "reps": "8-10",
+              "muscles": ["Quads", "Glutes"]
+            },
+            {
+              "name": "Dumbbell Lateral Raise",
+              "sets": 3,
+              "reps": "12-15",
+              "muscles": ["Side Delts"]
+            },
+            { "name": "Tricep Pushdown", "sets": 3, "reps": "10-12", "muscles": ["Triceps"] }
+          ]
+        },
+        {
+          "day": 2,
+          "name": "Pull A",
+          "exercises": [
+            {
+              "name": "Deadlift",
+              "sets": 3,
+              "reps": "5",
+              "muscles": ["Back", "Hamstrings", "Glutes"]
+            },
+            { "name": "Pull-up", "sets": 4, "reps": "6-10", "muscles": ["Lats", "Biceps"] },
+            { "name": "Barbell Row", "sets": 3, "reps": "8-10", "muscles": ["Upper Back"] },
+            { "name": "Leg Curl", "sets": 3, "reps": "10-12", "muscles": ["Hamstrings"] },
+            { "name": "Barbell Curl", "sets": 3, "reps": "10-12", "muscles": ["Biceps"] }
+          ]
+        },
+        {
+          "day": 3,
+          "name": "Push B",
+          "exercises": [
+            {
+              "name": "Incline Dumbbell Press",
+              "sets": 4,
+              "reps": "8-10",
+              "muscles": ["Upper Chest"]
+            },
+            {
+              "name": "Dumbbell Shoulder Press",
+              "sets": 3,
+              "reps": "8-10",
+              "muscles": ["Shoulders"]
+            },
+            { "name": "Leg Press", "sets": 3, "reps": "10-12", "muscles": ["Quads", "Glutes"] },
+            { "name": "Cable Fly", "sets": 3, "reps": "12-15", "muscles": ["Chest"] },
+            {
+              "name": "Overhead Tricep Extension",
+              "sets": 3,
+              "reps": "10-12",
+              "muscles": ["Triceps"]
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "name": "Pull B",
+          "exercises": [
+            {
+              "name": "Romanian Deadlift",
+              "sets": 4,
+              "reps": "8-10",
+              "muscles": ["Hamstrings", "Glutes"]
+            },
+            { "name": "Lat Pulldown", "sets": 3, "reps": "10-12", "muscles": ["Lats"] },
+            { "name": "Seated Cable Row", "sets": 3, "reps": "10-12", "muscles": ["Upper Back"] },
+            { "name": "Face Pull", "sets": 3, "reps": "15-20", "muscles": ["Rear Delts"] },
+            { "name": "Hammer Curl", "sets": 3, "reps": "10-12", "muscles": ["Biceps", "Forearms"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bro-split-5day",
+      "name": "Bro Split",
+      "category": "Build Muscle",
+      "goal": "Build muscle (one body part per day)",
+      "level": "Intermediate",
+      "daysPerWeek": 5,
+      "days": [
+        {
+          "day": 1,
+          "name": "Chest",
+          "exercises": [
+            {
+              "name": "Barbell Bench Press",
+              "sets": 4,
+              "reps": "6-8",
+              "muscles": ["Chest", "Front Delts", "Triceps"]
+            },
+            {
+              "name": "Incline Dumbbell Press",
+              "sets": 4,
+              "reps": "8-10",
+              "muscles": ["Upper Chest"]
+            },
+            { "name": "Cable Fly", "sets": 3, "reps": "12-15", "muscles": ["Chest"] },
+            { "name": "Weighted Dips", "sets": 3, "reps": "8-12", "muscles": ["Chest", "Triceps"] },
+            { "name": "Push-up", "sets": 3, "reps": "AMRAP", "muscles": ["Chest", "Triceps"] }
+          ]
+        },
+        {
+          "day": 2,
+          "name": "Back",
+          "exercises": [
+            {
+              "name": "Deadlift",
+              "sets": 4,
+              "reps": "5",
+              "muscles": ["Back", "Hamstrings", "Glutes"]
+            },
+            { "name": "Pull-up", "sets": 4, "reps": "6-10", "muscles": ["Lats", "Biceps"] },
+            { "name": "Barbell Row", "sets": 4, "reps": "8-10", "muscles": ["Upper Back", "Lats"] },
+            { "name": "Lat Pulldown", "sets": 3, "reps": "10-12", "muscles": ["Lats"] },
+            { "name": "Seated Cable Row", "sets": 3, "reps": "10-12", "muscles": ["Upper Back"] }
+          ]
+        },
+        {
+          "day": 3,
+          "name": "Shoulders",
+          "exercises": [
+            {
+              "name": "Overhead Press",
+              "sets": 4,
+              "reps": "6-8",
+              "muscles": ["Shoulders", "Triceps"]
+            },
+            {
+              "name": "Dumbbell Lateral Raise",
+              "sets": 4,
+              "reps": "12-15",
+              "muscles": ["Side Delts"]
+            },
+            { "name": "Rear Delt Fly", "sets": 3, "reps": "15-20", "muscles": ["Rear Delts"] },
+            {
+              "name": "Face Pull",
+              "sets": 3,
+              "reps": "15-20",
+              "muscles": ["Rear Delts", "Upper Back"]
+            },
+            { "name": "Barbell Shrug", "sets": 3, "reps": "10-12", "muscles": ["Traps"] }
+          ]
+        },
+        {
+          "day": 4,
+          "name": "Legs",
+          "exercises": [
+            {
+              "name": "Barbell Back Squat",
+              "sets": 4,
+              "reps": "6-8",
+              "muscles": ["Quads", "Glutes"]
+            },
+            { "name": "Leg Press", "sets": 4, "reps": "10-12", "muscles": ["Quads", "Glutes"] },
+            {
+              "name": "Romanian Deadlift",
+              "sets": 3,
+              "reps": "8-10",
+              "muscles": ["Hamstrings", "Glutes"]
+            },
+            { "name": "Leg Curl", "sets": 3, "reps": "10-12", "muscles": ["Hamstrings"] },
+            { "name": "Standing Calf Raise", "sets": 4, "reps": "12-15", "muscles": ["Calves"] }
+          ]
+        },
+        {
+          "day": 5,
+          "name": "Arms",
+          "exercises": [
+            { "name": "Barbell Curl", "sets": 4, "reps": "8-10", "muscles": ["Biceps"] },
+            { "name": "Close-Grip Bench Press", "sets": 4, "reps": "8-10", "muscles": ["Triceps"] },
+            {
+              "name": "Hammer Curl",
+              "sets": 3,
+              "reps": "10-12",
+              "muscles": ["Biceps", "Forearms"]
+            },
+            { "name": "Tricep Pushdown", "sets": 3, "reps": "10-12", "muscles": ["Triceps"] },
+            { "name": "Preacher Curl", "sets": 3, "reps": "10-12", "muscles": ["Biceps"] },
+            {
+              "name": "Overhead Tricep Extension",
+              "sets": 3,
+              "reps": "10-12",
+              "muscles": ["Triceps"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ppl-upper-lower-5day",
+      "name": "PPL + Upper / Lower (5 Day)",
+      "category": "Build Muscle",
+      "goal": "Build muscle",
+      "level": "Intermediate",
+      "daysPerWeek": 5,
+      "days": [
+        {
+          "day": 1,
+          "name": "Push",
+          "exercises": [
+            {
+              "name": "Barbell Bench Press",
+              "sets": 4,
+              "reps": "6-8",
+              "muscles": ["Chest", "Front Delts", "Triceps"]
+            },
+            {
+              "name": "Overhead Press",
+              "sets": 3,
+              "reps": "8-10",
+              "muscles": ["Shoulders", "Triceps"]
+            },
+            {
+              "name": "Incline Dumbbell Press",
+              "sets": 3,
+              "reps": "8-10",
+              "muscles": ["Upper Chest"]
+            },
+            {
+              "name": "Dumbbell Lateral Raise",
+              "sets": 3,
+              "reps": "12-15",
+              "muscles": ["Side Delts"]
+            },
+            { "name": "Tricep Pushdown", "sets": 3, "reps": "10-12", "muscles": ["Triceps"] }
+          ]
+        },
+        {
+          "day": 2,
+          "name": "Pull",
+          "exercises": [
+            {
+              "name": "Deadlift",
+              "sets": 3,
+              "reps": "5",
+              "muscles": ["Back", "Hamstrings", "Glutes"]
+            },
+            { "name": "Pull-up", "sets": 4, "reps": "6-10", "muscles": ["Lats", "Biceps"] },
+            { "name": "Barbell Row", "sets": 3, "reps": "8-10", "muscles": ["Upper Back"] },
+            { "name": "Face Pull", "sets": 3, "reps": "15-20", "muscles": ["Rear Delts"] },
+            { "name": "Barbell Curl", "sets": 3, "reps": "10-12", "muscles": ["Biceps"] }
+          ]
+        },
+        {
+          "day": 3,
+          "name": "Legs",
+          "exercises": [
+            {
+              "name": "Barbell Back Squat",
+              "sets": 4,
+              "reps": "6-8",
+              "muscles": ["Quads", "Glutes"]
+            },
+            {
+              "name": "Romanian Deadlift",
+              "sets": 3,
+              "reps": "8-10",
+              "muscles": ["Hamstrings", "Glutes"]
+            },
+            { "name": "Leg Press", "sets": 3, "reps": "10-12", "muscles": ["Quads"] },
+            { "name": "Leg Curl", "sets": 3, "reps": "10-12", "muscles": ["Hamstrings"] },
+            { "name": "Standing Calf Raise", "sets": 4, "reps": "12-15", "muscles": ["Calves"] }
+          ]
+        },
+        {
+          "day": 4,
+          "name": "Upper",
+          "exercises": [
+            {
+              "name": "Incline Barbell Press",
+              "sets": 4,
+              "reps": "8-10",
+              "muscles": ["Upper Chest", "Triceps"]
+            },
+            { "name": "Seated Cable Row", "sets": 4, "reps": "10-12", "muscles": ["Upper Back"] },
+            {
+              "name": "Dumbbell Shoulder Press",
+              "sets": 3,
+              "reps": "8-10",
+              "muscles": ["Shoulders"]
+            },
+            { "name": "Lat Pulldown", "sets": 3, "reps": "10-12", "muscles": ["Lats"] },
+            { "name": "Hammer Curl", "sets": 3, "reps": "10-12", "muscles": ["Biceps"] },
+            {
+              "name": "Overhead Tricep Extension",
+              "sets": 3,
+              "reps": "10-12",
+              "muscles": ["Triceps"]
+            }
+          ]
+        },
+        {
+          "day": 5,
+          "name": "Lower",
+          "exercises": [
+            { "name": "Front Squat", "sets": 4, "reps": "8-10", "muscles": ["Quads", "Glutes"] },
+            {
+              "name": "Romanian Deadlift",
+              "sets": 3,
+              "reps": "8-10",
+              "muscles": ["Hamstrings", "Glutes"]
+            },
+            {
+              "name": "Bulgarian Split Squat",
+              "sets": 3,
+              "reps": "10-12",
+              "muscles": ["Quads", "Glutes"]
+            },
+            { "name": "Leg Extension", "sets": 3, "reps": "12-15", "muscles": ["Quads"] },
+            { "name": "Seated Calf Raise", "sets": 4, "reps": "15-20", "muscles": ["Calves"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ppl-6day",
+      "name": "Push / Pull / Legs (6 Day)",
+      "category": "Build Muscle",
+      "goal": "Build muscle (hypertrophy)",
+      "level": "Intermediate",
+      "note": "Run Push/Pull/Legs twice per week.",
+      "daysPerWeek": 6,
+      "days": [
+        {
+          "day": 1,
+          "name": "Push",
+          "exercises": [
+            {
+              "name": "Barbell Bench Press",
+              "sets": 4,
+              "reps": "6-8",
+              "muscles": ["Chest", "Front Delts", "Triceps"]
+            },
+            {
+              "name": "Overhead Press",
+              "sets": 3,
+              "reps": "8-10",
+              "muscles": ["Shoulders", "Triceps"]
+            },
+            {
+              "name": "Incline Dumbbell Press",
+              "sets": 3,
+              "reps": "8-10",
+              "muscles": ["Upper Chest"]
+            },
+            {
+              "name": "Dumbbell Lateral Raise",
+              "sets": 3,
+              "reps": "12-15",
+              "muscles": ["Side Delts"]
+            },
+            { "name": "Cable Fly", "sets": 3, "reps": "12-15", "muscles": ["Chest"] },
+            { "name": "Tricep Pushdown", "sets": 3, "reps": "10-12", "muscles": ["Triceps"] },
+            {
+              "name": "Overhead Tricep Extension",
+              "sets": 3,
+              "reps": "10-12",
+              "muscles": ["Triceps"]
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "name": "Pull",
+          "exercises": [
+            {
+              "name": "Deadlift",
+              "sets": 3,
+              "reps": "5",
+              "muscles": ["Back", "Hamstrings", "Glutes"]
+            },
+            { "name": "Pull-up", "sets": 4, "reps": "6-10", "muscles": ["Lats", "Biceps"] },
+            { "name": "Barbell Row", "sets": 3, "reps": "8-10", "muscles": ["Upper Back", "Lats"] },
+            { "name": "Lat Pulldown", "sets": 3, "reps": "10-12", "muscles": ["Lats"] },
+            {
+              "name": "Face Pull",
+              "sets": 3,
+              "reps": "15-20",
+              "muscles": ["Rear Delts", "Upper Back"]
+            },
+            { "name": "Barbell Curl", "sets": 3, "reps": "10-12", "muscles": ["Biceps"] },
+            { "name": "Hammer Curl", "sets": 3, "reps": "10-12", "muscles": ["Biceps", "Forearms"] }
+          ]
+        },
+        {
+          "day": 3,
+          "name": "Legs",
+          "exercises": [
+            {
+              "name": "Barbell Back Squat",
+              "sets": 4,
+              "reps": "6-8",
+              "muscles": ["Quads", "Glutes"]
+            },
+            {
+              "name": "Romanian Deadlift",
+              "sets": 3,
+              "reps": "8-10",
+              "muscles": ["Hamstrings", "Glutes"]
+            },
+            { "name": "Leg Press", "sets": 3, "reps": "10-12", "muscles": ["Quads"] },
+            { "name": "Leg Curl", "sets": 3, "reps": "10-12", "muscles": ["Hamstrings"] },
+            { "name": "Leg Extension", "sets": 3, "reps": "12-15", "muscles": ["Quads"] },
+            { "name": "Standing Calf Raise", "sets": 4, "reps": "12-15", "muscles": ["Calves"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "arnold-split-6day",
+      "name": "Arnold Split",
+      "category": "Build Muscle",
+      "goal": "Build muscle (high volume, advanced)",
+      "level": "Advanced",
+      "note": "Run the 3 days twice per week. Each muscle group is hit twice weekly.",
+      "daysPerWeek": 6,
+      "days": [
+        {
+          "day": 1,
+          "name": "Chest & Back",
+          "exercises": [
+            {
+              "name": "Barbell Bench Press",
+              "sets": 4,
+              "reps": "8-10",
+              "muscles": ["Chest", "Front Delts", "Triceps"]
+            },
+            {
+              "name": "Incline Bench Press",
+              "sets": 4,
+              "reps": "8-10",
+              "muscles": ["Upper Chest"]
+            },
+            { "name": "Pull-up", "sets": 4, "reps": "8-10", "muscles": ["Lats", "Biceps"] },
+            { "name": "Barbell Row", "sets": 4, "reps": "8-10", "muscles": ["Upper Back", "Lats"] },
+            {
+              "name": "Dumbbell Pullover",
+              "sets": 3,
+              "reps": "10-12",
+              "muscles": ["Chest", "Lats"]
+            },
+            { "name": "Cable Fly", "sets": 3, "reps": "12-15", "muscles": ["Chest"] }
+          ]
+        },
+        {
+          "day": 2,
+          "name": "Shoulders & Arms",
+          "exercises": [
+            {
+              "name": "Overhead Press",
+              "sets": 4,
+              "reps": "8-10",
+              "muscles": ["Shoulders", "Triceps"]
+            },
+            {
+              "name": "Dumbbell Lateral Raise",
+              "sets": 4,
+              "reps": "12-15",
+              "muscles": ["Side Delts"]
+            },
+            { "name": "Barbell Curl", "sets": 4, "reps": "8-10", "muscles": ["Biceps"] },
+            { "name": "Skullcrusher", "sets": 4, "reps": "8-10", "muscles": ["Triceps"] },
+            {
+              "name": "Hammer Curl",
+              "sets": 3,
+              "reps": "10-12",
+              "muscles": ["Biceps", "Forearms"]
+            },
+            { "name": "Tricep Pushdown", "sets": 3, "reps": "10-12", "muscles": ["Triceps"] }
+          ]
+        },
+        {
+          "day": 3,
+          "name": "Legs",
+          "exercises": [
+            {
+              "name": "Barbell Back Squat",
+              "sets": 5,
+              "reps": "8-10",
+              "muscles": ["Quads", "Glutes"]
+            },
+            { "name": "Leg Press", "sets": 4, "reps": "10-12", "muscles": ["Quads", "Glutes"] },
+            { "name": "Leg Curl", "sets": 4, "reps": "10-12", "muscles": ["Hamstrings"] },
+            {
+              "name": "Romanian Deadlift",
+              "sets": 3,
+              "reps": "8-10",
+              "muscles": ["Hamstrings", "Glutes"]
+            },
+            { "name": "Standing Calf Raise", "sets": 5, "reps": "15-20", "muscles": ["Calves"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ppl-x-arnold-6day",
+      "name": "PPL x Arnold (6 Day)",
+      "category": "Build Muscle",
+      "goal": "Build muscle (high volume)",
+      "level": "Advanced",
+      "note": "Hybrid: three PPL days plus two Arnold pairing days and a second legs day.",
+      "daysPerWeek": 6,
+      "days": [
+        {
+          "day": 1,
+          "name": "Push",
+          "exercises": [
+            {
+              "name": "Barbell Bench Press",
+              "sets": 4,
+              "reps": "6-8",
+              "muscles": ["Chest", "Front Delts", "Triceps"]
+            },
+            {
+              "name": "Overhead Press",
+              "sets": 3,
+              "reps": "8-10",
+              "muscles": ["Shoulders", "Triceps"]
+            },
+            {
+              "name": "Incline Dumbbell Press",
+              "sets": 3,
+              "reps": "8-10",
+              "muscles": ["Upper Chest"]
+            },
+            {
+              "name": "Dumbbell Lateral Raise",
+              "sets": 4,
+              "reps": "12-15",
+              "muscles": ["Side Delts"]
+            },
+            { "name": "Tricep Pushdown", "sets": 3, "reps": "10-12", "muscles": ["Triceps"] }
+          ]
+        },
+        {
+          "day": 2,
+          "name": "Pull",
+          "exercises": [
+            {
+              "name": "Deadlift",
+              "sets": 3,
+              "reps": "5",
+              "muscles": ["Back", "Hamstrings", "Glutes"]
+            },
+            { "name": "Pull-up", "sets": 4, "reps": "6-10", "muscles": ["Lats", "Biceps"] },
+            { "name": "Barbell Row", "sets": 3, "reps": "8-10", "muscles": ["Upper Back"] },
+            { "name": "Face Pull", "sets": 3, "reps": "15-20", "muscles": ["Rear Delts"] },
+            { "name": "Barbell Curl", "sets": 3, "reps": "10-12", "muscles": ["Biceps"] }
+          ]
+        },
+        {
+          "day": 3,
+          "name": "Legs",
+          "exercises": [
+            {
+              "name": "Barbell Back Squat",
+              "sets": 4,
+              "reps": "6-8",
+              "muscles": ["Quads", "Glutes"]
+            },
+            {
+              "name": "Romanian Deadlift",
+              "sets": 3,
+              "reps": "8-10",
+              "muscles": ["Hamstrings", "Glutes"]
+            },
+            { "name": "Leg Press", "sets": 3, "reps": "10-12", "muscles": ["Quads"] },
+            { "name": "Leg Curl", "sets": 3, "reps": "10-12", "muscles": ["Hamstrings"] },
+            { "name": "Standing Calf Raise", "sets": 4, "reps": "12-15", "muscles": ["Calves"] }
+          ]
+        },
+        {
+          "day": 4,
+          "name": "Chest & Back",
+          "exercises": [
+            {
+              "name": "Incline Bench Press",
+              "sets": 4,
+              "reps": "8-10",
+              "muscles": ["Upper Chest"]
+            },
+            { "name": "Lat Pulldown", "sets": 4, "reps": "10-12", "muscles": ["Lats"] },
+            { "name": "Cable Fly", "sets": 3, "reps": "12-15", "muscles": ["Chest"] },
+            { "name": "Seated Cable Row", "sets": 3, "reps": "10-12", "muscles": ["Upper Back"] },
+            {
+              "name": "Dumbbell Pullover",
+              "sets": 3,
+              "reps": "10-12",
+              "muscles": ["Chest", "Lats"]
+            }
+          ]
+        },
+        {
+          "day": 5,
+          "name": "Shoulders & Arms",
+          "exercises": [
+            {
+              "name": "Dumbbell Shoulder Press",
+              "sets": 4,
+              "reps": "8-10",
+              "muscles": ["Shoulders"]
+            },
+            {
+              "name": "Dumbbell Lateral Raise",
+              "sets": 4,
+              "reps": "12-15",
+              "muscles": ["Side Delts"]
+            },
+            { "name": "Barbell Curl", "sets": 3, "reps": "10-12", "muscles": ["Biceps"] },
+            { "name": "Skullcrusher", "sets": 3, "reps": "8-10", "muscles": ["Triceps"] },
+            {
+              "name": "Hammer Curl",
+              "sets": 3,
+              "reps": "10-12",
+              "muscles": ["Biceps", "Forearms"]
+            },
+            {
+              "name": "Overhead Tricep Extension",
+              "sets": 3,
+              "reps": "10-12",
+              "muscles": ["Triceps"]
+            }
+          ]
+        },
+        {
+          "day": 6,
+          "name": "Legs",
+          "exercises": [
+            { "name": "Front Squat", "sets": 4, "reps": "8-10", "muscles": ["Quads", "Glutes"] },
+            {
+              "name": "Bulgarian Split Squat",
+              "sets": 3,
+              "reps": "10-12",
+              "muscles": ["Quads", "Glutes"]
+            },
+            { "name": "Leg Extension", "sets": 3, "reps": "12-15", "muscles": ["Quads"] },
+            { "name": "Leg Curl", "sets": 3, "reps": "10-12", "muscles": ["Hamstrings"] },
+            { "name": "Seated Calf Raise", "sets": 4, "reps": "15-20", "muscles": ["Calves"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "classic-3day-pairing",
+      "name": "Chest+Tri / Back+Bi / Legs+Shoulders",
+      "category": "Build Muscle",
+      "goal": "Build muscle",
+      "level": "Intermediate",
+      "note": "Classic antagonist pairing split.",
+      "daysPerWeek": 3,
+      "days": [
+        {
+          "day": 1,
+          "name": "Chest & Triceps",
+          "exercises": [
+            {
+              "name": "Barbell Bench Press",
+              "sets": 4,
+              "reps": "6-8",
+              "muscles": ["Chest", "Front Delts", "Triceps"]
+            },
+            {
+              "name": "Incline Dumbbell Press",
+              "sets": 3,
+              "reps": "8-10",
+              "muscles": ["Upper Chest"]
+            },
+            { "name": "Cable Fly", "sets": 3, "reps": "12-15", "muscles": ["Chest"] },
+            { "name": "Close-Grip Bench Press", "sets": 3, "reps": "8-10", "muscles": ["Triceps"] },
+            { "name": "Tricep Pushdown", "sets": 3, "reps": "10-12", "muscles": ["Triceps"] }
+          ]
+        },
+        {
+          "day": 2,
+          "name": "Back & Biceps",
+          "exercises": [
+            {
+              "name": "Deadlift",
+              "sets": 3,
+              "reps": "5",
+              "muscles": ["Back", "Hamstrings", "Glutes"]
+            },
+            { "name": "Pull-up", "sets": 4, "reps": "6-10", "muscles": ["Lats", "Biceps"] },
+            { "name": "Barbell Row", "sets": 3, "reps": "8-10", "muscles": ["Upper Back"] },
+            { "name": "Barbell Curl", "sets": 3, "reps": "10-12", "muscles": ["Biceps"] },
+            { "name": "Hammer Curl", "sets": 3, "reps": "10-12", "muscles": ["Biceps", "Forearms"] }
+          ]
+        },
+        {
+          "day": 3,
+          "name": "Legs & Shoulders",
+          "exercises": [
+            {
+              "name": "Barbell Back Squat",
+              "sets": 4,
+              "reps": "6-8",
+              "muscles": ["Quads", "Glutes"]
+            },
+            { "name": "Leg Press", "sets": 3, "reps": "10-12", "muscles": ["Quads"] },
+            { "name": "Leg Curl", "sets": 3, "reps": "10-12", "muscles": ["Hamstrings"] },
+            {
+              "name": "Overhead Press",
+              "sets": 4,
+              "reps": "8-10",
+              "muscles": ["Shoulders", "Triceps"]
+            },
+            {
+              "name": "Dumbbell Lateral Raise",
+              "sets": 3,
+              "reps": "12-15",
+              "muscles": ["Side Delts"]
+            },
+            { "name": "Standing Calf Raise", "sets": 4, "reps": "12-15", "muscles": ["Calves"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phul-4day",
+      "name": "PHUL (Power Hypertrophy Upper Lower)",
+      "category": "Powerbuilding",
+      "goal": "Build muscle & strength",
+      "level": "Intermediate",
+      "note": "Two power days (heavy, low reps) and two hypertrophy days (volume).",
+      "daysPerWeek": 4,
+      "days": [
+        {
+          "day": 1,
+          "name": "Upper Power",
+          "exercises": [
+            {
+              "name": "Barbell Bench Press",
+              "sets": 4,
+              "reps": "3-5",
+              "muscles": ["Chest", "Front Delts", "Triceps"]
+            },
+            { "name": "Barbell Row", "sets": 4, "reps": "3-5", "muscles": ["Upper Back", "Lats"] },
+            {
+              "name": "Overhead Press",
+              "sets": 3,
+              "reps": "5-8",
+              "muscles": ["Shoulders", "Triceps"]
+            },
+            { "name": "Pull-up", "sets": 3, "reps": "5-8", "muscles": ["Lats", "Biceps"] },
+            { "name": "Barbell Curl", "sets": 3, "reps": "6-10", "muscles": ["Biceps"] },
+            { "name": "Skullcrusher", "sets": 3, "reps": "6-10", "muscles": ["Triceps"] }
+          ]
+        },
+        {
+          "day": 2,
+          "name": "Lower Power",
+          "exercises": [
+            {
+              "name": "Barbell Back Squat",
+              "sets": 4,
+              "reps": "3-5",
+              "muscles": ["Quads", "Glutes"]
+            },
+            {
+              "name": "Deadlift",
+              "sets": 4,
+              "reps": "3-5",
+              "muscles": ["Back", "Hamstrings", "Glutes"]
+            },
+            { "name": "Leg Press", "sets": 3, "reps": "10-15", "muscles": ["Quads"] },
+            { "name": "Leg Curl", "sets": 3, "reps": "6-10", "muscles": ["Hamstrings"] },
+            { "name": "Standing Calf Raise", "sets": 3, "reps": "6-10", "muscles": ["Calves"] }
+          ]
+        },
+        {
+          "day": 3,
+          "name": "Upper Hypertrophy",
+          "exercises": [
+            {
+              "name": "Incline Dumbbell Press",
+              "sets": 4,
+              "reps": "8-12",
+              "muscles": ["Upper Chest"]
+            },
+            { "name": "Cable Fly", "sets": 3, "reps": "12-15", "muscles": ["Chest"] },
+            { "name": "Seated Cable Row", "sets": 4, "reps": "8-12", "muscles": ["Upper Back"] },
+            { "name": "Lat Pulldown", "sets": 3, "reps": "10-15", "muscles": ["Lats"] },
+            {
+              "name": "Dumbbell Lateral Raise",
+              "sets": 3,
+              "reps": "10-15",
+              "muscles": ["Side Delts"]
+            },
+            { "name": "Hammer Curl", "sets": 3, "reps": "10-15", "muscles": ["Biceps"] },
+            { "name": "Tricep Pushdown", "sets": 3, "reps": "10-15", "muscles": ["Triceps"] }
+          ]
+        },
+        {
+          "day": 4,
+          "name": "Lower Hypertrophy",
+          "exercises": [
+            { "name": "Front Squat", "sets": 4, "reps": "8-12", "muscles": ["Quads"] },
+            {
+              "name": "Romanian Deadlift",
+              "sets": 3,
+              "reps": "8-12",
+              "muscles": ["Hamstrings", "Glutes"]
+            },
+            { "name": "Leg Extension", "sets": 3, "reps": "10-15", "muscles": ["Quads"] },
+            { "name": "Leg Curl", "sets": 3, "reps": "10-15", "muscles": ["Hamstrings"] },
+            { "name": "Seated Calf Raise", "sets": 3, "reps": "12-15", "muscles": ["Calves"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phat-5day",
+      "name": "PHAT (Power Hypertrophy Adaptive Training)",
+      "category": "Powerbuilding",
+      "goal": "Build muscle & strength",
+      "level": "Advanced",
+      "note": "Layne Norton style. 2 power days + 3 hypertrophy days.",
+      "daysPerWeek": 5,
+      "days": [
+        {
+          "day": 1,
+          "name": "Upper Power",
+          "exercises": [
+            { "name": "Barbell Row", "sets": 3, "reps": "3-5", "muscles": ["Upper Back", "Lats"] },
+            { "name": "Pull-up", "sets": 2, "reps": "6-10", "muscles": ["Lats", "Biceps"] },
+            {
+              "name": "Barbell Bench Press",
+              "sets": 3,
+              "reps": "3-5",
+              "muscles": ["Chest", "Triceps"]
+            },
+            { "name": "Overhead Press", "sets": 2, "reps": "6-10", "muscles": ["Shoulders"] },
+            { "name": "Barbell Curl", "sets": 3, "reps": "6-10", "muscles": ["Biceps"] },
+            { "name": "Skullcrusher", "sets": 3, "reps": "6-10", "muscles": ["Triceps"] }
+          ]
+        },
+        {
+          "day": 2,
+          "name": "Lower Power",
+          "exercises": [
+            {
+              "name": "Barbell Back Squat",
+              "sets": 3,
+              "reps": "3-5",
+              "muscles": ["Quads", "Glutes"]
+            },
+            { "name": "Hack Squat", "sets": 2, "reps": "6-10", "muscles": ["Quads"] },
+            {
+              "name": "Romanian Deadlift",
+              "sets": 3,
+              "reps": "5-8",
+              "muscles": ["Hamstrings", "Glutes"]
+            },
+            { "name": "Leg Curl", "sets": 2, "reps": "6-10", "muscles": ["Hamstrings"] },
+            { "name": "Standing Calf Raise", "sets": 3, "reps": "6-10", "muscles": ["Calves"] }
+          ]
+        },
+        {
+          "day": 3,
+          "name": "Back & Shoulders Hypertrophy",
+          "exercises": [
+            { "name": "Barbell Row", "sets": 3, "reps": "8-12", "muscles": ["Upper Back"] },
+            { "name": "Lat Pulldown", "sets": 3, "reps": "8-12", "muscles": ["Lats"] },
+            { "name": "Seated Cable Row", "sets": 3, "reps": "8-12", "muscles": ["Upper Back"] },
+            {
+              "name": "Dumbbell Shoulder Press",
+              "sets": 3,
+              "reps": "8-12",
+              "muscles": ["Shoulders"]
+            },
+            {
+              "name": "Dumbbell Lateral Raise",
+              "sets": 3,
+              "reps": "12-15",
+              "muscles": ["Side Delts"]
+            },
+            { "name": "Rear Delt Fly", "sets": 3, "reps": "12-15", "muscles": ["Rear Delts"] }
+          ]
+        },
+        {
+          "day": 4,
+          "name": "Lower Hypertrophy",
+          "exercises": [
+            {
+              "name": "Barbell Back Squat",
+              "sets": 3,
+              "reps": "8-12",
+              "muscles": ["Quads", "Glutes"]
+            },
+            { "name": "Leg Press", "sets": 3, "reps": "10-15", "muscles": ["Quads"] },
+            { "name": "Leg Extension", "sets": 3, "reps": "12-20", "muscles": ["Quads"] },
+            { "name": "Leg Curl", "sets": 3, "reps": "10-15", "muscles": ["Hamstrings"] },
+            { "name": "Standing Calf Raise", "sets": 4, "reps": "12-15", "muscles": ["Calves"] }
+          ]
+        },
+        {
+          "day": 5,
+          "name": "Chest & Arms Hypertrophy",
+          "exercises": [
+            {
+              "name": "Incline Dumbbell Press",
+              "sets": 3,
+              "reps": "8-12",
+              "muscles": ["Upper Chest"]
+            },
+            { "name": "Cable Fly", "sets": 3, "reps": "12-15", "muscles": ["Chest"] },
+            { "name": "Barbell Curl", "sets": 3, "reps": "8-12", "muscles": ["Biceps"] },
+            {
+              "name": "Hammer Curl",
+              "sets": 3,
+              "reps": "10-15",
+              "muscles": ["Biceps", "Forearms"]
+            },
+            { "name": "Tricep Pushdown", "sets": 3, "reps": "8-12", "muscles": ["Triceps"] },
+            {
+              "name": "Overhead Tricep Extension",
+              "sets": 3,
+              "reps": "10-15",
+              "muscles": ["Triceps"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "stronglifts-5x5",
+      "name": "StrongLifts 5x5",
+      "category": "Strength",
+      "goal": "Build strength (beginner)",
+      "level": "Beginner",
+      "note": "Alternate Workout A and B across 3 sessions per week. Add weight each session.",
+      "daysPerWeek": 3,
+      "days": [
+        {
+          "day": 1,
+          "name": "Workout A",
+          "exercises": [
+            {
+              "name": "Barbell Back Squat",
+              "sets": 5,
+              "reps": "5",
+              "muscles": ["Quads", "Glutes"]
+            },
+            {
+              "name": "Barbell Bench Press",
+              "sets": 5,
+              "reps": "5",
+              "muscles": ["Chest", "Front Delts", "Triceps"]
+            },
+            {
+              "name": "Barbell Row",
+              "sets": 5,
+              "reps": "5",
+              "muscles": ["Upper Back", "Lats", "Biceps"]
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "name": "Workout B",
+          "exercises": [
+            {
+              "name": "Barbell Back Squat",
+              "sets": 5,
+              "reps": "5",
+              "muscles": ["Quads", "Glutes"]
+            },
+            {
+              "name": "Overhead Press",
+              "sets": 5,
+              "reps": "5",
+              "muscles": ["Shoulders", "Triceps"]
+            },
+            {
+              "name": "Deadlift",
+              "sets": 1,
+              "reps": "5",
+              "muscles": ["Back", "Hamstrings", "Glutes"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wendler-531-4day",
+      "name": "5/3/1 (Wendler)",
+      "category": "Strength",
+      "goal": "Build strength",
+      "level": "Intermediate",
+      "note": "Main lifts use the 5/3/1 percentage scheme (last set AMRAP). Accessories listed as 5x10.",
+      "daysPerWeek": 4,
+      "days": [
+        {
+          "day": 1,
+          "name": "Squat Day",
+          "exercises": [
+            {
+              "name": "Barbell Back Squat",
+              "sets": 3,
+              "reps": "5/3/1",
+              "muscles": ["Quads", "Glutes"]
+            },
+            { "name": "Leg Press", "sets": 5, "reps": "10", "muscles": ["Quads"] },
+            { "name": "Leg Curl", "sets": 5, "reps": "10", "muscles": ["Hamstrings"] }
+          ]
+        },
+        {
+          "day": 2,
+          "name": "Bench Day",
+          "exercises": [
+            {
+              "name": "Barbell Bench Press",
+              "sets": 3,
+              "reps": "5/3/1",
+              "muscles": ["Chest", "Front Delts", "Triceps"]
+            },
+            { "name": "Dumbbell Bench Press", "sets": 5, "reps": "10", "muscles": ["Chest"] },
+            { "name": "Barbell Row", "sets": 5, "reps": "10", "muscles": ["Upper Back"] }
+          ]
+        },
+        {
+          "day": 3,
+          "name": "Deadlift Day",
+          "exercises": [
+            {
+              "name": "Deadlift",
+              "sets": 3,
+              "reps": "5/3/1",
+              "muscles": ["Back", "Hamstrings", "Glutes"]
+            },
+            {
+              "name": "Romanian Deadlift",
+              "sets": 5,
+              "reps": "10",
+              "muscles": ["Hamstrings", "Glutes"]
+            },
+            { "name": "Hanging Leg Raise", "sets": 5, "reps": "10-15", "muscles": ["Core"] }
+          ]
+        },
+        {
+          "day": 4,
+          "name": "Overhead Press Day",
+          "exercises": [
+            {
+              "name": "Overhead Press",
+              "sets": 3,
+              "reps": "5/3/1",
+              "muscles": ["Shoulders", "Triceps"]
+            },
+            {
+              "name": "Dumbbell Shoulder Press",
+              "sets": 5,
+              "reps": "10",
+              "muscles": ["Shoulders"]
+            },
+            { "name": "Pull-up", "sets": 5, "reps": "10", "muscles": ["Lats", "Biceps"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dorian-yates-hit-4day",
+      "name": "Dorian Yates Blood & Guts (HIT)",
+      "category": "Build Muscle",
+      "goal": "Build muscle (high intensity, low volume)",
+      "level": "Advanced",
+      "note": "After warm-ups, perform ONE all-out working set to failure (and beyond, with forced/negative reps).",
+      "daysPerWeek": 4,
+      "days": [
+        {
+          "day": 1,
+          "name": "Chest & Biceps",
+          "exercises": [
+            {
+              "name": "Incline Smith Machine Press",
+              "sets": 1,
+              "reps": "6-8",
+              "muscles": ["Upper Chest"]
+            },
+            { "name": "Flat Dumbbell Press", "sets": 1, "reps": "6-8", "muscles": ["Chest"] },
+            { "name": "Incline Cable Fly", "sets": 1, "reps": "8-10", "muscles": ["Chest"] },
+            { "name": "Barbell Curl", "sets": 1, "reps": "6-8", "muscles": ["Biceps"] },
+            { "name": "Incline Dumbbell Curl", "sets": 1, "reps": "8-10", "muscles": ["Biceps"] }
+          ]
+        },
+        {
+          "day": 2,
+          "name": "Legs",
+          "exercises": [
+            { "name": "Leg Extension", "sets": 1, "reps": "10-12", "muscles": ["Quads"] },
+            { "name": "Leg Press", "sets": 1, "reps": "10-12", "muscles": ["Quads", "Glutes"] },
+            { "name": "Hack Squat", "sets": 1, "reps": "10-12", "muscles": ["Quads"] },
+            { "name": "Leg Curl", "sets": 1, "reps": "8-10", "muscles": ["Hamstrings"] },
+            { "name": "Standing Calf Raise", "sets": 1, "reps": "10-12", "muscles": ["Calves"] }
+          ]
+        },
+        {
+          "day": 3,
+          "name": "Shoulders & Triceps",
+          "exercises": [
+            { "name": "Overhead Press", "sets": 1, "reps": "6-8", "muscles": ["Shoulders"] },
+            {
+              "name": "Dumbbell Lateral Raise",
+              "sets": 1,
+              "reps": "8-10",
+              "muscles": ["Side Delts"]
+            },
+            { "name": "Rear Delt Fly", "sets": 1, "reps": "8-10", "muscles": ["Rear Delts"] },
+            { "name": "Close-Grip Bench Press", "sets": 1, "reps": "6-8", "muscles": ["Triceps"] },
+            { "name": "Tricep Pushdown", "sets": 1, "reps": "8-10", "muscles": ["Triceps"] }
+          ]
+        },
+        {
+          "day": 4,
+          "name": "Back",
+          "exercises": [
+            { "name": "Lat Pulldown", "sets": 1, "reps": "8-10", "muscles": ["Lats"] },
+            { "name": "Barbell Row", "sets": 1, "reps": "6-8", "muscles": ["Upper Back"] },
+            { "name": "Seated Cable Row", "sets": 1, "reps": "8-10", "muscles": ["Upper Back"] },
+            {
+              "name": "Deadlift",
+              "sets": 1,
+              "reps": "6-8",
+              "muscles": ["Back", "Hamstrings", "Glutes"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dumbbell-only-fullbody",
+      "name": "Dumbbell Only (Full Body)",
+      "category": "Minimal Equipment",
+      "goal": "Build muscle with minimal equipment",
+      "level": "Beginner",
+      "note": "All you need is a pair of adjustable dumbbells. Run 3x per week.",
+      "daysPerWeek": 3,
+      "days": [
+        {
+          "day": 1,
+          "name": "Full Body (Dumbbell)",
+          "exercises": [
+            { "name": "Goblet Squat", "sets": 4, "reps": "10-12", "muscles": ["Quads", "Glutes"] },
+            {
+              "name": "Dumbbell Bench Press",
+              "sets": 4,
+              "reps": "8-12",
+              "muscles": ["Chest", "Triceps"]
+            },
+            {
+              "name": "Dumbbell Row",
+              "sets": 4,
+              "reps": "8-12",
+              "muscles": ["Upper Back", "Lats", "Biceps"]
+            },
+            {
+              "name": "Dumbbell Shoulder Press",
+              "sets": 3,
+              "reps": "8-12",
+              "muscles": ["Shoulders"]
+            },
+            {
+              "name": "Dumbbell Romanian Deadlift",
+              "sets": 3,
+              "reps": "10-12",
+              "muscles": ["Hamstrings", "Glutes"]
+            },
+            {
+              "name": "Dumbbell Lateral Raise",
+              "sets": 3,
+              "reps": "12-15",
+              "muscles": ["Side Delts"]
+            },
+            { "name": "Dumbbell Curl", "sets": 3, "reps": "10-12", "muscles": ["Biceps"] },
+            {
+              "name": "Dumbbell Overhead Tricep Extension",
+              "sets": 3,
+              "reps": "10-12",
+              "muscles": ["Triceps"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "calisthenics-bodyweight",
+      "name": "Calisthenics (Bodyweight)",
+      "category": "Minimal Equipment",
+      "goal": "Build muscle with no weights",
+      "level": "Beginner",
+      "note": "Needs a pull-up bar and dip station/bars. Run 3x per week.",
+      "daysPerWeek": 3,
+      "days": [
+        {
+          "day": 1,
+          "name": "Full Body (Bodyweight)",
+          "exercises": [
+            {
+              "name": "Push-up",
+              "sets": 4,
+              "reps": "10-20",
+              "muscles": ["Chest", "Triceps", "Front Delts"]
+            },
+            { "name": "Pull-up", "sets": 4, "reps": "5-12", "muscles": ["Lats", "Biceps"] },
+            {
+              "name": "Bodyweight Squat",
+              "sets": 4,
+              "reps": "15-25",
+              "muscles": ["Quads", "Glutes"]
+            },
+            { "name": "Dips", "sets": 3, "reps": "8-15", "muscles": ["Chest", "Triceps"] },
+            {
+              "name": "Inverted Row",
+              "sets": 3,
+              "reps": "8-15",
+              "muscles": ["Upper Back", "Biceps"]
+            },
+            { "name": "Walking Lunge", "sets": 3, "reps": "12-20", "muscles": ["Quads", "Glutes"] },
+            { "name": "Plank", "sets": 3, "reps": "30-60s", "muscles": ["Core"] },
+            { "name": "Hanging Leg Raise", "sets": 3, "reps": "12-20", "muscles": ["Core"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "at-home-no-equipment",
+      "name": "At Home (No Equipment)",
+      "category": "Minimal Equipment",
+      "goal": "Stay active / beginner fitness",
+      "level": "Beginner",
+      "note": "Zero equipment. Run 3x per week.",
+      "daysPerWeek": 3,
+      "days": [
+        {
+          "day": 1,
+          "name": "Full Body (No Equipment)",
+          "exercises": [
+            {
+              "name": "Bodyweight Squat",
+              "sets": 3,
+              "reps": "15-20",
+              "muscles": ["Quads", "Glutes"]
+            },
+            {
+              "name": "Knee or Incline Push-up",
+              "sets": 3,
+              "reps": "8-15",
+              "muscles": ["Chest", "Triceps"]
+            },
+            {
+              "name": "Glute Bridge",
+              "sets": 3,
+              "reps": "15-20",
+              "muscles": ["Glutes", "Hamstrings"]
+            },
+            { "name": "Reverse Lunge", "sets": 3, "reps": "10-12", "muscles": ["Quads", "Glutes"] },
+            { "name": "Pike Push-up", "sets": 3, "reps": "8-12", "muscles": ["Shoulders"] },
+            { "name": "Superman", "sets": 3, "reps": "12-15", "muscles": ["Lower Back"] },
+            { "name": "Plank", "sets": 3, "reps": "30-45s", "muscles": ["Core"] },
+            { "name": "Mountain Climbers", "sets": 3, "reps": "20-30", "muscles": ["Core"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "v-taper-4day",
+      "name": "V-Taper Builder",
+      "category": "Aesthetic",
+      "goal": "Wide shoulders & lats, narrow waist (V-taper)",
+      "level": "Intermediate",
+      "note": "Heavy emphasis on lat width and side delts. Minimal direct oblique work to keep the waist tight.",
+      "daysPerWeek": 4,
+      "days": [
+        {
+          "day": 1,
+          "name": "Back Width & Side Delts",
+          "exercises": [
+            { "name": "Wide-Grip Pull-up", "sets": 4, "reps": "6-10", "muscles": ["Lats"] },
+            { "name": "Wide-Grip Lat Pulldown", "sets": 4, "reps": "10-12", "muscles": ["Lats"] },
+            { "name": "Straight-Arm Pulldown", "sets": 3, "reps": "12-15", "muscles": ["Lats"] },
+            {
+              "name": "Dumbbell Lateral Raise",
+              "sets": 4,
+              "reps": "12-15",
+              "muscles": ["Side Delts"]
+            },
+            { "name": "Cable Lateral Raise", "sets": 3, "reps": "15-20", "muscles": ["Side Delts"] }
+          ]
+        },
+        {
+          "day": 2,
+          "name": "Legs",
+          "exercises": [
+            {
+              "name": "Barbell Back Squat",
+              "sets": 4,
+              "reps": "8-10",
+              "muscles": ["Quads", "Glutes"]
+            },
+            {
+              "name": "Romanian Deadlift",
+              "sets": 3,
+              "reps": "10-12",
+              "muscles": ["Hamstrings", "Glutes"]
+            },
+            { "name": "Leg Press", "sets": 3, "reps": "12-15", "muscles": ["Quads"] },
+            { "name": "Leg Curl", "sets": 3, "reps": "12-15", "muscles": ["Hamstrings"] },
+            { "name": "Standing Calf Raise", "sets": 4, "reps": "12-15", "muscles": ["Calves"] }
+          ]
+        },
+        {
+          "day": 3,
+          "name": "Chest & Arms",
+          "exercises": [
+            {
+              "name": "Incline Barbell Press",
+              "sets": 4,
+              "reps": "8-10",
+              "muscles": ["Upper Chest"]
+            },
+            { "name": "Weighted Dips", "sets": 3, "reps": "8-12", "muscles": ["Chest", "Triceps"] },
+            { "name": "Cable Fly", "sets": 3, "reps": "12-15", "muscles": ["Chest"] },
+            { "name": "Barbell Curl", "sets": 3, "reps": "10-12", "muscles": ["Biceps"] },
+            { "name": "Tricep Pushdown", "sets": 3, "reps": "10-12", "muscles": ["Triceps"] }
+          ]
+        },
+        {
+          "day": 4,
+          "name": "Shoulders & Upper Back",
+          "exercises": [
+            { "name": "Overhead Press", "sets": 4, "reps": "8-10", "muscles": ["Shoulders"] },
+            {
+              "name": "Dumbbell Lateral Raise",
+              "sets": 4,
+              "reps": "12-15",
+              "muscles": ["Side Delts"]
+            },
+            {
+              "name": "Chest-Supported Row",
+              "sets": 4,
+              "reps": "10-12",
+              "muscles": ["Upper Back"]
+            },
+            { "name": "Face Pull", "sets": 3, "reps": "15-20", "muscles": ["Rear Delts"] },
+            { "name": "Rear Delt Fly", "sets": 3, "reps": "15-20", "muscles": ["Rear Delts"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "classic-physique-5day",
+      "name": "Classic Physique (Golden Era)",
+      "category": "Aesthetic",
+      "goal": "Arnold-era proportions: full chest, taper, sweeping legs, peaked arms",
+      "level": "Advanced",
+      "note": "Bodybuilding body-part split focused on symmetry and proportion. Pullovers included for the classic ribcage look.",
+      "daysPerWeek": 5,
+      "days": [
+        {
+          "day": 1,
+          "name": "Chest",
+          "exercises": [
+            {
+              "name": "Incline Barbell Press",
+              "sets": 4,
+              "reps": "8-10",
+              "muscles": ["Upper Chest"]
+            },
+            { "name": "Flat Dumbbell Press", "sets": 4, "reps": "8-10", "muscles": ["Chest"] },
+            { "name": "Cable Fly", "sets": 3, "reps": "12-15", "muscles": ["Chest"] },
+            { "name": "Weighted Dips", "sets": 3, "reps": "8-12", "muscles": ["Chest", "Triceps"] },
+            {
+              "name": "Dumbbell Pullover",
+              "sets": 3,
+              "reps": "12-15",
+              "muscles": ["Chest", "Lats"]
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "name": "Back",
+          "exercises": [
+            { "name": "Wide-Grip Pull-up", "sets": 4, "reps": "8-10", "muscles": ["Lats"] },
+            { "name": "Barbell Row", "sets": 4, "reps": "8-10", "muscles": ["Upper Back"] },
+            { "name": "Lat Pulldown", "sets": 3, "reps": "10-12", "muscles": ["Lats"] },
+            { "name": "Seated Cable Row", "sets": 3, "reps": "10-12", "muscles": ["Mid Back"] },
+            { "name": "Straight-Arm Pulldown", "sets": 3, "reps": "12-15", "muscles": ["Lats"] }
+          ]
+        },
+        {
+          "day": 3,
+          "name": "Legs",
+          "exercises": [
+            {
+              "name": "Barbell Back Squat",
+              "sets": 4,
+              "reps": "8-10",
+              "muscles": ["Quads", "Glutes"]
+            },
+            { "name": "Hack Squat", "sets": 3, "reps": "10-12", "muscles": ["Quads"] },
+            { "name": "Romanian Deadlift", "sets": 3, "reps": "10-12", "muscles": ["Hamstrings"] },
+            { "name": "Leg Curl", "sets": 3, "reps": "12-15", "muscles": ["Hamstrings"] },
+            { "name": "Standing Calf Raise", "sets": 4, "reps": "15-20", "muscles": ["Calves"] }
+          ]
+        },
+        {
+          "day": 4,
+          "name": "Shoulders",
+          "exercises": [
+            { "name": "Overhead Press", "sets": 4, "reps": "8-10", "muscles": ["Shoulders"] },
+            {
+              "name": "Dumbbell Lateral Raise",
+              "sets": 4,
+              "reps": "12-15",
+              "muscles": ["Side Delts"]
+            },
+            { "name": "Rear Delt Fly", "sets": 3, "reps": "15-20", "muscles": ["Rear Delts"] },
+            {
+              "name": "Cable Lateral Raise",
+              "sets": 3,
+              "reps": "15-20",
+              "muscles": ["Side Delts"]
+            },
+            { "name": "Barbell Shrug", "sets": 3, "reps": "12-15", "muscles": ["Traps"] }
+          ]
+        },
+        {
+          "day": 5,
+          "name": "Arms",
+          "exercises": [
+            { "name": "Barbell Curl", "sets": 4, "reps": "8-10", "muscles": ["Biceps"] },
+            { "name": "Close-Grip Bench Press", "sets": 4, "reps": "8-10", "muscles": ["Triceps"] },
+            { "name": "Incline Dumbbell Curl", "sets": 3, "reps": "10-12", "muscles": ["Biceps"] },
+            {
+              "name": "Overhead Tricep Extension",
+              "sets": 3,
+              "reps": "10-12",
+              "muscles": ["Triceps"]
+            },
+            { "name": "Concentration Curl", "sets": 3, "reps": "12-15", "muscles": ["Biceps"] },
+            { "name": "Rope Pushdown", "sets": 3, "reps": "12-15", "muscles": ["Triceps"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "greek-god-3day",
+      "name": "Greek God (Lean Aesthetic)",
+      "category": "Aesthetic",
+      "goal": "Lean, proportionate, strong look with upper-body emphasis",
+      "level": "Intermediate",
+      "note": "Kinobody-style. Low-rep strength on key lifts plus high-rep side delts. Built to pair with a lean physique.",
+      "daysPerWeek": 3,
+      "days": [
+        {
+          "day": 1,
+          "name": "Workout A",
+          "exercises": [
+            {
+              "name": "Incline Barbell Press",
+              "sets": 4,
+              "reps": "4-6",
+              "muscles": ["Upper Chest"]
+            },
+            { "name": "Weighted Pull-up", "sets": 4, "reps": "4-6", "muscles": ["Lats", "Biceps"] },
+            {
+              "name": "Standing Lateral Raise",
+              "sets": 4,
+              "reps": "10-15",
+              "muscles": ["Side Delts"]
+            },
+            { "name": "Incline Dumbbell Curl", "sets": 3, "reps": "6-10", "muscles": ["Biceps"] },
+            { "name": "Rope Pushdown", "sets": 3, "reps": "8-12", "muscles": ["Triceps"] }
+          ]
+        },
+        {
+          "day": 2,
+          "name": "Workout B",
+          "exercises": [
+            { "name": "Weighted Dips", "sets": 4, "reps": "4-6", "muscles": ["Chest", "Triceps"] },
+            {
+              "name": "Bulgarian Split Squat",
+              "sets": 4,
+              "reps": "6-8",
+              "muscles": ["Quads", "Glutes"]
+            },
+            {
+              "name": "Cable Lateral Raise",
+              "sets": 4,
+              "reps": "12-15",
+              "muscles": ["Side Delts"]
+            },
+            { "name": "Hammer Curl", "sets": 3, "reps": "8-12", "muscles": ["Biceps"] }
+          ]
+        },
+        {
+          "day": 3,
+          "name": "Workout C",
+          "exercises": [
+            {
+              "name": "Standing Overhead Press",
+              "sets": 4,
+              "reps": "4-6",
+              "muscles": ["Shoulders"]
+            },
+            { "name": "Weighted Chin-up", "sets": 4, "reps": "4-6", "muscles": ["Lats", "Biceps"] },
+            {
+              "name": "Romanian Deadlift",
+              "sets": 3,
+              "reps": "6-8",
+              "muscles": ["Hamstrings", "Glutes"]
+            },
+            {
+              "name": "Dumbbell Lateral Raise",
+              "sets": 4,
+              "reps": "12-15",
+              "muscles": ["Side Delts"]
+            },
+            { "name": "Cable Curl", "sets": 3, "reps": "8-12", "muscles": ["Biceps"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "superhero-4day",
+      "name": "Superhero / Hollywood",
+      "category": "Aesthetic",
+      "goal": "Broad capped shoulders, V-taper, arms and visible abs",
+      "level": "Intermediate",
+      "daysPerWeek": 4,
+      "days": [
+        {
+          "day": 1,
+          "name": "Shoulders & Arms",
+          "exercises": [
+            { "name": "Overhead Press", "sets": 4, "reps": "6-8", "muscles": ["Shoulders"] },
+            {
+              "name": "Dumbbell Lateral Raise",
+              "sets": 5,
+              "reps": "12-15",
+              "muscles": ["Side Delts"]
+            },
+            { "name": "Rear Delt Fly", "sets": 3, "reps": "15-20", "muscles": ["Rear Delts"] },
+            { "name": "Barbell Curl", "sets": 3, "reps": "8-12", "muscles": ["Biceps"] },
+            { "name": "Tricep Pushdown", "sets": 3, "reps": "10-12", "muscles": ["Triceps"] }
+          ]
+        },
+        {
+          "day": 2,
+          "name": "Back & Abs",
+          "exercises": [
+            {
+              "name": "Weighted Pull-up",
+              "sets": 4,
+              "reps": "6-10",
+              "muscles": ["Lats", "Biceps"]
+            },
+            { "name": "Barbell Row", "sets": 4, "reps": "8-10", "muscles": ["Upper Back"] },
+            { "name": "Lat Pulldown", "sets": 3, "reps": "10-12", "muscles": ["Lats"] },
+            { "name": "Hanging Leg Raise", "sets": 4, "reps": "10-15", "muscles": ["Core"] },
+            { "name": "Cable Crunch", "sets": 3, "reps": "12-15", "muscles": ["Core"] }
+          ]
+        },
+        {
+          "day": 3,
+          "name": "Chest & Arms",
+          "exercises": [
+            {
+              "name": "Incline Barbell Press",
+              "sets": 4,
+              "reps": "6-8",
+              "muscles": ["Upper Chest"]
+            },
+            { "name": "Weighted Dips", "sets": 3, "reps": "8-12", "muscles": ["Chest", "Triceps"] },
+            { "name": "Cable Fly", "sets": 3, "reps": "12-15", "muscles": ["Chest"] },
+            { "name": "Hammer Curl", "sets": 3, "reps": "10-12", "muscles": ["Biceps"] },
+            {
+              "name": "Overhead Tricep Extension",
+              "sets": 3,
+              "reps": "10-12",
+              "muscles": ["Triceps"]
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "name": "Legs",
+          "exercises": [
+            {
+              "name": "Barbell Back Squat",
+              "sets": 4,
+              "reps": "8-10",
+              "muscles": ["Quads", "Glutes"]
+            },
+            {
+              "name": "Romanian Deadlift",
+              "sets": 3,
+              "reps": "10-12",
+              "muscles": ["Hamstrings", "Glutes"]
+            },
+            { "name": "Leg Press", "sets": 3, "reps": "12-15", "muscles": ["Quads"] },
+            { "name": "Standing Calf Raise", "sets": 4, "reps": "12-15", "muscles": ["Calves"] },
+            { "name": "Plank", "sets": 3, "reps": "45-60s", "muscles": ["Core"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "glute-focused-4day",
+      "name": "Glute-Focused (Lower Aesthetic)",
+      "category": "Aesthetic",
+      "goal": "Build and shape glutes and legs (hourglass / lower-body emphasis)",
+      "level": "Intermediate",
+      "note": "Two dedicated glute days plus quad and hamstring focus. One upper day to keep balance.",
+      "daysPerWeek": 4,
+      "days": [
+        {
+          "day": 1,
+          "name": "Glutes",
+          "exercises": [
+            { "name": "Barbell Hip Thrust", "sets": 4, "reps": "8-12", "muscles": ["Glutes"] },
+            {
+              "name": "Romanian Deadlift",
+              "sets": 4,
+              "reps": "8-12",
+              "muscles": ["Hamstrings", "Glutes"]
+            },
+            {
+              "name": "Bulgarian Split Squat",
+              "sets": 3,
+              "reps": "10-12",
+              "muscles": ["Glutes", "Quads"]
+            },
+            { "name": "Cable Kickback", "sets": 3, "reps": "12-15", "muscles": ["Glutes"] },
+            { "name": "Glute Bridge", "sets": 3, "reps": "15-20", "muscles": ["Glutes"] }
+          ]
+        },
+        {
+          "day": 2,
+          "name": "Upper Body",
+          "exercises": [
+            { "name": "Dumbbell Bench Press", "sets": 3, "reps": "10-12", "muscles": ["Chest"] },
+            { "name": "Lat Pulldown", "sets": 3, "reps": "10-12", "muscles": ["Lats"] },
+            {
+              "name": "Dumbbell Shoulder Press",
+              "sets": 3,
+              "reps": "10-12",
+              "muscles": ["Shoulders"]
+            },
+            { "name": "Seated Cable Row", "sets": 3, "reps": "10-12", "muscles": ["Upper Back"] },
+            {
+              "name": "Dumbbell Lateral Raise",
+              "sets": 3,
+              "reps": "12-15",
+              "muscles": ["Side Delts"]
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "name": "Quads & Glutes",
+          "exercises": [
+            {
+              "name": "Barbell Back Squat",
+              "sets": 4,
+              "reps": "8-10",
+              "muscles": ["Quads", "Glutes"]
+            },
+            { "name": "Leg Press", "sets": 4, "reps": "10-12", "muscles": ["Quads", "Glutes"] },
+            { "name": "Walking Lunge", "sets": 3, "reps": "12-20", "muscles": ["Quads", "Glutes"] },
+            { "name": "Leg Extension", "sets": 3, "reps": "12-15", "muscles": ["Quads"] },
+            { "name": "Standing Calf Raise", "sets": 4, "reps": "15-20", "muscles": ["Calves"] }
+          ]
+        },
+        {
+          "day": 4,
+          "name": "Glutes & Hamstrings",
+          "exercises": [
+            { "name": "Barbell Hip Thrust", "sets": 4, "reps": "10-12", "muscles": ["Glutes"] },
+            {
+              "name": "Sumo Deadlift",
+              "sets": 3,
+              "reps": "8-10",
+              "muscles": ["Glutes", "Hamstrings"]
+            },
+            { "name": "Leg Curl", "sets": 4, "reps": "12-15", "muscles": ["Hamstrings"] },
+            { "name": "Cable Pull-Through", "sets": 3, "reps": "12-15", "muscles": ["Glutes"] },
+            { "name": "Hip Abduction Machine", "sets": 3, "reps": "15-20", "muscles": ["Glutes"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "beach-body-3day",
+      "name": "Beach Body (Mirror Muscles)",
+      "category": "Aesthetic",
+      "goal": "Chest, arms, shoulders and abs (the muscles you see in the mirror)",
+      "level": "Beginner",
+      "daysPerWeek": 3,
+      "days": [
+        {
+          "day": 1,
+          "name": "Chest & Triceps",
+          "exercises": [
+            {
+              "name": "Incline Dumbbell Press",
+              "sets": 4,
+              "reps": "8-12",
+              "muscles": ["Upper Chest"]
+            },
+            { "name": "Flat Barbell Bench Press", "sets": 4, "reps": "8-10", "muscles": ["Chest"] },
+            { "name": "Cable Fly", "sets": 3, "reps": "12-15", "muscles": ["Chest"] },
+            { "name": "Rope Pushdown", "sets": 3, "reps": "12-15", "muscles": ["Triceps"] },
+            {
+              "name": "Overhead Tricep Extension",
+              "sets": 3,
+              "reps": "10-12",
+              "muscles": ["Triceps"]
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "name": "Back & Biceps",
+          "exercises": [
+            { "name": "Pull-up", "sets": 4, "reps": "6-10", "muscles": ["Lats"] },
+            { "name": "Lat Pulldown", "sets": 3, "reps": "10-12", "muscles": ["Lats"] },
+            { "name": "Seated Cable Row", "sets": 3, "reps": "10-12", "muscles": ["Upper Back"] },
+            { "name": "Barbell Curl", "sets": 3, "reps": "10-12", "muscles": ["Biceps"] },
+            { "name": "Incline Dumbbell Curl", "sets": 3, "reps": "10-12", "muscles": ["Biceps"] }
+          ]
+        },
+        {
+          "day": 3,
+          "name": "Shoulders & Abs",
+          "exercises": [
+            { "name": "Overhead Press", "sets": 4, "reps": "8-10", "muscles": ["Shoulders"] },
+            {
+              "name": "Dumbbell Lateral Raise",
+              "sets": 4,
+              "reps": "12-15",
+              "muscles": ["Side Delts"]
+            },
+            { "name": "Rear Delt Fly", "sets": 3, "reps": "15-20", "muscles": ["Rear Delts"] },
+            { "name": "Hanging Leg Raise", "sets": 4, "reps": "10-15", "muscles": ["Core"] },
+            { "name": "Cable Crunch", "sets": 3, "reps": "12-15", "muscles": ["Core"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "boulder-shoulders-4day",
+      "name": "Boulder Shoulders (3D Delts)",
+      "category": "Aesthetic",
+      "goal": "Round, capped, 3D shoulders",
+      "level": "Intermediate",
+      "note": "Shoulder-specialisation split. Delts hit twice with high side/rear-delt volume; rest of body maintained.",
+      "daysPerWeek": 4,
+      "days": [
+        {
+          "day": 1,
+          "name": "Shoulders (Power)",
+          "exercises": [
+            { "name": "Overhead Press", "sets": 5, "reps": "5-8", "muscles": ["Shoulders"] },
+            {
+              "name": "Dumbbell Lateral Raise",
+              "sets": 4,
+              "reps": "12-15",
+              "muscles": ["Side Delts"]
+            },
+            { "name": "Rear Delt Fly", "sets": 4, "reps": "15-20", "muscles": ["Rear Delts"] },
+            { "name": "Barbell Shrug", "sets": 3, "reps": "10-12", "muscles": ["Traps"] }
+          ]
+        },
+        {
+          "day": 2,
+          "name": "Back & Biceps",
+          "exercises": [
+            { "name": "Pull-up", "sets": 4, "reps": "6-10", "muscles": ["Lats"] },
+            { "name": "Barbell Row", "sets": 3, "reps": "8-10", "muscles": ["Upper Back"] },
+            { "name": "Lat Pulldown", "sets": 3, "reps": "10-12", "muscles": ["Lats"] },
+            { "name": "Barbell Curl", "sets": 3, "reps": "10-12", "muscles": ["Biceps"] }
+          ]
+        },
+        {
+          "day": 3,
+          "name": "Legs",
+          "exercises": [
+            {
+              "name": "Barbell Back Squat",
+              "sets": 4,
+              "reps": "8-10",
+              "muscles": ["Quads", "Glutes"]
+            },
+            {
+              "name": "Romanian Deadlift",
+              "sets": 3,
+              "reps": "10-12",
+              "muscles": ["Hamstrings", "Glutes"]
+            },
+            { "name": "Leg Press", "sets": 3, "reps": "12-15", "muscles": ["Quads"] },
+            { "name": "Standing Calf Raise", "sets": 4, "reps": "12-15", "muscles": ["Calves"] }
+          ]
+        },
+        {
+          "day": 4,
+          "name": "Shoulders (Volume) & Chest",
+          "exercises": [
+            {
+              "name": "Seated Dumbbell Shoulder Press",
+              "sets": 4,
+              "reps": "8-12",
+              "muscles": ["Shoulders"]
+            },
+            {
+              "name": "Cable Lateral Raise",
+              "sets": 5,
+              "reps": "15-20",
+              "muscles": ["Side Delts"]
+            },
+            { "name": "Face Pull", "sets": 4, "reps": "15-20", "muscles": ["Rear Delts"] },
+            {
+              "name": "Incline Dumbbell Press",
+              "sets": 3,
+              "reps": "8-12",
+              "muscles": ["Upper Chest"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "big-arms-4day",
+      "name": "Big Arms Specialisation",
+      "category": "Aesthetic",
+      "goal": "Maximise biceps and triceps size",
+      "level": "Intermediate",
+      "note": "Arm-specialisation split. Arms trained twice weekly with high volume; compounds keep the rest of the body growing.",
+      "daysPerWeek": 4,
+      "days": [
+        {
+          "day": 1,
+          "name": "Arms (Heavy)",
+          "exercises": [
+            { "name": "Barbell Curl", "sets": 4, "reps": "6-10", "muscles": ["Biceps"] },
+            { "name": "Close-Grip Bench Press", "sets": 4, "reps": "6-10", "muscles": ["Triceps"] },
+            { "name": "Weighted Chin-up", "sets": 3, "reps": "6-10", "muscles": ["Biceps"] },
+            { "name": "Dips", "sets": 3, "reps": "8-12", "muscles": ["Triceps"] }
+          ]
+        },
+        {
+          "day": 2,
+          "name": "Chest & Back",
+          "exercises": [
+            {
+              "name": "Barbell Bench Press",
+              "sets": 4,
+              "reps": "6-8",
+              "muscles": ["Chest", "Triceps"]
+            },
+            { "name": "Barbell Row", "sets": 4, "reps": "8-10", "muscles": ["Upper Back"] },
+            {
+              "name": "Incline Dumbbell Press",
+              "sets": 3,
+              "reps": "8-10",
+              "muscles": ["Upper Chest"]
+            },
+            { "name": "Lat Pulldown", "sets": 3, "reps": "10-12", "muscles": ["Lats"] }
+          ]
+        },
+        {
+          "day": 3,
+          "name": "Legs & Shoulders",
+          "exercises": [
+            {
+              "name": "Barbell Back Squat",
+              "sets": 4,
+              "reps": "8-10",
+              "muscles": ["Quads", "Glutes"]
+            },
+            { "name": "Romanian Deadlift", "sets": 3, "reps": "10-12", "muscles": ["Hamstrings"] },
+            { "name": "Overhead Press", "sets": 3, "reps": "8-10", "muscles": ["Shoulders"] },
+            {
+              "name": "Dumbbell Lateral Raise",
+              "sets": 3,
+              "reps": "12-15",
+              "muscles": ["Side Delts"]
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "name": "Arms (Volume / Pump)",
+          "exercises": [
+            { "name": "Incline Dumbbell Curl", "sets": 4, "reps": "10-12", "muscles": ["Biceps"] },
+            {
+              "name": "Overhead Tricep Extension",
+              "sets": 4,
+              "reps": "10-12",
+              "muscles": ["Triceps"]
+            },
+            {
+              "name": "Hammer Curl",
+              "sets": 3,
+              "reps": "10-15",
+              "muscles": ["Biceps", "Forearms"]
+            },
+            { "name": "Rope Pushdown", "sets": 3, "reps": "12-15", "muscles": ["Triceps"] },
+            { "name": "Cable Curl", "sets": 3, "reps": "12-15", "muscles": ["Biceps"] },
+            { "name": "Preacher Curl", "sets": 3, "reps": "12-15", "muscles": ["Biceps"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "starting-strength-3day",
+      "name": "Starting Strength",
+      "category": "Strength",
+      "goal": "Build strength (beginner)",
+      "level": "Beginner",
+      "note": "Rippetoe method. Alternate Workout A and B across 3 sessions/week. Add weight each session.",
+      "daysPerWeek": 3,
+      "days": [
+        {
+          "day": 1,
+          "name": "Workout A",
+          "exercises": [
+            {
+              "name": "Barbell Back Squat",
+              "sets": 3,
+              "reps": "5",
+              "muscles": ["Quads", "Glutes"]
+            },
+            {
+              "name": "Barbell Bench Press",
+              "sets": 3,
+              "reps": "5",
+              "muscles": ["Chest", "Front Delts", "Triceps"]
+            },
+            {
+              "name": "Deadlift",
+              "sets": 1,
+              "reps": "5",
+              "muscles": ["Back", "Hamstrings", "Glutes"]
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "name": "Workout B",
+          "exercises": [
+            {
+              "name": "Barbell Back Squat",
+              "sets": 3,
+              "reps": "5",
+              "muscles": ["Quads", "Glutes"]
+            },
+            {
+              "name": "Overhead Press",
+              "sets": 3,
+              "reps": "5",
+              "muscles": ["Shoulders", "Triceps"]
+            },
+            { "name": "Power Clean", "sets": 5, "reps": "3", "muscles": ["Full Body", "Traps"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "madcow-5x5",
+      "name": "Madcow 5x5",
+      "category": "Strength",
+      "goal": "Build strength (intermediate)",
+      "level": "Intermediate",
+      "note": "Weekly progression: heavy Monday, light Wednesday, top-set Friday.",
+      "daysPerWeek": 3,
+      "days": [
+        {
+          "day": 1,
+          "name": "Monday (Volume)",
+          "exercises": [
+            {
+              "name": "Barbell Back Squat",
+              "sets": 5,
+              "reps": "5",
+              "muscles": ["Quads", "Glutes"]
+            },
+            {
+              "name": "Barbell Bench Press",
+              "sets": 5,
+              "reps": "5",
+              "muscles": ["Chest", "Triceps"]
+            },
+            { "name": "Barbell Row", "sets": 5, "reps": "5", "muscles": ["Upper Back", "Lats"] }
+          ]
+        },
+        {
+          "day": 2,
+          "name": "Wednesday (Light)",
+          "exercises": [
+            {
+              "name": "Barbell Back Squat",
+              "sets": 4,
+              "reps": "5",
+              "muscles": ["Quads", "Glutes"]
+            },
+            { "name": "Overhead Press", "sets": 4, "reps": "5", "muscles": ["Shoulders"] },
+            {
+              "name": "Deadlift",
+              "sets": 4,
+              "reps": "5",
+              "muscles": ["Back", "Hamstrings", "Glutes"]
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "name": "Friday (Top Set)",
+          "exercises": [
+            {
+              "name": "Barbell Back Squat",
+              "sets": 4,
+              "reps": "5,3,2",
+              "muscles": ["Quads", "Glutes"]
+            },
+            {
+              "name": "Barbell Bench Press",
+              "sets": 4,
+              "reps": "5,3,2",
+              "muscles": ["Chest", "Triceps"]
+            },
+            { "name": "Barbell Row", "sets": 4, "reps": "5,3,2", "muscles": ["Upper Back", "Lats"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nsuns-531-5day",
+      "name": "nSuns 5/3/1 LP",
+      "category": "Strength",
+      "goal": "Build strength & size (high volume)",
+      "level": "Advanced",
+      "note": "High-volume 5/3/1 variant. T1 main lift = 9 sets, T2 = 8 sets, run on percentages of training max.",
+      "daysPerWeek": 5,
+      "days": [
+        {
+          "day": 1,
+          "name": "Bench / OHP",
+          "exercises": [
+            {
+              "name": "Barbell Bench Press",
+              "sets": 9,
+              "reps": "1-8 (nSuns)",
+              "muscles": ["Chest", "Triceps"]
+            },
+            { "name": "Overhead Press", "sets": 8, "reps": "5-8", "muscles": ["Shoulders"] },
+            { "name": "Tricep Pushdown", "sets": 3, "reps": "12", "muscles": ["Triceps"] },
+            { "name": "Lat Pulldown", "sets": 3, "reps": "12", "muscles": ["Lats"] }
+          ]
+        },
+        {
+          "day": 2,
+          "name": "Squat / Sumo Deadlift",
+          "exercises": [
+            {
+              "name": "Barbell Back Squat",
+              "sets": 9,
+              "reps": "1-8 (nSuns)",
+              "muscles": ["Quads", "Glutes"]
+            },
+            {
+              "name": "Sumo Deadlift",
+              "sets": 8,
+              "reps": "5-8",
+              "muscles": ["Glutes", "Hamstrings"]
+            },
+            { "name": "Leg Curl", "sets": 3, "reps": "12", "muscles": ["Hamstrings"] },
+            { "name": "Leg Extension", "sets": 3, "reps": "12", "muscles": ["Quads"] }
+          ]
+        },
+        {
+          "day": 3,
+          "name": "OHP / Incline",
+          "exercises": [
+            {
+              "name": "Overhead Press",
+              "sets": 9,
+              "reps": "1-8 (nSuns)",
+              "muscles": ["Shoulders"]
+            },
+            { "name": "Incline Bench Press", "sets": 8, "reps": "5-8", "muscles": ["Upper Chest"] },
+            {
+              "name": "Dumbbell Lateral Raise",
+              "sets": 4,
+              "reps": "15",
+              "muscles": ["Side Delts"]
+            },
+            { "name": "Face Pull", "sets": 3, "reps": "15", "muscles": ["Rear Delts"] }
+          ]
+        },
+        {
+          "day": 4,
+          "name": "Deadlift / Front Squat",
+          "exercises": [
+            {
+              "name": "Deadlift",
+              "sets": 9,
+              "reps": "1-8 (nSuns)",
+              "muscles": ["Back", "Hamstrings", "Glutes"]
+            },
+            { "name": "Front Squat", "sets": 8, "reps": "5-8", "muscles": ["Quads"] },
+            { "name": "Hanging Leg Raise", "sets": 3, "reps": "15", "muscles": ["Core"] }
+          ]
+        },
+        {
+          "day": 5,
+          "name": "Bench / Close-Grip",
+          "exercises": [
+            {
+              "name": "Barbell Bench Press",
+              "sets": 9,
+              "reps": "1-8 (nSuns)",
+              "muscles": ["Chest", "Triceps"]
+            },
+            { "name": "Close-Grip Bench Press", "sets": 8, "reps": "5-8", "muscles": ["Triceps"] },
+            { "name": "Barbell Curl", "sets": 3, "reps": "12", "muscles": ["Biceps"] },
+            { "name": "Pull-up", "sets": 3, "reps": "AMRAP", "muscles": ["Lats"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gzclp-4day",
+      "name": "GZCLP",
+      "category": "Strength",
+      "goal": "Build strength (beginner linear progression)",
+      "level": "Beginner",
+      "note": "GZCL tier system: T1 heavy (5x3+), T2 volume (3x10), T3 pump (3x15+).",
+      "daysPerWeek": 4,
+      "days": [
+        {
+          "day": 1,
+          "name": "Squat / Bench",
+          "exercises": [
+            {
+              "name": "Barbell Back Squat",
+              "sets": 5,
+              "reps": "3-5 (T1)",
+              "muscles": ["Quads", "Glutes"]
+            },
+            {
+              "name": "Barbell Bench Press",
+              "sets": 3,
+              "reps": "10 (T2)",
+              "muscles": ["Chest", "Triceps"]
+            },
+            { "name": "Lat Pulldown", "sets": 3, "reps": "15 (T3)", "muscles": ["Lats"] }
+          ]
+        },
+        {
+          "day": 2,
+          "name": "OHP / Deadlift",
+          "exercises": [
+            { "name": "Overhead Press", "sets": 5, "reps": "3-5 (T1)", "muscles": ["Shoulders"] },
+            {
+              "name": "Deadlift",
+              "sets": 3,
+              "reps": "10 (T2)",
+              "muscles": ["Back", "Hamstrings", "Glutes"]
+            },
+            { "name": "Dumbbell Row", "sets": 3, "reps": "15 (T3)", "muscles": ["Upper Back"] }
+          ]
+        },
+        {
+          "day": 3,
+          "name": "Bench / Squat",
+          "exercises": [
+            {
+              "name": "Barbell Bench Press",
+              "sets": 5,
+              "reps": "3-5 (T1)",
+              "muscles": ["Chest", "Triceps"]
+            },
+            {
+              "name": "Barbell Back Squat",
+              "sets": 3,
+              "reps": "10 (T2)",
+              "muscles": ["Quads", "Glutes"]
+            },
+            { "name": "Lat Pulldown", "sets": 3, "reps": "15 (T3)", "muscles": ["Lats"] }
+          ]
+        },
+        {
+          "day": 4,
+          "name": "Deadlift / OHP",
+          "exercises": [
+            {
+              "name": "Deadlift",
+              "sets": 5,
+              "reps": "3-5 (T1)",
+              "muscles": ["Back", "Hamstrings", "Glutes"]
+            },
+            { "name": "Overhead Press", "sets": 3, "reps": "10 (T2)", "muscles": ["Shoulders"] },
+            { "name": "Dumbbell Row", "sets": 3, "reps": "15 (T3)", "muscles": ["Upper Back"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "powerbuilding-4day",
+      "name": "Powerbuilding",
+      "category": "Powerbuilding",
+      "goal": "Strength and size together",
+      "level": "Intermediate",
+      "note": "Heavy strength work paired with bodybuilding accessories. Upper/lower over 4 days.",
+      "daysPerWeek": 4,
+      "days": [
+        {
+          "day": 1,
+          "name": "Upper Strength",
+          "exercises": [
+            {
+              "name": "Barbell Bench Press",
+              "sets": 5,
+              "reps": "3-5",
+              "muscles": ["Chest", "Triceps"]
+            },
+            { "name": "Weighted Pull-up", "sets": 4, "reps": "5-8", "muscles": ["Lats", "Biceps"] },
+            { "name": "Overhead Press", "sets": 3, "reps": "6-8", "muscles": ["Shoulders"] },
+            { "name": "Barbell Row", "sets": 3, "reps": "6-8", "muscles": ["Upper Back"] },
+            { "name": "Barbell Curl", "sets": 3, "reps": "10", "muscles": ["Biceps"] },
+            { "name": "Skullcrusher", "sets": 3, "reps": "10", "muscles": ["Triceps"] }
+          ]
+        },
+        {
+          "day": 2,
+          "name": "Lower Strength",
+          "exercises": [
+            {
+              "name": "Barbell Back Squat",
+              "sets": 5,
+              "reps": "3-5",
+              "muscles": ["Quads", "Glutes"]
+            },
+            {
+              "name": "Deadlift",
+              "sets": 3,
+              "reps": "3-5",
+              "muscles": ["Back", "Hamstrings", "Glutes"]
+            },
+            { "name": "Leg Press", "sets": 3, "reps": "10-12", "muscles": ["Quads"] },
+            { "name": "Leg Curl", "sets": 3, "reps": "12", "muscles": ["Hamstrings"] },
+            { "name": "Standing Calf Raise", "sets": 4, "reps": "12-15", "muscles": ["Calves"] }
+          ]
+        },
+        {
+          "day": 3,
+          "name": "Upper Hypertrophy",
+          "exercises": [
+            {
+              "name": "Incline Dumbbell Press",
+              "sets": 4,
+              "reps": "8-12",
+              "muscles": ["Upper Chest"]
+            },
+            { "name": "Lat Pulldown", "sets": 4, "reps": "10-12", "muscles": ["Lats"] },
+            { "name": "Cable Fly", "sets": 3, "reps": "12-15", "muscles": ["Chest"] },
+            {
+              "name": "Dumbbell Lateral Raise",
+              "sets": 4,
+              "reps": "12-15",
+              "muscles": ["Side Delts"]
+            },
+            { "name": "Hammer Curl", "sets": 3, "reps": "12", "muscles": ["Biceps"] },
+            { "name": "Rope Pushdown", "sets": 3, "reps": "12", "muscles": ["Triceps"] }
+          ]
+        },
+        {
+          "day": 4,
+          "name": "Lower Hypertrophy",
+          "exercises": [
+            { "name": "Front Squat", "sets": 4, "reps": "8-10", "muscles": ["Quads"] },
+            {
+              "name": "Romanian Deadlift",
+              "sets": 3,
+              "reps": "8-12",
+              "muscles": ["Hamstrings", "Glutes"]
+            },
+            { "name": "Leg Extension", "sets": 3, "reps": "12-15", "muscles": ["Quads"] },
+            { "name": "Leg Curl", "sets": 3, "reps": "12-15", "muscles": ["Hamstrings"] },
+            { "name": "Seated Calf Raise", "sets": 4, "reps": "15-20", "muscles": ["Calves"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "powerlifting-4day",
+      "name": "Powerlifting Focus",
+      "category": "Strength",
+      "goal": "Maximise squat, bench and deadlift",
+      "level": "Intermediate",
+      "note": "Competition-lift focused with targeted accessories.",
+      "daysPerWeek": 4,
+      "days": [
+        {
+          "day": 1,
+          "name": "Squat",
+          "exercises": [
+            {
+              "name": "Barbell Back Squat",
+              "sets": 5,
+              "reps": "3-5",
+              "muscles": ["Quads", "Glutes"]
+            },
+            { "name": "Pause Squat", "sets": 3, "reps": "3", "muscles": ["Quads", "Glutes"] },
+            { "name": "Leg Press", "sets": 3, "reps": "8-10", "muscles": ["Quads"] },
+            { "name": "Leg Curl", "sets": 3, "reps": "10-12", "muscles": ["Hamstrings"] },
+            { "name": "Plank", "sets": 3, "reps": "45-60s", "muscles": ["Core"] }
+          ]
+        },
+        {
+          "day": 2,
+          "name": "Bench",
+          "exercises": [
+            {
+              "name": "Barbell Bench Press",
+              "sets": 5,
+              "reps": "3-5",
+              "muscles": ["Chest", "Triceps"]
+            },
+            { "name": "Close-Grip Bench Press", "sets": 3, "reps": "5", "muscles": ["Triceps"] },
+            { "name": "Overhead Press", "sets": 3, "reps": "6-8", "muscles": ["Shoulders"] },
+            { "name": "Barbell Row", "sets": 4, "reps": "6-8", "muscles": ["Upper Back"] },
+            { "name": "Tricep Pushdown", "sets": 3, "reps": "12", "muscles": ["Triceps"] }
+          ]
+        },
+        {
+          "day": 3,
+          "name": "Deadlift",
+          "exercises": [
+            {
+              "name": "Deadlift",
+              "sets": 5,
+              "reps": "3-5",
+              "muscles": ["Back", "Hamstrings", "Glutes"]
+            },
+            {
+              "name": "Deficit Deadlift",
+              "sets": 3,
+              "reps": "3",
+              "muscles": ["Back", "Hamstrings"]
+            },
+            { "name": "Barbell Row", "sets": 3, "reps": "6-8", "muscles": ["Upper Back"] },
+            { "name": "Pull-up", "sets": 3, "reps": "6-10", "muscles": ["Lats"] },
+            { "name": "Hanging Leg Raise", "sets": 3, "reps": "12-15", "muscles": ["Core"] }
+          ]
+        },
+        {
+          "day": 4,
+          "name": "Bench Volume",
+          "exercises": [
+            {
+              "name": "Barbell Bench Press",
+              "sets": 4,
+              "reps": "6-8",
+              "muscles": ["Chest", "Triceps"]
+            },
+            {
+              "name": "Incline Bench Press",
+              "sets": 3,
+              "reps": "8-10",
+              "muscles": ["Upper Chest"]
+            },
+            {
+              "name": "Dumbbell Shoulder Press",
+              "sets": 3,
+              "reps": "8-10",
+              "muscles": ["Shoulders"]
+            },
+            {
+              "name": "Dumbbell Lateral Raise",
+              "sets": 3,
+              "reps": "12-15",
+              "muscles": ["Side Delts"]
+            },
+            { "name": "Barbell Curl", "sets": 3, "reps": "10-12", "muscles": ["Biceps"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fat-loss-circuit-3day",
+      "name": "Fat Loss Circuit",
+      "category": "Fat Loss",
+      "goal": "Burn fat & build conditioning",
+      "level": "Beginner",
+      "note": "Run each day as a circuit with minimal rest (30-45s) between exercises. 2-3 rounds.",
+      "daysPerWeek": 3,
+      "days": [
+        {
+          "day": 1,
+          "name": "Circuit A",
+          "exercises": [
+            { "name": "Goblet Squat", "sets": 3, "reps": "15", "muscles": ["Quads", "Glutes"] },
+            { "name": "Push-up", "sets": 3, "reps": "15", "muscles": ["Chest", "Triceps"] },
+            { "name": "Dumbbell Row", "sets": 3, "reps": "15", "muscles": ["Upper Back"] },
+            { "name": "Walking Lunge", "sets": 3, "reps": "20", "muscles": ["Quads", "Glutes"] },
+            { "name": "Mountain Climbers", "sets": 3, "reps": "30", "muscles": ["Core"] },
+            { "name": "Plank", "sets": 3, "reps": "45s", "muscles": ["Core"] }
+          ]
+        },
+        {
+          "day": 2,
+          "name": "Circuit B",
+          "exercises": [
+            {
+              "name": "Romanian Deadlift",
+              "sets": 3,
+              "reps": "15",
+              "muscles": ["Hamstrings", "Glutes"]
+            },
+            {
+              "name": "Dumbbell Shoulder Press",
+              "sets": 3,
+              "reps": "15",
+              "muscles": ["Shoulders"]
+            },
+            { "name": "Lat Pulldown", "sets": 3, "reps": "15", "muscles": ["Lats"] },
+            {
+              "name": "Kettlebell Swing",
+              "sets": 3,
+              "reps": "20",
+              "muscles": ["Glutes", "Hamstrings"]
+            },
+            { "name": "Burpees", "sets": 3, "reps": "12", "muscles": ["Full Body"] },
+            { "name": "Bicycle Crunch", "sets": 3, "reps": "20", "muscles": ["Core"] }
+          ]
+        },
+        {
+          "day": 3,
+          "name": "Circuit C",
+          "exercises": [
+            { "name": "Leg Press", "sets": 3, "reps": "20", "muscles": ["Quads", "Glutes"] },
+            {
+              "name": "Incline Dumbbell Press",
+              "sets": 3,
+              "reps": "15",
+              "muscles": ["Upper Chest"]
+            },
+            { "name": "Seated Cable Row", "sets": 3, "reps": "15", "muscles": ["Upper Back"] },
+            { "name": "Step-up", "sets": 3, "reps": "16", "muscles": ["Quads", "Glutes"] },
+            { "name": "Jump Squat", "sets": 3, "reps": "15", "muscles": ["Quads", "Glutes"] },
+            { "name": "Hanging Leg Raise", "sets": 3, "reps": "15", "muscles": ["Core"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hiit-strength-4day",
+      "name": "HIIT + Strength Hybrid",
+      "category": "Fat Loss",
+      "goal": "Build muscle while burning fat",
+      "level": "Intermediate",
+      "note": "Each session ends with a HIIT finisher (20s work / 40s rest unless noted).",
+      "daysPerWeek": 4,
+      "days": [
+        {
+          "day": 1,
+          "name": "Upper + HIIT",
+          "exercises": [
+            {
+              "name": "Barbell Bench Press",
+              "sets": 4,
+              "reps": "6-8",
+              "muscles": ["Chest", "Triceps"]
+            },
+            { "name": "Barbell Row", "sets": 4, "reps": "6-8", "muscles": ["Upper Back"] },
+            { "name": "Overhead Press", "sets": 3, "reps": "8-10", "muscles": ["Shoulders"] },
+            { "name": "Lat Pulldown", "sets": 3, "reps": "10-12", "muscles": ["Lats"] },
+            {
+              "name": "Battle Ropes (finisher)",
+              "sets": 8,
+              "reps": "20s",
+              "muscles": ["Conditioning"]
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "name": "Lower + HIIT",
+          "exercises": [
+            {
+              "name": "Barbell Back Squat",
+              "sets": 4,
+              "reps": "6-8",
+              "muscles": ["Quads", "Glutes"]
+            },
+            {
+              "name": "Romanian Deadlift",
+              "sets": 3,
+              "reps": "8-10",
+              "muscles": ["Hamstrings", "Glutes"]
+            },
+            { "name": "Leg Press", "sets": 3, "reps": "12-15", "muscles": ["Quads"] },
+            {
+              "name": "Rower Intervals (finisher)",
+              "sets": 8,
+              "reps": "20s",
+              "muscles": ["Conditioning"]
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "name": "Push + HIIT",
+          "exercises": [
+            {
+              "name": "Incline Dumbbell Press",
+              "sets": 4,
+              "reps": "8-10",
+              "muscles": ["Upper Chest"]
+            },
+            {
+              "name": "Dumbbell Shoulder Press",
+              "sets": 3,
+              "reps": "8-10",
+              "muscles": ["Shoulders"]
+            },
+            {
+              "name": "Dumbbell Lateral Raise",
+              "sets": 3,
+              "reps": "12-15",
+              "muscles": ["Side Delts"]
+            },
+            { "name": "Tricep Pushdown", "sets": 3, "reps": "12", "muscles": ["Triceps"] },
+            {
+              "name": "Burpee Intervals (finisher)",
+              "sets": 6,
+              "reps": "30s",
+              "muscles": ["Conditioning"]
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "name": "Pull + HIIT",
+          "exercises": [
+            {
+              "name": "Deadlift",
+              "sets": 3,
+              "reps": "5",
+              "muscles": ["Back", "Hamstrings", "Glutes"]
+            },
+            { "name": "Pull-up", "sets": 4, "reps": "6-10", "muscles": ["Lats"] },
+            { "name": "Seated Cable Row", "sets": 3, "reps": "10-12", "muscles": ["Upper Back"] },
+            { "name": "Barbell Curl", "sets": 3, "reps": "10-12", "muscles": ["Biceps"] },
+            {
+              "name": "Kettlebell Swing Intervals (finisher)",
+              "sets": 8,
+              "reps": "20s",
+              "muscles": ["Conditioning"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "athletic-performance-4day",
+      "name": "Athletic Performance",
+      "category": "Athletic",
+      "goal": "Power, explosiveness and strength",
+      "level": "Intermediate",
+      "note": "Explosive work first while fresh, then heavy strength, then conditioning.",
+      "daysPerWeek": 4,
+      "days": [
+        {
+          "day": 1,
+          "name": "Lower Power",
+          "exercises": [
+            { "name": "Box Jump", "sets": 5, "reps": "3", "muscles": ["Quads", "Glutes"] },
+            {
+              "name": "Barbell Back Squat",
+              "sets": 5,
+              "reps": "3-5",
+              "muscles": ["Quads", "Glutes"]
+            },
+            {
+              "name": "Romanian Deadlift",
+              "sets": 3,
+              "reps": "6-8",
+              "muscles": ["Hamstrings", "Glutes"]
+            },
+            { "name": "Walking Lunge", "sets": 3, "reps": "12", "muscles": ["Quads", "Glutes"] },
+            { "name": "Standing Calf Raise", "sets": 3, "reps": "12-15", "muscles": ["Calves"] }
+          ]
+        },
+        {
+          "day": 2,
+          "name": "Upper Power",
+          "exercises": [
+            {
+              "name": "Medicine Ball Chest Throw",
+              "sets": 5,
+              "reps": "3",
+              "muscles": ["Chest", "Conditioning"]
+            },
+            {
+              "name": "Barbell Bench Press",
+              "sets": 5,
+              "reps": "3-5",
+              "muscles": ["Chest", "Triceps"]
+            },
+            { "name": "Weighted Pull-up", "sets": 4, "reps": "5-8", "muscles": ["Lats", "Biceps"] },
+            { "name": "Overhead Press", "sets": 3, "reps": "6-8", "muscles": ["Shoulders"] },
+            { "name": "Face Pull", "sets": 3, "reps": "15", "muscles": ["Rear Delts"] }
+          ]
+        },
+        {
+          "day": 3,
+          "name": "Total Body Explosive",
+          "exercises": [
+            { "name": "Power Clean", "sets": 5, "reps": "3", "muscles": ["Full Body", "Traps"] },
+            { "name": "Front Squat", "sets": 4, "reps": "4-6", "muscles": ["Quads"] },
+            { "name": "Push Press", "sets": 4, "reps": "4-6", "muscles": ["Shoulders", "Triceps"] },
+            { "name": "Barbell Row", "sets": 3, "reps": "6-8", "muscles": ["Upper Back"] },
+            { "name": "Hanging Leg Raise", "sets": 3, "reps": "12-15", "muscles": ["Core"] }
+          ]
+        },
+        {
+          "day": 4,
+          "name": "Conditioning & Core",
+          "exercises": [
+            {
+              "name": "Sled Push",
+              "sets": 5,
+              "reps": "20m",
+              "muscles": ["Full Body", "Conditioning"]
+            },
+            {
+              "name": "Kettlebell Swing",
+              "sets": 4,
+              "reps": "15",
+              "muscles": ["Glutes", "Hamstrings"]
+            },
+            { "name": "Sprints", "sets": 6, "reps": "40m", "muscles": ["Conditioning"] },
+            { "name": "Plank", "sets": 3, "reps": "60s", "muscles": ["Core"] },
+            { "name": "Pallof Press", "sets": 3, "reps": "12", "muscles": ["Core"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sprinter-aesthetic-4day",
+      "name": "Sprinter (Lean Athletic)",
+      "category": "Aesthetic",
+      "goal": "Lean, powerful athletic build",
+      "level": "Intermediate",
+      "note": "Powerful legs, capped delts, low body fat. Sprints included for conditioning and a hard, lean look.",
+      "daysPerWeek": 4,
+      "days": [
+        {
+          "day": 1,
+          "name": "Legs (Power)",
+          "exercises": [
+            {
+              "name": "Barbell Back Squat",
+              "sets": 5,
+              "reps": "3-5",
+              "muscles": ["Quads", "Glutes"]
+            },
+            {
+              "name": "Bulgarian Split Squat",
+              "sets": 3,
+              "reps": "8-10",
+              "muscles": ["Quads", "Glutes"]
+            },
+            {
+              "name": "Romanian Deadlift",
+              "sets": 3,
+              "reps": "8-10",
+              "muscles": ["Hamstrings", "Glutes"]
+            },
+            { "name": "Standing Calf Raise", "sets": 4, "reps": "12-15", "muscles": ["Calves"] }
+          ]
+        },
+        {
+          "day": 2,
+          "name": "Upper Push",
+          "exercises": [
+            { "name": "Weighted Dips", "sets": 4, "reps": "6-8", "muscles": ["Chest", "Triceps"] },
+            { "name": "Overhead Press", "sets": 4, "reps": "6-8", "muscles": ["Shoulders"] },
+            {
+              "name": "Dumbbell Lateral Raise",
+              "sets": 4,
+              "reps": "12-15",
+              "muscles": ["Side Delts"]
+            },
+            { "name": "Rope Pushdown", "sets": 3, "reps": "12", "muscles": ["Triceps"] }
+          ]
+        },
+        {
+          "day": 3,
+          "name": "Upper Pull",
+          "exercises": [
+            { "name": "Weighted Pull-up", "sets": 4, "reps": "6-8", "muscles": ["Lats", "Biceps"] },
+            { "name": "Barbell Row", "sets": 4, "reps": "8-10", "muscles": ["Upper Back"] },
+            { "name": "Face Pull", "sets": 3, "reps": "15", "muscles": ["Rear Delts"] },
+            { "name": "Barbell Curl", "sets": 3, "reps": "10-12", "muscles": ["Biceps"] }
+          ]
+        },
+        {
+          "day": 4,
+          "name": "Core & Conditioning",
+          "exercises": [
+            { "name": "Hanging Leg Raise", "sets": 4, "reps": "12-15", "muscles": ["Core"] },
+            { "name": "Cable Crunch", "sets": 3, "reps": "15", "muscles": ["Core"] },
+            { "name": "Sprints", "sets": 8, "reps": "40m", "muscles": ["Conditioning"] },
+            { "name": "Plank", "sets": 3, "reps": "45-60s", "muscles": ["Core"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "back-specialisation-4day",
+      "name": "Back Specialisation",
+      "category": "Aesthetic",
+      "goal": "Build a wide, thick, detailed back",
+      "level": "Intermediate",
+      "note": "Back trained twice: one width day, one thickness day.",
+      "daysPerWeek": 4,
+      "days": [
+        {
+          "day": 1,
+          "name": "Back (Width)",
+          "exercises": [
+            { "name": "Wide-Grip Pull-up", "sets": 4, "reps": "6-10", "muscles": ["Lats"] },
+            { "name": "Wide-Grip Lat Pulldown", "sets": 4, "reps": "10-12", "muscles": ["Lats"] },
+            { "name": "Straight-Arm Pulldown", "sets": 3, "reps": "12-15", "muscles": ["Lats"] },
+            {
+              "name": "Single-Arm Dumbbell Row",
+              "sets": 3,
+              "reps": "10-12",
+              "muscles": ["Lats", "Upper Back"]
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "name": "Chest & Shoulders",
+          "exercises": [
+            {
+              "name": "Incline Barbell Press",
+              "sets": 4,
+              "reps": "8-10",
+              "muscles": ["Upper Chest"]
+            },
+            { "name": "Overhead Press", "sets": 4, "reps": "8-10", "muscles": ["Shoulders"] },
+            { "name": "Cable Fly", "sets": 3, "reps": "12-15", "muscles": ["Chest"] },
+            {
+              "name": "Dumbbell Lateral Raise",
+              "sets": 3,
+              "reps": "12-15",
+              "muscles": ["Side Delts"]
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "name": "Back (Thickness)",
+          "exercises": [
+            { "name": "Barbell Row", "sets": 4, "reps": "6-8", "muscles": ["Upper Back"] },
+            { "name": "T-Bar Row", "sets": 4, "reps": "8-10", "muscles": ["Mid Back"] },
+            { "name": "Seated Cable Row", "sets": 3, "reps": "10-12", "muscles": ["Upper Back"] },
+            { "name": "Face Pull", "sets": 4, "reps": "15-20", "muscles": ["Rear Delts"] },
+            { "name": "Barbell Shrug", "sets": 3, "reps": "12", "muscles": ["Traps"] }
+          ]
+        },
+        {
+          "day": 4,
+          "name": "Legs & Arms",
+          "exercises": [
+            {
+              "name": "Barbell Back Squat",
+              "sets": 4,
+              "reps": "8-10",
+              "muscles": ["Quads", "Glutes"]
+            },
+            {
+              "name": "Romanian Deadlift",
+              "sets": 3,
+              "reps": "10-12",
+              "muscles": ["Hamstrings", "Glutes"]
+            },
+            { "name": "Barbell Curl", "sets": 3, "reps": "10-12", "muscles": ["Biceps"] },
+            { "name": "Tricep Pushdown", "sets": 3, "reps": "12", "muscles": ["Triceps"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "leg-specialisation-4day",
+      "name": "Leg Specialisation (Wheels)",
+      "category": "Aesthetic",
+      "goal": "Build bigger quads, hamstrings and glutes",
+      "level": "Intermediate",
+      "note": "Legs trained twice: a quad-focused day and a hamstring/glute day.",
+      "daysPerWeek": 4,
+      "days": [
+        {
+          "day": 1,
+          "name": "Quads",
+          "exercises": [
+            {
+              "name": "Barbell Back Squat",
+              "sets": 5,
+              "reps": "6-8",
+              "muscles": ["Quads", "Glutes"]
+            },
+            { "name": "Hack Squat", "sets": 4, "reps": "10-12", "muscles": ["Quads"] },
+            { "name": "Leg Press", "sets": 3, "reps": "12-15", "muscles": ["Quads"] },
+            { "name": "Leg Extension", "sets": 4, "reps": "15-20", "muscles": ["Quads"] },
+            { "name": "Standing Calf Raise", "sets": 4, "reps": "12-15", "muscles": ["Calves"] }
+          ]
+        },
+        {
+          "day": 2,
+          "name": "Upper Body",
+          "exercises": [
+            {
+              "name": "Barbell Bench Press",
+              "sets": 4,
+              "reps": "8-10",
+              "muscles": ["Chest", "Triceps"]
+            },
+            { "name": "Barbell Row", "sets": 4, "reps": "8-10", "muscles": ["Upper Back"] },
+            { "name": "Overhead Press", "sets": 3, "reps": "8-10", "muscles": ["Shoulders"] },
+            { "name": "Lat Pulldown", "sets": 3, "reps": "10-12", "muscles": ["Lats"] },
+            { "name": "Barbell Curl", "sets": 3, "reps": "12", "muscles": ["Biceps"] }
+          ]
+        },
+        {
+          "day": 3,
+          "name": "Hamstrings & Glutes",
+          "exercises": [
+            {
+              "name": "Romanian Deadlift",
+              "sets": 4,
+              "reps": "8-10",
+              "muscles": ["Hamstrings", "Glutes"]
+            },
+            { "name": "Barbell Hip Thrust", "sets": 4, "reps": "10-12", "muscles": ["Glutes"] },
+            { "name": "Leg Curl", "sets": 4, "reps": "12-15", "muscles": ["Hamstrings"] },
+            {
+              "name": "Bulgarian Split Squat",
+              "sets": 3,
+              "reps": "10-12",
+              "muscles": ["Quads", "Glutes"]
+            },
+            { "name": "Seated Calf Raise", "sets": 4, "reps": "15-20", "muscles": ["Calves"] }
+          ]
+        },
+        {
+          "day": 4,
+          "name": "Upper Body (Volume)",
+          "exercises": [
+            {
+              "name": "Incline Dumbbell Press",
+              "sets": 4,
+              "reps": "8-12",
+              "muscles": ["Upper Chest"]
+            },
+            { "name": "Seated Cable Row", "sets": 4, "reps": "10-12", "muscles": ["Upper Back"] },
+            {
+              "name": "Dumbbell Lateral Raise",
+              "sets": 4,
+              "reps": "12-15",
+              "muscles": ["Side Delts"]
+            },
+            { "name": "Hammer Curl", "sets": 3, "reps": "12", "muscles": ["Biceps"] },
+            { "name": "Rope Pushdown", "sets": 3, "reps": "12", "muscles": ["Triceps"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chest-specialisation-4day",
+      "name": "Chest Specialisation",
+      "category": "Aesthetic",
+      "goal": "Build a fuller, wider chest",
+      "level": "Intermediate",
+      "note": "Chest trained twice with an upper-chest priority.",
+      "daysPerWeek": 4,
+      "days": [
+        {
+          "day": 1,
+          "name": "Chest (Heavy)",
+          "exercises": [
+            {
+              "name": "Incline Barbell Press",
+              "sets": 5,
+              "reps": "6-8",
+              "muscles": ["Upper Chest"]
+            },
+            { "name": "Flat Dumbbell Press", "sets": 4, "reps": "8-10", "muscles": ["Chest"] },
+            { "name": "Weighted Dips", "sets": 3, "reps": "8-12", "muscles": ["Chest", "Triceps"] },
+            { "name": "Cable Fly", "sets": 3, "reps": "12-15", "muscles": ["Chest"] }
+          ]
+        },
+        {
+          "day": 2,
+          "name": "Back & Biceps",
+          "exercises": [
+            { "name": "Pull-up", "sets": 4, "reps": "6-10", "muscles": ["Lats"] },
+            { "name": "Barbell Row", "sets": 4, "reps": "8-10", "muscles": ["Upper Back"] },
+            { "name": "Lat Pulldown", "sets": 3, "reps": "10-12", "muscles": ["Lats"] },
+            { "name": "Barbell Curl", "sets": 3, "reps": "10-12", "muscles": ["Biceps"] }
+          ]
+        },
+        {
+          "day": 3,
+          "name": "Chest (Volume) & Shoulders",
+          "exercises": [
+            {
+              "name": "Incline Dumbbell Press",
+              "sets": 4,
+              "reps": "10-12",
+              "muscles": ["Upper Chest"]
+            },
+            {
+              "name": "Low-to-High Cable Fly",
+              "sets": 4,
+              "reps": "12-15",
+              "muscles": ["Upper Chest"]
+            },
+            { "name": "Pec Deck", "sets": 3, "reps": "15", "muscles": ["Chest"] },
+            { "name": "Overhead Press", "sets": 3, "reps": "8-10", "muscles": ["Shoulders"] },
+            {
+              "name": "Dumbbell Lateral Raise",
+              "sets": 3,
+              "reps": "12-15",
+              "muscles": ["Side Delts"]
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "name": "Legs & Arms",
+          "exercises": [
+            {
+              "name": "Barbell Back Squat",
+              "sets": 4,
+              "reps": "8-10",
+              "muscles": ["Quads", "Glutes"]
+            },
+            {
+              "name": "Romanian Deadlift",
+              "sets": 3,
+              "reps": "10-12",
+              "muscles": ["Hamstrings", "Glutes"]
+            },
+            { "name": "Close-Grip Bench Press", "sets": 3, "reps": "8-10", "muscles": ["Triceps"] },
+            { "name": "Hammer Curl", "sets": 3, "reps": "12", "muscles": ["Biceps"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kettlebell-only-3day",
+      "name": "Kettlebell Only (Full Body)",
+      "category": "Minimal Equipment",
+      "goal": "Build muscle & conditioning with one kettlebell",
+      "level": "Beginner",
+      "note": "Run this full-body template 3x per week.",
+      "daysPerWeek": 3,
+      "days": [
+        {
+          "day": 1,
+          "name": "Full Body (Kettlebell)",
+          "exercises": [
+            {
+              "name": "Kettlebell Goblet Squat",
+              "sets": 4,
+              "reps": "12",
+              "muscles": ["Quads", "Glutes"]
+            },
+            {
+              "name": "Kettlebell Swing",
+              "sets": 4,
+              "reps": "20",
+              "muscles": ["Glutes", "Hamstrings", "Back"]
+            },
+            {
+              "name": "Kettlebell Floor Press",
+              "sets": 4,
+              "reps": "10-12",
+              "muscles": ["Chest", "Triceps"]
+            },
+            {
+              "name": "Single-Arm Kettlebell Row",
+              "sets": 4,
+              "reps": "10-12",
+              "muscles": ["Upper Back", "Biceps"]
+            },
+            {
+              "name": "Kettlebell Overhead Press",
+              "sets": 3,
+              "reps": "10",
+              "muscles": ["Shoulders"]
+            },
+            {
+              "name": "Kettlebell Romanian Deadlift",
+              "sets": 3,
+              "reps": "12",
+              "muscles": ["Hamstrings", "Glutes"]
+            },
+            {
+              "name": "Kettlebell Reverse Lunge",
+              "sets": 3,
+              "reps": "12",
+              "muscles": ["Quads", "Glutes"]
+            },
+            { "name": "Kettlebell Russian Twist", "sets": 3, "reps": "20", "muscles": ["Core"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gymnast-calisthenics-4day",
+      "name": "Gymnast (Advanced Calisthenics)",
+      "category": "Aesthetic",
+      "goal": "Build a lean, strong gymnast-style physique with bodyweight skills",
+      "level": "Advanced",
+      "note": "Needs pull-up bar, dip bars and floor space. Mixes strength skills with hypertrophy.",
+      "daysPerWeek": 4,
+      "days": [
+        {
+          "day": 1,
+          "name": "Push (Skills)",
+          "exercises": [
+            {
+              "name": "Pseudo Planche Push-up",
+              "sets": 4,
+              "reps": "8-12",
+              "muscles": ["Chest", "Front Delts"]
+            },
+            { "name": "Dips", "sets": 4, "reps": "8-15", "muscles": ["Chest", "Triceps"] },
+            {
+              "name": "Wall Handstand Push-up",
+              "sets": 4,
+              "reps": "5-10",
+              "muscles": ["Shoulders"]
+            },
+            { "name": "Diamond Push-up", "sets": 3, "reps": "12-15", "muscles": ["Triceps"] }
+          ]
+        },
+        {
+          "day": 2,
+          "name": "Pull (Skills)",
+          "exercises": [
+            { "name": "Pull-up", "sets": 4, "reps": "8-12", "muscles": ["Lats"] },
+            { "name": "Chin-up", "sets": 3, "reps": "8-12", "muscles": ["Biceps", "Lats"] },
+            { "name": "Inverted Row", "sets": 4, "reps": "10-15", "muscles": ["Upper Back"] },
+            {
+              "name": "Tuck Front Lever Hold",
+              "sets": 4,
+              "reps": "10-20s",
+              "muscles": ["Lats", "Core"]
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "name": "Legs & Core",
+          "exercises": [
+            { "name": "Pistol Squat", "sets": 4, "reps": "6-10", "muscles": ["Quads", "Glutes"] },
+            {
+              "name": "Bulgarian Split Squat",
+              "sets": 3,
+              "reps": "12",
+              "muscles": ["Quads", "Glutes"]
+            },
+            { "name": "Nordic Curl", "sets": 3, "reps": "6-10", "muscles": ["Hamstrings"] },
+            { "name": "Hanging Leg Raise", "sets": 4, "reps": "10-15", "muscles": ["Core"] },
+            { "name": "L-Sit Hold", "sets": 4, "reps": "10-20s", "muscles": ["Core"] }
+          ]
+        },
+        {
+          "day": 4,
+          "name": "Full Body Skills",
+          "exercises": [
+            {
+              "name": "Handstand Practice",
+              "sets": 5,
+              "reps": "30s",
+              "muscles": ["Shoulders", "Core"]
+            },
+            {
+              "name": "Muscle-up Progression",
+              "sets": 4,
+              "reps": "3-5",
+              "muscles": ["Lats", "Chest"]
+            },
+            { "name": "Dips", "sets": 3, "reps": "10-15", "muscles": ["Chest", "Triceps"] },
+            { "name": "Pull-up", "sets": 3, "reps": "8-12", "muscles": ["Lats"] },
+            { "name": "Hollow Body Hold", "sets": 3, "reps": "20-30s", "muscles": ["Core"] }
+          ]
+        }
+      ]
+    }
+  ]
+}

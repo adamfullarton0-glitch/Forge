@@ -1,5 +1,6 @@
 /** Workout plans and equipment — static data ported from the prototype. */
 import { getExercise } from './exercises';
+import programsRaw from './programs.json';
 import type { CustomPlan } from '@/types/schemas';
 
 export interface PlanDay {
@@ -343,6 +344,136 @@ export type PlanId = keyof typeof PLANS;
 
 export const DEFAULT_PLAN_ID: PlanId = 'ppl';
 
+/* ── Imported program library (workout_programs.json) ──────────────────────
+   A big catalogue of named programs. They're converted into FORGE's Plan shape;
+   exercise names are normalised to the demo DB where an equivalent exists (so
+   known moves still show a demo + muscle map), and anything novel is kept as a
+   plain logged movement. Programs that duplicate a built-in plan are skipped. */
+interface RawEx {
+  name: string;
+  sets: number;
+  reps: string;
+  muscles: string[];
+}
+interface RawProgram {
+  id: string;
+  name: string;
+  category: string;
+  goal: string;
+  level: string;
+  daysPerWeek: number;
+  days: Array<{ name: string; exercises: RawEx[] }>;
+}
+
+/** Imported names → existing demo-DB exercises (case/grip/equipment variants). */
+const EX_ALIAS: Record<string, string> = {
+  'Pull-up': 'Pull-Up',
+  'Wide-Grip Pull-up': 'Pull-Up',
+  'Weighted Pull-up': 'Pull-Up',
+  'Chin-up': 'Pull-Up',
+  'Weighted Chin-up': 'Pull-Up',
+  'Push-up': 'Push-Up',
+  'Diamond Push-up': 'Push-Up',
+  'Knee or Incline Push-up': 'Push-Up',
+  'Pike Push-up': 'Push-Up',
+  'Wall Handstand Push-up': 'Push-Up',
+  'Pseudo Planche Push-up': 'Push-Up',
+  'Dumbbell Lateral Raise': 'Lateral Raise',
+  'Cable Lateral Raise': 'Lateral Raise',
+  'Standing Lateral Raise': 'Lateral Raise',
+  'Leg Curl': 'Lying Leg Curl',
+  'Nordic Curl': 'Lying Leg Curl',
+  'Dumbbell Shoulder Press': 'Seated Dumbbell Shoulder Press',
+  'Standing Overhead Press': 'Overhead Press',
+  'Push Press': 'Overhead Press',
+  'Kettlebell Overhead Press': 'Overhead Press',
+  'Rope Pushdown': 'Tricep Pushdown',
+  'Overhead Tricep Extension': 'Skullcrusher',
+  'Dumbbell Overhead Tricep Extension': 'Skullcrusher',
+  'Close-Grip Bench Press': 'Barbell Bench Press',
+  'Weighted Dips': 'Dips',
+  'Incline Barbell Press': 'Incline Dumbbell Press',
+  'Incline Bench Press': 'Incline Dumbbell Press',
+  'Incline Smith Machine Press': 'Incline Dumbbell Press',
+  'Dumbbell Bench Press': 'Barbell Bench Press',
+  'Flat Dumbbell Press': 'Barbell Bench Press',
+  'Flat Barbell Bench Press': 'Barbell Bench Press',
+  'Kettlebell Floor Press': 'Barbell Bench Press',
+  'Medicine Ball Chest Throw': 'Barbell Bench Press',
+  'Wide-Grip Lat Pulldown': 'Lat Pulldown',
+  'Straight-Arm Pulldown': 'Lat Pulldown',
+  'Dumbbell Pullover': 'Lat Pulldown',
+  'Dumbbell Row': 'Barbell Row',
+  'Single-Arm Dumbbell Row': 'Barbell Row',
+  'Chest-Supported Row': 'Barbell Row',
+  'T-Bar Row': 'Barbell Row',
+  'Inverted Row': 'Barbell Row',
+  'Single-Arm Kettlebell Row': 'Barbell Row',
+  'Barbell Hip Thrust': 'Hip Thrust',
+  'Glute Bridge': 'Hip Thrust',
+  'Cable Pull-Through': 'Hip Thrust',
+  'Incline Dumbbell Curl': 'Barbell Curl',
+  'Dumbbell Curl': 'Barbell Curl',
+  'Cable Curl': 'Barbell Curl',
+  'Concentration Curl': 'Preacher Curl',
+  'Hack Squat': 'Barbell Back Squat',
+  'Pause Squat': 'Barbell Back Squat',
+  'Jump Squat': 'Goblet Squat',
+  'Bodyweight Squat': 'Goblet Squat',
+  'Pistol Squat': 'Goblet Squat',
+  'Kettlebell Goblet Squat': 'Goblet Squat',
+  'Seated Calf Raise': 'Standing Calf Raise',
+  'Sumo Deadlift': 'Deadlift',
+  'Deficit Deadlift': 'Deadlift',
+  'Power Clean': 'Deadlift',
+  'Kettlebell Swing': 'Romanian Deadlift',
+  'Kettlebell Romanian Deadlift': 'Romanian Deadlift',
+  'Reverse Lunge': 'Walking Lunge',
+  'Step-up': 'Walking Lunge',
+  'Bulgarian Split Squat': 'Walking Lunge',
+  'Kettlebell Reverse Lunge': 'Walking Lunge',
+  'Pec Deck': 'Cable Fly',
+  'Low-to-High Cable Fly': 'Cable Fly',
+  'Incline Cable Fly': 'Cable Fly',
+};
+
+/** Programs that duplicate a built-in plan above — ignored on import. */
+const SKIP_PROGRAMS = new Set([
+  'ppl-3day',
+  'upper-lower-4day',
+  'bro-split-5day',
+  'arnold-split-6day',
+  'full-body-3day',
+  'phul-4day',
+  'dumbbell-only-fullbody',
+  'stronglifts-5x5',
+]);
+
+const focusOf = (exs: RawEx[]): string => {
+  const seen: string[] = [];
+  for (const e of exs) for (const m of e.muscles) if (!seen.includes(m)) seen.push(m);
+  return seen.slice(0, 3).join(' · ');
+};
+
+/** The imported program catalogue, keyed by id, in FORGE's Plan shape. */
+export const PROGRAMS: Record<string, Plan> = Object.fromEntries(
+  (programsRaw as { programs: RawProgram[] }).programs
+    .filter((p) => !SKIP_PROGRAMS.has(p.id))
+    .map((p) => [
+      p.id,
+      {
+        name: p.name,
+        tag: `${p.daysPerWeek} day${p.daysPerWeek === 1 ? '' : 's'} · ${p.level}`,
+        desc: p.goal,
+        days: p.days.map((d) => ({
+          name: d.name,
+          focus: focusOf(d.exercises),
+          ex: d.exercises.map((e) => EX_ALIAS[e.name] ?? e.name),
+        })),
+      },
+    ]),
+);
+
 /** A plan as the app consumes it — built-in or a resolved custom routine. */
 export interface RoutinePlan extends Plan {
   /** Optional per-exercise sets×reps override (custom routines only). */
@@ -378,7 +509,7 @@ function customToRoutine(c: CustomPlan): RoutinePlan {
 export function getPlan(id: string, customPlans: readonly CustomPlan[] = []): RoutinePlan {
   const custom = customPlans.find((c) => c.id === id);
   if (custom) return customToRoutine(custom);
-  return (PLANS as Record<string, Plan>)[id] ?? PLANS[DEFAULT_PLAN_ID];
+  return (PLANS as Record<string, Plan>)[id] ?? PROGRAMS[id] ?? PLANS[DEFAULT_PLAN_ID];
 }
 
 /**
@@ -389,6 +520,7 @@ export function getPlan(id: string, customPlans: readonly CustomPlan[] = []): Ro
 export function resolvePlanId(id: string, customPlans: readonly CustomPlan[] = []): string {
   if (customPlans.some((c) => c.id === id)) return id;
   if (Object.prototype.hasOwnProperty.call(PLANS, id)) return id;
+  if (Object.prototype.hasOwnProperty.call(PROGRAMS, id)) return id;
   return DEFAULT_PLAN_ID;
 }
 
