@@ -43,3 +43,11 @@ export function topRepOf(setsReps: string): number {
   if (!Number.isFinite(n) || n <= 0) return 12;
   return Math.min(n, MAX_REPS);
 }
+
+/** Number of sets prescribed by a string like "4 × 6–8" → 4. Defaults to 3 (clamped 1–10). */
+export function setsOf(setsReps: string): number {
+  const m = (setsReps || '').match(/^\s*(\d+)/);
+  const n = m ? Number(m[1]) : 3;
+  if (!Number.isFinite(n) || n <= 0) return 3;
+  return Math.min(n, 10);
+}

@@ -9,7 +9,7 @@ import { useData, useUpdate } from '@/features/store';
 import { getPlan, planSr, resolvePlanId, EQUIPMENT, DEFAULT_GEAR } from '@/features/workouts/plans';
 import { getExercise } from '@/features/workouts/exercises';
 import { translator } from '@/lib/i18n';
-import { e1rm, getUnits, kg2lb, lb2kg, todayKey, topRepOf } from '@/lib/calc';
+import { e1rm, getUnits, kg2lb, lb2kg, todayKey, topRepOf, setsOf } from '@/lib/calc';
 import type { ActiveWorkout as ActiveState } from '@/types/schemas';
 
 type SetEntry = { w: string | number; reps: string | number; done: boolean };
@@ -106,8 +106,9 @@ export function ActiveWorkout({ active }: { active: ActiveState }): JSX.Element 
     const history = data.lifts[nm] ?? [];
     const last = history[history.length - 1];
     const w = last ? showW(last.w) : '';
-    const reps = topRepOf(planSr(plan, nm));
-    return [0, 1, 2].map(() => ({ w, reps, done: false }));
+    const sr = planSr(plan, nm);
+    const reps = topRepOf(sr);
+    return Array.from({ length: setsOf(sr) }, () => ({ w, reps, done: false }));
   };
 
   const doneCount = day.ex.filter((o) => (sets[o] ?? []).some((x) => x.done)).length;

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { platesFor, e1rm, topRepOf, BAR_KG } from './training';
+import { platesFor, e1rm, topRepOf, setsOf, BAR_KG } from './training';
 
 describe('platesFor', () => {
   it('returns nothing for an empty or sub-bar load', () => {
@@ -62,5 +62,19 @@ describe('topRepOf', () => {
     // A custom routine could carry adversarial sets×reps text.
     expect(topRepOf('3 × 999999999999')).toBe(100);
     expect(topRepOf('3 × 0')).toBe(12);
+  });
+});
+
+describe('setsOf', () => {
+  it('reads the prescribed set count from the leading number', () => {
+    expect(setsOf('4 × 6–8')).toBe(4);
+    expect(setsOf('3 × 12–15')).toBe(3);
+    expect(setsOf('5 × 5')).toBe(5);
+  });
+
+  it('defaults to 3 and clamps to a sane range', () => {
+    expect(setsOf('')).toBe(3);
+    expect(setsOf('max reps')).toBe(3);
+    expect(setsOf('99 × 5')).toBe(10);
   });
 });
