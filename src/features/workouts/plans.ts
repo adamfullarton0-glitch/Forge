@@ -454,25 +454,274 @@ const focusOf = (exs: RawEx[]): string => {
   for (const e of exs) for (const m of e.muscles) if (!seen.includes(m)) seen.push(m);
   return seen.slice(0, 3).join(' · ');
 };
+const aliasEx = (n: string): string => EX_ALIAS[n] ?? n;
 
-/** The imported program catalogue, keyed by id, in FORGE's Plan shape. */
-export const PROGRAMS: Record<string, Plan> = Object.fromEntries(
-  (programsRaw as { programs: RawProgram[] }).programs
-    .filter((p) => !SKIP_PROGRAMS.has(p.id))
-    .map((p) => [
+/** Plain gym names for the imported programs (no fancy / branded names). */
+const NAME_OVERRIDE: Record<string, string> = {
+  'ppl-upper-lower-5day': 'PPL + Upper Lower (5 Day)',
+  'ppl-x-arnold-6day': 'PPL + Arnold (6 Day)',
+  'classic-3day-pairing': 'Classic 3-Day',
+  'phat-5day': 'Power & Pump (5 Day)',
+  'wendler-531-4day': 'Strength 5/3/1 (4 Day)',
+  'dorian-yates-hit-4day': 'Heavy Duty (4 Day)',
+  'calisthenics-bodyweight': 'Calisthenics (3 Day)',
+  'at-home-no-equipment': 'Home No Gear (3 Day)',
+  'v-taper-4day': 'V-Taper (4 Day)',
+  'classic-physique-5day': 'Classic Physique (5 Day)',
+  'greek-god-3day': 'Lean Aesthetic (3 Day)',
+  'superhero-4day': 'Hollywood (4 Day)',
+  'glute-focused-4day': 'Glute Focus (4 Day)',
+  'beach-body-3day': 'Beach Body (3 Day)',
+  'boulder-shoulders-4day': 'Boulder Shoulders (4 Day)',
+  'big-arms-4day': 'Big Arms (4 Day)',
+  'starting-strength-3day': 'Beginner Barbell (3 Day)',
+  'madcow-5x5': 'Intermediate 5×5 (3 Day)',
+  'nsuns-531-5day': 'High Volume Strength (5 Day)',
+  'gzclp-4day': 'Beginner Strength (4 Day)',
+  'powerbuilding-4day': 'Powerbuilding (4 Day)',
+  'powerlifting-4day': 'Powerlifting (4 Day)',
+  'fat-loss-circuit-3day': 'Fat Loss (3 Day)',
+  'hiit-strength-4day': 'HIIT + Strength (4 Day)',
+  'athletic-performance-4day': 'Athletic (4 Day)',
+  'sprinter-aesthetic-4day': 'Lean Athletic (4 Day)',
+  'back-specialisation-4day': 'Back Focus (4 Day)',
+  'leg-specialisation-4day': 'Leg Focus (4 Day)',
+  'chest-specialisation-4day': 'Chest Focus (4 Day)',
+  'kettlebell-only-3day': 'Kettlebell (3 Day)',
+  'gymnast-calisthenics-4day': 'Advanced Calisthenics (4 Day)',
+};
+
+/** Extra hand-added splits (from the workout screenshots). Plain names. */
+const EXTRA_PROGRAMS: Array<{
+  id: string;
+  name: string;
+  tag: string;
+  desc: string;
+  days: PlanDay[];
+}> = [
+  {
+    id: 'hip-mobility',
+    name: 'Hip Mobility',
+    tag: '3 days · Beginner',
+    desc: 'Loosen tight hips and open up your range of motion.',
+    days: [
+      {
+        name: 'Mobility',
+        focus: 'Hips · Mobility',
+        ex: [
+          'Cossack Squat',
+          'Resistance Band Plank March',
+          'Band Hip Flexion',
+          'High Knees Lunge',
+          'Hip Flexor Stretch',
+          'Standing Leg Tuck Hip Stretch',
+        ],
+      },
+    ],
+  },
+  {
+    id: 'full-body-strength-3day',
+    name: 'Full Body Strength (3 Day)',
+    tag: '3 days · All levels',
+    desc: 'Three full-body sessions a week — squat, hinge, push and pull every day.',
+    days: [
+      {
+        name: 'Day 1',
+        focus: 'Quads · Chest · Back',
+        ex: [
+          'Barbell Back Squat',
+          'Barbell Bench Press',
+          'Lat Pulldown',
+          'Romanian Deadlift',
+          'Dips',
+          'Standing Calf Raise',
+          'Barbell Curl',
+        ],
+      },
+      {
+        name: 'Day 2',
+        focus: 'Hinge · Shoulders · Back',
+        ex: [
+          'Deadlift',
+          'Overhead Press',
+          'Barbell Row',
+          'Leg Extension',
+          'Cable Fly',
+          'Cable Crunch',
+          'Skullcrusher',
+        ],
+      },
+      {
+        name: 'Day 3',
+        focus: 'Legs · Chest · Back',
+        ex: [
+          'Walking Lunge',
+          'Incline Dumbbell Press',
+          'Lat Pulldown',
+          'Hip Thrust',
+          'Face Pull',
+          'Lateral Raise',
+          'Lying Leg Curl',
+        ],
+      },
+    ],
+  },
+  {
+    id: 'legs-day',
+    name: 'Legs Day',
+    tag: '1 day · Intermediate',
+    desc: 'A complete, dedicated leg session — quads, hams and calves.',
+    days: [
+      {
+        name: 'Legs',
+        focus: 'Quads · Hamstrings · Calves',
+        ex: [
+          'Barbell Back Squat',
+          'Romanian Deadlift',
+          'Leg Press',
+          'Leg Extension',
+          'Lying Leg Curl',
+          'Standing Calf Raise',
+          'Walking Lunge',
+        ],
+      },
+    ],
+  },
+  {
+    id: 'upper-day',
+    name: 'Upper Body',
+    tag: '1 day · Intermediate',
+    desc: 'A complete, dedicated upper-body session — chest, back, shoulders and arms.',
+    days: [
+      {
+        name: 'Upper',
+        focus: 'Chest · Back · Shoulders',
+        ex: [
+          'Barbell Bench Press',
+          'Barbell Row',
+          'Seated Dumbbell Shoulder Press',
+          'Lat Pulldown',
+          'Lateral Raise',
+          'Barbell Curl',
+          'Tricep Pushdown',
+        ],
+      },
+    ],
+  },
+  {
+    id: 'ppl-hypertrophy-6day',
+    name: 'PPL Hypertrophy (6 Day)',
+    tag: '6 days · Intermediate',
+    desc: 'A high-volume push/pull/legs split run twice through the week for size.',
+    days: [
+      {
+        name: 'Push 1',
+        focus: 'Chest · Shoulders · Triceps',
+        ex: [
+          'Barbell Bench Press',
+          'Incline Dumbbell Press',
+          'Seated Dumbbell Shoulder Press',
+          'Cable Fly',
+          'Lateral Raise',
+          'Tricep Pushdown',
+          'Skullcrusher',
+        ],
+      },
+      {
+        name: 'Pull 1',
+        focus: 'Back · Biceps',
+        ex: [
+          'Lat Pulldown',
+          'Seated Cable Row',
+          'Lat Pulldown',
+          'Face Pull',
+          'Barbell Curl',
+          'Preacher Curl',
+        ],
+      },
+      {
+        name: 'Legs 1',
+        focus: 'Quads · Hamstrings · Core',
+        ex: [
+          'Barbell Back Squat',
+          'Romanian Deadlift',
+          'Walking Lunge',
+          'Lying Leg Curl',
+          'Standing Calf Raise',
+          'Cable Crunch',
+        ],
+      },
+      {
+        name: 'Push 2',
+        focus: 'Chest · Shoulders · Triceps',
+        ex: [
+          'Incline Dumbbell Press',
+          'Seated Dumbbell Shoulder Press',
+          'Skullcrusher',
+          'Cable Fly',
+          'Lateral Raise',
+          'Push-Up',
+        ],
+      },
+      {
+        name: 'Pull 2',
+        focus: 'Back · Biceps',
+        ex: [
+          'Lat Pulldown',
+          'Pull-Up',
+          'Barbell Row',
+          'Barbell Shrug',
+          'Rear Delt Fly',
+          'Hammer Curl',
+        ],
+      },
+      {
+        name: 'Legs 2',
+        focus: 'Hamstrings · Quads · Calves',
+        ex: [
+          'Deadlift',
+          'Romanian Deadlift',
+          'Leg Press',
+          'Leg Extension',
+          'Standing Calf Raise',
+          'Hanging Leg Raise',
+        ],
+      },
+    ],
+  },
+];
+
+/** The imported program catalogue + extras, keyed by id, in FORGE's Plan shape. */
+export const PROGRAMS: Record<string, Plan> = {
+  ...Object.fromEntries(
+    (programsRaw as { programs: RawProgram[] }).programs
+      .filter((p) => !SKIP_PROGRAMS.has(p.id))
+      .map((p) => [
+        p.id,
+        {
+          name: NAME_OVERRIDE[p.id] ?? p.name,
+          tag: `${p.daysPerWeek} day${p.daysPerWeek === 1 ? '' : 's'} · ${p.level}`,
+          desc: p.goal,
+          days: p.days.map((d) => ({
+            name: d.name,
+            focus: focusOf(d.exercises),
+            ex: d.exercises.map((e) => aliasEx(e.name)),
+          })),
+        },
+      ]),
+  ),
+  ...Object.fromEntries(
+    EXTRA_PROGRAMS.map((p) => [
       p.id,
       {
         name: p.name,
-        tag: `${p.daysPerWeek} day${p.daysPerWeek === 1 ? '' : 's'} · ${p.level}`,
-        desc: p.goal,
-        days: p.days.map((d) => ({
-          name: d.name,
-          focus: focusOf(d.exercises),
-          ex: d.exercises.map((e) => EX_ALIAS[e.name] ?? e.name),
-        })),
+        tag: p.tag,
+        desc: p.desc,
+        days: p.days.map((d) => ({ name: d.name, focus: d.focus, ex: d.ex.map(aliasEx) })),
       },
     ]),
-);
+  ),
+};
 
 /** A plan as the app consumes it — built-in or a resolved custom routine. */
 export interface RoutinePlan extends Plan {
