@@ -1,6 +1,5 @@
-import { type KeyboardEvent } from 'react';
 import { MUSCLE_GROUPS, type MuscleGroup } from '@/features/workouts/muscles';
-import { SHAPES, FILLER, BODY_VIEWBOX } from './bodyShapes';
+import { GROUPS, type Side } from '@/features/workouts/musclemap';
 
 interface BodyMapProps {
   selected: MuscleGroup | null;
@@ -8,63 +7,79 @@ interface BodyMapProps {
   onSelect: (group: MuscleGroup) => void;
 }
 
-/** A visual, tappable body map for finding exercises by muscle group. */
+/** A clean anatomical body map — tap a muscle to find exercises that train it. */
 export function BodyMap({ selected, counts, onSelect }: BodyMapProps): JSX.Element {
-  const onKey = (e: KeyboardEvent, group: MuscleGroup): void => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      onSelect(group);
-    }
+  const base = import.meta.env.BASE_URL;
+
+  const figure = (side: Side): JSX.Element => {
+    const here = MUSCLE_GROUPS.filter((g) => GROUPS[g.id].side === side);
+    return (
+      <div style={{ flex: 1, maxWidth: 176 }}>
+        <div style={{ position: 'relative', width: '100%', aspectRatio: '200 / 369' }}>
+          <img
+            src={`${base}muscles/${side}.svg`}
+            alt={`${side} view`}
+            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}
+          />
+          {selected && GROUPS[selected].side === side
+            ? GROUPS[selected].overlays.map((id) => (
+                <img
+                  key={id}
+                  src={`${base}muscles/main/${id}.svg`}
+                  alt=""
+                  aria-hidden="true"
+                  style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}
+                />
+              ))
+            : null}
+          {here.map((g) => {
+            const [x, y] = GROUPS[g.id].anchor;
+            const on = selected === g.id;
+            return (
+              <button
+                key={g.id}
+                type="button"
+                aria-label={`${g.label} — ${counts[g.id]} exercises`}
+                aria-pressed={on}
+                onClick={() => onSelect(g.id)}
+                style={{
+                  position: 'absolute',
+                  left: `${x * 100}%`,
+                  top: `${y * 100}%`,
+                  transform: 'translate(-50%, -50%)',
+                  width: 26,
+                  height: 26,
+                  borderRadius: '50%',
+                  border: on ? '2px solid #fff' : '1.5px solid rgba(255,255,255,.55)',
+                  background: on ? 'var(--accent)' : 'rgba(0,0,0,.35)',
+                  cursor: 'pointer',
+                  padding: 0,
+                }}
+              />
+            );
+          })}
+        </div>
+        <div
+          style={{
+            textAlign: 'center',
+            fontSize: '0.6rem',
+            fontWeight: 800,
+            textTransform: 'uppercase',
+            letterSpacing: '0.06em',
+            color: 'var(--muted)',
+            marginTop: 4,
+          }}
+        >
+          {side}
+        </div>
+      </div>
+    );
   };
 
   return (
-    <div>
-      <svg
-        viewBox={BODY_VIEWBOX}
-        width="100%"
-        style={{ maxWidth: 360, display: 'block', margin: '0 auto' }}
-        role="group"
-        aria-label="Body map — choose a muscle group"
-      >
-        {FILLER}
-        {MUSCLE_GROUPS.map((g) => {
-          const on = selected === g.id;
-          return (
-            <g
-              key={g.id}
-              role="button"
-              tabIndex={0}
-              aria-pressed={on}
-              aria-label={`${g.label} — ${counts[g.id]} exercises`}
-              onClick={() => onSelect(g.id)}
-              onKeyDown={(e) => onKey(e, g.id)}
-              style={{ cursor: 'pointer' }}
-              fill={on ? 'var(--accent)' : 'color-mix(in srgb, var(--accent) 22%, var(--panel-2))'}
-              stroke={on ? 'var(--accent)' : 'var(--glass-border)'}
-              strokeWidth={1.5}
-            >
-              <title>{g.label}</title>
-              {SHAPES[g.id]}
-            </g>
-          );
-        })}
-      </svg>
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-around',
-          maxWidth: 360,
-          margin: '2px auto 0',
-          color: 'var(--muted)',
-          fontSize: '0.72rem',
-          fontWeight: 700,
-          textTransform: 'uppercase',
-          letterSpacing: '0.06em',
-        }}
-      >
-        <span>Front</span>
-        <span>Back</span>
-      </div>
+    <div style={{ display: 'flex', gap: 18, justifyContent: 'center' }}>
+      {figure('front')}
+      {figure('back')}
     </div>
   );
 }
