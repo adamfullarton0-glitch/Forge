@@ -574,6 +574,7 @@ export const EX: Record<string, Exercise> = {
     ],
     tip: 'Move from your spine, not your hips — think about curling your ribs to your pelvis.',
     eq: ['cable'],
+    att: ['Rope — best for crunching down', 'Single handle — one side at a time'],
     alt: ['Plank', 'Hanging Leg Raise'],
   },
   'Hanging Leg Raise': {
@@ -598,6 +599,11 @@ export const EX: Record<string, Exercise> = {
     ],
     tip: 'The overhead position stretches the long head of the triceps for more growth.',
     eq: ['dumbbell'],
+    att: [
+      'Rope on a low cable — constant tension',
+      'Single dumbbell — simplest',
+      'EZ bar — heavier loading',
+    ],
     alt: ['Skullcrusher', 'Tricep Pushdown'],
   },
   'Incline Dumbbell Curl': {
@@ -646,6 +652,7 @@ export const EX: Record<string, Exercise> = {
     ],
     tip: 'Lead with your elbows and think about hugging — keep tension on the chest throughout.',
     eq: ['cable'],
+    att: ['D-handles — best feel and stretch', 'Single handle — one side at a time'],
     alt: ['Cable Fly', 'Incline Dumbbell Press'],
   },
   'Reverse Lunge': {

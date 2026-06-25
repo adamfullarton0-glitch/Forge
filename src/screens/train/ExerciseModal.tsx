@@ -25,7 +25,6 @@ export function ExerciseModal({ name, onClose, onOpen }: ExerciseModalProps): JS
   const update = useUpdate();
   const ex = getExercise(name);
 
-  const [att, setAtt] = useState(0);
   const [play, setPlay] = useState(false);
   const [demoFailed, setDemoFailed] = useState(false);
   const [w, setW] = useState('');
@@ -188,20 +187,51 @@ export function ExerciseModal({ name, onClose, onOpen }: ExerciseModalProps): JS
 
       {ex.att ? (
         <div style={{ marginBottom: 16 }}>
-          <div className="ex-modal__label">Best cable attachment</div>
+          <div className="ex-modal__label">Attachment</div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-            {ex.att.map((a, i) => (
-              <button
-                key={a}
-                type="button"
-                className="ob-opt"
-                aria-pressed={att === i}
-                onClick={() => setAtt(i)}
-                style={{ fontSize: '0.8rem', padding: '9px 13px' }}
-              >
-                {a}
-              </button>
-            ))}
+            {ex.att.map((a, i) => {
+              const chosen = (data.attachments[name] ?? ex.att?.[0]) === a;
+              return (
+                <button
+                  key={a}
+                  type="button"
+                  className="ob-opt"
+                  aria-pressed={chosen}
+                  onClick={() => update({ attachments: { ...data.attachments, [name]: a } })}
+                  style={{
+                    fontSize: '0.8rem',
+                    padding: '9px 13px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 8,
+                  }}
+                >
+                  <span style={{ flex: 1 }}>{a}</span>
+                  {i === 0 ? (
+                    <span
+                      style={{
+                        fontSize: '0.62rem',
+                        fontWeight: 800,
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.04em',
+                        color: 'var(--accent)',
+                        background: 'var(--accent-soft)',
+                        borderRadius: 6,
+                        padding: '2px 7px',
+                        flexShrink: 0,
+                      }}
+                    >
+                      Suggested
+                    </span>
+                  ) : null}
+                  {chosen ? (
+                    <span style={{ color: 'var(--accent)', fontWeight: 900, flexShrink: 0 }}>
+                      ✓
+                    </span>
+                  ) : null}
+                </button>
+              );
+            })}
           </div>
         </div>
       ) : null}
