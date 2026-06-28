@@ -48,6 +48,7 @@ export const EX: Record<string, Exercise> = {
     tip: "Don't set the incline too steep — past 45° it becomes a shoulder press.",
     eq: ['dumbbell', 'bench'],
     alt: ['Push-Up'],
+    vid: '8fXfwG4ftaQ',
   },
   'Overhead Press': {
     m: 'Shoulders · Triceps · Core',
@@ -74,6 +75,7 @@ export const EX: Record<string, Exercise> = {
     tip: "Keep your ribs down — don't flare them to cheat the rep.",
     eq: ['dumbbell', 'bench'],
     alt: ['Overhead Press'],
+    vid: 'rO_iEImwHyo',
   },
   'Lateral Raise': {
     m: 'Side delts',
@@ -99,6 +101,7 @@ export const EX: Record<string, Exercise> = {
     tip: 'Think about pulling your arms apart, not lifting the weight up.',
     eq: ['dumbbell'],
     alt: ['Face Pull'],
+    vid: 'LsT-bR_zxLo',
   },
   'Tricep Pushdown': {
     m: 'Triceps',
@@ -116,6 +119,7 @@ export const EX: Record<string, Exercise> = {
       'V-bar — easiest on the wrists',
     ],
     alt: ['Skullcrusher', 'Dips'],
+    vid: '1FjkhpZsaxc',
   },
   Skullcrusher: {
     m: 'Triceps (long head)',
@@ -128,6 +132,7 @@ export const EX: Record<string, Exercise> = {
     tip: 'Lower the bar slightly behind your head for a bigger stretch.',
     eq: ['barbell', 'bench'],
     alt: ['Tricep Pushdown', 'Dips'],
+    vid: 'YUTJAt0vIGY',
   },
   Dips: {
     m: 'Chest · Triceps · Front delts',
@@ -140,6 +145,7 @@ export const EX: Record<string, Exercise> = {
     tip: 'Lean forward for chest emphasis, stay upright for triceps.',
     eq: ['pullupbar'],
     alt: ['Push-Up'],
+    vid: 'Gz8NkGoNPkc',
   },
   'Push-Up': {
     m: 'Chest · Triceps · Core',
@@ -152,6 +158,7 @@ export const EX: Record<string, Exercise> = {
     tip: 'A sagging lower back means your core gave out — stop the set.',
     eq: [],
     alt: [],
+    vid: 'I9fsqKE5XHo',
   },
   'Cable Fly': {
     m: 'Chest',
@@ -165,6 +172,7 @@ export const EX: Record<string, Exercise> = {
     eq: ['cable'],
     att: ['D-handles — the only attachment you need here'],
     alt: ['Incline Dumbbell Press', 'Push-Up'],
+    vid: 'I-Ue34qLxc4',
   },
   Deadlift: {
     m: 'Posterior chain · Back · Grip',
@@ -256,6 +264,7 @@ export const EX: Record<string, Exercise> = {
       'Rope — longest range of motion',
     ],
     alt: ['Barbell Row'],
+    vid: 'vwHG9Jfu4sw',
   },
   'Face Pull': {
     m: 'Rear delts · Rotator cuff',
@@ -269,6 +278,7 @@ export const EX: Record<string, Exercise> = {
     eq: ['cable'],
     att: ['Rope — the only attachment that works properly here'],
     alt: ['Rear Delt Fly'],
+    vid: 'IeOqdw9WI90',
   },
   'Barbell Shrug': {
     m: 'Traps',
@@ -281,6 +291,7 @@ export const EX: Record<string, Exercise> = {
     tip: 'Straight up and down — rolling the shoulders adds nothing.',
     eq: ['barbell'],
     alt: [],
+    vid: 'MlqHEfydPpE',
   },
   'Barbell Curl': {
     m: 'Biceps',
@@ -306,6 +317,7 @@ export const EX: Record<string, Exercise> = {
     tip: 'Hits the brachialis — makes arms look thicker from the side.',
     eq: ['dumbbell'],
     alt: ['Barbell Curl'],
+    vid: 'BRVDS6HVR9Q',
   },
   'Preacher Curl': {
     m: 'Biceps',
@@ -318,6 +330,7 @@ export const EX: Record<string, Exercise> = {
     tip: "Don't fully relax at the bottom — keep tension on the muscle.",
     eq: ['machine'],
     alt: ['Barbell Curl'],
+    vid: '7ixqAPO6JvU',
   },
   'Barbell Back Squat': {
     m: 'Quads · Glutes · Core',
@@ -345,6 +358,7 @@ export const EX: Record<string, Exercise> = {
     tip: 'If your elbows drop, the bar rolls forward — elbows up is rule one.',
     eq: ['barbell'],
     alt: ['Leg Press'],
+    vid: 'v-mQm_droHg',
     lower: true,
   },
   'Leg Press': {
@@ -358,6 +372,7 @@ export const EX: Record<string, Exercise> = {
     tip: 'Never let your hips curl up off the seat at the bottom.',
     eq: ['machine'],
     alt: ['Barbell Back Squat', 'Walking Lunge'],
+    vid: 'nDh_BlnLCGc',
     lower: true,
   },
   'Walking Lunge': {
@@ -371,6 +386,7 @@ export const EX: Record<string, Exercise> = {
     tip: 'Take a slightly wider stance for balance — like walking on train tracks, not a tightrope.',
     eq: [],
     alt: [],
+    vid: 'Pbmj6xPo-Hw',
     lower: true,
   },
   'Leg Extension': {
@@ -384,6 +400,7 @@ export const EX: Record<string, Exercise> = {
     tip: 'Pause for one second at the top of every rep.',
     eq: ['machine'],
     alt: ['Walking Lunge'],
+    vid: 'ztNBgrGy6FQ',
     lower: true,
   },
   'Lying Leg Curl': {
@@ -397,6 +414,7 @@ export const EX: Record<string, Exercise> = {
     tip: 'Point your toes to make the hamstrings do more of the work.',
     eq: ['machine'],
     alt: ['Romanian Deadlift'],
+    vid: 'jxctD6fL_FQ',
     lower: true,
   },
   'Standing Calf Raise': {
@@ -410,6 +428,7 @@ export const EX: Record<string, Exercise> = {
     tip: 'Full stretch at the bottom matters more than the weight.',
     eq: [],
     alt: [],
+    vid: 'sNqa1ad2qIQ',
     lower: true,
   },
   'Hip Thrust': {
@@ -437,6 +456,7 @@ export const EX: Record<string, Exercise> = {
     tip: 'A shorter, harder plank beats a long, saggy one.',
     eq: [],
     alt: [],
+    vid: 'v25dawSzRTM',
   },
   'Goblet Squat': {
     m: 'Quads · Glutes · Core',
@@ -449,6 +469,7 @@ export const EX: Record<string, Exercise> = {
     tip: 'The weight at your chest acts as a counterbalance — most people squat deeper this way.',
     eq: ['dumbbell'],
     alt: ['Barbell Back Squat'],
+    vid: 'lRYBbchqxtI',
     lower: true,
   },
   'Dumbbell Romanian Deadlift': {
@@ -477,6 +498,7 @@ export const EX: Record<string, Exercise> = {
     tip: 'Dumbbells let each side work independently and stretch the chest further than a bar.',
     eq: ['dumbbell', 'bench'],
     alt: ['Barbell Bench Press', 'Push-Up'],
+    vid: 'SzcSrpVr0GA',
   },
   'Incline Barbell Press': {
     m: 'Upper chest · Front delts · Triceps',
@@ -490,6 +512,7 @@ export const EX: Record<string, Exercise> = {
     tip: 'Keep the incline low (~30°) — steeper turns it into a shoulder press.',
     eq: ['barbell', 'bench'],
     alt: ['Incline Dumbbell Press', 'Barbell Bench Press'],
+    vid: 'SrqOu55lrYU',
   },
   'Close-Grip Bench Press': {
     m: 'Triceps · Chest · Front delts',
@@ -502,6 +525,7 @@ export const EX: Record<string, Exercise> = {
     tip: 'Tucked elbows put the work on the triceps — do not flare them out.',
     eq: ['barbell', 'bench'],
     alt: ['Tricep Pushdown', 'Skullcrusher', 'Dips'],
+    vid: 'xXd7sddHGa0',
   },
   'Dumbbell Row': {
     m: 'Lats · Upper back · Biceps',
@@ -514,6 +538,7 @@ export const EX: Record<string, Exercise> = {
     tip: 'Row to your hip, not your shoulder, and avoid twisting your torso.',
     eq: ['dumbbell', 'bench'],
     alt: ['Barbell Row', 'Seated Cable Row'],
+    vid: 'gfUg6qWohTk',
   },
   'T-Bar Row': {
     m: 'Upper back · Lats · Biceps',
@@ -526,6 +551,7 @@ export const EX: Record<string, Exercise> = {
     tip: 'Keep your chest up and hips back — let the mid-back do the work.',
     eq: ['barbell'],
     alt: ['Barbell Row', 'Seated Cable Row'],
+    vid: 'TyLoy3n_a10',
   },
   'Bulgarian Split Squat': {
     m: 'Quads · Glutes · Hamstrings',
@@ -538,6 +564,7 @@ export const EX: Record<string, Exercise> = {
     tip: 'Most of your weight stays on the front leg — the back leg is just for balance.',
     eq: ['dumbbell', 'bench'],
     alt: ['Walking Lunge', 'Leg Press'],
+    vid: 'hiLF_pF3EJM',
     lower: true,
   },
   'Hack Squat': {
@@ -551,6 +578,7 @@ export const EX: Record<string, Exercise> = {
     tip: 'A higher foot position hits glutes more; lower and closer hits the quads.',
     eq: ['machine'],
     alt: ['Barbell Back Squat', 'Leg Press'],
+    vid: 'Zgd6eFxPTxM',
     lower: true,
   },
   'Seated Calf Raise': {
@@ -564,6 +592,7 @@ export const EX: Record<string, Exercise> = {
     tip: 'The bent knee targets the soleus — go slow and get a full stretch each rep.',
     eq: ['machine'],
     alt: ['Standing Calf Raise'],
+    vid: '6O5hh1rBtx8',
     lower: true,
   },
   'Cable Crunch': {
@@ -578,6 +607,7 @@ export const EX: Record<string, Exercise> = {
     eq: ['cable'],
     att: ['Rope — best for crunching down', 'Single handle — one side at a time'],
     alt: ['Plank', 'Hanging Leg Raise'],
+    vid: 'dkGwcfo9zto',
   },
   'Hanging Leg Raise': {
     m: 'Abs · Core · Hip flexors',
@@ -590,6 +620,7 @@ export const EX: Record<string, Exercise> = {
     tip: 'Bend the knees if straight legs are too hard, and kill any swinging.',
     eq: ['pullupbar'],
     alt: ['Cable Crunch', 'Plank'],
+    vid: 'Pr1ieGZ5atk',
   },
   'Overhead Tricep Extension': {
     m: 'Triceps',
@@ -607,6 +638,7 @@ export const EX: Record<string, Exercise> = {
       'EZ bar — heavier loading',
     ],
     alt: ['Skullcrusher', 'Tricep Pushdown'],
+    vid: '-Vyt2QdsR7E',
   },
   'Incline Dumbbell Curl': {
     m: 'Biceps',
@@ -619,6 +651,7 @@ export const EX: Record<string, Exercise> = {
     tip: 'The incline puts the biceps on stretch — keep your elbows behind your body.',
     eq: ['dumbbell', 'bench'],
     alt: ['Barbell Curl', 'Hammer Curl'],
+    vid: 'DCe8f6vMe9A',
   },
   'EZ Bar Curl': {
     m: 'Biceps · Forearms',
@@ -631,6 +664,7 @@ export const EX: Record<string, Exercise> = {
     tip: 'The angled grip is easier on the wrists than a straight bar.',
     eq: ['barbell'],
     alt: ['Barbell Curl', 'Preacher Curl'],
+    vid: 'd2r5TCqnR4Y',
   },
   'Concentration Curl': {
     m: 'Biceps',
@@ -643,6 +677,7 @@ export const EX: Record<string, Exercise> = {
     tip: 'Bracing the elbow isolates the biceps — no swinging or body english.',
     eq: ['dumbbell'],
     alt: ['Preacher Curl', 'Barbell Curl'],
+    vid: 'EjUnEEfTSEY',
   },
   'Cable Crossover': {
     m: 'Chest · Front delts',
@@ -656,6 +691,7 @@ export const EX: Record<string, Exercise> = {
     eq: ['cable'],
     att: ['D-handles — best feel and stretch', 'Single handle — one side at a time'],
     alt: ['Cable Fly', 'Incline Dumbbell Press'],
+    vid: 'A6ch0UN4SHs',
   },
   'Reverse Lunge': {
     m: 'Quads · Glutes · Hamstrings',
@@ -668,6 +704,7 @@ export const EX: Record<string, Exercise> = {
     tip: 'Stepping back is easier on the knees than a forward lunge and keeps tension on the front leg.',
     eq: ['dumbbell'],
     alt: ['Walking Lunge', 'Bulgarian Split Squat'],
+    vid: 'TI2U-RfbALY',
     lower: true,
   },
   'Sumo Deadlift': {
@@ -681,6 +718,7 @@ export const EX: Record<string, Exercise> = {
     tip: 'The wider stance shortens the range and lets you stay more upright than a conventional pull.',
     eq: ['barbell'],
     alt: ['Deadlift', 'Romanian Deadlift'],
+    vid: 'JF3iwfK5WI0',
     lower: true,
   },
 
@@ -697,6 +735,7 @@ export const EX: Record<string, Exercise> = {
     tip: 'Move slowly and breathe — chase a little more rotation each rep, not speed.',
     eq: [],
     alt: ['Groiner Stretch', 'Hip Flexor Stretch'],
+    vid: '-CiWQ2IvY34',
     mobility: true,
   },
   'Standing Hip Circles': {
@@ -711,6 +750,7 @@ export const EX: Record<string, Exercise> = {
     tip: 'Keep your torso upright — let the movement come from the hip, not by leaning.',
     eq: [],
     alt: ["World's Greatest Stretch", 'Hip Flexor Stretch'],
+    vid: 'OqR7Tl6SPLQ',
     mobility: true,
   },
   'Groiner Stretch': {
@@ -725,6 +765,7 @@ export const EX: Record<string, Exercise> = {
     tip: 'Keep the back leg straight and the back heel reaching away for a fuller stretch.',
     eq: [],
     alt: ["World's Greatest Stretch", 'Lying Glute Stretch'],
+    vid: 'vRH5wywUefI',
     mobility: true,
   },
   'Hip Flexor Stretch': {
@@ -739,6 +780,7 @@ export const EX: Record<string, Exercise> = {
     tip: 'The glute squeeze is what actually lengthens the hip flexor — not just leaning forward.',
     eq: [],
     alt: ['Lying Glute Stretch', 'Standing Hip Circles'],
+    vid: '34SlL-PPCWQ',
     mobility: true,
   },
   'Lying Glute Stretch': {
@@ -753,6 +795,7 @@ export const EX: Record<string, Exercise> = {
     tip: 'Keep the crossed-leg knee pressed open and your head relaxed on the floor.',
     eq: [],
     alt: ['Hip Flexor Stretch', 'Groiner Stretch'],
+    vid: 'YBV6d5TluFA',
     mobility: true,
   },
   'Cat-Cow Stretch': {
@@ -767,6 +810,7 @@ export const EX: Record<string, Exercise> = {
     tip: 'Let your breath set the pace — exhale to round, inhale to arch.',
     eq: [],
     alt: ['Lying Glute Stretch', 'Hip Flexor Stretch'],
+    vid: 'vuyUwtHl694',
     mobility: true,
   },
 };
