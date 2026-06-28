@@ -158,9 +158,13 @@
   flex-shrink: 0;
   margin-top: 1px;
 }
+/* Form tutorials are vertical Shorts — a centred, phone-shaped player. */
 .ex-video {
   position: relative;
-  padding-bottom: 56.25%;
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
+  aspect-ratio: 9 / 16;
   border-radius: 14px;
   overflow: hidden;
   border: 1px solid var(--glass-border);
