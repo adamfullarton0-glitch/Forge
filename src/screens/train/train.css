@@ -158,11 +158,12 @@
   flex-shrink: 0;
   margin-top: 1px;
 }
-/* Form tutorials are vertical Shorts — a centred, phone-shaped player. */
+/* Form tutorials are vertical Shorts — a centred, phone-shaped 9:16 player.
+   Width is derived so the height never exceeds ~64vh, so the clip scales down
+   (rather than overflowing) on short screens instead of being cropped. */
 .ex-video {
   position: relative;
-  width: 100%;
-  max-width: 280px;
+  width: min(280px, calc(64vh * 9 / 16));
   margin: 0 auto;
   aspect-ratio: 9 / 16;
   border-radius: 14px;
