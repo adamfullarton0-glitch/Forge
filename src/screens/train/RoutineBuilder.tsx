@@ -60,7 +60,11 @@ export function RoutineBuilder({
   const addItem = (dayIdx: number, exName: string): void => {
     setDays((ds) =>
       ds.map((d, j) =>
-        j === dayIdx ? { ...d, items: [...d.items, { name: exName, sr: srOf(exName) }] } : d,
+        // Don't add the same movement to a day twice — it would share one
+        // sets/reps override and read as a mistake.
+        j === dayIdx && !d.items.some((it) => it.name === exName)
+          ? { ...d, items: [...d.items, { name: exName, sr: srOf(exName) }] }
+          : d,
       ),
     );
     setPickerDay(null);

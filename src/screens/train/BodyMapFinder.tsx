@@ -103,7 +103,12 @@ export function BodyMapFinder({ lang, onClose }: BodyMapFinderProps): JSX.Elemen
       ) : null}
 
       {exercise ? (
-        <ExerciseModal name={exercise} onClose={() => setExercise(null)} onOpen={setExercise} />
+        <ExerciseModal
+          key={exercise}
+          name={exercise}
+          onClose={() => setExercise(null)}
+          onOpen={setExercise}
+        />
       ) : null}
     </Modal>
   );

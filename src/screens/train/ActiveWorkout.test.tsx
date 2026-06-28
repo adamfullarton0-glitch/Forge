@@ -86,11 +86,59 @@ describe('ActiveWorkout', () => {
     expect(liftLog?.[0]?.e1rm).toBe(76); // e1rm(60, 8)
   });
 
-  it('discards the workout without logging anything', async () => {
+  it('discards immediately when nothing has been logged', async () => {
     const user = userEvent.setup();
     renderWorkout();
     await user.click(screen.getByRole('button', { name: /discard workout/i }));
     expect(useStore.getState().data.active).toBeNull();
     expect(useStore.getState().data.done).toHaveLength(0);
+  });
+
+  it('asks for confirmation before discarding once a set is touched', async () => {
+    const user = userEvent.setup();
+    renderWorkout();
+    const weight = screen.getByLabelText(/barbell bench press set 1 weight/i);
+    await user.clear(weight);
+    await user.type(weight, '60');
+    // First press only arms the confirmation — the session survives.
+    await user.click(screen.getByRole('button', { name: /discard workout/i }));
+    expect(useStore.getState().data.active).not.toBeNull();
+    // Second press actually discards.
+    await user.click(screen.getByRole('button', { name: /tap again to discard/i }));
+    expect(useStore.getState().data.active).toBeNull();
+  });
+
+  it('logs duplicate exercises in a day independently (keyed by slot)', async () => {
+    const user = userEvent.setup();
+    seedActive({
+      customPlans: [
+        {
+          id: 'custom:dup',
+          name: 'Dup',
+          days: [{ name: 'D', ex: ['Barbell Bench Press', 'Barbell Bench Press'] }],
+        },
+      ],
+      planId: 'custom:dup',
+      active: { day: 0, checked: [], swaps: {} },
+    });
+    renderWorkout();
+    const weights = screen.getAllByLabelText(/barbell bench press set 1 weight/i);
+    expect(weights).toHaveLength(2);
+    await user.clear(weights[0]!);
+    await user.type(weights[0]!, '60');
+    // Editing the first slot must not bleed into the second (shared-state bug).
+    expect((weights[1] as HTMLInputElement).value).toBe('');
+  });
+
+  it('renders a graceful, loggable card for a movement with no demo', () => {
+    seedActive({
+      customPlans: [{ id: 'custom:u', name: 'U', days: [{ name: 'D', ex: ['Imaginary Lift'] }] }],
+      planId: 'custom:u',
+      active: { day: 0, checked: [], swaps: {} },
+    });
+    renderWorkout();
+    expect(screen.getByText(/logged movement/i)).toBeInTheDocument();
+    // The title isn't a dead tap target — its detail button is disabled.
+    expect(screen.getByRole('button', { name: /^imaginary lift/i })).toBeDisabled();
   });
 });

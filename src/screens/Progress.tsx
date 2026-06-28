@@ -389,7 +389,7 @@ export function Progress(): JSX.Element | null {
       <div style={{ height: 8 }} />
 
       {modal ? (
-        <ExerciseModal name={modal} onClose={() => setModal(null)} onOpen={setModal} />
+        <ExerciseModal key={modal} name={modal} onClose={() => setModal(null)} onOpen={setModal} />
       ) : null}
       {picker ? (
         <ExercisePicker

@@ -45,10 +45,15 @@ export function Plan(): JSX.Element | null {
     else next[key] = { day: '0', time: DEFAULT_TIME };
     setSchedule(next);
   };
+  // Clamp a stored session index to the active plan — switching to a plan with
+  // fewer days must never leave a schedule entry pointing past the last day.
+  const clampDay = (day: string): string =>
+    String(Math.min(Math.max(Number(day) || 0, 0), plan.days.length - 1));
+
   const setWorkout = (i: number, day: string): void =>
     setSchedule({
       ...schedule,
-      [String(i)]: { day, time: schedule[String(i)]?.time ?? DEFAULT_TIME },
+      [String(i)]: { day: clampDay(day), time: schedule[String(i)]?.time ?? DEFAULT_TIME },
     });
   const setTime = (i: number, time: string): void =>
     setSchedule({
@@ -187,7 +192,7 @@ export function Plan(): JSX.Element | null {
                     className="select"
                     style={{ flex: '1 1 150px', minWidth: 0 }}
                     aria-label={`${name} session`}
-                    value={entry.day}
+                    value={clampDay(entry.day)}
                     onChange={(e) => setWorkout(i, e.target.value)}
                   >
                     {plan.days.map((d, di) => (

@@ -19,7 +19,10 @@ export function RestTimer({
   return (
     <div className="rest-timer" role="timer" aria-live="off">
       <span className="rest-timer__label">{label}</span>
-      <span className="rest-timer__clock">
+      <span
+        className="rest-timer__clock"
+        aria-label={`${label}: ${m > 0 ? `${m} min ` : ''}${s} sec remaining`}
+      >
         {m}:{String(s).padStart(2, '0')}
       </span>
       <div className="rest-timer__actions">

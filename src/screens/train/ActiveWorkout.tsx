@@ -47,10 +47,11 @@ export function ActiveWorkout({ active }: { active: ActiveState }): JSX.Element 
   const navigate = useNavigate();
   const t = translator(data.settings.lang);
 
-  // The planned-exercise slot whose detail modal is open (keyed by the original
-  // exercise, so a swap persists to active.swaps[orig] even after it changes).
-  const [modalOrig, setModalOrig] = useState<string | null>(null);
+  // The slot index whose detail modal is open. Keyed by position so a swap
+  // persists to active.swaps[index] and survives the movement name changing.
+  const [modalIdx, setModalIdx] = useState<number | null>(null);
   const [rest, setRest] = useState(0);
+  const [confirmDiscard, setConfirmDiscard] = useState(false);
 
   // One ticking interval for the component's life; only counts down when armed.
   useEffect(() => {
@@ -100,8 +101,34 @@ export function ActiveWorkout({ active }: { active: ActiveState }): JSX.Element 
     );
   }
 
-  const setSets = (orig: string, arr: SetEntry[]): void => {
-    update({ active: { ...active, sets: { ...sets, [orig]: arr } } });
+  // Slots (sets/swaps) are keyed by the exercise's POSITION in the day, not its
+  // name — a day can legitimately list the same movement twice (or aliasing can
+  // collapse two source moves to one name), and each slot must log independently.
+  const setSets = (slot: string, arr: SetEntry[]): void => {
+    update({ active: { ...active, sets: { ...sets, [slot]: arr } } });
+  };
+
+  // Swap the movement in a slot (or clear the override when swapping back to the
+  // planned one). The persisted sets were seeded for the previous exercise, so
+  // drop them — unless real work is already logged — and let the new movement
+  // re-seed its own weight/reps/set count.
+  const applySwap = (slot: string, planned: string, repl: string): void => {
+    const nextSwaps = { ...swaps };
+    if (repl === planned) delete nextSwaps[slot];
+    else nextSwaps[slot] = repl;
+    const nextSets = { ...sets };
+    const cur = nextSets[slot];
+    if (cur && !cur.some((s) => s.done)) delete nextSets[slot];
+    update({ active: { ...active, swaps: nextSwaps, sets: nextSets } });
+  };
+
+  const hasProgress = Object.keys(sets).length > 0;
+  const discard = (): void => {
+    if (hasProgress && !confirmDiscard) {
+      setConfirmDiscard(true);
+      return;
+    }
+    update({ active: null });
   };
 
   const seedSets = (nm: string): SetEntry[] => {
@@ -113,18 +140,18 @@ export function ActiveWorkout({ active }: { active: ActiveState }): JSX.Element 
     return Array.from({ length: setsOf(sr) }, () => ({ w, reps, done: false }));
   };
 
-  const doneCount = day.ex.filter((o) => (sets[o] ?? []).some((x) => x.done)).length;
+  const doneCount = day.ex.filter((_, i) => (sets[String(i)] ?? []).some((x) => x.done)).length;
 
   const finish = (): void => {
     const lifts = { ...data.lifts };
     let totalVol = 0;
     let totalSets = 0;
     const muscles: Record<string, number> = {};
-    for (const orig of day.ex) {
-      const nm = swaps[orig] ?? orig;
+    day.ex.forEach((orig, i) => {
+      const nm = swaps[String(i)] ?? orig;
       const ex = getExercise(nm);
-      const done = (sets[orig] ?? []).filter((x) => x.done && Number(x.reps) > 0);
-      if (done.length === 0) continue;
+      const done = (sets[String(i)] ?? []).filter((x) => x.done && Number(x.reps) > 0);
+      if (done.length === 0) return;
       const mg = (ex?.m ?? '').split('·')[0]?.trim() || 'Other';
       muscles[mg] = (muscles[mg] ?? 0) + done.length;
       totalSets += done.length;
@@ -149,7 +176,7 @@ export function ActiveWorkout({ active }: { active: ActiveState }): JSX.Element 
           },
         ].slice(-30);
       }
-    }
+    });
     update({
       lifts,
       active: null,
@@ -169,6 +196,12 @@ export function ActiveWorkout({ active }: { active: ActiveState }): JSX.Element 
     });
     navigate('/');
   };
+
+  // The exercise the open modal is showing (the slot's swap override, or the
+  // planned movement) — resolved up front so the JSX stays simple.
+  const modalPlanned = modalIdx != null ? day.ex[modalIdx] : undefined;
+  const modalName =
+    modalIdx != null && modalPlanned != null ? (swaps[String(modalIdx)] ?? modalPlanned) : null;
 
   return (
     <div className="screen">
@@ -195,16 +228,16 @@ export function ActiveWorkout({ active }: { active: ActiveState }): JSX.Element 
         </button>
         <button
           type="button"
-          onClick={() => update({ active: null })}
+          onClick={discard}
           style={{
             background: 'none',
             border: 'none',
-            color: 'var(--muted)',
-            fontWeight: 600,
+            color: confirmDiscard ? '#F5A623' : 'var(--muted)',
+            fontWeight: confirmDiscard ? 800 : 600,
             cursor: 'pointer',
           }}
         >
-          {t('discard')}
+          {confirmDiscard ? 'Tap again to discard' : t('discard')}
         </button>
       </div>
       <h1 className="screen__title">{day.name}</h1>
@@ -213,14 +246,15 @@ export function ActiveWorkout({ active }: { active: ActiveState }): JSX.Element 
         <span style={{ color: 'var(--accent)', fontWeight: 700 }}>{t('inProgress')}</span>
       </p>
 
-      {day.ex.map((orig) => {
-        const nm = swaps[orig] ?? orig;
+      {day.ex.map((orig, idx) => {
+        const slot = String(idx);
+        const nm = swaps[slot] ?? orig;
         const ex = getExercise(nm);
         const missing = (ex?.eq ?? []).filter((e) => !gear.includes(e));
         const swapTo = missing.length
           ? (ex?.alt ?? []).find((al) => (getExercise(al)?.eq ?? []).every((e) => gear.includes(e)))
           : undefined;
-        const exSets = sets[orig] ?? seedSets(nm);
+        const exSets = sets[slot] ?? seedSets(nm);
         const history = data.lifts[nm] ?? [];
         const lastEntry = history[history.length - 1];
         const prevBestE = history.reduce(
@@ -236,31 +270,32 @@ export function ActiveWorkout({ active }: { active: ActiveState }): JSX.Element 
 
         const updateSet = (i: number, key: 'w' | 'reps', v: string): void =>
           setSets(
-            orig,
+            slot,
             exSets.map((x, j) => (j === i ? { ...x, [key]: v } : x)),
           );
         const toggleSet = (i: number): void => {
           const wasDone = exSets[i]?.done ?? false;
           setSets(
-            orig,
+            slot,
             exSets.map((x, j) => (j === i ? { ...x, done: !x.done } : x)),
           );
           if (!wasDone) setRest(REST_SECONDS);
         };
 
         return (
-          <Card key={orig} style={{ marginBottom: 12 }}>
+          <Card key={idx} style={{ marginBottom: 12 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
               <button
                 type="button"
-                onClick={() => setModalOrig(orig)}
+                onClick={() => ex && setModalIdx(idx)}
+                disabled={!ex}
                 style={{
                   flex: 1,
                   textAlign: 'left',
                   background: 'none',
                   border: 'none',
                   color: 'var(--text)',
-                  cursor: 'pointer',
+                  cursor: ex ? 'pointer' : 'default',
                   padding: 0,
                 }}
               >
@@ -268,17 +303,23 @@ export function ActiveWorkout({ active }: { active: ActiveState }): JSX.Element 
                   {nm} {isPR ? <span className="pr-badge">{t('newPR')}</span> : null}
                 </div>
                 <div className="state__msg" style={{ textAlign: 'left', margin: '2px 0 0' }}>
-                  {ex?.m} ·{' '}
-                  <span style={{ color: 'var(--accent)', fontWeight: 700 }}>
-                    {planSr(plan, nm)}
-                  </span>
-                  {curBestE > 0 ? (
+                  {ex ? (
                     <>
-                      {' '}
-                      · {t('e1rmL')} {showW(curBestE)}
-                      {wu}
+                      {ex.m} ·{' '}
+                      <span style={{ color: 'var(--accent)', fontWeight: 700 }}>
+                        {planSr(plan, nm)}
+                      </span>
+                      {curBestE > 0 ? (
+                        <>
+                          {' '}
+                          · {t('e1rmL')} {showW(curBestE)}
+                          {wu}
+                        </>
+                      ) : null}
                     </>
-                  ) : null}
+                  ) : (
+                    'Logged movement — track your sets below'
+                  )}
                 </div>
               </button>
             </div>
@@ -297,12 +338,7 @@ export function ActiveWorkout({ active }: { active: ActiveState }): JSX.Element 
               >
                 No {missing.map(equipLabel).join(' / ').toLowerCase()}
                 {swapTo ? (
-                  <Chip
-                    label={`Swap → ${swapTo}`}
-                    onClick={() =>
-                      update({ active: { ...active, swaps: { ...swaps, [orig]: swapTo } } })
-                    }
-                  />
+                  <Chip label={`Swap → ${swapTo}`} onClick={() => applySwap(slot, orig, swapTo)} />
                 ) : null}
               </div>
             ) : null}
@@ -426,17 +462,12 @@ export function ActiveWorkout({ active }: { active: ActiveState }): JSX.Element 
         />
       ) : null}
 
-      {modalOrig != null ? (
+      {modalIdx != null && modalName != null && modalPlanned != null ? (
         <ExerciseModal
-          name={swaps[modalOrig] ?? modalOrig}
-          onClose={() => setModalOrig(null)}
-          onSwap={(repl) => {
-            const next = { ...swaps };
-            // Swapping back to the planned movement clears the override.
-            if (repl === modalOrig) delete next[modalOrig];
-            else next[modalOrig] = repl;
-            update({ active: { ...active, swaps: next } });
-          }}
+          key={modalName}
+          name={modalName}
+          onClose={() => setModalIdx(null)}
+          onSwap={(repl) => applySwap(String(modalIdx), modalPlanned, repl)}
         />
       ) : null}
     </div>

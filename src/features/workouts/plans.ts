@@ -183,7 +183,7 @@ export const PLANS = {
   },
   arnold: {
     name: 'Arnold Split',
-    tag: '6 days · golden era',
+    tag: '3 days · golden era',
     desc: "Arnold's classic pairing: chest with back, shoulders with arms, then legs. Run twice a week.",
     days: [
       {
@@ -256,7 +256,7 @@ export const PLANS = {
   },
   str5: {
     name: 'Strength 5×5',
-    tag: '3 days · raw strength',
+    tag: '2 days · raw strength',
     desc: 'The classic beginner strength program. Two alternating workouts, 5 sets of 5 on everything, add weight every session.',
     days: [
       {
@@ -534,7 +534,7 @@ const EXTRA_PROGRAMS: Array<{
   {
     id: 'hip-mobility',
     name: 'Hip Mobility',
-    tag: '3 days · Beginner',
+    tag: '1 day · Beginner',
     desc: 'Loosen tight hips and open up your range of motion.',
     days: [
       {
@@ -665,7 +665,7 @@ const EXTRA_PROGRAMS: Array<{
         ex: [
           'Lat Pulldown',
           'Seated Cable Row',
-          'Lat Pulldown',
+          'Pull-Up',
           'Face Pull',
           'Barbell Curl',
           'Preacher Curl',
@@ -735,7 +735,10 @@ export const PROGRAMS: Record<string, RoutinePlan> = {
         p.id,
         {
           name: NAME_OVERRIDE[p.id] ?? p.name,
-          tag: `${p.daysPerWeek} day${p.daysPerWeek === 1 ? '' : 's'} · ${p.level}`,
+          // Tag the number of distinct sessions actually defined (matches both
+          // the "choose session" list and the days/week filter), not the source
+          // program's nominal weekly frequency, which can differ.
+          tag: `${p.days.length} day${p.days.length === 1 ? '' : 's'} · ${p.level}`,
           desc: p.goal,
           days: p.days.map((d) => ({
             name: d.name,
