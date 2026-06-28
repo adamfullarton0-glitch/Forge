@@ -74,7 +74,9 @@ export function isSafe(r: Recipe, allergies: string[], dislikes: string[]): bool
   if (r.allergens.some((a) => allergies.includes(a))) return false;
   return !r.ing.some((ing) => {
     const lower = ing.toLowerCase();
-    return dislikes.some((d) => lower.includes(d) || d.includes(lower));
+    // Only filter when the ingredient actually contains the disliked term.
+    // (The reverse direction over-filtered: disliking "eggplant" dropped "egg".)
+    return dislikes.some((d) => lower.includes(d));
   });
 }
 
@@ -95,7 +97,7 @@ export function filterRecipes(recipes: readonly Recipe[], f: RecipeFilters): Rec
   if (f.cat !== 'all') list = list.filter((r) => catOf(r) === f.cat);
   if (f.diet === 'goal') list = list.filter((r) => r.goal.includes(f.goal));
   else if (f.diet === 'hp') list = list.filter((r) => r.p >= 40);
-  else if (f.diet === 'low') list = list.filter((r) => r.kcal < 500);
+  else if (f.diet === 'low') list = list.filter((r) => r.kcal < 400);
   if (f.time === '15') list = list.filter((r) => recipeMins(r) <= 15);
   else if (f.time === '30') list = list.filter((r) => recipeMins(r) <= 30);
 

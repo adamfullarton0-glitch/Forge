@@ -98,7 +98,7 @@ export const en = {
   discover: 'Discover real dishes',
   discoverNote: 'Real recipes with real photos & step-by-step methods, straight from TheMealDB.',
   discoverHint: 'Try chicken, pasta, curry, salmon…',
-  searchRecipes: 'Search 580+ recipes by name or ingredient…',
+  searchRecipes: 'Search recipes by name or ingredient…',
   mealType: 'Meal',
   type: 'Type',
   timeF: 'Time',

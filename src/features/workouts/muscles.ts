@@ -30,7 +30,7 @@ export const MUSCLE_GROUPS: readonly MuscleGroupDef[] = [
   { id: 'chest', label: 'Chest', side: 'front', match: ['chest'] },
   { id: 'shoulders', label: 'Shoulders', side: 'front', match: ['delt', 'shoulder'] },
   { id: 'biceps', label: 'Biceps', side: 'front', match: ['bicep'] },
-  { id: 'core', label: 'Core', side: 'front', match: ['core', 'abs'] },
+  { id: 'core', label: 'Abs', side: 'front', match: ['core', 'abs'] },
   { id: 'quads', label: 'Quads', side: 'front', match: ['quad'] },
   { id: 'calves', label: 'Calves', side: 'front', match: ['calf', 'calves'] },
   { id: 'back', label: 'Back', side: 'back', match: ['lat', 'back', 'trap'] },

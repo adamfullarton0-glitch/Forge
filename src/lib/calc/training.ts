@@ -35,9 +35,17 @@ const MAX_REPS = 100;
 
 /** Pulls the top of a rep range like "4 × 6–8" → 8. Defaults to 12. */
 export function topRepOf(setsReps: string): number {
-  const nums = (setsReps || '').match(/\d+/g);
+  const s = setsReps || '';
+  // Reps come after the "×" (sets are first); fall back to the whole string.
+  const repPart = s.includes('×') ? s.slice(s.indexOf('×') + 1) : s;
+  // Drop parenthetical annotations like "(T1)" / "(AMRAP)" that aren't reps.
+  const cleaned = repPart.replace(/\([^)]*\)/g, ' ');
+  // Time-based holds (e.g. "30–60s", "45 sec") aren't reps — use the default.
+  if (/\d\s*(?:s|sec|secs|m|min|mins)\b/i.test(cleaned)) return 12;
+  const nums = cleaned.match(/\d+/g);
   if (!nums || nums.length === 0) return 12;
-  const n = Number(nums[nums.length - 1]);
+  // The top of any range or scheme ("6–8", "5/3/1", "5,3,2") is its largest rep.
+  const n = Math.max(...nums.map(Number));
   // Custom routine sets/reps are free text — clamp to a sane bound so an absurd
   // value can't seed nonsense reps or pollute e1RM/PR history.
   if (!Number.isFinite(n) || n <= 0) return 12;

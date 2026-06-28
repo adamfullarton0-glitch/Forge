@@ -50,7 +50,29 @@ describe('topRepOf', () => {
   it('extracts the top of a rep range', () => {
     expect(topRepOf('4 × 6–8')).toBe(8);
     expect(topRepOf('3 × 12–15')).toBe(15);
-    expect(topRepOf('3 × max reps')).toBe(3);
+  });
+
+  it('ignores the leading set count when reading reps', () => {
+    // The number before "×" is sets, not reps — it must never seed the rep field.
+    expect(topRepOf('3 × max reps')).toBe(12);
+    expect(topRepOf('5 × 3')).toBe(3);
+  });
+
+  it('strips parenthetical annotations like (T1)/(AMRAP)', () => {
+    expect(topRepOf('5 × 3-5 (T1)')).toBe(5);
+    expect(topRepOf('3 × 10 (T2)')).toBe(10);
+    expect(topRepOf('3 × 15 (T3)')).toBe(15);
+    expect(topRepOf('1 × AMRAP')).toBe(12);
+  });
+
+  it('takes the largest rep of multi-number schemes', () => {
+    expect(topRepOf('3 × 5/3/1')).toBe(5);
+    expect(topRepOf('4 × 5,3,2')).toBe(5);
+  });
+
+  it('treats time-based holds as non-rep (default 12)', () => {
+    expect(topRepOf('3 × 30-60s')).toBe(12);
+    expect(topRepOf('3 × 45 sec')).toBe(12);
   });
 
   it('defaults to 12 when there is no number', () => {

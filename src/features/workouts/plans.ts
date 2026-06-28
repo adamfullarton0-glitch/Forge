@@ -1,4 +1,4 @@
-/** Workout plans and equipment — static data ported from the prototype. */
+/** Workout plans, imported program library, and equipment data. */
 import { getExercise } from './exercises';
 import programsRaw from './programs.json';
 import type { CustomPlan } from '@/types/schemas';
@@ -6,7 +6,7 @@ import type { CustomPlan } from '@/types/schemas';
 export interface PlanDay {
   name: string;
   focus: string;
-  /** Exercise names (keys into the exercise DB, ported in Phase 5). */
+  /** Exercise names (keys into the exercise DB). */
   ex: string[];
 }
 
@@ -380,7 +380,8 @@ const EX_ALIAS: Record<string, string> = {
   'Pseudo Planche Push-up': 'Push-Up',
   'Dumbbell Lateral Raise': 'Lateral Raise',
   'Standing Lateral Raise': 'Lateral Raise',
-  'Cable One Arm Lateral Raise': 'Cable Lateral Raise',
+  'Cable Lateral Raise': 'Lateral Raise',
+  'Cable One Arm Lateral Raise': 'Lateral Raise',
   'Leg Curl': 'Lying Leg Curl',
   'Lever Seated Leg Curl': 'Lying Leg Curl',
   'Lever Lying Leg Curl': 'Lying Leg Curl',

@@ -86,6 +86,18 @@ export function Recipes(): JSX.Element | null {
   const filtersActive =
     q.trim() !== '' || mf !== 'all' || cat !== 'all' || tf !== 'any' || gf !== 'all';
 
+  // Reset every filter back to default — returns the screen to the browse carousels.
+  const clearFilters = (): void => {
+    setQ('');
+    setMf('all');
+    setCat('all');
+    setTf('any');
+    setGf('all');
+    setSortBy('default');
+    setShowFilters(false);
+    setShow(PAGE);
+  };
+
   const saved = new Set(data.savedRecipes);
   const toggleSave = (name: string): void =>
     update({
@@ -297,6 +309,11 @@ export function Recipes(): JSX.Element | null {
         >
           Filters
         </Button>
+        {filtersActive ? (
+          <Button variant="ghost" onClick={clearFilters}>
+            Clear
+          </Button>
+        ) : null}
       </div>
 
       <div style={{ marginBottom: 14, display: showFilters || filtersActive ? 'block' : 'none' }}>
@@ -341,7 +358,7 @@ export function Recipes(): JSX.Element | null {
             ['all', t('all')],
             ['goal', t('matched')],
             ['hp', '40g+ protein'],
-            ['low', '< 500 kcal'],
+            ['low', '< 400 kcal'],
           ],
           gf,
           setGf,
@@ -520,7 +537,8 @@ export function Recipes(): JSX.Element | null {
             {t('unlockRecipes')}
           </div>
           <div className="state__msg" style={{ margin: '6px 0 12px' }}>
-            {lockedCount}+ {t('proRecipesT').toLowerCase()} match your filters.
+            {lockedCount}+ {t('proRecipesT').toLowerCase()}{' '}
+            {filtersActive ? 'match your filters.' : 'in the full library.'}
           </div>
           <Button onClick={() => navigate('/more')}>{t('upgrade')}</Button>
         </Card>

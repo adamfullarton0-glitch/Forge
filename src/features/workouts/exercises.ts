@@ -1,4 +1,4 @@
-/** The exercise database — ~33 movements with verified demo videos. */
+/** The exercise database — movements with steps, demos and muscle maps. */
 
 export interface Exercise {
   /** Muscles worked, e.g. "Chest · Triceps · Front delts". */
