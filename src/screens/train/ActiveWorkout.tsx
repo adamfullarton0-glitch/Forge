@@ -312,8 +312,7 @@ export function ActiveWorkout({ active }: { active: ActiveState }): JSX.Element 
                       {curBestE > 0 ? (
                         <>
                           {' '}
-                          · {t('e1rmL')} {showW(curBestE)}
-                          {wu}
+                          · {t('e1rmL')} {showW(curBestE)} {wu}
                         </>
                       ) : null}
                     </>
@@ -353,7 +352,7 @@ export function ActiveWorkout({ active }: { active: ActiveState }): JSX.Element 
 
             {exSets.map((st, i) => {
               const prev = history[history.length - 1];
-              const prevTxt = prev ? `${showW(prev.w)}${wu}×${prev.reps ?? '–'}` : '—';
+              const prevTxt = prev ? `${showW(prev.w)} ${wu} × ${prev.reps ?? '–'}` : '—';
               return (
                 <div key={i} className="set-grid">
                   <div className="set-num">{i + 1}</div>
@@ -437,8 +436,7 @@ export function ActiveWorkout({ active }: { active: ActiveState }): JSX.Element 
                     color: 'var(--accent)',
                   }}
                 >
-                  try {showW(lastEntry.w + (ex?.lower ? 5 : 2.5))}
-                  {wu}
+                  try {showW(lastEntry.w + (ex?.lower ? 5 : 2.5))} {wu}
                 </span>
               ) : null}
             </div>
