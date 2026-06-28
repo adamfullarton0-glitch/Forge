@@ -1,11 +1,18 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Card } from '@/components/Card';
 import { Button } from '@/components/Button';
+import { Chip } from '@/components/Chip';
 import { ActiveWorkout } from './train/ActiveWorkout';
 import { RoutineBuilder } from './train/RoutineBuilder';
 import { BodyMapFinder } from './train/BodyMapFinder';
 import { useData, useUpdate } from '@/features/store';
-import { PLANS, PROGRAMS, getPlan, DEFAULT_PLAN_ID } from '@/features/workouts/plans';
+import {
+  PLAN_CATALOGUE,
+  PLAN_LEVELS,
+  getPlan,
+  DEFAULT_PLAN_ID,
+  type PlanLevel,
+} from '@/features/workouts/plans';
 import { translator } from '@/lib/i18n';
 import { dayIdx } from '@/lib/calc';
 import type { CustomPlan } from '@/types/schemas';
@@ -21,6 +28,33 @@ export function Train(): JSX.Element {
     editing: null,
   });
   const [finder, setFinder] = useState(false);
+  const [query, setQuery] = useState('');
+  const [levelF, setLevelF] = useState<'all' | PlanLevel>('all');
+  const [daysF, setDaysF] = useState('all');
+
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    return PLAN_CATALOGUE.filter((e) => {
+      // All-level plans (level === null) stay visible under every level filter.
+      if (levelF !== 'all' && e.level !== null && e.level !== levelF) return false;
+      if (daysF !== 'all') {
+        const ok =
+          daysF === '12' ? e.days <= 2 : daysF === '6' ? e.days >= 6 : e.days === Number(daysF);
+        if (!ok) return false;
+      }
+      if (q && !`${e.plan.name} ${e.plan.tag} ${e.plan.desc}`.toLowerCase().includes(q)) {
+        return false;
+      }
+      return true;
+    });
+  }, [query, levelF, daysF]);
+
+  const filtersActive = query.trim() !== '' || levelF !== 'all' || daysF !== 'all';
+  const clearFilters = (): void => {
+    setQuery('');
+    setLevelF('all');
+    setDaysF('all');
+  };
 
   if (data.active) {
     return <ActiveWorkout active={data.active} />;
@@ -190,40 +224,110 @@ export function Train(): JSX.Element {
       <p className="state__msg" style={{ textAlign: 'left', margin: '6px 0 12px' }}>
         {t('yourPlan')}: <b style={{ color: 'var(--text)' }}>{plan.name}</b>
       </p>
-      <div className="stack">
-        {[...Object.entries(PLANS), ...Object.entries(PROGRAMS)].map(([id, pl]) => (
-          <Card
-            key={id}
-            onClick={() => selectPlan(id)}
-            style={{ borderColor: id === data.planId ? 'var(--accent)' : undefined }}
-          >
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                gap: 8,
-              }}
-            >
-              <div style={{ fontSize: '1.05rem', fontWeight: 800 }}>{pl.name}</div>
-              {id === data.planId ? <span className="pro-badge">{t('active')}</span> : null}
-            </div>
-            <div
-              style={{
-                color: 'var(--accent)',
-                fontWeight: 700,
-                fontSize: '0.8rem',
-                margin: '3px 0 5px',
-              }}
-            >
-              {pl.tag}
-            </div>
-            <div className="state__msg" style={{ textAlign: 'left', margin: 0 }}>
-              {pl.desc}
-            </div>
-          </Card>
-        ))}
+
+      {/* Filters for the program catalogue */}
+      <input
+        className="input"
+        style={{ width: '100%', marginBottom: 10 }}
+        aria-label="Search workouts"
+        placeholder="Search workouts…"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+      />
+      <div className="train-filter">
+        <span className="stat-label train-filter__label">Level</span>
+        <div className="train-filter__chips">
+          <Chip label="All" active={levelF === 'all'} onClick={() => setLevelF('all')} />
+          {PLAN_LEVELS.map((lvl) => (
+            <Chip
+              key={lvl}
+              label={lvl.charAt(0).toUpperCase() + lvl.slice(1)}
+              active={levelF === lvl}
+              onClick={() => setLevelF(lvl)}
+            />
+          ))}
+        </div>
       </div>
+      <div className="train-filter">
+        <span className="stat-label train-filter__label">Days / week</span>
+        <div className="train-filter__chips">
+          {(
+            [
+              ['all', 'All'],
+              ['12', '1–2'],
+              ['3', '3'],
+              ['4', '4'],
+              ['5', '5'],
+              ['6', '6+'],
+            ] as const
+          ).map(([k, l]) => (
+            <Chip key={k} label={l} active={daysF === k} onClick={() => setDaysF(k)} />
+          ))}
+        </div>
+      </div>
+      <div
+        className="state__msg"
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          textAlign: 'left',
+          margin: '4px 0 12px',
+          gap: 8,
+        }}
+      >
+        <span>
+          {filtered.length} {filtered.length === 1 ? 'workout' : 'workouts'}
+        </span>
+        {filtersActive ? (
+          <button type="button" className="train-clear" onClick={clearFilters}>
+            Clear filters
+          </button>
+        ) : null}
+      </div>
+
+      {filtered.length === 0 ? (
+        <Card>
+          <div className="state__msg" style={{ margin: 0 }}>
+            No workouts match these filters. Try clearing one.
+          </div>
+        </Card>
+      ) : (
+        <div className="stack">
+          {filtered.map(({ id, plan: pl }) => (
+            <Card
+              key={id}
+              onClick={() => selectPlan(id)}
+              style={{ borderColor: id === data.planId ? 'var(--accent)' : undefined }}
+            >
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  gap: 8,
+                }}
+              >
+                <div style={{ fontSize: '1.05rem', fontWeight: 800 }}>{pl.name}</div>
+                {id === data.planId ? <span className="pro-badge">{t('active')}</span> : null}
+              </div>
+              <div
+                style={{
+                  color: 'var(--accent)',
+                  fontWeight: 700,
+                  fontSize: '0.8rem',
+                  margin: '3px 0 5px',
+                }}
+              >
+                {pl.tag}
+              </div>
+              <div className="state__msg" style={{ textAlign: 'left', margin: 0 }}>
+                {pl.desc}
+              </div>
+            </Card>
+          ))}
+        </div>
+      )}
 
       {builder.open ? (
         <RoutineBuilder

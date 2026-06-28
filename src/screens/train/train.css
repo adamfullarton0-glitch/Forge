@@ -272,3 +272,30 @@
   font-size: 0.82rem;
   line-height: 1.4;
 }
+
+/* Program-catalogue filters */
+.train-filter {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.train-filter__label {
+  flex-shrink: 0;
+  width: 78px;
+}
+.train-filter__chips {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+.train-clear {
+  background: none;
+  border: none;
+  color: var(--accent);
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}

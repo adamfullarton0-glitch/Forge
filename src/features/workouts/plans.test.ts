@@ -6,6 +6,8 @@ import {
   isCustomPlanId,
   newCustomPlanId,
   DEFAULT_PLAN_ID,
+  PLAN_CATALOGUE,
+  PLAN_LEVELS,
 } from './plans';
 import { getExercise } from './exercises';
 import type { CustomPlan } from '@/types/schemas';
@@ -56,6 +58,29 @@ describe('custom plan ids', () => {
     const id = newCustomPlanId();
     expect(isCustomPlanId(id)).toBe(true);
     expect(newCustomPlanId()).not.toBe(id);
+  });
+});
+
+describe('PLAN_CATALOGUE', () => {
+  it('lists every built-in plan and imported program with filter metadata', () => {
+    // Built-ins plus the imported library — far more than the 10 built-ins alone.
+    expect(PLAN_CATALOGUE.length).toBeGreaterThan(20);
+    expect(PLAN_CATALOGUE.some((e) => e.id === 'ppl')).toBe(true);
+  });
+
+  it('derives a positive day count from the plan itself', () => {
+    for (const e of PLAN_CATALOGUE) {
+      expect(e.days).toBe(e.plan.days.length);
+      expect(e.days).toBeGreaterThan(0);
+    }
+  });
+
+  it('only ever assigns a known level (or null for all-level plans)', () => {
+    for (const e of PLAN_CATALOGUE) {
+      expect(e.level === null || PLAN_LEVELS.includes(e.level)).toBe(true);
+    }
+    // PPL is curated as a beginner-friendly default.
+    expect(PLAN_CATALOGUE.find((e) => e.id === 'ppl')?.level).toBe('beginner');
   });
 });
 

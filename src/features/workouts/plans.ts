@@ -770,6 +770,55 @@ export interface RoutinePlan extends Plan {
   custom?: boolean;
 }
 
+export type PlanLevel = 'beginner' | 'intermediate' | 'advanced';
+export const PLAN_LEVELS: readonly PlanLevel[] = ['beginner', 'intermediate', 'advanced'];
+
+/** Pulls a difficulty level out of a tag string, e.g. "4 days · Intermediate". */
+function levelFromTag(tag: string): PlanLevel | null {
+  const t = tag.toLowerCase();
+  return PLAN_LEVELS.find((lvl) => t.includes(lvl)) ?? null;
+}
+
+/** Curated levels for the flagship built-in plans (their tags carry no level). */
+const BUILTIN_LEVEL: Record<string, PlanLevel> = {
+  ppl: 'beginner',
+  ul: 'intermediate',
+  bro: 'intermediate',
+  fb: 'beginner',
+  arnold: 'advanced',
+  phul: 'intermediate',
+  str5: 'beginner',
+  busy2: 'beginner',
+  db: 'beginner',
+  bw: 'beginner',
+};
+
+/** A catalogue entry with the metadata the Train picker filters on. */
+export interface CatalogueEntry {
+  id: string;
+  plan: RoutinePlan;
+  /** Training sessions defined per week. */
+  days: number;
+  /** Difficulty level for filtering, or null for all-level plans. */
+  level: PlanLevel | null;
+}
+
+/** The full built-in + imported plan catalogue with filter metadata. */
+export const PLAN_CATALOGUE: readonly CatalogueEntry[] = [
+  ...Object.entries(PLANS as Record<string, Plan>).map(([id, plan]) => ({
+    id,
+    plan,
+    days: plan.days.length,
+    level: BUILTIN_LEVEL[id] ?? levelFromTag(plan.tag),
+  })),
+  ...Object.entries(PROGRAMS).map(([id, plan]) => ({
+    id,
+    plan,
+    days: plan.days.length,
+    level: levelFromTag(plan.tag),
+  })),
+];
+
 /** Prefix that marks a custom-routine plan id. */
 export const CUSTOM_PREFIX = 'custom:';
 export const isCustomPlanId = (id: string): boolean => id.startsWith(CUSTOM_PREFIX);
