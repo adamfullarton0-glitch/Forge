@@ -69,6 +69,12 @@ const EXERCISES = [
   'Cable Crossover',
   'Reverse Lunge',
   'Sumo Deadlift',
+  "World's Greatest Stretch",
+  'Standing Hip Circles',
+  'Groiner Stretch',
+  'Hip Flexor Stretch',
+  'Lying Glute Stretch',
+  'Cat-Cow Stretch',
 ];
 
 // Manual hints where fuzzy matching is unreliable: FORGE name → a substring of
@@ -113,6 +119,12 @@ const OVERRIDES = {
   'Hip Thrust': 'Barbell Hip Thrust',
   'Dumbbell Romanian Deadlift': 'Romanian Deadlift',
   'Seated Dumbbell Shoulder Press': 'Seated Dumbbell Press',
+  "World's Greatest Stretch": "World's Greatest Stretch",
+  'Standing Hip Circles': 'Standing Hip Circles',
+  'Groiner Stretch': 'Groiners',
+  'Hip Flexor Stretch': 'Kneeling Hip Flexor',
+  'Lying Glute Stretch': 'Lying Glute',
+  'Cat-Cow Stretch': 'Cat Stretch',
 };
 
 const slug = (s) =>

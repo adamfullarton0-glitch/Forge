@@ -17,6 +17,8 @@ export interface Exercise {
   att?: string[];
   /** Lower-body movement → progress in larger 5 kg / 10 lb jumps. */
   lower?: boolean;
+  /** Mobility / stretch — no load or reps to log, just hold and breathe. */
+  mobility?: boolean;
 }
 
 export const EX: Record<string, Exercise> = {
@@ -680,6 +682,92 @@ export const EX: Record<string, Exercise> = {
     eq: ['barbell'],
     alt: ['Deadlift', 'Romanian Deadlift'],
     lower: true,
+  },
+
+  // ── Mobility & stretching ────────────────────────────────────────────────
+  "World's Greatest Stretch": {
+    m: 'Hamstrings · Hips · Quads',
+    sr: '2 × 5 per side',
+    steps: [
+      'Step into a deep forward lunge and place both hands on the floor inside the front foot.',
+      'Drive the front knee outward, then rotate your chest toward the front leg and reach that arm to the ceiling.',
+      'Bring the hand back down and straighten the front leg to feel the hamstring.',
+      'Step back, switch legs, and repeat.',
+    ],
+    tip: 'Move slowly and breathe — chase a little more rotation each rep, not speed.',
+    eq: [],
+    alt: ['Groiner Stretch', 'Hip Flexor Stretch'],
+    mobility: true,
+  },
+  'Standing Hip Circles': {
+    m: 'Glutes · Hips',
+    sr: '2 × 10 per side',
+    steps: [
+      'Stand tall and balance on one leg, holding a wall or rail if you need to.',
+      'Lift the other knee to hip height in front of you.',
+      'Open the knee out to the side in a slow, controlled circle, then bring it back.',
+      'Finish the set, then switch legs and circle the other way.',
+    ],
+    tip: 'Keep your torso upright — let the movement come from the hip, not by leaning.',
+    eq: [],
+    alt: ["World's Greatest Stretch", 'Hip Flexor Stretch'],
+    mobility: true,
+  },
+  'Groiner Stretch': {
+    m: 'Glutes · Hips · Hamstrings',
+    sr: '2 × 8 per side',
+    steps: [
+      'Start in a push-up position with your hands under your shoulders.',
+      'Step one foot up to the outside of the same-side hand.',
+      'Sink your hips toward the floor to open the groin and hip, then step back.',
+      'Alternate sides each rep.',
+    ],
+    tip: 'Keep the back leg straight and the back heel reaching away for a fuller stretch.',
+    eq: [],
+    alt: ["World's Greatest Stretch", 'Lying Glute Stretch'],
+    mobility: true,
+  },
+  'Hip Flexor Stretch': {
+    m: 'Quads · Hips',
+    sr: '2 × 30s per side',
+    steps: [
+      'Kneel on one knee with the other foot planted in front, both bent about 90°.',
+      'Tuck your tailbone under and squeeze the glute of the down leg.',
+      'Glide your hips gently forward until you feel a stretch at the front of the hip.',
+      'Hold and breathe, then switch sides.',
+    ],
+    tip: 'The glute squeeze is what actually lengthens the hip flexor — not just leaning forward.',
+    eq: [],
+    alt: ['Lying Glute Stretch', 'Standing Hip Circles'],
+    mobility: true,
+  },
+  'Lying Glute Stretch': {
+    m: 'Glutes · Hips',
+    sr: '2 × 30s per side',
+    steps: [
+      'Lie on your back and cross one ankle over the opposite knee to make a figure-4.',
+      'Reach through and hold behind the supporting thigh.',
+      'Draw the thigh toward your chest until you feel a stretch in the glute.',
+      'Hold and breathe, then switch sides.',
+    ],
+    tip: 'Keep the crossed-leg knee pressed open and your head relaxed on the floor.',
+    eq: [],
+    alt: ['Hip Flexor Stretch', 'Groiner Stretch'],
+    mobility: true,
+  },
+  'Cat-Cow Stretch': {
+    m: 'Back · Core',
+    sr: '2 × 10 reps',
+    steps: [
+      'Start on all fours with hands under shoulders and knees under hips.',
+      'Exhale and round your spine toward the ceiling, tucking your chin (cat).',
+      'Inhale and drop your belly, lifting your chest and tailbone (cow).',
+      'Flow smoothly between the two with your breath.',
+    ],
+    tip: 'Let your breath set the pace — exhale to round, inhale to arch.',
+    eq: [],
+    alt: ['Lying Glute Stretch', 'Hip Flexor Stretch'],
+    mobility: true,
   },
 };
 

@@ -26,6 +26,9 @@ interface ExerciseModalProps {
 const equipLabel = (id: string): string =>
   (EQUIPMENT.find((e) => e[0] === id)?.[1] ?? id).toLowerCase();
 
+/** Equipment that adds external load — distinguishes weighted from bodyweight moves. */
+const LOADED_EQ = ['barbell', 'dumbbell', 'cable', 'machine'];
+
 export function ExerciseModal({
   name,
   onClose,
@@ -53,12 +56,21 @@ export function ExerciseModal({
   const gear = data.gear.length ? data.gear : DEFAULT_GEAR;
   const missing = ex.eq.filter((e) => !gear.includes(e));
 
+  // How the movement is loaded decides what (and whether) you log:
+  //  · mobility   → nothing to log, just hold and breathe
+  //  · bodyweight → progress by reps, not added weight
+  //  · loaded     → working weight + plates + double progression
+  const isMobility = ex.mobility === true;
+  const isLoaded = ex.eq.some((e) => LOADED_EQ.includes(e));
+  const isBodyweight = !isMobility && !isLoaded;
+
   const saveLift = (): void => {
     const val = parseFloat(w);
     if (!Number.isFinite(val) || val <= 0) return;
-    const kg = wu === 'lb' ? lb2kg(val) : val;
-    const arr = [...lifts, { d: todayKey(), w: Math.round(kg * 100) / 100, hit }].slice(-20);
-    update({ lifts: { ...data.lifts, [name]: arr } });
+    const entry = isBodyweight
+      ? { d: todayKey(), w: 0, reps: Math.round(val), hit }
+      : { d: todayKey(), w: Math.round((wu === 'lb' ? lb2kg(val) : val) * 100) / 100, hit };
+    update({ lifts: { ...data.lifts, [name]: [...lifts, entry].slice(-20) } });
     setW('');
     setHit(false);
   };
@@ -179,7 +191,7 @@ export function ExerciseModal({
         </div>
       ) : null}
 
-      {due && last ? (
+      {due && last && !isMobility ? (
         <div
           className="warn-box"
           style={{
@@ -188,11 +200,20 @@ export function ExerciseModal({
             borderColor: 'var(--accent)',
           }}
         >
-          Time to add weight — you hit the top of the rep range last time. Load{' '}
-          <b style={{ color: 'var(--accent)' }}>
-            {showW(last.w + inc)} {wu}
-          </b>{' '}
-          today.
+          {isBodyweight ? (
+            <>
+              Nice work — you hit your reps last time. Add a few reps or move to a harder variation
+              today.
+            </>
+          ) : (
+            <>
+              Time to add weight — you hit the top of the rep range last time. Load{' '}
+              <b style={{ color: 'var(--accent)' }}>
+                {showW(last.w + inc)} {wu}
+              </b>{' '}
+              today.
+            </>
+          )}
         </div>
       ) : null}
 
@@ -266,58 +287,88 @@ export function ExerciseModal({
         {ex.tip}
       </div>
 
-      {/* Log working weight */}
-      <div className="ex-modal__label">Log today&apos;s working weight</div>
-      {last ? (
-        <div className="state__msg" style={{ textAlign: 'left', marginBottom: 8 }}>
-          Last:{' '}
-          <b style={{ color: 'var(--text)' }}>
-            {showW(last.w)} {wu}
-          </b>{' '}
-          · {last.d}
-          {last.hit ? ' · hit top reps ✓' : ''}
+      {/* Log a set — adapts to how the movement is loaded */}
+      {isMobility ? (
+        <div
+          className="warn-box"
+          style={{
+            background: 'var(--panel-2)',
+            borderColor: 'var(--glass-border)',
+            margin: '0 0 18px',
+          }}
+        >
+          <span style={{ color: 'var(--accent)', fontWeight: 800 }}>Mobility — </span>
+          hold each round for the prescribed time and breathe into the stretch. Nothing to load or
+          log; just aim for a touch more range each session.
         </div>
-      ) : null}
-      <div
-        style={{ display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap', marginBottom: 8 }}
-      >
-        <input
-          className="input"
-          style={{ width: 110 }}
-          type="number"
-          inputMode="decimal"
-          aria-label={`Working weight in ${wu}`}
-          placeholder={wu}
-          value={w}
-          onChange={(e) => setW(e.target.value)}
-        />
-        <span style={{ color: 'var(--muted)', fontWeight: 700 }}>{wu}</span>
-        <Button onClick={saveLift}>Log</Button>
-      </div>
-      <label
-        style={{
-          display: 'flex',
-          gap: 8,
-          alignItems: 'center',
-          cursor: 'pointer',
-          marginBottom: 8,
-        }}
-      >
-        <input
-          type="checkbox"
-          checked={hit}
-          onChange={(e) => setHit(e.target.checked)}
-          style={{ width: 16, height: 16 }}
-        />
-        I hit the top of the rep range on every set
-      </label>
-      <div
-        className="state__msg"
-        style={{ textAlign: 'left', fontSize: '0.72rem', marginBottom: 18 }}
-      >
-        Tick that and FORGE will tell you to add {ex.lower ? '5 kg / 10 lb' : '2.5 kg / 5 lb'} next
-        session — double progression, the way coaches program it.
-      </div>
+      ) : (
+        <>
+          <div className="ex-modal__label">
+            {isBodyweight ? "Log today's best set" : "Log today's working weight"}
+          </div>
+          {last ? (
+            <div className="state__msg" style={{ textAlign: 'left', marginBottom: 8 }}>
+              Last:{' '}
+              <b style={{ color: 'var(--text)' }}>
+                {isBodyweight ? `${last.reps ?? '–'} reps` : `${showW(last.w)} ${wu}`}
+              </b>{' '}
+              · {last.d}
+              {last.hit ? (isBodyweight ? ' · hit target ✓' : ' · hit top reps ✓') : ''}
+            </div>
+          ) : null}
+          <div
+            style={{
+              display: 'flex',
+              gap: 8,
+              alignItems: 'center',
+              flexWrap: 'wrap',
+              marginBottom: 8,
+            }}
+          >
+            <input
+              className="input"
+              style={{ width: 110 }}
+              type="number"
+              inputMode={isBodyweight ? 'numeric' : 'decimal'}
+              aria-label={isBodyweight ? 'Reps' : `Working weight in ${wu}`}
+              placeholder={isBodyweight ? 'reps' : wu}
+              value={w}
+              onChange={(e) => setW(e.target.value)}
+            />
+            <span style={{ color: 'var(--muted)', fontWeight: 700 }}>
+              {isBodyweight ? 'reps' : wu}
+            </span>
+            <Button onClick={saveLift}>Log</Button>
+          </div>
+          <label
+            style={{
+              display: 'flex',
+              gap: 8,
+              alignItems: 'center',
+              cursor: 'pointer',
+              marginBottom: 8,
+            }}
+          >
+            <input
+              type="checkbox"
+              checked={hit}
+              onChange={(e) => setHit(e.target.checked)}
+              style={{ width: 16, height: 16 }}
+            />
+            {isBodyweight
+              ? 'I hit my target reps on every set'
+              : 'I hit the top of the rep range on every set'}
+          </label>
+          <div
+            className="state__msg"
+            style={{ textAlign: 'left', fontSize: '0.72rem', marginBottom: 18 }}
+          >
+            {isBodyweight
+              ? 'Tick that and FORGE will nudge you to add reps or progress to a harder variation next session.'
+              : `Tick that and FORGE will tell you to add ${ex.lower ? '5 kg / 10 lb' : '2.5 kg / 5 lb'} next session — double progression, the way coaches program it.`}
+          </div>
+        </>
+      )}
 
       {ex.eq.includes('barbell') ? (
         <div style={{ marginBottom: 18 }}>

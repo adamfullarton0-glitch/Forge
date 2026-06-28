@@ -69,6 +69,23 @@ describe('ExerciseModal', () => {
     expect(screen.queryByTitle(/tutorial/i)).not.toBeInTheDocument();
   });
 
+  it('logs reps, not weight, for a bodyweight movement', async () => {
+    const user = userEvent.setup();
+    render(<ExerciseModal name="Push-Up" onClose={() => undefined} />);
+    expect(screen.getByText(/log today's best set/i)).toBeInTheDocument();
+    await user.type(screen.getByLabelText(/^reps$/i), '20');
+    await user.click(screen.getByRole('button', { name: /^log$/i }));
+    const log = useStore.getState().data.lifts['Push-Up'];
+    expect(log?.[0]?.reps).toBe(20);
+    expect(log?.[0]?.w).toBe(0);
+  });
+
+  it('shows a mobility note and no weight logging for a stretch', () => {
+    render(<ExerciseModal name="Hip Flexor Stretch" onClose={() => undefined} />);
+    expect(screen.getByText(/hold each round/i)).toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /^log$/i })).not.toBeInTheDocument();
+  });
+
   it('persists the pick via onSwap when an alternative is chosen', async () => {
     const user = userEvent.setup();
     const onSwap = vi.fn();
