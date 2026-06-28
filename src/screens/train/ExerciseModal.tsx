@@ -29,6 +29,16 @@ const equipLabel = (id: string): string =>
 /** Equipment that adds external load — distinguishes weighted from bodyweight moves. */
 const LOADED_EQ = ['barbell', 'dumbbell', 'cable', 'machine'];
 
+/** Short, title-cased equipment names for the meta pills. */
+const SHORT_EQ: Record<string, string> = {
+  barbell: 'Barbell',
+  dumbbell: 'Dumbbell',
+  cable: 'Cable',
+  machine: 'Machine',
+  bench: 'Bench',
+  pullupbar: 'Pull-up bar',
+};
+
 export function ExerciseModal({
   name,
   onClose,
@@ -93,9 +103,23 @@ export function ExerciseModal({
         }}
       >
         <div>
-          <div style={{ fontSize: '1.35rem', fontWeight: 800 }}>{name}</div>
-          <div className="state__msg" style={{ textAlign: 'left', margin: '3px 0 0' }}>
-            {ex.m} · <span style={{ color: 'var(--accent)', fontWeight: 700 }}>{ex.sr}</span>
+          <div style={{ fontSize: '1.35rem', fontWeight: 800, lineHeight: 1.2 }}>{name}</div>
+          <div className="state__msg" style={{ textAlign: 'left', margin: '4px 0 0' }}>
+            {ex.m}
+          </div>
+          <div className="ex-meta">
+            <span className="ex-pill ex-pill--target">{ex.sr}</span>
+            {isMobility ? (
+              <span className="ex-pill">Mobility</span>
+            ) : isBodyweight ? (
+              <span className="ex-pill">Bodyweight</span>
+            ) : (
+              ex.eq.map((e) => (
+                <span key={e} className="ex-pill">
+                  {SHORT_EQ[e] ?? e}
+                </span>
+              ))
+            )}
           </div>
         </div>
         <button type="button" className="modal-close" aria-label="Close" onClick={onClose}>

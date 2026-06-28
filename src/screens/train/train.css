@@ -273,6 +273,29 @@
   line-height: 1.4;
 }
 
+/* Exercise-page meta strip: target + equipment/type pills under the title. */
+.ex-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+.ex-pill {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 99px;
+  border: 1px solid var(--glass-border);
+  color: var(--muted);
+  background: var(--panel-2);
+  white-space: nowrap;
+}
+.ex-pill--target {
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-color: color-mix(in srgb, var(--accent) 35%, transparent);
+}
+
 /* Program-catalogue filters */
 .train-filter {
   display: flex;
