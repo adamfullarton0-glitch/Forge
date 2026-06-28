@@ -69,6 +69,22 @@ describe('ExerciseModal', () => {
     expect(screen.queryByTitle(/tutorial/i)).not.toBeInTheDocument();
   });
 
+  it('persists the pick via onSwap when an alternative is chosen', async () => {
+    const user = userEvent.setup();
+    const onSwap = vi.fn();
+    render(<ExerciseModal name="Barbell Bench Press" onClose={() => undefined} onSwap={onSwap} />);
+    await user.click(screen.getByRole('button', { name: /incline dumbbell press/i }));
+    expect(onSwap).toHaveBeenCalledWith('Incline Dumbbell Press');
+  });
+
+  it('falls back to onOpen (preview) when no onSwap is provided', async () => {
+    const user = userEvent.setup();
+    const onOpen = vi.fn();
+    render(<ExerciseModal name="Barbell Bench Press" onClose={() => undefined} onOpen={onOpen} />);
+    await user.click(screen.getByRole('button', { name: /incline dumbbell press/i }));
+    expect(onOpen).toHaveBeenCalledWith('Incline Dumbbell Press');
+  });
+
   it('plays the tutorial in-app, embedding with a referrer policy that avoids Error 153', async () => {
     const user = userEvent.setup();
     render(<ExerciseModal name="Barbell Bench Press" onClose={() => undefined} />);

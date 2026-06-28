@@ -13,14 +13,25 @@ import { getUnits, kg2lb, lb2kg, platesFor, todayKey } from '@/lib/calc';
 interface ExerciseModalProps {
   name: string;
   onClose: () => void;
-  /** Swap to an alternative exercise (keeps the modal open on the new one). */
+  /** Preview an alternative exercise (keeps the modal open on the new one). */
   onOpen?: (name: string) => void;
+  /**
+   * Replace this movement with an alternative and persist the choice (active
+   * workout only). When set, the swap chips save the pick instead of just
+   * previewing it.
+   */
+  onSwap?: (name: string) => void;
 }
 
 const equipLabel = (id: string): string =>
   (EQUIPMENT.find((e) => e[0] === id)?.[1] ?? id).toLowerCase();
 
-export function ExerciseModal({ name, onClose, onOpen }: ExerciseModalProps): JSX.Element | null {
+export function ExerciseModal({
+  name,
+  onClose,
+  onOpen,
+  onSwap,
+}: ExerciseModalProps): JSX.Element | null {
   const data = useData();
   const update = useUpdate();
   const ex = getExercise(name);
@@ -349,9 +360,14 @@ export function ExerciseModal({ name, onClose, onOpen }: ExerciseModalProps): JS
       {ex.alt.length > 0 ? (
         <div>
           <div className="ex-modal__label">Swap / alternatives</div>
+          {onSwap ? (
+            <div className="state__msg" style={{ textAlign: 'left', margin: '0 0 8px' }}>
+              Pick one to use it for this session — your choice is saved.
+            </div>
+          ) : null}
           <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
             {ex.alt.map((a) => (
-              <Chip key={a} label={`${a} →`} onClick={() => onOpen?.(a)} />
+              <Chip key={a} label={`${a} →`} onClick={() => (onSwap ?? onOpen)?.(a)} />
             ))}
           </div>
         </div>

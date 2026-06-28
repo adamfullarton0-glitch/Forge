@@ -47,7 +47,9 @@ export function ActiveWorkout({ active }: { active: ActiveState }): JSX.Element 
   const navigate = useNavigate();
   const t = translator(data.settings.lang);
 
-  const [modal, setModal] = useState<string | null>(null);
+  // The planned-exercise slot whose detail modal is open (keyed by the original
+  // exercise, so a swap persists to active.swaps[orig] even after it changes).
+  const [modalOrig, setModalOrig] = useState<string | null>(null);
   const [rest, setRest] = useState(0);
 
   // One ticking interval for the component's life; only counts down when armed.
@@ -251,7 +253,7 @@ export function ActiveWorkout({ active }: { active: ActiveState }): JSX.Element 
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
               <button
                 type="button"
-                onClick={() => setModal(nm)}
+                onClick={() => setModalOrig(orig)}
                 style={{
                   flex: 1,
                   textAlign: 'left',
@@ -424,8 +426,18 @@ export function ActiveWorkout({ active }: { active: ActiveState }): JSX.Element 
         />
       ) : null}
 
-      {modal ? (
-        <ExerciseModal name={modal} onClose={() => setModal(null)} onOpen={setModal} />
+      {modalOrig != null ? (
+        <ExerciseModal
+          name={swaps[modalOrig] ?? modalOrig}
+          onClose={() => setModalOrig(null)}
+          onSwap={(repl) => {
+            const next = { ...swaps };
+            // Swapping back to the planned movement clears the override.
+            if (repl === modalOrig) delete next[modalOrig];
+            else next[modalOrig] = repl;
+            update({ active: { ...active, swaps: next } });
+          }}
+        />
       ) : null}
     </div>
   );
