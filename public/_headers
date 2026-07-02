@@ -1,0 +1,11 @@
+# Security headers for static hosts that read a `_headers` file
+# (Netlify, Cloudflare Pages, etc.). The CSP mirrors the <meta> injected at
+# build time so protection holds even on hosts that ignore this file.
+/*
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ytimg.com https://www.themealdb.com https://themealdb.com; font-src 'self'; connect-src 'self' https://world.openfoodfacts.org https://www.themealdb.com; frame-src https://www.youtube-nocookie.com; worker-src 'self'; manifest-src 'self'; media-src 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: DENY
+  Cross-Origin-Opener-Policy: same-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), magnetometer=(), browsing-topics=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains

@@ -15,6 +15,7 @@ dev-dist
 coverage
 playwright-report
 test-results
+screenshots
 /blob-report
 /playwright/.cache
 
@@ -33,3 +34,6 @@ test-results
 .env
 .env.local
 .env.*.local
+
+# TS incremental build info
+*.tsbuildinfo

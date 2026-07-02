@@ -12,7 +12,20 @@ export type IconName =
   | 'sleep'
   | 'settings'
   | 'alert'
-  | 'refresh';
+  | 'refresh'
+  | 'flame'
+  | 'chart'
+  | 'target'
+  | 'bolt'
+  | 'moon'
+  | 'star'
+  | 'check'
+  | 'trophy'
+  | 'dumbbell'
+  | 'clock'
+  | 'water'
+  | 'plus'
+  | 'cart';
 
 const paths: Record<IconName, string> = {
   home: 'M3 11.5 12 4l9 7.5M5 10v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-9',
@@ -28,6 +41,21 @@ const paths: Record<IconName, string> = {
   alert:
     'M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z',
   refresh: 'M21 12a9 9 0 1 1-2.6-6.4M21 3v6h-6',
+  flame:
+    'M12 3c1.2 3.2 4.2 4.6 4.2 8.2A4.2 4.2 0 0 1 7.8 11C7.8 9.5 8.3 8.6 9 7.7c.2 1.1.9 1.8 1.7 2C10.2 8.2 10.8 5.6 12 3z',
+  chart: 'M4 20V10M10 20V4M16 20v-7M22 20H2',
+  target: 'M12 4a8 8 0 1 0 0 16 8 8 0 0 0 0-16zM12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z',
+  bolt: 'M13 2 4 14h6l-1 8 9-12h-6z',
+  moon: 'M21 12.8A8.5 8.5 0 1 1 11.2 3a6.6 6.6 0 0 0 9.8 9.8z',
+  star: 'M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 17l-5.2 2.6 1-5.8-4.3-4.1 5.9-.9z',
+  check: 'M5 12.5l4.5 4.5L19 6.5',
+  trophy:
+    'M7 4h10v4a5 5 0 0 1-10 0zM7 6H4.5v1.5A3 3 0 0 0 7 10.4M17 6h2.5v1.5A3 3 0 0 1 17 10.4M9.5 17h5l.5 3h-6z',
+  dumbbell: 'M4 9v6M8 7v10M16 7v10M20 9v6M8 12h8',
+  clock: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 7v5l3.5 2',
+  water: 'M12 3c4 4.5 6.5 7.8 6.5 10.5a6.5 6.5 0 0 1-13 0C5.5 10.8 8 7.5 12 3z',
+  plus: 'M12 5v14M5 12h14',
+  cart: 'M3 4h2l2.4 11.4a1.5 1.5 0 0 0 1.5 1.2h8a1.5 1.5 0 0 0 1.5-1.2L21 8H6M9 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2zM17 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2z',
 };
 
 interface IconProps extends Omit<SVGProps<SVGSVGElement>, 'name'> {
