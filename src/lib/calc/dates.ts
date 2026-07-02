@@ -6,7 +6,11 @@
 /** Short day labels, Monday-first to match the schedule grid. */
 export const DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] as const;
 
-const isoKey = (d: Date): string => d.toISOString().slice(0, 10);
+// Built from LOCAL date parts — toISOString() is UTC, which would roll the
+// "day" over at UTC midnight (e.g. 7pm in New York) and split an evening's
+// food log across two dates.
+const isoKey = (d: Date): string =>
+  `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 
 /** Today as `YYYY-MM-DD`. */
 export const todayKey = (now: Date = new Date()): string => isoKey(now);

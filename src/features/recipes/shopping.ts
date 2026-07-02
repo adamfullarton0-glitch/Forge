@@ -6,8 +6,27 @@
  */
 import type { ShoppingItem } from '@/types/schemas';
 
-/** Case-insensitive de-dup key for an ingredient name. */
-const key = (s: string): string => s.trim().toLowerCase();
+/**
+ * Case-insensitive de-dup key for an ingredient name. Recipes embed quantities
+ * ("2 Chicken Breasts", "250g Cheese", "4 tbsp Sour Cream") while others use
+ * bare names ("chicken breast") — the key strips a leading amount + measure
+ * word and a plural "s" so those all merge into one line instead of three.
+ * Display names keep their original text; only comparison is normalised.
+ */
+const key = (s: string): string => {
+  let k = s.trim().toLowerCase();
+  // Leading quantity: "2 ", "1/2 ", "1.5 ", "½ ", or attached metric "250g ".
+  k = k.replace(/^(?:\d+[\d.,/]*(?:g|kg|ml|l|oz)\b|\d+[\d.,/]*(?=\s)|[½¼¾⅓⅔])\s*/, '');
+  // A standalone measure word left behind ("tbsp sour cream", "leaves lettuce").
+  k = k.replace(
+    /^(?:g|kg|ml|l|oz|lbs?|tbsps?|tsps?|cups?|cloves?|slices?|leaves|leaf|cans?|tins?|pinch(?:es)?|handfuls?)\b\.?\s+/,
+    '',
+  );
+  k = k.replace(/^of\s+/, '');
+  // Naive singular so "chicken breasts" and "chicken breast" collide.
+  if (k.length > 3 && k.endsWith('s') && !k.endsWith('ss')) k = k.slice(0, -1);
+  return k || s.trim().toLowerCase();
+};
 
 /**
  * Merge ingredient names into the list, de-duplicating case-insensitively and

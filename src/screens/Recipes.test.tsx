@@ -134,6 +134,8 @@ describe('Recipes', () => {
     renderRecipes();
     await user.click(screen.getByRole('button', { name: /create recipe/i }));
     await user.type(screen.getByLabelText(/recipe name/i), 'My Power Bowl');
+    // Calories are required — a 0-kcal recipe would poison kcal sorts/filters.
+    await user.type(screen.getByLabelText(/calories/i), '520');
     await user.type(screen.getByLabelText(/add an ingredient/i), 'chicken breast');
     // The "Add" button next to the ingredient input.
     await user.click(screen.getAllByRole('button', { name: 'Add' })[0]!);

@@ -20,6 +20,7 @@ export function More(): JSX.Element {
   const navigate = useNavigate();
   const t = translator(data.settings.lang);
   const [showPro, setShowPro] = useState(false);
+  const [confirmFree, setConfirmFree] = useState(false);
 
   const toggleDevice = (name: string): void => {
     const has = data.devices.includes(name);
@@ -109,8 +110,19 @@ export function More(): JSX.Element {
                 Active
               </div>
             </div>
-            <Button variant="ghost" onClick={() => update({ pro: false })}>
-              {t('manage')}
+            <Button
+              variant="ghost"
+              onClick={() => {
+                // One accidental tap shouldn't cancel PRO and hide its screens.
+                if (confirmFree) {
+                  update({ pro: false });
+                  setConfirmFree(false);
+                } else {
+                  setConfirmFree(true);
+                }
+              }}
+            >
+              {confirmFree ? 'Tap again to confirm' : t('manage')}
             </Button>
           </Card>
 

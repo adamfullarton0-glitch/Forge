@@ -60,10 +60,12 @@ export function calorieGuide(p: TargetsProfile | null | undefined): CalorieGuide
   if (!Number.isFinite(raw)) return null;
   const maintenance = Math.max(1200, Math.round(raw / 10) * 10);
   const r = (k: number) => Math.max(1200, Math.round(k / 10) * 10);
+  // Cut/lean-bulk use the SAME offsets as calcTargets (−450/+300) so the
+  // guide's highlighted number matches the tracker's target on the same screen.
   return {
     maintenance,
-    cut: r(maintenance - 500),
-    leanBulk: r(maintenance + 250),
+    cut: r(maintenance - 450),
+    leanBulk: r(maintenance + 300),
     aggressiveBulk: r(maintenance + 500),
   };
 }

@@ -48,13 +48,26 @@ export interface RecipeMeta {
 
 export function recipeMeta(r: Recipe): RecipeMeta {
   const total = recipeMins(r);
-  const prep = Math.max(5, Math.round(total * 0.35));
+  // Prep + cook must never exceed the total (a 3-min shake is not
+  // "5 min prep · 5 min cook").
+  const prep = Math.min(total, Math.max(1, Math.round(total * 0.35)));
   return {
     total,
     prep,
-    cook: Math.max(5, total - prep),
+    cook: Math.max(0, total - prep),
     diff: total <= 15 ? 'Easy' : total <= 30 ? 'Medium' : 'Involved',
   };
+}
+
+/**
+ * How many servings a recipe's ingredient list makes. Real-library dishes list
+ * whole-dish quantities while their macros are per serving (the import divides
+ * by these same counts — see scripts/build-real-recipes.mjs); hand-written and
+ * custom recipes are single-serving.
+ */
+export function recipeServes(r: Recipe): number {
+  if (!r.cat) return 1;
+  return r.cat === 'Dessert' ? 8 : r.cat === 'Breakfast' ? 2 : 4;
 }
 
 export interface RecipeFilters {
@@ -91,7 +104,9 @@ export function filterRecipes(recipes: readonly Recipe[], f: RecipeFilters): Rec
 
   const q = f.q.trim().toLowerCase();
   if (q) {
-    list = list.filter((r) => r.name.toLowerCase().includes(q) || r.ing.some((i) => i.includes(q)));
+    list = list.filter(
+      (r) => r.name.toLowerCase().includes(q) || r.ing.some((i) => i.toLowerCase().includes(q)),
+    );
   }
   if (f.meal !== 'all') list = list.filter((r) => mealOf(r) === f.meal);
   if (f.cat !== 'all') list = list.filter((r) => catOf(r) === f.cat);

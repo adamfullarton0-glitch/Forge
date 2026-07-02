@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Card } from '@/components/Card';
 import { Button } from '@/components/Button';
 import { Chip } from '@/components/Chip';
-import { useData, useUpdate, useReset } from '@/features/store';
+import { useData, useUpdate, useReset, usePhotos, useSetPhotos } from '@/features/store';
 import { accents } from '@/theme/pulse';
 import { EQUIPMENT } from '@/features/workouts/plans';
 import { ALLERGENS, DISLIKE_CHIPS } from '@/features/nutrition/constants';
@@ -15,6 +15,8 @@ export function Settings(): JSX.Element | null {
   const data = useData();
   const update = useUpdate();
   const reset = useReset();
+  const photos = usePhotos();
+  const setPhotos = useSetPhotos();
   const t = translator(data.settings.lang);
   const [msg, setMsg] = useState('');
 
@@ -38,7 +40,7 @@ export function Settings(): JSX.Element | null {
 
   const doExport = (): void => {
     try {
-      const blob = new Blob([exportBackup(data)], { type: 'application/json' });
+      const blob = new Blob([exportBackup(data, photos)], { type: 'application/json' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
@@ -60,6 +62,7 @@ export function Settings(): JSX.Element | null {
       const result = importBackup(text);
       if (result.ok) {
         update(result.state);
+        if (result.photos.length > 0) setPhotos(result.photos);
         setMsg(t('imported'));
       } else {
         setMsg(t('badNote'));

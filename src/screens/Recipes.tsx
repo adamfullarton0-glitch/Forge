@@ -390,7 +390,7 @@ export function Recipes(): JSX.Element | null {
             <div className="rc-row">
               {s.recipes.slice(0, 12).map((r) => (
                 <RecipeCard
-                  key={r.name + (r.gi ?? 'f')}
+                  key={r.id ?? r.name + (r.gi ?? 'f')}
                   r={r}
                   photoUrl={recipePhoto(r)}
                   saved={saved.has(r.name)}
@@ -410,7 +410,7 @@ export function Recipes(): JSX.Element | null {
 
       {filtersActive &&
         visible.map((r) => (
-          <Card key={r.name + (r.gi ?? 'f')} style={{ marginBottom: 10 }}>
+          <Card key={r.id ?? r.name + (r.gi ?? 'f')} style={{ marginBottom: 10 }}>
             <button
               type="button"
               onClick={() => setModal(r)}

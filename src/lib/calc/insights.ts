@@ -80,14 +80,23 @@ export function coachInsights(data: CoachData, now: Date = new Date()): Insight[
   const groups = Object.keys(mus);
   if (groups.length > 0 && wk.length >= 2) {
     const top = Object.entries(mus).sort((a, b) => b[1] - a[1])[0];
-    const majors = ['Chest', 'Back', 'Quads', 'Hamstrings', 'Shoulders'];
-    const trained = new Set(groups);
-    const missing = majors.find((m) => !trained.has(m));
+    // Recorded muscle names are the exercises' prime movers ("Lats", "Side
+    // delts", "Upper chest"…), so match each major group by keyword — an exact
+    // name check would claim "no back" right after a full pull day.
+    const majors: Array<[string, string[]]> = [
+      ['chest', ['chest']],
+      ['back', ['back', 'lat', 'trap']],
+      ['quads', ['quad']],
+      ['hamstrings', ['hamstring', 'posterior chain']],
+      ['shoulders', ['delt', 'shoulder']],
+    ];
+    const trained = groups.map((g) => g.toLowerCase());
+    const missing = majors.find(([, kws]) => !trained.some((g) => kws.some((k) => g.includes(k))));
     if (missing && top) {
       out.push({
         icon: 'target',
         title: 'Balance your week',
-        text: `Plenty of ${top[0].toLowerCase()} work but no ${missing.toLowerCase()} yet this week.`,
+        text: `Plenty of ${top[0].toLowerCase()} work but no ${missing[0]} yet this week.`,
       });
     }
   }
@@ -95,12 +104,12 @@ export function coachInsights(data: CoachData, now: Date = new Date()): Insight[
   // Protein gap today.
   const log = (data.foodLog ?? {})[todayKey(now)] ?? [];
   const tg = calcTargets(p);
-  const proteinToday = log.reduce((a, x) => a + (Number(x.p) || 0), 0);
+  const proteinToday = Math.round(log.reduce((a, x) => a + (Number(x.p) || 0), 0));
   if (log.length >= 2 && proteinToday < tg.protein * 0.6) {
     out.push({
       icon: 'bolt',
       title: "Protein's running low",
-      text: `You're at ${proteinToday}g of ${tg.protein}g today. A shake or some chicken would close the gap.`,
+      text: `You're at ${proteinToday} g of ${tg.protein} g today. A shake or some chicken would close the gap.`,
     });
   }
 
@@ -118,11 +127,13 @@ export function coachInsights(data: CoachData, now: Date = new Date()): Insight[
     const diff = Math.round(Math.abs(l - f) * 10) / 10;
     if (toward && diff >= 0.3) {
       const { wu } = getUnits(p);
-      const show = wu === 'lb' ? kg2lb(diff) : diff;
+      const show = wu === 'lb' ? Math.round(kg2lb(diff) * 10) / 10 : diff;
       out.push({
         icon: 'target',
         title: 'Trending to goal',
-        text: `${show}${wu} ${p.goal === 'gain' ? 'gained' : 'down'} since you started. Stay the course.`,
+        // Word follows the actual direction of change — a maintain-goal user
+        // can be trending toward target from either side.
+        text: `${show} ${wu} ${l > f ? 'gained' : 'down'} since you started. Stay the course.`,
       });
     }
   }

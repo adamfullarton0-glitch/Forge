@@ -66,14 +66,18 @@ function toNum(v: unknown): number {
 
 function mapProduct(pr: Product): FoodItem {
   const nut = pr.nutriments ?? {};
-  // Prefer per-serving values when the product provides them.
-  const basis = nut['energy-kcal_serving'] != null ? 'serving' : '100g';
-  const read = (key: string): number => toNum(nut[`${key}_${basis}`] ?? nut[`${key}_100g`]);
+  // Use the per-serving basis only when ALL core macros carry serving values —
+  // otherwise a product with serving kcal but 100g-only protein would blend
+  // two bases into one item. Never fall back across bases: a missing nutrient
+  // reads 0 ("no data") rather than a value from the wrong basis.
+  const core = ['energy-kcal', 'proteins', 'carbohydrates', 'fat'];
+  const basis = core.every((k) => nut[`${k}_serving`] != null) ? 'serving' : '100g';
+  const read = (key: string): number => toNum(nut[`${key}_${basis}`]);
   const brand = pr.brands ? (pr.brands.split(',')[0] ?? '') : '';
   const name = [brand, pr.product_name].filter(Boolean).join(' · ') || pr.product_name || 'Food';
   return {
     n: name.slice(0, 60),
-    kcal: Math.round(toNum(nut[`energy-kcal_${basis}`] ?? nut['energy-kcal_100g'])),
+    kcal: Math.round(read('energy-kcal')),
     p: Math.round(read('proteins')),
     c: Math.round(read('carbohydrates')),
     f: Math.round(read('fat')),

@@ -9,10 +9,16 @@ interface ProModalProps {
   onActivate: () => void;
 }
 
+/**
+ * Recipes PRO unlocks. Kept as a literal so this modal doesn't pull the whole
+ * recipe library into its bundle — ProModal.test.ts asserts it stays honest.
+ */
+export const PRO_RECIPE_COUNT = 175;
+
 const PERKS: ReadonlyArray<[IconName, string, string]> = [
   ['moon', 'Sleep', 'Auto-synced sleep tracking & a recovery score'],
   ['stats', 'Smart devices', 'Connect your watch, band or scale'],
-  ['recipes', '584 PRO recipes', 'The full recipe library, unlocked'],
+  ['recipes', `${PRO_RECIPE_COUNT}+ PRO recipes`, 'The full recipe library, unlocked'],
   ['chart', 'Progress +', 'Deeper trends and history'],
 ];
 

@@ -1,6 +1,5 @@
 import { type CSSProperties } from 'react';
 import { Card } from '@/components/Card';
-import { Chip } from '@/components/Chip';
 import { useData, useUpdate } from '@/features/store';
 import { getPlan } from '@/features/workouts/plans';
 import { dayIdx } from '@/lib/calc';
@@ -16,7 +15,6 @@ const DAY_NAMES = [
   'Saturday',
   'Sunday',
 ] as const;
-const LEADS = [15, 30, 45, 60] as const;
 const DEFAULT_TIME = '18:00';
 
 /**
@@ -122,7 +120,7 @@ export function Plan(): JSX.Element | null {
             cursor: 'pointer',
           }}
         >
-          <span style={{ fontWeight: 700 }}>Remind me before sessions</span>
+          <span style={{ fontWeight: 700 }}>Show upcoming sessions on Home</span>
           <input
             type="checkbox"
             checked={data.remind.on}
@@ -130,23 +128,6 @@ export function Plan(): JSX.Element | null {
             style={{ width: 18, height: 18, flexShrink: 0 }}
           />
         </label>
-        {data.remind.on ? (
-          <div style={{ marginTop: 12 }}>
-            <div className="stat-label" style={{ marginBottom: 6 }}>
-              Notify me
-            </div>
-            <div style={{ display: 'flex', gap: 7, flexWrap: 'wrap' }}>
-              {LEADS.map((m) => (
-                <Chip
-                  key={m}
-                  label={`${m} min before`}
-                  active={data.remind.lead === m}
-                  onClick={() => update({ remind: { ...data.remind, lead: m } })}
-                />
-              ))}
-            </div>
-          </div>
-        ) : null}
       </Card>
 
       {/* Weekly schedule */}

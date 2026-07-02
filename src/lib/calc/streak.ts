@@ -1,4 +1,5 @@
 /** Consecutive-day training streak. Pure given an injectable `now`. */
+import { todayKey } from './dates';
 
 interface DatedEntry {
   d: string;
@@ -13,7 +14,8 @@ export function computeStreak(
   now: Date = new Date(),
 ): number {
   const days = new Set((done ?? []).map((x) => x.d));
-  const key = (d: Date) => d.toISOString().slice(0, 10);
+  // Local-day key (matches how entries are stamped) — not UTC.
+  const key = (d: Date) => todayKey(d);
   const cursor = new Date(now);
   if (!days.has(key(cursor))) cursor.setDate(cursor.getDate() - 1);
   let streak = 0;

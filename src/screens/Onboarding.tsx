@@ -95,10 +95,22 @@ export function Onboarding(): JSX.Element {
       [k]: prev[k].includes(v) ? prev[k].filter((x) => x !== v) : [...prev[k], v],
     }));
 
-  const heightOk = f.heightUnit === 'cm' ? f.heightCm !== '' : f.heightFt !== '';
+  // Values must parse to something physically sane — `type="number"` still
+  // lets "-70" or "0" through, which would poison every downstream target.
+  const inRange = (v: string, lo: number, hi: number): boolean => {
+    const n = parseFloat(v);
+    return Number.isFinite(n) && n >= lo && n <= hi;
+  };
+  const heightOk = f.heightUnit === 'cm' ? inRange(f.heightCm, 90, 250) : inRange(f.heightFt, 3, 8);
+  const weightOk = (v: string): boolean =>
+    f.weightUnit === 'kg' ? inRange(v, 25, 350) : inRange(v, 55, 770);
   const canContinue =
     step !== 1 ||
-    (f.name.trim() !== '' && f.age !== '' && heightOk && f.weight !== '' && f.targetWeight !== '');
+    (f.name.trim() !== '' &&
+      inRange(f.age, 10, 100) &&
+      heightOk &&
+      weightOk(f.weight) &&
+      weightOk(f.targetWeight));
 
   const finish = (): void => {
     const heightCm =
@@ -118,8 +130,9 @@ export function Onboarding(): JSX.Element {
       sex: f.sex,
       age: Math.max(0, Math.round(num(f.age, 25))),
       height: Math.round(heightCm),
-      weight: Math.round(weightKg * 10) / 10,
-      targetWeight: Math.round(targetKg * 10) / 10,
+      // 2-decimal precision so lb entries round-trip exactly (180 lb → 81.65 kg).
+      weight: Math.round(weightKg * 100) / 100,
+      targetWeight: Math.round(targetKg * 100) / 100,
       weightUnit: f.weightUnit,
       heightUnit: f.heightUnit,
       goal: f.goal,

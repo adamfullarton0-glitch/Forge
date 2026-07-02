@@ -125,8 +125,9 @@ describe('safety + gating + filtering', () => {
 
     const search = filterRecipes(ALL_RECIPES, { ...base, q: 'salmon' });
     expect(search.length).toBeGreaterThan(0);
+    // Ingredient matching is case-insensitive ("Salmon Fillet" matches "salmon").
     expect(
-      search.every((r) => /salmon/i.test(r.name) || r.ing.some((i) => i.includes('salmon'))),
+      search.every((r) => /salmon/i.test(r.name) || r.ing.some((i) => /salmon/i.test(i))),
     ).toBe(true);
   });
 

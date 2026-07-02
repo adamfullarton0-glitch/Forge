@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Modal } from '@/components/Modal';
 import { Button } from '@/components/Button';
 import { Icon } from '@/components/Icon';
-import { recipeMeta } from '@/features/recipes/filter';
+import { recipeMeta, recipeServes } from '@/features/recipes/filter';
 import { cookSteps } from '@/features/recipes/cooking';
 import { gradOf, type Recipe } from '@/features/recipes/data';
 import { translator, type TKey } from '@/lib/i18n';
@@ -131,8 +131,10 @@ export function RecipeModal({
           <b style={{ color: 'var(--text)' }}>{meta.total} min</b> total
         </span>
         <span>{meta.prep} min prep</span>
-        <span>{meta.cook} min cook</span>
-        <span>Serves 1</span>
+        {meta.cook > 0 ? <span>{meta.cook} min cook</span> : null}
+        <span>
+          {recipeServes(r) > 1 ? `Serves ${recipeServes(r)} · macros per serving` : 'Serves 1'}
+        </span>
         <span style={{ color: 'var(--accent)', fontWeight: 800 }}>{meta.diff}</span>
       </div>
 

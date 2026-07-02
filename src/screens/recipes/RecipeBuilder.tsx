@@ -34,7 +34,9 @@ export function RecipeBuilder({ lang, initial, onSave, onClose }: RecipeBuilderP
   const [steps, setSteps] = useState<string[]>(initial?.steps ?? []);
   const [stepDraft, setStepDraft] = useState('');
 
-  const valid = name.trim().length > 0 && ing.length > 0;
+  // Calories are required — a 0-kcal recipe would top every "fewest kcal"
+  // sort and pass the low-calorie filter with nonsense data.
+  const valid = name.trim().length > 0 && ing.length > 0 && toNum(kcal) > 0;
 
   const addIng = (): void => {
     const v = ingDraft.trim();

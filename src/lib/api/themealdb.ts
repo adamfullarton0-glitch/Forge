@@ -62,6 +62,6 @@ export async function searchMeals(term: string): Promise<DishSearchResult> {
     const parsed = SearchSchema.parse(data);
     return { ok: true, dishes: (parsed.meals ?? []).map(mapMeal) };
   } catch {
-    return { ok: false, error: "Couldn't reach the recipe database. Works in the live app." };
+    return { ok: false, error: "Couldn't reach the recipe database. Check your connection." };
   }
 }

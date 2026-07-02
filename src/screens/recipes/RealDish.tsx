@@ -168,8 +168,8 @@ export function RealDishSearch({ lang }: { lang: string }): JSX.Element {
       {loading ? <Loading label={t('searching')} /> : null}
       {err ? (
         <ErrorState
-          title="Couldn't reach TheMealDB"
-          message="Works in the live app. Try again in a moment."
+          title="Couldn't reach the recipe database"
+          message="Check your connection and try again in a moment."
           onRetry={run}
         />
       ) : null}

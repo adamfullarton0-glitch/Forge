@@ -259,7 +259,10 @@ function toRecipe(m, idx) {
 
   const area = str(m.strArea);
   const meal = CAT_MEAL[cat] ?? null;
-  const time = `${Math.min(90, 20 + steps.length * 5)} min`;
+  // A duration in the dish's own name ("15-minute … burgers") beats the
+  // step-count estimate — the two contradicting each other looks broken.
+  const named = str(m.strMeal).match(/(\d+)[- ]?min(?:ute)?/i);
+  const time = named ? `${named[1]} min` : `${Math.min(90, 20 + steps.length * 5)} min`;
   const goal =
     kcal < 540 && p >= 30 ? ['lose', 'maintain'] : kcal > 720 ? ['gain', 'maintain'] : ['maintain', 'lose', 'gain'];
 

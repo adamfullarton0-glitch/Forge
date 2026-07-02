@@ -81,3 +81,33 @@ describe('sortShopping', () => {
     expect(input.map((i) => i.name)).toEqual(['b', 'a']);
   });
 });
+
+describe('quantity-aware dedup', () => {
+  it('merges the same ingredient across quantity formats', () => {
+    const { list, added } = addIngredients(
+      [{ name: 'chicken breast', have: false }],
+      ['2 Chicken Breasts', '1 Chicken Breast'],
+    );
+    expect(added).toBe(0);
+    expect(list).toHaveLength(1);
+  });
+
+  it('strips measure words and leading amounts', () => {
+    const { list } = addIngredients([], ['4 tbsp Sour Cream', '250g Cheese', '4 leaves Lettuce']);
+    expect(list.map((i) => i.name)).toEqual([
+      '4 tbsp Sour Cream',
+      '250g Cheese',
+      '4 leaves Lettuce',
+    ]);
+    // Re-adding the bare names is a no-op — they normalise to the same keys.
+    const again = addIngredients(list, ['sour cream', 'cheese', 'lettuce']);
+    expect(again.added).toBe(0);
+  });
+
+  it('does not mangle names that merely start with a digit-word', () => {
+    const { list } = addIngredients([], ['7-grain bread']);
+    const again = addIngredients(list, ['grain bread']);
+    // "7-grain bread" is a different product from "grain bread".
+    expect(again.added).toBe(1);
+  });
+});

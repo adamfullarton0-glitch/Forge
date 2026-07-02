@@ -162,16 +162,24 @@ export function savePhotos(
 /* Backup import / export                                             */
 /* ------------------------------------------------------------------ */
 
-/** Serialises the full state to a pretty JSON string for the user to keep. */
-export function exportBackup(state: PersistedState): string {
-  return JSON.stringify(state, null, 2);
+/**
+ * Serialises the full state — INCLUDING progress photos, which live under a
+ * separate storage key — so "Downloads everything as a file you control" is
+ * actually true and a backup restores photos on a new device.
+ */
+export function exportBackup(state: PersistedState, photos: readonly ProgressPhoto[] = []): string {
+  return JSON.stringify({ ...state, photos }, null, 2);
 }
 
-export type ImportResult = { ok: true; state: PersistedState } | { ok: false; error: string };
+export type ImportResult =
+  | { ok: true; state: PersistedState; photos: ProgressPhoto[] }
+  | { ok: false; error: string };
 
 /**
  * Validates a user-supplied backup file. Mirrors the prototype's sanity check
  * (it must at least look like FORGE data), then migrates + validates it.
+ * Photos (present in newer backups) validate independently — an old backup
+ * without them simply restores none.
  */
 export function importBackup(json: string): ImportResult {
   let parsed: unknown;
@@ -189,5 +197,6 @@ export function importBackup(json: string): ImportResult {
   // makes this bulletproof even if the top-level `.catch` is ever removed.
   const result = PersistedStateSchema.safeParse(migrate(parsed));
   if (!result.success) return { ok: false, error: "That file didn't look like a FORGE backup." };
-  return { ok: true, state: result.data };
+  const photos = ProgressPhotosSchema.parse('photos' in parsed ? parsed.photos : []);
+  return { ok: true, state: result.data, photos };
 }

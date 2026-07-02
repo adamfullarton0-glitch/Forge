@@ -1,4 +1,5 @@
 import { Card } from '@/components/Card';
+import { todayKey } from '@/lib/calc';
 import type { DoneEntry } from '@/types/schemas';
 
 const WEEKS = 12;
@@ -20,7 +21,7 @@ export function Heatmap({ done }: { done: readonly DoneEntry[] }): JSX.Element {
     for (let d = 0; d < 7; d++) {
       const dt = new Date(start);
       dt.setDate(start.getDate() + w * 7 + d);
-      const key = dt.toISOString().slice(0, 10);
+      const key = todayKey(dt); // local-day key, matching how sessions are stamped
       col.push({ key, sets: map.get(key) ?? 0, future: dt > today });
     }
     cols.push(col);

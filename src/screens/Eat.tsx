@@ -17,7 +17,9 @@ import type { FoodEntry, Profile } from '@/types/schemas';
 const MEALS = ['breakfast', 'lunch', 'dinner', 'snacks'] as const;
 type Meal = (typeof MEALS)[number];
 
-const n = (v: number | undefined): number => (typeof v === 'number' && Number.isFinite(v) ? v : 0);
+// Clamped at 0 — a pasted "-500" must not subtract from the day's totals.
+const n = (v: number | undefined): number =>
+  typeof v === 'number' && Number.isFinite(v) ? Math.max(0, v) : 0;
 
 function hourMeal(): Meal {
   const h = new Date().getHours();
@@ -30,20 +32,8 @@ interface CustomFood {
   p: string;
   c: string;
   f: string;
-  fiber: string;
-  sugar: string;
-  sodium: string;
 }
-const emptyCustom: CustomFood = {
-  n: '',
-  kcal: '',
-  p: '',
-  c: '',
-  f: '',
-  fiber: '',
-  sugar: '',
-  sodium: '',
-};
+const emptyCustom: CustomFood = { n: '', kcal: '', p: '', c: '', f: '' };
 
 function CalorieGuideCard({ p }: { p: Profile }): JSX.Element | null {
   const g = calorieGuide(p);
@@ -162,9 +152,6 @@ export function Eat(): JSX.Element | null {
       p: n(parseFloat(custom.p)),
       c: n(parseFloat(custom.c)),
       f: n(parseFloat(custom.f)),
-      fiber: n(parseFloat(custom.fiber)),
-      sugar: n(parseFloat(custom.sugar)),
-      sodium: n(parseFloat(custom.sodium)),
     });
     setCustom(emptyCustom);
   };
@@ -221,7 +208,7 @@ export function Eat(): JSX.Element | null {
         {searchError ? (
           <ErrorState
             title="Couldn't reach the food database"
-            message="It works in the live app — add a custom food below for now."
+            message="Check your connection and try again — or add a custom food below."
             onRetry={runSearch}
           />
         ) : null}

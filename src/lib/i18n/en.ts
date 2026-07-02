@@ -154,7 +154,7 @@ export const en = {
   sessionLog: 'Session log',
   sessionSub: "Workouts you've completed from your split.",
   weeklyVol: "This week's volume",
-  muscleSplit: 'Sets by muscle (7 days)',
+  muscleSplit: 'Sets by muscle (this week)',
   // Settings
   appearance: 'Appearance',
   dark: 'Dark',
@@ -217,7 +217,7 @@ export const en = {
   addStep: 'Add a method step',
   addBtn: 'Add',
   saveRecipe: 'Save recipe',
-  emptyRecipe: 'Give it a name and at least one ingredient.',
+  emptyRecipe: 'Give it a name, its calories, and at least one ingredient.',
   optional: 'optional',
   step: 'step',
   // Body-map exercise finder

@@ -4,7 +4,9 @@ const finite = (n: number, fallback = 0): number => (Number.isFinite(n) ? n : fa
 
 export const kg2lb = (k: number): number => Math.round(finite(k) * 2.20462 * 10) / 10;
 
-export const lb2kg = (l: number): number => Math.round((finite(l) / 2.20462) * 10) / 10;
+// Stored at 2-decimal precision so an lb entry round-trips exactly: 180 lb →
+// 81.65 kg → 180.0 lb. Rounding to 0.1 kg here made the app show 179.9 forever.
+export const lb2kg = (l: number): number => Math.round((finite(l) / 2.20462) * 100) / 100;
 
 export const cm2ftin = (cm: number): { ft: number; inch: number } => {
   const tot = Math.round(finite(cm) / 2.54);

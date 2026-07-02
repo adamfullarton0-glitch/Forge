@@ -166,8 +166,7 @@ export function Home(): JSX.Element | null {
           </Card>
           <Card style={{ flex: 1, textAlign: 'center' }}>
             <div className="pulse-stat" style={{ fontSize: '1.5rem' }}>
-              {diffShow}
-              {wu}
+              {diffShow} {wu}
             </div>
             <div className="stat-label">{t('toGoal')}</div>
           </Card>

@@ -14,6 +14,14 @@ import { translator } from '@/lib/i18n';
 const MEASURE_FIELDS = ['waist', 'chest', 'arms', 'thighs'] as const;
 type MeasureField = (typeof MEASURE_FIELDS)[number];
 
+/** "2026-07-01" → "Wed 1 Jul" (raw ISO keys read like a database dump). */
+function fmtDay(key: string): string {
+  const [y, m, d] = key.split('-').map(Number);
+  if (!y || !m || !d) return key;
+  const date = new Date(y, m - 1, d);
+  return date.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
+}
+
 export function Progress(): JSX.Element | null {
   const data = useData();
   const update = useUpdate();
@@ -373,7 +381,7 @@ export function Progress(): JSX.Element | null {
             >
               <div style={{ fontWeight: 700 }}>{x.day}</div>
               <div className="state__msg" style={{ margin: 0 }}>
-                {x.d}
+                {fmtDay(x.d)}
               </div>
             </Card>
           ))
